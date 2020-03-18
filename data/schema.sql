@@ -3,13 +3,15 @@ CREATE DATABASE Shtiker_iso;
 
 USE Shtiker_iso;
 
-DROP TABLE IF EXISTS providers;
+
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS spect;
 DROP TABLE IF EXISTS shows;
 
-CREATE TABLE providers(
+CREATE TABLE users(
 	id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-	name varchar(50) NOT NULL,
+	user_name varchar(50) NOT NULL,
+    user_type varchar(50) NOT NULL,
     email varchar(50) NOT NULL,
     password varchar(35) NOT NULL,
     about varchar(2323) NOT NULL,
@@ -26,7 +28,7 @@ CREATE TABLE providers(
 
 
 
-CREATE TABLE Users(
+CREATE TABLE spect(
 	id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	name varchar(50) NOT NULL,
     email varchar(50) NOT NULL,
@@ -51,6 +53,6 @@ CREATE TABLE shows(
 	INDEX idx_events_userId (id)
 );
 
-SELECT * FROM providers;
 SELECT * FROM users;
+SELECT * FROM spect;
 SELECT * FROM shows;

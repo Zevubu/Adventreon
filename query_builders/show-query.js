@@ -1,9 +1,10 @@
 const showQuery ={
-    createNew: () => `INSERT INTO users (user_name, user_email, user_phone, password, user_type, title, bio_lg, bio_sm, img_wd, img_lg, img_sm, services, connections, appointments, availability, screened) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-    findAll: () => `SELECT id, user_name, user_email, user_phone, user_type, title, bio_lg, bio_sm, img_wd, img_lg, img_sm, services, connections, appointments, availability, screened, time_stamp FROM users WHERE user_type='provider'`,
-    findById: () => `SELECT id, user_name, user_email, user_phone, user_type, title, bio_lg, bio_sm, img_wd, img_lg, img_sm, services, connections, appointments, availability, screened, time_stamp FROM users WHERE id = ? AND user_type='provider'`,
-    updateById: () => `UPDATE users SET ? WHERE ? AND user_type='provider'`,
-    deleteById: () => `DELETE FROM users WHERE id=? AND user_type='provider'`
+    createNew: () => `INSERT INTO shows (event_name, host_name, host_id, provider_info, provider_payment, video_links, show_date, start_time, end_time) VALUES(?,?,?,?,?,?,?,?,?)`,
+    findAll: () => `SELECT id, event_name, host_name, host_id, provider_info, provider_payment, video_links, show_date, start_time, end_time, time_stamp FROM shows`,
+    findById: () => `SELECT id, event_name, host_name, host_id, provider_info, provider_payment, video_links, show_date, start_time, end_time, time_stamp FROM shows WHERE id = ?`,
+    findByHost: () => `SELECT * shows WHERE host_id = ?`,
+    updateById: () => `UPDATE shows SET ? WHERE ? AND host_id = ?`,
+    deleteById: () => `DELETE FROM shows WHERE id=? AND host_id = ?`
 };
 // May need to apply "AND userid = {currentuser} OR Management = true"
 

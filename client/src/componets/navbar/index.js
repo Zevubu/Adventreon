@@ -39,8 +39,8 @@ function NavBar (props){
             <OptionBox>
                 <OptionBox>
                     <Link to="/"><NavBtnB>Home</NavBtnB></Link>
-                    <Link to="/services"><NavBtnB>Services</NavBtnB></Link>
-                    <Link to="/coaches"><NavBtnB>Coaches</NavBtnB></Link>
+                    <Link to="/events"><NavBtnB>events</NavBtnB></Link>
+                    <Link to="/schedule"><NavBtnB>Schedule</NavBtnB></Link>
                     {isAuthenticated && isUser && (
                         <div>
                             <Link to="/profile"><NavBtnB>Profile</NavBtnB></Link>

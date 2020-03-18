@@ -2,11 +2,11 @@ const router = require("express").Router();
 const connection = require('../../controllers/connection');
 const query = require('../../controllers/query');
 const dbConfig = require('../../dbConfig');
-const userQuery = require("../../query_builders/user-query");
+const userQuery = require("../../query_builders/spect-query");
 
 // router.get()
 //creating a provider profile needs to be restricted. May need to apply "AND userid = {currentuser} OR Management = true"
-
+// Matches with "/api/spectators
 router.route("/")
     .get(async (req, res) => {
       const conn = await connection(dbConfig).catch(e => {});
@@ -24,7 +24,7 @@ router.route("/")
       res.send[user]
     });
 
-// Matches with "/api/providers/:id"
+// Matches with "/api/spectators/:id"
 router.route('/:id')
   .get(async (req, res) => {
       const { id } = req.params;
