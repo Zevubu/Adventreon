@@ -1,11 +1,10 @@
-import React, {useState, useEffect,createContext} from 'react';
+import React, {useState, useEffect, createContext} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import UserRoute from './privateRoutes/UserRoute';
+import PrivateRoute from './PrivateRoutes/PrivateRoutes';
 import { AuthContext, UserContext, ManagmentContext, UserInfoContext} from "./context/heart";
 
-
 import NavBar from "./componets/navbar";
-import Home from "./pages/home";
+import HomePage from "./pages/home/index";
 import Login from "./pages/login";
 import SignUp from './pages/sign_up';
 import profile from './pages/profile';
@@ -73,26 +72,23 @@ function App() {
         <UserContext.Provider value={{isUser, setIsUser: setUser}}>
           <UserInfoContext.Provider value={{userData, setUserData: UserDataSet, isData, setIsData: setData }}>
             <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, isAuthenticated, setIsAuthenticated: setAuth}}>
-            <Router>
-              <div>
-                <NavBar value={userData}/>
-              {/* <UserContext value={{userData, setUserData: setUser}}> */}
-                {/* <p>{JSON.stringify(UserContext)}</p> */}
-                {/* </UserContext> */}
-                    
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/signup" component={SignUp} />
-                  <UserRoute path="/profile" state={{value:userData}}  component={profile}/>
-                </Switch>
-                <Footer/>
-                </div>
-            </Router>
-        </AuthContext.Provider>
-      </UserInfoContext.Provider>
-    </UserContext.Provider>
- </ManagmentContext.Provider>
+              <Router>
+                <div>
+                  <NavBar value={userData}/>
+                      
+                  <Switch>
+                    <Route exact path="/" component={HomePage} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/signup" component={SignUp} />
+                    <PrivateRoute path="/profile" state={{value:userData}}  component={profile}/>
+                  </Switch>
+                  <Footer/>
+                  </div>
+              </Router>
+          </AuthContext.Provider>
+        </UserInfoContext.Provider>
+      </UserContext.Provider>
+  </ManagmentContext.Provider>
 
   );
 }
