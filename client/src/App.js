@@ -1,7 +1,7 @@
 import React, {useState, useEffect, createContext} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import PrivateRoute from './PrivateRoutes/PrivateRoutes';
-import { AuthContext, UserContext, ManagmentContext, UserInfoContext} from "./context/heart";
+import UserRoute from './PrivateRoutes/UserRoutes';
+import { AuthContext, UserContext, HostContext, ManagmentContext, UserInfoContext} from "./context/heart";
 
 import NavBar from "./componets/navbar";
 import HomePage from "./pages/home/index";
@@ -14,8 +14,10 @@ function App() {
   const [authTokens, setAuthTokens] = useState();
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [isUser,setIsUser] = useState();
-  const [userData, setUserData] = useState();
+  const [isHost,setIsHost] = useState();
   const [isManager, setIsManager] = useState();
+  // userdata hold
+  const [userData, setUserData] = useState();
   const [isData, setIsData] = useState();
 
   const setTokens = (data) => {
@@ -46,6 +48,11 @@ function App() {
     setIsUser(data)
   }
 
+  const setHost =(data) => {
+    console.log(`Is Host: ${data}`)
+    setIsHost(data)
+  }
+
   const setManager = (data) => {
     console.log(`Manager data: ${data}`)
     setIsManager(data)
@@ -68,26 +75,28 @@ function App() {
   }
 
   return (
-    <ManagmentContext.Provider value={{isManager, setIsManager:setManager, }}>
-        <UserContext.Provider value={{isUser, setIsUser: setUser}}>
-          <UserInfoContext.Provider value={{userData, setUserData: UserDataSet, isData, setIsData: setData }}>
-            <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, isAuthenticated, setIsAuthenticated: setAuth}}>
-              <Router>
-                <div>
-                  <NavBar value={userData}/>
-                      
-                  <Switch>
-                    <Route exact path="/" component={HomePage} />
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/signup" component={SignUp} />
-                    <PrivateRoute path="/profile" state={{value:userData}}  component={profile}/>
-                  </Switch>
-                  <Footer/>
-                  </div>
-              </Router>
-          </AuthContext.Provider>
-        </UserInfoContext.Provider>
-      </UserContext.Provider>
+    <ManagmentContext.Provider value={{isManager, setIsManager:setManager}}>
+        <HostContext.Provider value={{isHost, setIsHost:setHost}}>
+          <UserContext.Provider value={{isUser, setIsUser: setUser}}>
+            <UserInfoContext.Provider value={{userData, setUserData: UserDataSet, isData, setIsData: setData }}>
+              <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, isAuthenticated, setIsAuthenticated: setAuth}}>
+                <Router>
+                  <div>
+                    <NavBar value={userData}/>
+                        
+                    <Switch>
+                      <Route exact path="/" component={HomePage} />
+                      <Route exact path="/login" component={Login} />
+                      <Route exact path="/signup" component={SignUp} />
+                      <UserRoute path="/profile" state={{value:userData}}  component={profile}/>
+                    </Switch>
+                    <Footer/>
+                    </div>
+                </Router>
+            </AuthContext.Provider>
+          </UserInfoContext.Provider>
+        </UserContext.Provider>
+      </HostContext.Provider>
   </ManagmentContext.Provider>
 
   );

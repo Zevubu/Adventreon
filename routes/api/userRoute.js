@@ -2,7 +2,7 @@ const router = require("express").Router();
 const connection = require('../../controllers/connection');
 const query = require('../../controllers/query');
 const dbConfig = require('../../dbConfig');
-const userQuery = require("../../query_builders/spect-query");
+const userQuery = require("../../query_builders/user-query");
 
 // router.get()
 //creating a provider profile needs to be restricted. May need to apply "AND userid = {currentuser} OR Management = true"
@@ -14,12 +14,12 @@ router.route("/")
       res.send(user)
     })
     .post(async (req, res) =>{
-      const {user_name, user_type, email, password, about, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform} = req.body;
+      const {user_name, user_type, dob, email, password, about, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform} = req.body;
       const conn = await connection(dbConfig).catch(e => {});
       const user = await query(
         conn,
         userQuery.createNew(),
-        [user_name, user_type, email, password, about, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform]
+        [user_name, user_type, dob, email, password, about, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform]
       )
       res.send[user]
     });
