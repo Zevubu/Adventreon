@@ -1,12 +1,47 @@
 import React from "react";
-import {DivWBorder, H1T} from "../../styles/homeStyle"
+import {Link} from 'react-router-dom'
+import {IntroBlock, MarronBtn, CCCDiv, FillerDiv, IntroTxTDiv,H1,P} from "../../styles/homeStyle"
+// import SignUp from "./signUp";
+import Coaches from "../../componets/homeHosts";
+import Services from "../../componets/homeShows";
+import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
-function HomePage (){
+function Home (){
+    const {isAuthenticated} = useAuth();
+    const {isUser} = useUser();
+    const { isHost } = useHost();
+    const { isManager } = useManagment();
+
     return(
-            <DivWBorder>
-                    <H1T>Home page</H1T>
-            </DivWBorder>
+        <div>
+            {/* Intro Block */}
+            <IntroBlock>
+                <FillerDiv/>
+                    <IntroTxTDiv>
+                        <CCCDiv>
+                            <H1>Intimacy Coaching</H1>
+                            <P>Learn copy copy copy stuff tagline.</P>
+                        </CCCDiv>
+                        {!isAuthenticated && (
+                            <Link to="/signup"><MarronBtn>Sign-up to Make an Appointment.</MarronBtn></Link>
+                        )}
+                        {isAuthenticated && isUser &&(
+                            <Link to="/shows"><MarronBtn>Watchhows.</MarronBtn></Link>
+                        )}
+                        {isAuthenticated && isHost &&(
+                            <Link to="/"><MarronBtn>View Your shows.</MarronBtn></Link>
+                        )}
+                        
+                    </IntroTxTDiv>
+            </IntroBlock>
+            {/* service area */}
+            <Services/>
+            {/* Coaches area start */}
+            <Coaches/>
+             {/* Sign up form
+            <SignUp/> */}
+        </div>
     )
 }
 
-export default HomePage;
+export default Home;
