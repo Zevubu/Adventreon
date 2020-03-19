@@ -29,10 +29,10 @@ function Login (){
         }).then(result => {
             // console.log(`login result${JSON.stringify(result)}`)
             if (result.status === 200) {
-              // console.log(`User type: ${JSON.stringify(result.data.user_info.user_type)}`)
+              console.log(`User type: ${JSON.stringify(result.data.user_info.user_type)}`)
               console.log(`User type test:${JSON.stringify(result.data.user_info.user_type) === "\"user\""} `)
-              // localStorage.setItem("tokens", JSON.stringify(result.data.token));
-              // localStorage.setItem("user", JSON.stringify(result.data.user_info));
+              localStorage.setItem("tokens", JSON.stringify(result.data.token));
+              localStorage.setItem("user", JSON.stringify(result.data.user_info));
               setAuthTokens(result.data.token);
               setUserData(result.data.user_info);
               setIsAuthenticated(true);
@@ -45,9 +45,7 @@ function Login (){
               }else if (JSON.stringify(result.data.user_info.user_type) === "\"manager\""){
                 localStorage.setItem("user_type","80CDswONc34RI8");
                 setIsManager(true);
-                
               }
-              
             } else {
               setIsError(true);
               console.log("loggin error")
@@ -61,9 +59,8 @@ function Login (){
     }
 
     if (isLoggedIn) {
-      if(isUser){
-        return <Redirect to='/user' />
-      }
+        return <Redirect to='/' />
+    
         
     }
     

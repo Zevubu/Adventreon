@@ -65,7 +65,7 @@ function App() {
   const UserDataSet= (data) => {
     if(JSON.stringify(data) !== undefined){
       localStorage.setItem("user", JSON.stringify(data));
-      console.log(`user data: ${userData.user_name}`)
+      // console.log(`user data: ${userData.user_name}`)
       localStorage.setItem("user_type",JSON.stringify(data.user_type) )
       setUserData(data);
       setIsData(true);
@@ -73,6 +73,35 @@ function App() {
       setIsData(true);
     } 
   }
+  useEffect(() => {
+    const checkLS = () =>{
+      const user =  window.localStorage.getItem('user');
+      const token =  window.localStorage.getItem('tokens');
+      const userType =  window.localStorage.getItem('user_type');
+      console.log(`local storage check: User type:${userType}, User token: ${token}, User data:${user} `)
+      if(!user || !token || !userType){
+        console.log(`User null check! ${user}`)
+      }else{
+        setAuthTokens(token);
+        setIsAuthenticated(true);
+        setUserData(JSON.parse(user))
+        setIsData(true)
+        console.log(`IS USER CHECK: ${userType === "8KdWkYINFSD81fI"}`)
+        if(userType === "8KdWkYINFSD81fI"){
+          // console.log(`IS USER CHECK: ${userType}`)
+          setIsUser(true);
+        }else if(userType === "20nH54g9NSK90W"){
+          setIsHost(true);
+        }else if(userType === "80CDswONc34RI8"){
+          setIsManager(true);
+        }
+      }
+    };
+    checkLS();  
+
+  },[]);
+
+
 
   return (
     <ManagmentContext.Provider value={{isManager, setIsManager:setManager}}>
