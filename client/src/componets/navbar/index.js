@@ -39,13 +39,9 @@ function NavBar (props){
         setIsUser();
         setIsManager()
         setIsAuthenticated();
-        
-        
-
     }
 
     return(
-        
         <NavBody  className={classes.root}>
             <OptionBox>
                 <OptionBox>
@@ -65,8 +61,7 @@ function NavBar (props){
                         <div>
                             <Link style={{ textDecoration: 'none' }} to="/profile"><Button variant="contained" color="secondary">Profile</Button></Link>
                         </div>
-                    )}
-                    
+                    )} 
                 </OptionBox>
 
                 :
@@ -75,6 +70,7 @@ function NavBar (props){
                     
                 }
                     
+
                     {!isAuthenticated && (
                         <OptionBox>
                             <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><Button style={small ? {fontSize:'6.45px'}: {}} variant="contained" color="secondary">Sign up</Button></Link>
@@ -84,11 +80,8 @@ function NavBar (props){
                     {isAuthenticated && (
                         <Link style={{ textDecoration: 'none' }} to={{pathname:"/", state:{value:userData} }}><Button variant="contained" color="secondary">Sign Out</Button></Link> 
                     )}
-                    
-                
             </OptionBox>
         </NavBody>
-    
     )
 }
 
