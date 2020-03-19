@@ -9,6 +9,7 @@ import Login from "./pages/login";
 import SignUp from './pages/sign_up';
 import profile from './pages/profile';
 import Footer from './componets/footer'
+import HostsPage from './pages/hosts'
 
 function App() {
   const [authTokens, setAuthTokens] = useState();
@@ -118,6 +119,7 @@ function App() {
                       <Route exact path="/login" component={Login} />
                       <Route exact path="/signup" component={SignUp} />
                       <UserRoute path="/profile" state={{value:userData}}  component={profile}/>
+                      <Route exact path="/hosts" component={HostsPage} />
                     </Switch>
                     <Footer/>
                     </div>
