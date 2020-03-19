@@ -60,5 +60,9 @@ const FooterBody = styled.div`
     justify-content: space-between;
     align-items: center;
 `
+const Logo = styled.h2`
+font-family: 'Pacifico', cursive;
+font-size: 40px;
+`
 
-export {NavBody, NavBtn, NavBtnB, NavBtnM, NavBtnT, FooterBody, OptionBox}
+export {NavBody, NavBtn, NavBtnB, NavBtnM, NavBtnT, FooterBody, OptionBox, Logo}
