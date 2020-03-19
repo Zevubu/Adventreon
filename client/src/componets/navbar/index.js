@@ -29,6 +29,7 @@ function NavBar (props){
     const {isManager, setIsManager } = useManagment();
     const { userData, setUserData } = useUserInfo();
     const matches = useMediaQuery('(min-width:600px)');
+    const small = useMediaQuery('(max-width:485px)')
   
     function logOut() {
         localStorage.clear();
@@ -76,12 +77,12 @@ function NavBar (props){
                     
                     {!isAuthenticated && (
                         <OptionBox>
-                            <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><Button variant="contained" color="secondary">Sign up</Button></Link>
-                            <Link style={{ textDecoration: 'none' }} className="nav-link" to="/login"><Button variant="contained" color="secondary">Login</Button></Link>
+                            <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><Button style={small ? {fontSize:'6.45px'}: {}} variant="contained" color="secondary">Sign up</Button></Link>
+                            <Link style={{ textDecoration: 'none' }} className="nav-link" to="/login"><Button style={small ? {fontSize:'7px'}: {}} variant="contained" color="secondary">Login</Button></Link>
                         </OptionBox>
                     )}  
                     {isAuthenticated && (
-                        <Link style={{ textDecoration: 'none' }} to={{pathname:"/", state:{value:userData} }}><NavBtnM onClick={logOut}>Sign Out</NavBtnM></Link> 
+                        <Link style={{ textDecoration: 'none' }} to={{pathname:"/", state:{value:userData} }}><Button variant="contained" color="secondary">Sign Out</Button></Link> 
                     )}
                     
                 

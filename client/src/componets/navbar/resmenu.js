@@ -17,7 +17,7 @@ export default function ResMenu() {
 
   return (
     <div>
-      <Button variant="outlined" color="secondary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <Button style={{fontSize: '8px'}}variant="outlined" color="secondary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         Services
       </Button>
       <Menu
