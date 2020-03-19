@@ -24,6 +24,8 @@
     "nodemon": "^2.0.2"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.7",
+    "@material-ui/icons": "^4.9.1",
     "acorn": "^7.1.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
