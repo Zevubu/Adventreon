@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import {Link} from 'react-router-dom';
 
 export default function ResMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -26,12 +27,13 @@ export default function ResMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       > 
-        <MenuItem onClick={handleClose}>Home</MenuItem>
-        <MenuItem onClick={handleClose}>Schedule</MenuItem>
-        <MenuItem onClick={handleClose}>Religous Services</MenuItem>
-        <MenuItem onClick={handleClose}>Companionship</MenuItem>
-        <MenuItem onClick={handleClose}>Entertainment</MenuItem>
-        <MenuItem onClick={handleClose}>Other</MenuItem>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/"><MenuItem onClick={handleClose}>Home</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/schedule"><MenuItem onClick={handleClose}>Schedule</MenuItem></Link>
+        <hr></hr>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/religious"><MenuItem onClick={handleClose}>Religous Services</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/companionship"><MenuItem onClick={handleClose}>Companionship</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/Entertainment"><MenuItem onClick={handleClose}>Entertainment</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/other"><MenuItem onClick={handleClose}>Other</MenuItem></Link>
       </Menu>
     </div>
   );
