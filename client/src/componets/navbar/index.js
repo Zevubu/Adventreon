@@ -4,10 +4,12 @@ import {H2} from '../../styles/homeStyle';
 import {NavBody,  NavBtnB, NavBtnM, OptionBox, Logo} from "../../styles/componentStyles";
 import { useAuth, useUser, useManagment, useUserInfo } from "../../context/heart";
 import SimpleMenu from './menu.js';
+import ResMenu from './resmenu';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 // import { UserInfoContext } from "../../App"
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -16,7 +18,6 @@ const useStyles = makeStyles(theme => ({
       },
     },
   }));
-  
 
 
 function NavBar (props){
@@ -27,7 +28,7 @@ function NavBar (props){
     const {isUser, setIsUser} = useUser();
     const {isManager, setIsManager } = useManagment();
     const { userData, setUserData } = useUserInfo();
-
+    const matches = useMediaQuery('(min-width:600px)');
   
     function logOut() {
         localStorage.clear();
@@ -52,6 +53,7 @@ function NavBar (props){
                 
             </OptionBox>
             <OptionBox>
+                {matches ?
                 <OptionBox>
                     <Link style={{ textDecoration: 'none' }} to="/"><Button variant="outlined" color="secondary">Home</Button></Link>
                     <br></br>
@@ -65,6 +67,12 @@ function NavBar (props){
                     )}
                     
                 </OptionBox>
+
+                :
+                
+                <ResMenu></ResMenu>
+                    
+                }
                     
                     {!isAuthenticated && (
                         <OptionBox>
