@@ -23,10 +23,11 @@ function Home (){
                             <P>Learn copy copy copy stuff tagline.</P>
                         </CCCDiv>
                         {!isAuthenticated && (
-                            <Link to="/signup"><MarronBtn>Sign-up to Make an Appointment.</MarronBtn></Link>
+                            <Link to="/signup"><MarronBtn>Sign-up here.</MarronBtn></Link>
                         )}
                         {isAuthenticated && isUser &&(
-                            <Link to="/shows"><MarronBtn>Watchhows.</MarronBtn></Link>
+                            <Link to="/shows"><MarronBtn>Watch now
+                                .</MarronBtn></Link>
                         )}
                         {isAuthenticated && isHost &&(
                             <Link to="/"><MarronBtn>View Your shows.</MarronBtn></Link>
@@ -44,4 +45,4 @@ function Home (){
     )
 }
 
-export default Home;
+export default Home; 
