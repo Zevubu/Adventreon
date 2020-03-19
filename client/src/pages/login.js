@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Card, Form, Input, Button,Error } from '../styles/signUpOutStyles';
 import {FillerDiv} from "../styles/homeStyle";
-import { useAuth, useUser, useManagment, useUserInfo} from "../context/heart";
+import { useAuth, useUser, useHost, useManagment, useUserInfo} from "../context/heart";
 import API from "../API/loggedOutAPI";
 
 function Login (){
@@ -14,6 +14,7 @@ function Login (){
     // context pulls
     const { setAuthTokens, isAuthenticated, setIsAuthenticated } = useAuth();
     const {isUser,setIsUser} = useUser();
+    const {isHost, setIsHost} = useHost();
     const {setIsManager,isManager } = useManagment();
     const {setUserData, setIsData, isData} = useUserInfo();
     
@@ -28,22 +29,23 @@ function Login (){
         }).then(result => {
             // console.log(`login result${JSON.stringify(result)}`)
             if (result.status === 200) {
-              // console.log(`User type: ${JSON.stringify(result.data.user_info.user_type)}`)
+              console.log(`User type: ${JSON.stringify(result.data.user_info.user_type)}`)
               console.log(`User type test:${JSON.stringify(result.data.user_info.user_type) === "\"user\""} `)
-              // localStorage.setItem("tokens", JSON.stringify(result.data.token));
-              // localStorage.setItem("user", JSON.stringify(result.data.user_info));
+              localStorage.setItem("tokens", JSON.stringify(result.data.token));
+              localStorage.setItem("user", JSON.stringify(result.data.user_info));
               setAuthTokens(result.data.token);
               setUserData(result.data.user_info);
               setIsAuthenticated(true);
               if(JSON.stringify(result.data.user_info.user_type) === "\"user\""){
                 localStorage.setItem("user_type","8KdWkYINFSD81fI");
                 setIsUser(true)
+              }else if (JSON.stringify(result.data.user_info.user_type)  === "\"host\""){
+                localStorage.setItem("user_type","20nH54g9NSK90W");
+                setIsHost(true);
               }else if (JSON.stringify(result.data.user_info.user_type) === "\"manager\""){
                 localStorage.setItem("user_type","80CDswONc34RI8");
                 setIsManager(true);
-                
               }
-              
             } else {
               setIsError(true);
               console.log("loggin error")
@@ -57,9 +59,8 @@ function Login (){
     }
 
     if (isLoggedIn) {
-      if(isUser){
-        return <Redirect to='/user' />
-      }
+        return <Redirect to='/' />
+    
         
     }
     

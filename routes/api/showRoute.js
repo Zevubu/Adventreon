@@ -14,12 +14,12 @@ router.route("/")
       res.send(user)
     })
     .post(async (req, res) =>{
-      const {event_name, host_name, host_id, provider_info, provider_payment, video_links, show_date, start_time, end_time} = req.body;
+      const {event_name, host_name, host_id, provider_info, payment, patreon, wpTitle, webpage, video_links, show_date, start_time, end_time} = req.body;
       const conn = await connection(dbConfig).catch(e => {});
       const user = await query(
         conn,
         showQuery.createNew(),
-        [event_name, host_name, host_id, provider_info, provider_payment, video_links, show_date, start_time, end_time]
+        [event_name, host_name, host_id, provider_info, payment, patreon, wpTitle, webpage, video_links, show_date, start_time, end_time]
       )
       res.send[user]
     });
