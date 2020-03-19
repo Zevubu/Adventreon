@@ -1,32 +1,47 @@
 import React from "react";
-import {DivWBorder, H1T} from "../../styles/homeStyle"
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import {Link} from 'react-router-dom'
+import {IntroBlock, MarronBtn, CCCDiv, FillerDiv, IntroTxTDiv,H1,P} from "../../styles/homeStyle"
+// import SignUp from "./signUp";
+import Coaches from "../../componets/homeHosts";
+import Services from "../../componets/homeShows";
+import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
-const useStyles = makeStyles(theme => ({
-        root: {
-          display: 'flex',
-          flexWrap: 'wrap',
-          '& > *': {
-            margin: theme.spacing(10),
-            width: theme.spacing(300),
-            height: theme.spacing(16),
-          },
-        },
-      }));
-
-function HomePage (){
-const classes = useStyles();
+function Home (){
+    const {isAuthenticated} = useAuth();
+    const {isUser} = useUser();
+    const { isHost } = useHost();
+    const { isManager } = useManagment();
 
     return(
-        <div style={{width: '75%' }} className={classes.root}>
-            <Paper elavation={3}>
-            
-                    <H1T>Home page</H1T>
-                    
-            </Paper>
+        <div>
+            {/* Intro Block */}
+            <IntroBlock>
+                <FillerDiv/>
+                    <IntroTxTDiv>
+                        <CCCDiv>
+                            <H1>Intimacy Coaching</H1>
+                            <P>Learn copy copy copy stuff tagline.</P>
+                        </CCCDiv>
+                        {!isAuthenticated && (
+                            <Link to="/signup"><MarronBtn>Sign-up to Make an Appointment.</MarronBtn></Link>
+                        )}
+                        {isAuthenticated && isUser &&(
+                            <Link to="/shows"><MarronBtn>Watchhows.</MarronBtn></Link>
+                        )}
+                        {isAuthenticated && isHost &&(
+                            <Link to="/"><MarronBtn>View Your shows.</MarronBtn></Link>
+                        )}
+                        
+                    </IntroTxTDiv>
+            </IntroBlock>
+            {/* service area */}
+            <Services/>
+            {/* Coaches area start */}
+            <Coaches/>
+             {/* Sign up form
+            <SignUp/> */}
         </div>
     )
 }
 
-export default HomePage;
+export default Home;
