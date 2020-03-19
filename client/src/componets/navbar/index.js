@@ -53,30 +53,30 @@ function NavBar (props){
             </OptionBox>
             <OptionBox>
                 <OptionBox>
-                    <Link to="/"><Button variant="outlined" color="secondary">Home</Button></Link>
+                    <Link style={{ textDecoration: 'none' }} to="/"><Button variant="outlined" color="secondary">Home</Button></Link>
                     <br></br>
-                    <Link to="/events"><SimpleMenu></SimpleMenu></Link>
+                    <Link style={{ textDecoration: 'none' }} to="/events"><SimpleMenu></SimpleMenu></Link>
                     <br></br>
-                    <Link to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link>
+                    <Link style={{ textDecoration: 'none' }} to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link>
                     {isAuthenticated && isUser && (
                         <div>
-                            <Link to="/profile"><Button variant="contained" color="secondary">Profile</Button></Link>
+                            <Link style={{ textDecoration: 'none' }} to="/profile"><Button variant="contained" color="secondary">Profile</Button></Link>
                         </div>
                     )}
                     
                 </OptionBox>
-                <OptionBox>      
+                    
                     {!isAuthenticated && (
-                        <div>
-                            <Link className="nav-link" to="/signup"><Button variant="contained" color="secondary">Sign up</Button></Link>
-                            <Link className="nav-link" to="/login"><Button variant="contained" color="secondary">Login</Button></Link>
-                        </div>
+                        <OptionBox>
+                            <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><Button variant="contained" color="secondary">Sign up</Button></Link>
+                            <Link style={{ textDecoration: 'none' }} className="nav-link" to="/login"><Button variant="contained" color="secondary">Login</Button></Link>
+                        </OptionBox>
                     )}  
                     {isAuthenticated && (
-                        <Link to={{pathname:"/", state:{value:userData} }}><NavBtnM onClick={logOut}>Sign Out</NavBtnM></Link> 
+                        <Link style={{ textDecoration: 'none' }} to={{pathname:"/", state:{value:userData} }}><NavBtnM onClick={logOut}>Sign Out</NavBtnM></Link> 
                     )}
                     
-                </OptionBox>
+                
             </OptionBox>
         </NavBody>
     
