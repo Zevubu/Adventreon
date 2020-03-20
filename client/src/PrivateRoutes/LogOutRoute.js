@@ -1,13 +1,11 @@
 
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useAuth, useUser, useUserInfo } from "../context/heart";
+import { useAuth, useUser } from "../context/heart";
 
-
-function UserRoute({ component: Component, ...rest }) {
-  const {authTokens} = useAuth();
+function LogOutRoute({ component: Component, ...rest }) {
+  const {authTokens, isAuthenticated} = useAuth();
   const {isUser} = useUser();
-  const {isData} =  useUserInfo();
    
   console.log(`What is Auth token: ${authTokens}`)
 
@@ -15,15 +13,15 @@ function UserRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={props =>
-        authTokens && isUser? (
+        !authTokens && !isAuthenticated ? (
           <Component {...props} />
         ) : (
           <Redirect
-            to={{ pathname: "/login", state: { referer: props.location } }} />
+            to={{ pathname: "/", state: { referer: props.location } }} />
         )
       }
     />
   );
 }
 
-export default UserRoute;
+export default LogOutRoute;

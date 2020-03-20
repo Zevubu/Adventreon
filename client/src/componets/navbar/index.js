@@ -66,11 +66,8 @@ function NavBar (props){
 
                 :
                 
-                <ResMenu></ResMenu>
-                    
-                }
-                    
-
+                <ResMenu></ResMenu>           
+                }      
                     {!isAuthenticated && (
                         <OptionBox>
                             <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><Button style={small ? {fontSize:'6.45px'}: {}} variant="contained" color="secondary">Sign up</Button></Link>
@@ -78,7 +75,7 @@ function NavBar (props){
                         </OptionBox>
                     )}  
                     {isAuthenticated && (
-                        <Link style={{ textDecoration: 'none' }} to={{pathname:"/", state:{value:userData} }}><Button variant="contained" color="secondary">Sign Out</Button></Link> 
+                        <Link style={{ textDecoration: 'none' }} to={{pathname:"/", state:{value:userData} }}><Button variant="contained" color="secondary" onClick={logOut}>Sign Out</Button></Link> 
                     )}
             </OptionBox>
         </NavBody>

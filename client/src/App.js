@@ -1,6 +1,10 @@
 import React, {useState, useEffect, createContext} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// private routes
 import UserRoute from './PrivateRoutes/UserRoutes';
+import LogOutRoute from './PrivateRoutes/LogOutRoute';
+
 import { AuthContext, UserContext, HostContext, ManagmentContext, UserInfoContext} from "./context/heart";
 
 import NavBar from "./componets/navbar";
@@ -41,7 +45,6 @@ function App() {
     }else{
       setIsAuthenticated(false)
     }
-    
   }
 
   const setUser =(data) => {
@@ -102,7 +105,7 @@ function App() {
 
   },[]);
 
-
+// I need to build and impliment an 18 and up context.
 
   return (
     <ManagmentContext.Provider value={{isManager, setIsManager:setManager}}>
@@ -113,13 +116,15 @@ function App() {
                 <Router>
                   <div>
                     <NavBar value={userData}/>
-                        
                     <Switch>
                       <Route exact path="/" component={HomePage} />
-                      <Route exact path="/login" component={Login} />
-                      <Route exact path="/signup" component={SignUp} />
+                      <LogOutRoute exact path="/login" component={Login} />
+                      <LogOutRoute exact path="/signup" component={SignUp} />
                       <UserRoute path="/profile" state={{value:userData}}  component={profile}/>
                       <Route exact path="/hosts" component={HostsPage} />
+                      <Route exact path="/shows" component={HostsPage} />
+                      <Route exact path="/episodes" component={HostsPage} />
+                      <Route exact path="/catagories" component={HostsPage} />
                     </Switch>
                     <Footer/>
                     </div>

@@ -28,7 +28,7 @@ function Hosts (){
             <DivWBorder>
                 <BlueHeader>
                     <HeaderItem>
-                        <H2>Meet our intimacy experts</H2>
+                        <H2>These people have shows you can watch.</H2>
                     </HeaderItem>
                     <HeaderItem>
                         <a className="nav-link" href="/Hosts"><MarronBtn>See all</MarronBtn></a>
@@ -43,7 +43,7 @@ function Hosts (){
                     infinite
                     dots
                 >
-                   {/* {Hosts.map((host, key) => (
+                   {Hosts.map((host, key) => (
                             <SliderFiller
                                 key={key} id={host.id} userName={host.user_name} userType={host.user_type}
                                 title={host.title} about={host.about} img={host.p_img}
@@ -51,7 +51,7 @@ function Hosts (){
                                 availability={host.availability} screened={host.screened} 
                                 timeStamp={host.time_stamp}
                             />
-                   ))} */}
+                   ))}
             </Carousel>
             </DivWBorder>
            

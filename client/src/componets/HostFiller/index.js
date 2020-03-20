@@ -13,9 +13,9 @@ function HostFiller(props){
    
 
     return(
-        <DuoServiceBlock>
+        <DuoServiceBlock bgImg={props.bImg}>
             <DuoServiceBlockColumn>
-                <Image src={props.img} alt={props.userName}/>
+                <Image src={props.pImg} alt={props.userName}/>
             </DuoServiceBlockColumn>
             <DuoServiceBlockColumn>
                 <TextBox>
