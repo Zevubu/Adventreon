@@ -212,6 +212,11 @@ display: flex;
 flex-direction: row;
 justify-content: space-evenly;
 background-color: rgba(238, 245, 244, 0.867);
+@media only screen and (max-width: 600px) {
+    flex-direction column;
+    height: 100%;
+    }
+
 `
 const ProviderBox = styled.div`
 color: rgb(0, 0, 0);
@@ -229,6 +234,11 @@ justify-content: space-evenly;
 align-items: center;
 margin:0 auto;
 text-align: center;
+@media only screen and (max-width: 600px) {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 75%;
+    };
 `
 // ${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"}
 const DuoServiceBlock = styled.div`
