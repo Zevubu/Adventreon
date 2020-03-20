@@ -31,9 +31,9 @@ export default function ResMenu() {
         <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/schedule"><MenuItem onClick={handleClose}>Schedule</MenuItem></Link>
         <hr></hr>
         <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/religious"><MenuItem onClick={handleClose}>Religous Services</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/companionship"><MenuItem onClick={handleClose}>Companionship</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/Entertainment"><MenuItem onClick={handleClose}>Entertainment</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/other"><MenuItem onClick={handleClose}>Other</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/counseling"><MenuItem onClick={handleClose}>counseling</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/Entertain"><MenuItem onClick={handleClose}>Entertainment</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/allcat"><MenuItem onClick={handleClose}>allcat</MenuItem></Link>
       </Menu>
     </div>
   );
