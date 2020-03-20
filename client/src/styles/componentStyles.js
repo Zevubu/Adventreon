@@ -63,6 +63,9 @@ const FooterBody = styled.div`
 const Logo = styled.h2`
 font-family: 'Pacifico', cursive;
 font-size: 40px;
+@media only screen and (max-width: 600px) {
+    font-size: 30px;
+    }
 `
 
 export {NavBody, NavBtn, NavBtnB, NavBtnM, NavBtnT, FooterBody, OptionBox, Logo}
