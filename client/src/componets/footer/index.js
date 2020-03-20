@@ -36,7 +36,7 @@ export default function Footer() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            This is App was Developed by Zeb, Amit & Andrew
+            This is App was Developed by Zev Hoffman, Amit Gill & Andrew Tocchi
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

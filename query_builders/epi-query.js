@@ -1,7 +1,7 @@
 const epiQuery ={
-    createNew: () => `INSERT INTO episodes (epi_name, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, host_img, credits, price, payment, patreon, wpTitle, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-    findAll: () => `SELECT id,epi_name, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, host_img, credits, price, payment, patreon, wpTitle, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, time_stamp FROM episodes`,
-    findById: () => `SELECT id,epi_name, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, host_img, credits, price, payment, patreon, wpTitle, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, time_stamp FROM episodes WHERE id = ?`,
+    createNew: () => `INSERT INTO episodes (epi_name, about, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, host_img, credits, price, payment, patreon, wp_title, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, entertain ,couns, relig) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+    findAll: () => `SELECT id, epi_name, about, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, host_img, credits, price, payment, patreon, wp_title, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, entertain ,couns, relig, time_stamp FROM episodes`,
+    findById: () => `SELECT id, epi_name, about, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, host_img, credits, price, payment, patreon, wp_title, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, entertain ,couns, relig, time_stamp FROM episodes WHERE id = ?`,
     findByHost: () => `SELECT * FROM episodes WHERE host_id = ?`,
     findByShow: () => `SELECT * FROM episodes WHERE show_id = ?`,
     findAllKF: () =>`SELECT * FROM episodes WHERE eighteen_plus = 0`,
@@ -12,4 +12,4 @@ const epiQuery ={
 };
 // May need to apply "AND userid = {currentuser} OR Management = true"
 
-module.exports = epiQuery;
+module.exports = epiQuery; 

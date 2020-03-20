@@ -1,15 +1,8 @@
 import React from 'react';
 import {DuoServiceBlock, DuoServiceBlockColumn,Image, Btn, TextBox, PS,H2B,PG} from "../../styles/homeStyle"
 
-// function holdingBox (props){
-//     return(
-//         <ServiceBlock>
-            
-//         </ServiceBlock>
-//     )
-// }
 
-function CatFiller(props){
+function HostFiller(props){
    
 
     return(
@@ -29,6 +22,6 @@ function CatFiller(props){
 
     )
 }
-export default CatFiller
+export default HostFiller
 
 

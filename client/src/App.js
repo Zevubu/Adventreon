@@ -8,16 +8,23 @@ import LogOutRoute from './PrivateRoutes/LogOutRoute';
 import { AuthContext, UserContext, HostContext, ManagmentContext, UserInfoContext} from "./context/heart";
 
 import NavBar from "./componets/navbar";
+import Footer from './componets/footer';
+
+
 import HomePage from "./pages/home/index";
 import Login from "./pages/login";
 import SignUp from './pages/sign_up';
 import profile from './pages/profile';
-import Footer from './componets/footer'
-import HostsPage from './pages/hosts'
-import EnterPage from './pages/catagory.js/entertainment'
-import CounsPage from './pages/catagory.js/counseling'
+
+import HostsPage from './pages/hosts';
+import EnterPage from './pages/catagory.js/entertainment';
+import CounsPage from './pages/catagory.js/counseling';
 import ReligPage from './pages/catagory.js/religious';
 import AllCatPage from './pages/catagory.js/allCat';
+
+import HostProfile from './pages/profiles/host'
+import ShowProfile from './pages/profiles/show'
+// import EpisodeProfile from './pages/profiles/episode'
 
 function App() {
   const [authTokens, setAuthTokens] = useState();
@@ -126,7 +133,10 @@ function App() {
                       <LogOutRoute exact path="/signup" component={SignUp} />
                       <UserRoute path="/profile" state={{value:userData}}  component={profile}/>
                       <Route exact path="/hosts" component={HostsPage} />
+                      <Route exact path="/hosts/:id" component={HostProfile} />
                       <Route exact path="/shows" component={HostsPage} />
+                      <Route exact path="/shows/:id" component={ShowProfile} />
+                      {/* <Route exact path="/episodes/:id" component={EpisodeProfile} /> */}
                       <Route exact path="/episodes" component={HostsPage} />
                       <Route exact path="/entertain" component={EnterPage} />
                       <Route exact path="/counseling" component={CounsPage} />
