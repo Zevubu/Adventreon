@@ -230,7 +230,13 @@ align-items: center;
 margin:0 auto;
 text-align: center;
 `
+// ${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"}
 const DuoServiceBlock = styled.div`
+background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
+background-repeat: no-repeat;
+background-size: Cover;
+background-position-x: center;
+background-position-y: 20%;
 height: auto;
 display: flex;
 flex-direction: row;

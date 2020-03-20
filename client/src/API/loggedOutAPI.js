@@ -15,7 +15,7 @@ export default {
     createAccount: function(userData){
         console.log(`CREAT CHECK!`);
         console.log(`userData: ${userData}`);
-        return axios.post("/api/spectators", userData).catch(err => console.log(`Account creation error:${err}`));
+        return axios.post("/api/users", userData).catch(err => console.log(`Account creation error:${err}`));
     },
     postLogIn: function(userData){
         return axios.post("/auth/login", userData).catch(err => console.log(`Login error:${err}`));

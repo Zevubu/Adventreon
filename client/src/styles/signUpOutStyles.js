@@ -3,14 +3,13 @@ import styled from "styled-components";
 
 const FormBigBox = styled.form`
 display: flex;
-flex-direction: row;
-justify-content: space-between;
+flex-direction: column;
 align-items: center;
 background-color: rgb(250, 250, 250);
 `
 const FormLittleBox = styled.div`
 display: flex;
-flex-direction: column;
+flex-direction: row;
 justify-content: space-between;
 align-items: center;
 margin: 15px 0px;

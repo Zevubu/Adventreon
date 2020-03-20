@@ -86,7 +86,6 @@ CREATE TABLE episodes(
 );
 
 
-
 SELECT * FROM users;
 SELECT * FROM shows;
 SELECT * FROM episodes;
