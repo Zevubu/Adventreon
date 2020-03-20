@@ -15,15 +15,6 @@ export default {
     getReligShows: function(){
         return axios.get("/api/shows/relig").catch(err => console.log(`Get all Relig shows error:${err}`));
     },
-    getEpisodesByID: function(id){
-        return axios.get("/api/episodes/find/" + id).catch(err => console.log(`Find show by id error:${err}`));
-    },
-    getEpisodes: function(){
-        return axios.get("/api/episodes/all").catch(err => console.log(`Get all shows error:${err}`));
-    },
-    getEpisByShow: function(){
-        return axios.get("/api/episodes/all").catch(err => console.log(`Get all shows error:${err}`));
-    },
     getShowByHost:function(id){
         return axios.get("/api/shows/host/" + id).catch(err => console.log(`Find hosts shows by id error:${err}`));
     },

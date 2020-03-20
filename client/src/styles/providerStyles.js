@@ -76,6 +76,14 @@ grid-template-columns: auto auto auto;
 grid-template-rows: auto auto;
 height:auto;
 `
+const ShowBox = styled.div`
+color: rgb(0, 0, 0);
+display: grid;
+grid-template-columns: auto auto auto;
+grid-template-rows: auto auto;
+height:auto;
+margin-bottom: 100px;
+`
 const ProDuoServiceBlock = styled.div`
 height: auto;
 width: auto;
@@ -127,8 +135,8 @@ background-color: rgb(115, 162, 175);
 margin:15px;
 `
 const ProImage = styled(Image)`
-width: 100%;
+width: 50%;
 height: auto;
 `
 
-export {ProviderBox,AppBox, Slider, SliderContent, Slide,ProDuoServiceBlock, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}
+export {ProviderBox, ShowBox,AppBox, Slider, SliderContent, Slide,ProDuoServiceBlock, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}
