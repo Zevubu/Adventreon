@@ -1,6 +1,7 @@
 import React from 'react';
 import {DuoServiceBlock, DuoServiceBlockColumn,Image, Btn, TextBox, PS,H2B,PG} from "../../styles/homeStyle"
-
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 // key={key} id={show.id} showName={show.show_name} about={show.about} pImg={show.img} bImg={show.b_img}
 // catagory={show.catagory} subCatagory={show.sub_catagory} hostId={show.host_id} 
@@ -24,7 +25,7 @@ function ShowFiller(props){
                     <PG>By {props.hostName}</PG>
                     <PS>{props.about}</PS>
                 </TextBox>
-                <a className="nav-link" href={"/shows/" + props.id}><Btn>Click here to see episodes.</Btn></a>
+                <a style={{textDecoration: 'none'}} className="nav-link" href={"/shows/" + props.id}><Button variant='contained'>Click here to see episodes.</Button></a>
             </DuoServiceBlockColumn>
         </DuoServiceBlock>
 

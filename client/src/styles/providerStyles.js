@@ -41,6 +41,9 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 align-items: center;
+@media only screen and (max-width: 600px) {
+    flex-dierction: column;
+    };
 `
 const DuoServiceBlockColumn = styled.div`
 height: auto;
@@ -75,6 +78,10 @@ display: grid;
 grid-template-columns: auto auto auto;
 grid-template-rows: auto auto;
 height:auto;
+@media only screen and (max-width: 600px) {
+    width: 100%;
+    grid-template-columns: none;
+    };
 `
 const ShowBox = styled.div`
 color: rgb(0, 0, 0);
@@ -101,6 +108,7 @@ margin:20px;
 grid-template-columns: auto auto;
 grid-template-rows: auto;
 align-items: center;
+
 `
 const AppBox = styled.div`
 height: auto;

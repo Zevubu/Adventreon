@@ -1,5 +1,7 @@
 import React from 'react';
 import {DuoServiceBlock, DuoServiceBlockColumn,Image, Btn, TextBox, PS,H2B,PG} from "../../styles/homeStyle"
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 // function holdingBox (props){
 //     return(
@@ -23,10 +25,9 @@ function HostFiller(props){
                     <PG>{props.title}</PG>
                     <PS>{props.about}</PS>
                 </TextBox>
-                <a className="nav-link" href={"/hosts/" + props.id}><Btn>Veiw {props.userName}'s profile</Btn></a>
+                <a style={{textDecoration: 'none'}} className="nav-link" href={"/hosts/" + props.id}><Button variant="contained">Veiw {props.userName}'s profile</Button></a>
             </DuoServiceBlockColumn>
         </DuoServiceBlock>
-
     )
 }
 export default HostFiller

@@ -3,6 +3,7 @@ import {DivWBorder, ProviderBox, BigBlock, BlueHeader,H2,} from "../../styles/ho
 import API from "../../API/loggedOutAPI";
 import HostFiller from "../../componets/HostFiller/index"
 import ShowFiller from "../../componets/CatagoryFiller/show_filler"
+import { Logo } from "../../styles/componentStyles";
 
 function AllPage (){
     const [Hosts, setHosts] = useState([]);
@@ -31,7 +32,7 @@ function AllPage (){
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             <DivWBorder>
                 <BlueHeader>
-                    <H2>Counseling</H2>
+                    <Logo>Counseling</Logo>
                 </BlueHeader>
                 <ProviderBox>
                 {Hosts.map((host, key) => (

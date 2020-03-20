@@ -228,6 +228,10 @@ display: grid;
 grid-template-columns: auto auto auto;
 height:auto;
 background-color: rgba(238, 245, 244, 0.867);
+@media only screen and (max-width: 600px) {
+    width: 100%;
+    grid-template-columns: none;
+       };
 `
 const TriServiceBlock = styled.div`
 height: auto;
@@ -257,6 +261,10 @@ flex-direction: row;
 justify-content: space-around;
 align-items: center;
 margin:0 auto;
+@media only screen and (max-width: 600px) {
+    width: 100%;
+    grid-template-columns: none;
+    };
 `
 const DuoServiceBlockColumn = styled.div`
 height: auto;
