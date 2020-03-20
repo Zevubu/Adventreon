@@ -43,7 +43,8 @@ function Hosts (){
                     infinite
                     dots
                 >
-                   {Hosts.map((host, key) => (
+                  {Hosts.map((host, key) => (
+      
                             <SliderFiller
                                 key={key} id={host.id} userName={host.user_name} userType={host.user_type}
                                 title={host.title} about={host.about} img={host.p_img}
@@ -51,11 +52,10 @@ function Hosts (){
                                 availability={host.availability} screened={host.screened} 
                                 timeStamp={host.time_stamp}
                             />
-                  ))} 
+                  ))}
+
             </Carousel>
             </DivWBorder>
-           
-            
         </BigBlock>
     )
 }
