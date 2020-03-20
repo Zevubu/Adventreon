@@ -5,18 +5,18 @@ import API from "../../API/loggedOutAPI";
 import {P, Btn, H1NB, H3, BlueHeader,H2,} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import ShowFiller from "../../componets/CatagoryFiller/show_filler"
-//  user_name,
+//  user_name,x
 //  user_type, 
 //  dob,  
-//  title, 
-//  about, 
-//  p_img, 
+//  title,x 
+//  about,x 
+//  p_img, x
 //  b_img, 
 //  shows, 
-//  payment, 
-//  patreon, 
-//  wp_title, 
-//  webpage, 
+//  payment, x
+//  patreon, x
+//  wp_title, x
+//  webpage, x
 //  video_channel, 
 //  rsvp_attend, 
 //  rsvp_perform, 
@@ -80,7 +80,7 @@ function Host(){
                         <ProTextBox>
                             <H3>{Host.wp_title}</H3>
                             <br/>
-                            <P>{Host.webpage}</P>
+                            <a href={Host.webpage}><P>{Host.webpage}</P></a>
                         </ProTextBox>
                     </ProDuoServiceBlockColumn>
                    

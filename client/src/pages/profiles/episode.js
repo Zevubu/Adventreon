@@ -5,6 +5,7 @@ import API from "../../API/epiLogOut";
 import {P, Btn, H1NB, H3, BlueHeader,H2,} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisFiller from "../../componets/CatagoryFiller/epi_filler"
+import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler";
 // key={key} id={episode.id} epiName={episode.epi_name} about={episode.about} pImg={episode.img} bImg={Show.b_img}
 // showId={episode.show_id} showName={episode.show_name} catagory={episode.catagory} subCatagory={episode.sub_catagory}
 // hostId={episode.host_id} hostName={episode.host_name} hostImg={episode.host_img} credits={episode.credits}
@@ -14,15 +15,43 @@ import EpisFiller from "../../componets/CatagoryFiller/epi_filler"
 // paid={episode.paid} canceled={episode.canceled} entertain={episode.entertain}
 // couns={episode.couns} relig={episode.relig} timeStamp={episode.time_stamp}
 
-function epis(){
+// epi_name,x
+// about,x
+// show_id,x
+// show_name, x
+// img, x+
+// catagory, 
+// sub_catagory, 
+// host_id, x
+// host_name, x
+// host_img, 
+// credits, 
+// price, 
+// payment, 
+// patreon, 
+// wp_title, 
+// webpage, 
+// v_link, 
+// show_date, 
+// start_time, 
+// end_time, 
+// eighteen_plus, 
+// booked, 
+// paid, 
+// canceled, 
+// entertain, 
+// couns, 
+// relig
+
+function Episode(){
     let { id } = useParams();
-    const [epis, setepiss] = useState([]);
+    const [epis, setEpis] = useState([]);
     // const [services, setServices] = useState([])
 
     useEffect(() => {
         const fetchEpis = async () =>{
          const result = await API.getEpisodesByID(`${id}`)
-             setepiss(result.data)
+             setEpis(result.data)
            
          };
          fetchEpis(); 
@@ -33,22 +62,27 @@ function epis(){
         {epis.map((epi, key) => (
             <div key={key}>
                 <BlueHeader id={epi.id}>
-                    <H2>{epi.user_name}'s profile </H2>
+                    <H2>{epi.epi_name}</H2>
                 </BlueHeader>
                 <ProviderBox>
                     <ProDuoServiceBlock>
-                        <ProImage src={epi.p_img} alt={epi.user_name}/>
+                        <H3>{epi.v_link}</H3>
+                        <ProImage src={epi.img} alt={epi.epi_name}/>
                     </ProDuoServiceBlock>
                     <ProDuoServiceBlockColumn>
                         <ProTextBoxN>
-                            <H1NB>{epi.user_name}</H1NB>
-                            <H3>{epi.title}</H3>
+                            <H1NB id={epi.show_id}>{epi.show_name}</H1NB>
+                            <H2>{epi.epi_name}</H2>
+                            <H3 id={epi.host_id}>By {epi.host_name}</H3>
                         </ProTextBoxN>
                         <ProTextBox>
                             <H3>About</H3>
                             <br/>
                             <P>{epi.about}</P> 
-                        </ProTextBox> 
+                        </ProTextBox>
+                        <ProDuoServiceBlock>
+                            <H3>{epi.v_link}</H3>
+                        </ProDuoServiceBlock> 
                         <ProTextBox>
                             <H3>Tip Me Here.</H3>
                             <br/>
@@ -62,32 +96,14 @@ function epis(){
                         <ProTextBox>
                             <H3>{epi.wp_title}</H3>
                             <br/>
-                            <P>{ep.webpage}</P>
+                            <a href={epi.webpage}><P>{epi.webpage}</P></a>
                         </ProTextBox>
                     </ProDuoServiceBlockColumn>
-                   
                 </ProviderBox>
-                <BlueHeader>
-                    <H2>{epi.user_name}'s shows. </H2>
-                </BlueHeader>
             </div>
         ))}
-             
-            <ShowBox>
-                {Shows.map((show, key) => (
-                    <ShowFiller
-                    key={key} id={show.id} showName={show.show_name} about={show.about} pImg={show.img} bImg={show.b_img}
-                    catagory={show.catagory} subCatagory={show.sub_catagory} episId={show.epis_id} 
-                    episName={show.epis_name} episImg={show.epis_img} payment={show.payment}
-                    patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage}
-                    eighteenPlus={show.eighteen_plus} booked={show.booked} 
-                    paid={show.paid} canceled={show.canceled} entertain={show.entertain}
-                    couns={show.couns} relig={show.relig} timeStamp={show.time_stamp}
-                    />
-                ))}
-            </ShowBox>
         </div>             
     )
 }
 
-export default epis;
+export default Episode;

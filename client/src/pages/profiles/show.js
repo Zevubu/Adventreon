@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useParams} from "react-router";
-// import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import {Link} from 'react-router-dom';
 import API from "../../API/loggedOutAPI";
 import {P, Btn, H1NB, H3, BlueHeader,H2,} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler"
 
 // chiquioasis
-// show_name,
-// about,
-// img, 
+// show_name,x
+// about,x
+// img, x
 // img_b, 
 // catagory, 
 // sub_catagory, 
 // host_id, 
-// host_name, 
+// host_name, x
 // host_img, 
 // payment, 
 // patreon, 
@@ -82,7 +82,7 @@ function Show(){
                         <ProDuoServiceBlockColumn>
                             <ProTextBoxN>
                                 <H1NB>{Show.show_name}</H1NB>
-                                <H3>By {Show.host_name}</H3>
+                                <Link href={"/hosts/" + Show.host_id}><H3 id={Show.host_id}>By {Show.host_name}</H3></Link>
                             </ProTextBoxN>
                             <ProTextBox>
                                 <H3>About</H3>
@@ -104,18 +104,15 @@ function Show(){
                             <ProTextBox>
                                 <H3>{Show.wp_title}</H3>
                                 <br/>
-                                <P>{Show.webpage}</P>
+                                <a href={Show.webpage}><P>{Show.webpage}</P></a>
                             </ProTextBox>
                         </ProDuoServiceBlockColumn>
                    </ProDuoServiceBlock>
                 </ProviderBox>
                 <BlueHeader>
                     <H2>{Show.show_name}'s Episodes. </H2>
-                </BlueHeader>
-            
-        
-
-        {/* //
+                </BlueHeader>           
+        {/* // XX
         // epi_name,
         // about,
         // show_id,
@@ -139,8 +136,7 @@ function Show(){
         // eighteen_plus, 
         // booked, 
         // paid, 
-        // canceled  */}
-             
+        // canceled  */}           
                 <ShowBox>
                     {Episodes.map((episode, key) => (
                         <EpisodeFiller
