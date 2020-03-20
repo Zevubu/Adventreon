@@ -10,7 +10,7 @@ export default {
         return axios.get("/api/hosts").catch(err => console.log(`Get all hosts error:${err}`));
     },
     getHostByID: function(id){
-        return axios.get("/api/hosts/" + id).catch(err => console.log(`Find hosts  by id error:${err}`));
+        return axios.get("/api/hosts/" + id).catch(err => console.log(`Find hosts by id error:${err}`));
     },
     createAccount: function(userData){
         console.log(`CREAT CHECK!`);

@@ -4,10 +4,12 @@ import {H2} from '../../styles/homeStyle';
 import {NavBody,  NavBtnB, NavBtnM, OptionBox, Logo} from "../../styles/componentStyles";
 import { useAuth, useUser, useManagment, useUserInfo } from "../../context/heart";
 import SimpleMenu from './menu.js';
+import ResMenu from './resmenu';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 // import { UserInfoContext } from "../../App"
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -16,7 +18,6 @@ const useStyles = makeStyles(theme => ({
       },
     },
   }));
-  
 
 
 function NavBar (props){
@@ -27,7 +28,8 @@ function NavBar (props){
     const {isUser, setIsUser} = useUser();
     const {isManager, setIsManager } = useManagment();
     const { userData, setUserData } = useUserInfo();
-
+    const matches = useMediaQuery('(min-width:600px)');
+    const small = useMediaQuery('(max-width:485px)')
   
     function logOut() {
         localStorage.clear();
@@ -37,13 +39,9 @@ function NavBar (props){
         setIsUser();
         setIsManager()
         setIsAuthenticated();
-        
-        
-
     }
 
     return(
-        
         <NavBody  className={classes.root}>
             <OptionBox>
                 <OptionBox>
@@ -52,6 +50,7 @@ function NavBar (props){
                 
             </OptionBox>
             <OptionBox>
+                {matches ?
                 <OptionBox>
                     <Link style={{ textDecoration: 'none' }} to="/"><Button variant="outlined" color="secondary">Home</Button></Link>
                     <br></br>
@@ -62,24 +61,27 @@ function NavBar (props){
                         <div>
                             <Link style={{ textDecoration: 'none' }} to="/profile"><Button variant="contained" color="secondary">Profile</Button></Link>
                         </div>
-                    )}
-                    
+                    )} 
                 </OptionBox>
+
+                :
+                
+                <ResMenu></ResMenu>
                     
+                }
+                    
+
                     {!isAuthenticated && (
                         <OptionBox>
-                            <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><Button variant="contained" color="secondary">Sign up</Button></Link>
-                            <Link style={{ textDecoration: 'none' }} className="nav-link" to="/login"><Button variant="contained" color="secondary">Login</Button></Link>
+                            <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><Button style={small ? {fontSize:'6.45px'}: {}} variant="contained" color="secondary">Sign up</Button></Link>
+                            <Link style={{ textDecoration: 'none' }} className="nav-link" to="/login"><Button style={small ? {fontSize:'7px'}: {}} variant="contained" color="secondary">Login</Button></Link>
                         </OptionBox>
                     )}  
                     {isAuthenticated && (
-                        <Link style={{ textDecoration: 'none' }} to={{pathname:"/", state:{value:userData} }}><NavBtnM onClick={logOut}>Sign Out</NavBtnM></Link> 
+                        <Link style={{ textDecoration: 'none' }} to={{pathname:"/", state:{value:userData} }}><Button variant="contained" color="secondary">Sign Out</Button></Link> 
                     )}
-                    
-                
             </OptionBox>
         </NavBody>
-    
     )
 }
 
