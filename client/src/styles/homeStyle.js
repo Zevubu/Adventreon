@@ -156,7 +156,7 @@ background-color: rgb(100, 126, 160);
 `
 const MarronBtn = styled(Btn)`
 color: rgb(238, 245, 244);
-background-color: rgb(182, 104, 130);
+background-color: #f50057;
 
 `
 const TealBtn = styled(Btn)`
@@ -203,6 +203,10 @@ margin:0 auto;
 const DivWBorder = styled.div`
 border: rgb(180, 180, 180) solid 2px;
 margin-bottom:35px;
+@media only screen and (max-width: 600px) {
+    width: 100%;
+    }
+
 `
 
 const ServiceBlock = styled.div`
