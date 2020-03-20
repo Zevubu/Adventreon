@@ -1,5 +1,8 @@
 import React from "react";
 import {DivWBorder, TriServiceBlock, ServiceBlock, BigBlock, Btn, BlueBtn, MarronBtn, TealBtn,CCCDiv, HoldDiv, BlueHeader, MarronHeader, HeaderItem,TealHeader, H2, P, PS, H3B, H3M, H3T, PG} from "../../styles/homeStyle"
+import { Logo } from "../../styles/componentStyles";
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 function Services (){
     return(
@@ -9,17 +12,15 @@ function Services (){
                 {/* <a id="services"/> */}
                 <TealHeader>
                     <HeaderItem>
-                        <H2>Services</H2>
-                    </HeaderItem>
-                    <HeaderItem>
-                        <a className="nav-link" href="/services"><BlueBtn>Veiw All</BlueBtn></a>  
+                        <Logo>Services</Logo>
+                        <a className="nav-link" href="/services" style={{textDecoration: 'none'}}><Button variant="contained" color="secondary">Veiw All</Button></a>  
                     </HeaderItem>
                    
                 </TealHeader>
                 <ServiceBlock>
                     <TriServiceBlock>
                         <HoldDiv>
-                            <P>icon</P>
+                            <Paper style={{width: '100%',height: '100%'}}></Paper>
                         </HoldDiv>
                         <H2>Love Better</H2>
                         <CCCDiv>
@@ -27,11 +28,11 @@ function Services (){
                             <P>Couple Relationship Coaching</P>
                             <P>Couple Sex Coaching</P>
                         </CCCDiv>
-                        <a href="/services"><BlueBtn>Love Better</BlueBtn></a>
+                        <a href="/services" style={{textDecoration: 'none'}}><Button variant="contained" color="Primary">Love Better</Button></a>
                     </TriServiceBlock>
                     <TriServiceBlock>
                         <HoldDiv>
-                            <P>icon</P>
+                        <Paper style={{width: '100%',height: '100%'}}></Paper>
                         </HoldDiv>
                         <H2>Touch Better</H2>
                         <CCCDiv>
@@ -39,11 +40,11 @@ function Services (){
                             <P>Kissing Lessons</P>
                             <P>Intimate Touch Coaching</P>
                         </CCCDiv>
-                        <a href="/services"><MarronBtn>love Better Now</MarronBtn></a>
+                        <a href="/services" style={{textDecoration: 'none'}}><Button variant="contained" color="Primary">love Better Now</Button></a>
                     </TriServiceBlock>
                     <TriServiceBlock>
                         <HoldDiv>
-                            <P>icon</P>
+                        <Paper style={{width: '100%',height: '100%'}}></Paper>
                         </HoldDiv>
                         <H2>Feel Better</H2>
                         <CCCDiv>
@@ -51,7 +52,7 @@ function Services (){
                             <P>Body Positivity</P>
                             <P>Conversation Coaching</P>
                         </CCCDiv>
-                        <a href="/services"><TealBtn>Be Better Now</TealBtn></a>
+                        <a href="/services"><Button variant="contained" color="Primary">Be Better Now</Button></a>
                     </TriServiceBlock>
                 </ServiceBlock>
             </DivWBorder>
