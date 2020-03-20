@@ -1,40 +1,38 @@
 import React, { useState, useEffect} from "react";
-import {DivWBorder, ProviderBox, BigBlock, BlueHeader,H2,} from "../styles/homeStyle"
-import API from "../API/loggedOutAPI";
+import {DivWBorder, ProviderBox, BigBlock, BlueHeader,H2,} from "../../styles/homeStyle"
+import API from "../../API/loggedOutAPI";
 import HostFiller from "../../componets/HostFiller/index"
 
-
-
-
-function Hosts (){
+function EnterPage (){
     const [Hosts, setHosts] = useState([]);
     // const [DSBcount, setDSBcount] = useState(0)
 
     useEffect(() => {
-       const fetchHosts = async () =>{
-            const result = await API.getProviders()
+       const fetchEntH = async () =>{
+            const result = await API.getEntHosts()
             console.log(result.data)
             setHosts(result.data)
         };
-        fetchHosts(); 
+        fetchEntH(); 
     }, []);
 
+// user_name, user_type, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform
     return(
         <BigBlock>
             {/* <a id="Hosts"/> */}
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             <DivWBorder>
                 <BlueHeader>
-                    <H2>Meet our intimacy experts</H2>
+                    <H2>Entertainment!</H2>
                 </BlueHeader>
                 <ProviderBox>
-                {Hosts.map((Host, key) => (
+                {Hosts.map((host, key) => (
                     <HostFiller
-                        key={key} id={Host.id} userName={Host.user_name} userType={Host.user_type}
-                        title={Host.title} about={Host.bio_sm} img={Host.img_sm}
-                        services ={Host.services} appointments={Host.appointments}
-                        availability={Host.availability} screened={Host.screened} 
-                        timeStamp={Host.time_stamp}
+                    key={key} id={host.id} userName={host.user_name} userType={host.user_type}
+                    title={host.title} about={host.about} pImg={host.p_img} bImg={host.b_img}
+                    services ={host.shows} appointments={host.appointments}
+                    availability={host.availability} screened={host.screened} 
+                    timeStamp={host.time_stamp}
                     />
                 ))}
               </ProviderBox>
@@ -42,4 +40,5 @@ function Hosts (){
         </BigBlock>
     )
 }
-export default Hosts;
+
+export default EnterPage;

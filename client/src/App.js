@@ -14,6 +14,10 @@ import SignUp from './pages/sign_up';
 import profile from './pages/profile';
 import Footer from './componets/footer'
 import HostsPage from './pages/hosts'
+import EnterPage from './pages/catagory.js/entertainment'
+import CounsPage from './pages/catagory.js/counseling'
+import ReligPage from './pages/catagory.js/religious';
+import AllCatPage from './pages/catagory.js/allCat';
 
 function App() {
   const [authTokens, setAuthTokens] = useState();
@@ -124,7 +128,10 @@ function App() {
                       <Route exact path="/hosts" component={HostsPage} />
                       <Route exact path="/shows" component={HostsPage} />
                       <Route exact path="/episodes" component={HostsPage} />
-                      <Route exact path="/catagories" component={HostsPage} />
+                      <Route exact path="/entertain" component={EnterPage} />
+                      <Route exact path="/counseling" component={CounsPage} />
+                      <Route exact path="/religious" component={ReligPage} />
+                      <Route exact path="/allcat" component={AllCatPage} />
                     </Switch>
                     <Footer/>
                     </div>

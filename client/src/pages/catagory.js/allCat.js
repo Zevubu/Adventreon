@@ -3,21 +3,19 @@ import {DivWBorder, ProviderBox, BigBlock, BlueHeader,H2,} from "../../styles/ho
 import API from "../../API/loggedOutAPI";
 import HostFiller from "../../componets/HostFiller/index"
 
-
-
-
-function CounseHosts (){
+function AllPage (){
     const [Hosts, setHosts] = useState([]);
     // const [DSBcount, setDSBcount] = useState(0)
 
     useEffect(() => {
-       const fetchCounse = async () =>{
-            const result = await API.getCounsHosts()
+       const fetchAllH = async () =>{
+            const result = await API.getHosts()
             console.log(result.data)
             setHosts(result.data)
         };
-        fetchCounse(); 
+        fetchAllH(); 
     }, []);
+
 // user_name, user_type, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform
     return(
         <BigBlock>
@@ -25,20 +23,9 @@ function CounseHosts (){
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             <DivWBorder>
                 <BlueHeader>
-                    <H2>Counseling</H2>
+                    <H2>Veiw all</H2>
                 </BlueHeader>
                 <ProviderBox>
-                {Hosts.map((host, key) => (
-                    <HostFiller
-                    key={key} id={host.id} userName={host.user_name} userType={host.user_type}
-                    title={host.title} about={host.about} pImg={host.p_img} bImg={host.b_img}
-                    services ={host.shows} appointments={host.appointments}
-                    availability={host.availability} screened={host.screened} 
-                    timeStamp={host.time_stamp}
-                    />
-                ))}
-              </ProviderBox>
-              <ProviderBox>
                 {Hosts.map((host, key) => (
                     <HostFiller
                     key={key} id={host.id} userName={host.user_name} userType={host.user_type}
@@ -53,4 +40,5 @@ function CounseHosts (){
         </BigBlock>
     )
 }
-export default CounseHosts;
+
+export default AllPage;

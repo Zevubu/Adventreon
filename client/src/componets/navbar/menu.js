@@ -18,7 +18,7 @@ export default function SimpleMenu() {
   return (
     <div>
       <Button variant="outlined" color="secondary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        Events
+        Categories
       </Button>
       <Menu
         id="simple-menu"
@@ -27,10 +27,10 @@ export default function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/entertainment"><MenuItem onClick={handleClose}>Entertainment</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/entertain"><MenuItem onClick={handleClose}>Entertainment</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/counseling"><MenuItem onClick={handleClose}>Counseling</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/religious"><MenuItem onClick={handleClose}>Religous Services</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/other"><MenuItem onClick={handleClose}>Other</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/allcat"><MenuItem onClick={handleClose}>All</MenuItem></Link>
       </Menu>
     </div>
   );

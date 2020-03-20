@@ -26,7 +26,9 @@ CREATE TABLE users(
     video_channel varchar(2000) NUll,
     rsvp_attend varchar(2000) NUll,
     rsvp_perform varchar(2000) NUll,
-    
+    entertain boolean,
+    couns boolean,
+    relig boolean,
     time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	INDEX idx_events_userId (id)
 );
@@ -51,6 +53,9 @@ CREATE TABLE shows(
 	booked boolean,
     paid boolean,
     canceled boolean,
+	entertain boolean,
+    couns boolean,
+    relig boolean,
     time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	INDEX idx_events_userId (id)
 );
@@ -84,6 +89,7 @@ CREATE TABLE episodes(
 	time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	INDEX idx_events_userId (id)
 );
+
 
 
 SELECT * FROM users;
