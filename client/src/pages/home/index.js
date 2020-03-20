@@ -19,8 +19,8 @@ function Home (){
                 <FillerDiv/>
                     <IntroTxTDiv>
                         <CCCDiv>
-                            <H1>Intimacy Coaching</H1>
-                            <P>Learn copy copy copy stuff tagline.</P>
+                            <H1>Cantina</H1>
+                            <P>A site we made for you.</P>
                         </CCCDiv>
                         {!isAuthenticated && (
                             <Link to="/signup"><MarronBtn>Sign-up here.</MarronBtn></Link>

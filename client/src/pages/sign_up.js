@@ -56,7 +56,10 @@ function SignUp (){
             'webpage': '',
             'video_channel':'',
             'rsvp_attend':'',
-            'rsvp_perform':''
+            'rsvp_perform':'',
+            "entertain":false,
+            "couns":false, 
+            "relig":false
             }).then(e.target.reset())
             .catch(err => console.log(err))
     }

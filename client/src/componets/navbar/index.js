@@ -26,8 +26,8 @@ function NavBar (props){
     console.log(`navbar data: ${JSON.stringify(props)}`)
     const { setAuthTokens, isAuthenticated, setIsAuthenticated} = useAuth();
     const {isUser, setIsUser} = useUser();
-    const {isManager, setIsManager } = useManagment();
-    const { userData, setUserData } = useUserInfo();
+    const {isManager, setIsManager} = useManagment();
+    const {userData, setUserData} = useUserInfo();
     const matches = useMediaQuery('(min-width:600px)');
     const small = useMediaQuery('(max-width:485px)')
   
@@ -47,14 +47,13 @@ function NavBar (props){
                 <OptionBox>
                     <Logo>Cantina</Logo>
                 </OptionBox>
-                
             </OptionBox>
             <OptionBox>
                 {matches ?
                 <OptionBox>
                     <Link style={{ textDecoration: 'none' }} to="/"><Button variant="outlined" color="secondary">Home</Button></Link>
                     <br></br>
-                    <Link style={{ textDecoration: 'none' }} to="/events"><SimpleMenu></SimpleMenu></Link>
+                    <Link style={{ textDecoration: 'none' }}><SimpleMenu></SimpleMenu></Link>
                     <br></br>
                     <Link style={{ textDecoration: 'none' }} to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link>
                     {isAuthenticated && isUser && (
@@ -63,9 +62,7 @@ function NavBar (props){
                         </div>
                     )} 
                 </OptionBox>
-
                 :
-                
                 <ResMenu></ResMenu>           
                 }      
                     {!isAuthenticated && (

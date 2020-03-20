@@ -7,10 +7,19 @@ export default {
         return axios.get("/api/shows/" + id).catch(err => console.log(`Find show by id error:${err}`));
     },
     getHosts: function(){
-        return axios.get("/api/hosts").catch(err => console.log(`Get all hosts error:${err}`));
+        return axios.get("/api/hosts/all").catch(err => console.log(`Get all hosts error:${err}`));
     },
     getHostByID: function(id){
-        return axios.get("/api/hosts/" + id).catch(err => console.log(`Find hosts by id error:${err}`));
+        return axios.get("/api/hosts/all/" + id).catch(err => console.log(`Find hosts by id error:${err}`));
+    },
+    getEntHosts: function(){
+        return axios.get("/api/hosts/entertain").catch(err => console.log(`Get all hosts error:${err}`));
+    },
+    getCounsHosts: function(){
+        return axios.get("/api/hosts/couns").catch(err => console.log(`Get all hosts error:${err}`));
+    },
+    getReligHosts: function(){
+        return axios.get("/api/hosts/relig").catch(err => console.log(`Get all hosts error:${err}`));
     },
     createAccount: function(userData){
         console.log(`CREAT CHECK!`);

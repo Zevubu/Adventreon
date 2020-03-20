@@ -14,12 +14,12 @@ router.route("/")
       res.send(user)
     })
     .post(async (req, res) =>{
-      const {show_name, img, img_b, catagory, sub_catagory, host_id, host_name,  host_img, payment, patreon, wpTitle, webpage, eighteen_plus, booked, paid, canceled} = req.body;
+      const {show_name, img, img_b, catagory, sub_catagory, host_id, host_name,  host_img, payment, patreon, wpTitle, webpage, eighteen_plus, booked, paid, canceled, entertain ,couns, relig} = req.body;
       const conn = await connection(dbConfig).catch(e => {});
       const user = await query(
         conn,
         showQuery.createNew(),
-        [show_name, img, img_b, catagory, sub_catagory, host_id, host_name,  host_img, payment, patreon, wpTitle, webpage, eighteen_plus, booked, paid, canceled]
+        [show_name, img, img_b, catagory, sub_catagory, host_id, host_name,  host_img, payment, patreon, wpTitle, webpage, eighteen_plus, booked, paid, canceled, entertain ,couns, relig]
       )
       res.send[user]
     });
