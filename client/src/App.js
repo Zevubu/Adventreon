@@ -24,7 +24,7 @@ import AllCatPage from './pages/catagory.js/allCat';
 
 import HostProfile from './pages/profiles/host'
 import ShowProfile from './pages/profiles/show'
-import EpisodeProfile from './pages/profiles/episode'
+// import EpisodeProfile from './pages/profiles/episode'
 
 function App() {
   const [authTokens, setAuthTokens] = useState();
@@ -136,7 +136,7 @@ function App() {
                       <Route exact path="/hosts/:id" component={HostProfile} />
                       <Route exact path="/shows" component={HostsPage} />
                       <Route exact path="/shows/:id" component={ShowProfile} />
-                      <Route exact path="/episodes/:id" component={EpisodeProfile} />
+                      {/* <Route exact path="/episodes/:id" component={EpisodeProfile} /> */}
                       <Route exact path="/episodes" component={HostsPage} />
                       <Route exact path="/entertain" component={EnterPage} />
                       <Route exact path="/counseling" component={CounsPage} />
