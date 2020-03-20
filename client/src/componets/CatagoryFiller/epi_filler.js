@@ -1,5 +1,7 @@
 import React from 'react';
 import {DuoServiceBlock, DuoServiceBlockColumn,Image, Btn, TextBox, PS,H2B,PG} from "../../styles/homeStyle"
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 // key={key} id={episode.id} epiName={episode.epi_name} about={episode.about} pImg={episode.img} bImg={Show.b_img}
 // showId={episode.show_id} showName={episode.show_name} catagory={episode.catagory} subCatagory={episode.sub_catagory}
@@ -24,7 +26,7 @@ function EpisodeFiller(props){
                     <PG>By {props.hostName}</PG>
                     <PS>{props.about}</PS>
                 </TextBox>
-                <a className="nav-link" href={"/episodes/" + props.id}><Btn>Click here to see episodes.</Btn></a>
+                <a className="nav-link" style={{textDecoration: 'none'}} href={"/episodes/" + props.id}><Button variant='contained'>Click here to see episodes.</Button></a>
             </DuoServiceBlockColumn>
         </DuoServiceBlock>
 
