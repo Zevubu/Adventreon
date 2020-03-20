@@ -72,9 +72,9 @@ function Services (){
                                 jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
                                 hfsdfjd ioash fdslahf jfsklah 
                             </PS>
-                            <Btn>
+                            <Button variant='outlined' color="secondary">
                                 Learn More
-                            </Btn>
+                            </Button>
                         </TriServiceBlock>
                         <TriServiceBlock>
                             <H3B>Relationships</H3B>
@@ -83,9 +83,9 @@ function Services (){
                                 jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
                                 hfsdfjd ioash fdslahf jfsklah 
                             </PS>
-                            <Btn>
+                            <Button variant='outlined' color="secondary">
                                 Learn More
-                            </Btn>
+                            </Button>
                         </TriServiceBlock>
                         <TriServiceBlock>
                             <H3B>Sex</H3B>
@@ -94,9 +94,9 @@ function Services (){
                                 jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
                                 hfsdfjd ioash fdslahf jfsklah 
                             </PS>
-                            <Btn>
+                            <Button variant='outlined' color="secondary">
                                 Learn More
-                            </Btn>
+                            </Button>
                         </TriServiceBlock>
                     </ServiceBlock>
                 </DivWBorder>
@@ -114,9 +114,9 @@ function Services (){
                                 jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
                                 hfsdfjd ioash fdslahf jfsklah 
                             </PS>
-                            <Btn>
+                            <Button variant='outlined' color="secondary">
                                 Learn More
-                            </Btn>
+                            </Button>
                         </TriServiceBlock>
                         <TriServiceBlock>
                             <H3M>Kissing</H3M>
@@ -125,9 +125,9 @@ function Services (){
                                 jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
                                 hfsdfjd ioash fdslahf jfsklah 
                             </PS>
-                            <Btn>
+                            <Button variant='outlined' color="secondary">
                                 Learn More
-                            </Btn>
+                            </Button>
                         </TriServiceBlock>
                         <TriServiceBlock>
                             <H3M>Intimate Touch</H3M>
@@ -136,9 +136,9 @@ function Services (){
                                 jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
                                 hfsdfjd ioash fdslahf jfsklah 
                             </PS>
-                            <Btn>
+                            <Button variant='outlined' color="secondary">
                                 Learn More
-                            </Btn>
+                            </Button>
                         </TriServiceBlock>
                     </ServiceBlock>
                 </DivWBorder>
@@ -156,9 +156,9 @@ function Services (){
                                 jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
                                 hfsdfjd ioash fdslahf jfsklah 
                             </PS>
-                            <Btn>
+                            <Button variant='outlined' color="secondary">
                                 Learn More
-                            </Btn>
+                            </Button>
                         </TriServiceBlock>
                         <TriServiceBlock>
                             <H3T>Body Positivity</H3T>
@@ -167,9 +167,9 @@ function Services (){
                                 jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
                                 hfsdfjd ioash fdslahf jfsklah 
                             </PS>
-                            <Btn>
+                            <Button variant='outlined' color="secondary">
                                 Learn More
-                            </Btn>
+                            </Button>
                         </TriServiceBlock>
                         <TriServiceBlock>
                             <H3T>Conversation</H3T>
@@ -178,9 +178,9 @@ function Services (){
                                 jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
                                 hfsdfjd ioash fdslahf jfsklah 
                             </PS>
-                            <Btn>
+                            <Button variant='outlined' color="secondary">
                                 Learn More
-                            </Btn>
+                            </Button>
                         </TriServiceBlock>
                     </ServiceBlock>
                 </DivWBorder>
