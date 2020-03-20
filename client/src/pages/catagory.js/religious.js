@@ -3,6 +3,7 @@ import {DivWBorder, ProviderBox, BigBlock, BlueHeader,H2,} from "../../styles/ho
 import API from "../../API/loggedOutAPI";
 import HostFiller from "../../componets/HostFiller/index"
 import ShowFiller from "../../componets/CatagoryFiller/show_filler"
+import { Logo } from "../../styles/componentStyles";
 
 function ReligHosts (){
     const [Hosts, setHosts] = useState([]);
@@ -28,7 +29,7 @@ function ReligHosts (){
         <BigBlock>
             <DivWBorder>
                 <BlueHeader>
-                    <H2>Religious Services</H2>
+                    <Logo>Religious Services</Logo>
                 </BlueHeader>
                 <ProviderBox>
                 {Hosts.map((host, key) => (
