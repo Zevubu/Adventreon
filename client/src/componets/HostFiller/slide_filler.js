@@ -1,6 +1,9 @@
 import React from 'react';
 import {Btn, PS, PB, H2} from "../../styles/homeStyle"
 import{ Slide, DuoServiceBlockColumn, Image, TextBox} from '../../styles/providerStyles'
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+
 // function holdingBox (props){
 //     return(
 //         <ServiceBlock>
@@ -21,7 +24,7 @@ function SlideFiller(props){
                     <PB>{props.title}</PB>
                     <PS>{props.about}</PS>
                 </TextBox>
-                <a className="nav-link" href={"/hosts/" + props.id}><Btn>Veiw {props.userName}'s profile</Btn></a>
+                <a className="nav-link" style={{textDecoration: 'none'}}href={"/hosts/" + props.id}><Button variant="contained">View {props.userName}'s profile</Button></a>
             </DuoServiceBlockColumn>
         </Slide>
     )

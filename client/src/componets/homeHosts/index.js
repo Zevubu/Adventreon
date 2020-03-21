@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import {DivWBorder, BigBlock, BlueHeader, H2, MarronBtn, HeaderItem} from "../../styles/homeStyle";
-
+import {Logo} from "../../styles/componentStyles";
 import API from "../../API/loggedOutAPI";
 
 import SliderFiller from "../HostFiller/slide_filler";
@@ -9,11 +9,14 @@ import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
 function Hosts (){ 
     const [Hosts, setHosts] = useState([]);
-
+    const matches = useMediaQuery('(min-width:600px)');
+    const num = matches ? 2 : 1
+    
     useEffect(() => {
        const fetchHosts = async () =>{
         const result = await API.getHosts()
@@ -41,7 +44,7 @@ function Hosts (){
                 <Carousel
                     // autoPlay={5000}
                     animationSpeed={1500}
-                    slidesPerPage={2}
+                    slidesPerPage={num}
                     arrows
                     infinite
                     dots
