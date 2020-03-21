@@ -2,8 +2,8 @@ import React from "react";
 import {Link} from 'react-router-dom'
 import {IntroBlock, MarronBtn, CCCDiv, FillerDiv, IntroTxTDiv,H1,P} from "../../styles/homeStyle"
 // import SignUp from "./signUp";
-import Coaches from "../../componets/homeHosts";
-import Services from "../../componets/homeShows";
+import HostsBlock from "../../componets/homeHosts";
+// import ShowsBlock from "../../componets/homeShows";
 import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
 function Home (){
@@ -13,7 +13,7 @@ function Home (){
     const { isManager } = useManagment();
 
     return(
-        <div>
+        <div> 
             {/* Intro Block */}
             <IntroBlock>
                 <FillerDiv/>
@@ -35,12 +35,11 @@ function Home (){
                         
                     </IntroTxTDiv>
             </IntroBlock>
-            {/* service area */}
-            <Services/>
-            {/* Coaches area start */}
-            <Coaches/>
-             {/* Sign up form
-            <SignUp/> */}
+            {/* Hosts area start */}
+            <HostsBlock/>
+            {/* Shows area */}
+            {/* <ShowsBlock/> */}
+        
         </div>
     )
 }

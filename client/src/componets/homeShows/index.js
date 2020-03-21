@@ -1,192 +1,84 @@
-import React from "react";
-import {DivWBorder, TriServiceBlock, ServiceBlock, BigBlock, Btn, BlueBtn, MarronBtn, TealBtn,CCCDiv, HoldDiv, BlueHeader, MarronHeader, HeaderItem,TealHeader, H2, P, PS, H3B, H3M, H3T, PG} from "../../styles/homeStyle"
-import { Logo } from "../../styles/componentStyles";
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+import React, { useState, useEffect} from "react";
+import {DivWBorder, BigBlock, BlueHeader, H2, MarronBtn, HeaderItem} from "../../styles/homeStyle";
 
-function Services (){
+import API from "../../API/loggedOutAPI";
+
+import SliderFiller from "../ShowFiller/slide_filler";
+
+import Carousel from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
+
+
+function shows (){
+    const [Shows, setShows] = useState([]);
+
+    useEffect(() => {
+       const fetchShows = async () =>{
+        const result = await API.getShows()
+            console.log(`show data ${result.data}`)
+            setShows(result.data)
+        };
+        fetchShows(); 
+    }, []);
+
     return(
-            
-        <div> 
+        <BigBlock>
+            {/* Shows will be auto populated from database, Items put in as filler*/}
+            {/* <a id="Shows"/> */}
             <DivWBorder>
-                {/* <a id="services"/> */}
-                <TealHeader>
+                <BlueHeader>
                     <HeaderItem>
-                        <Logo>Services</Logo>
-                        <a className="nav-link" href="/services" style={{textDecoration: 'none'}}><Button variant="contained" color="secondary">Veiw All</Button></a>  
+                        <H2>Shows</H2>
                     </HeaderItem>
-                   
-                </TealHeader>
-                <ServiceBlock>
-                    <TriServiceBlock>
-                        <HoldDiv>
-                            <Paper style={{width: '100%',height: '100%'}}></Paper>
-                        </HoldDiv>
-                        <H2>Love Better</H2>
-                        <CCCDiv>
-                            <P>Dateing Coaching</P>
-                            <P>Couple Relationship Coaching</P>
-                            <P>Couple Sex Coaching</P>
-                        </CCCDiv>
-                        <a href="/services" style={{textDecoration: 'none'}}><Button variant="contained" color="Primary">Love Better</Button></a>
-                    </TriServiceBlock>
-                    <TriServiceBlock>
-                        <HoldDiv>
-                        <Paper style={{width: '100%',height: '100%'}}></Paper>
-                        </HoldDiv>
-                        <H2>Touch Better</H2>
-                        <CCCDiv>
-                            <P>Cuddling Services</P>
-                            <P>Kissing Lessons</P>
-                            <P>Intimate Touch Coaching</P>
-                        </CCCDiv>
-                        <a href="/services" style={{textDecoration: 'none'}}><Button variant="contained" color="Primary">love Better Now</Button></a>
-                    </TriServiceBlock>
-                    <TriServiceBlock>
-                        <HoldDiv>
-                        <Paper style={{width: '100%',height: '100%'}}></Paper>
-                        </HoldDiv>
-                        <H2>Feel Better</H2>
-                        <CCCDiv>
-                            <P>Self-care Coaching</P>
-                            <P>Body Positivity</P>
-                            <P>Conversation Coaching</P>
-                        </CCCDiv>
-                        <a href="/services"><Button variant="contained" color="Primary">Be Better Now</Button></a>
-                    </TriServiceBlock>
-                </ServiceBlock>
+                    <HeaderItem>
+                        <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
+                    </HeaderItem>
+                </BlueHeader>
+                
+                <Carousel
+                    // autoPlay={5000}
+                    animationSpeed={1500}
+                    slidesPerPage={2}
+                    arrows
+                    infinite
+                    dots
+                >
+                {/* // 
+                // show_name,x 
+                // about, x
+                // img, x
+                // img_b, x
+                // catagory, x
+                // sub_catagory, 
+                // host_id,
+                // host_name, 
+                // host_img, 
+                // payment, 
+                // patreon, 
+                // wp_title, 
+                // webpage, 
+                // eighteen_plus, 
+                // booked, 
+                // paid, 
+                // canceled, 
+                // entertain,
+                // couns, 
+                // relig */}
+                  {Shows.map((show, key) => (
+      
+                            <SliderFiller
+                                key={key} id={show.id} showName={show.show_name} about={show.about}
+                                imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
+                                services ={show.shows} appointments={show.appointments}
+                                availability={show.availability} screened={show.screened} 
+                                timeStamp={show.time_stamp}
+                            />
+                  ))}
+
+            </Carousel>
             </DivWBorder>
-            {/*Service continued  */}
-            <BigBlock>
-            {/* Love Better, Blue */}
-                <DivWBorder>
-                    <BlueHeader>
-                        {/* first half of stament Bold italic */}
-                        <H2>Become a better lover</H2>
-                    </BlueHeader>
-                    <ServiceBlock>
-                        <TriServiceBlock>
-                            <H3B>Dating</H3B>
-                            <PG>Coaching</PG>
-                            <PS>Filler fifjn ufda hsf usdha<br/>
-                                jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
-                                hfsdfjd ioash fdslahf jfsklah 
-                            </PS>
-                            <Button variant='outlined' color="secondary">
-                                Learn More
-                            </Button>
-                        </TriServiceBlock>
-                        <TriServiceBlock>
-                            <H3B>Relationships</H3B>
-                            <PG>Coaching</PG>
-                            <PS>Filler fifjn ufda hsf usdha<br/>
-                                jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
-                                hfsdfjd ioash fdslahf jfsklah 
-                            </PS>
-                            <Button variant='outlined' color="secondary">
-                                Learn More
-                            </Button>
-                        </TriServiceBlock>
-                        <TriServiceBlock>
-                            <H3B>Sex</H3B>
-                            <PG>Coaching</PG>
-                            <PS>Filler fifjn ufda hsf usdha<br/>
-                                jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
-                                hfsdfjd ioash fdslahf jfsklah 
-                            </PS>
-                            <Button variant='outlined' color="secondary">
-                                Learn More
-                            </Button>
-                        </TriServiceBlock>
-                    </ServiceBlock>
-                </DivWBorder>
-                {/* Touch Better, Maroon */}
-                <DivWBorder>
-                    <MarronHeader>
-                        {/* first half of stament Bold italic */}
-                        <H2>Enhance Your Intimacy skills</H2>
-                    </MarronHeader>
-                    <ServiceBlock>
-                        <TriServiceBlock>
-                            <H3M>Cuddling</H3M>
-                            <PG>Lessons</PG>
-                            <PS>Filler fifjn ufda hsf usdha<br/>
-                                jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
-                                hfsdfjd ioash fdslahf jfsklah 
-                            </PS>
-                            <Button variant='outlined' color="secondary">
-                                Learn More
-                            </Button>
-                        </TriServiceBlock>
-                        <TriServiceBlock>
-                            <H3M>Kissing</H3M>
-                            <PG>Lessons</PG>
-                            <PS>Filler fifjn ufda hsf usdha<br/>
-                                jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
-                                hfsdfjd ioash fdslahf jfsklah 
-                            </PS>
-                            <Button variant='outlined' color="secondary">
-                                Learn More
-                            </Button>
-                        </TriServiceBlock>
-                        <TriServiceBlock>
-                            <H3M>Intimate Touch</H3M>
-                            <PG>Coaching</PG>
-                            <PS>Filler fifjn ufda hsf usdha<br/>
-                                jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
-                                hfsdfjd ioash fdslahf jfsklah 
-                            </PS>
-                            <Button variant='outlined' color="secondary">
-                                Learn More
-                            </Button>
-                        </TriServiceBlock>
-                    </ServiceBlock>
-                </DivWBorder>
-                {/* Be Better, Teal */}
-                <DivWBorder>
-                    <TealHeader>
-                        {/* first half of stament Bold italic */}
-                        <H2>Grow your confidence and social skills</H2>
-                    </TealHeader>
-                    <ServiceBlock>
-                        <TriServiceBlock>
-                            <H3T>Self Care</H3T>
-                            <PG>Coaching</PG>
-                            <PS>Filler fifjn ufda hsf usdha<br/>
-                                jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
-                                hfsdfjd ioash fdslahf jfsklah 
-                            </PS>
-                            <Button variant='outlined' color="secondary">
-                                Learn More
-                            </Button>
-                        </TriServiceBlock>
-                        <TriServiceBlock>
-                            <H3T>Body Positivity</H3T>
-                            <PG>Coaching</PG>
-                            <PS>Filler fifjn ufda hsf usdha<br/>
-                                jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
-                                hfsdfjd ioash fdslahf jfsklah 
-                            </PS>
-                            <Button variant='outlined' color="secondary">
-                                Learn More
-                            </Button>
-                        </TriServiceBlock>
-                        <TriServiceBlock>
-                            <H3T>Conversation</H3T>
-                            <PG>Coaching</PG>
-                            <PS>Filler fifjn ufda hsf usdha<br/>
-                                jfild sjfiod safi osdhaj hfdisa fsdahflsa<br/>
-                                hfsdfjd ioash fdslahf jfsklah 
-                            </PS>
-                            <Button variant='outlined' color="secondary">
-                                Learn More
-                            </Button>
-                        </TriServiceBlock>
-                    </ServiceBlock>
-                </DivWBorder>
-            </BigBlock>  
-        </div>
+        </BigBlock>
     )
 }
 
-export default Services;
+export default shows;

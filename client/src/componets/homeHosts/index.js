@@ -28,7 +28,7 @@ function Hosts (){
             <DivWBorder>
                 <BlueHeader>
                     <HeaderItem>
-                        <H2>These people have shows you can watch.</H2>
+                        <H2>Host's</H2>
                     </HeaderItem>
                     <HeaderItem>
                         <a className="nav-link" href="/Hosts"><MarronBtn>See all</MarronBtn></a>
@@ -36,8 +36,8 @@ function Hosts (){
                 </BlueHeader>
                 
                 <Carousel
-                    autoPlay={5000}
-                    animationSpeed={2500}
+                    // autoPlay={5000}
+                    animationSpeed={1500}
                     slidesPerPage={2}
                     arrows
                     infinite
