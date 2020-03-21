@@ -7,6 +7,8 @@ import SliderFiller from "../HostFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 
 function Hosts (){ 
@@ -25,16 +27,17 @@ function Hosts (){
         <BigBlock>
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
-            <DivWBorder>
+            <DivWBorder style={{marginBottom: '100px'}}>
                 <BlueHeader>
                     <HeaderItem>
                         <H2>Host's</H2>
                     </HeaderItem>
                     <HeaderItem>
-                        <a className="nav-link" href="/Hosts"><MarronBtn>See all</MarronBtn></a>
+                        <a className="nav-link" href="/Hosts" style={{textDecoration: 'none'}}><Button variant="contained" color='secondary'>See all</Button></a>
                     </HeaderItem>
                 </BlueHeader>
                 
+
                 <Carousel
                     // autoPlay={5000}
                     animationSpeed={1500}
