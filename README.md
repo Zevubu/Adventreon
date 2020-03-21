@@ -1,6 +1,29 @@
 # Shtiker_iso
 
 Tip your artist first... but then... yes please tip us we worked our ass off on this website. 
+to add to sql:
+    dynamic styles:
+        host,
+        shows,
+        episodes,
+Language:
+    host, languages spoken
+    shows,
+    episodes,
+genre could = sub_category
+b_img to episodes.
+
+
+
+make post asking people about page translation soft wear.
+make post asking people about dictation of page for sight impaired. and subtitles for hearing impaired.
+we could eventualy use music.
+
+note to talk about home page lay out. 
+
+
+
+
 
 video streaming services
 

@@ -30,16 +30,17 @@ function Hosts (){
             <DivWBorder style={{marginBottom: '100px'}}>
                 <BlueHeader>
                     <HeaderItem>
-                        <H2>These people have shows you can watch.</H2>
+                        <H2>Host's</H2>
                     </HeaderItem>
                     <HeaderItem>
                         <a className="nav-link" href="/Hosts" style={{textDecoration: 'none'}}><Button variant="contained" color='secondary'>See all</Button></a>
                     </HeaderItem>
                 </BlueHeader>
                 
-                <Carousel 
-                    autoPlay={5000}
-                    animationSpeed={2500}
+
+                <Carousel
+                    // autoPlay={5000}
+                    animationSpeed={1500}
                     slidesPerPage={2}
                     arrows
                     infinite
