@@ -15,7 +15,7 @@ function ShowSlideFiller(props){
                     <PB>{props.title}</PB>
                     <PS>{props.about}</PS>
                 </TextBox>
-                <a className="nav-link" href={"/hosts/" + props.id}><Btn>Veiw {props.userName}'s profile</Btn></a>
+                <a className="nav-link" href={"/hosts/" + props.id}><Btn>View {props.userName}'s profile</Btn></a>
             </DuoServiceBlockColumn>
         </Slide>
     )
