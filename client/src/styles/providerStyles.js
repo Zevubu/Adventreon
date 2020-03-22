@@ -100,6 +100,9 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
+@media only screen and (max-width: 600px) {
+    width: 50%;
+    };
 `
 const ProDuoServiceBlockColumn = styled.div`
 height: auto;
@@ -108,6 +111,8 @@ margin:20px;
 grid-template-columns: auto auto;
 grid-template-rows: auto;
 align-items: center;
+@media only screen and (max-width: 600px) {
+    };
 
 `
 const AppBox = styled.div`
