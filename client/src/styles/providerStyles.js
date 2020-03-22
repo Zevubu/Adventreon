@@ -135,12 +135,16 @@ margin-bottom:15px;
 border-radius: 5px 50px 50px 50px;
 background-color: rgba(209, 202, 179, 0.767);
 padding:16px;
+opacity: 0.6;
+font-family: 'Baloo 2', cursive;
 `
 const ProTextBoxN = styled(ProTextBox)`
 display: inline-block;
 height: auto;
 background-color: rgb(115, 162, 175);
 margin:15px;
+opacity: 0.8;
+font-family: 'Baloo 2', cursive;
 `
 const ProImage = styled(Image)`
 width: 50%;

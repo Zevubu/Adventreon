@@ -5,6 +5,9 @@ import API from "../../API/loggedOutAPI";
 import {P, Btn, H1NB, H3, BlueHeader,H2,} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import ShowFiller from "../../componets/CatagoryFiller/show_filler"
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+
 //  user_name,x
 //  user_type, 
 //  dob,  
@@ -58,6 +61,7 @@ function Host(){
                         <ProImage src={Host.p_img} alt={Host.user_name}/>
                     </ProDuoServiceBlock>
                     <ProDuoServiceBlockColumn>
+                        <Paper style={{padding: '10px', borderRadius: '50px'}}>
                         <ProTextBoxN>
                             <H1NB>{Host.user_name}</H1NB>
                             <H3>{Host.title}</H3>
@@ -82,6 +86,7 @@ function Host(){
                             <br/>
                             <a href={Host.webpage}><P>{Host.webpage}</P></a>
                         </ProTextBox>
+                        </Paper>
                     </ProDuoServiceBlockColumn>
                    
                 </ProviderBox>

@@ -11,11 +11,13 @@ text-shadow: 2px 2px rgb(98, 98, 98);
 `
 const H1NB = styled(H1)`
 text-shadow: 1px 1px rgb(98, 98, 98);
+font-family: 'Baloo 2', cursive;
 `
 const H2 = styled.p`
 font-size: 30px;
 margin:0;
 text-shadow: 0.5px 0.5px rgb(98, 98, 98);
+font-family: 'Baloo 2', cursive;
 `
 const H3 = styled.p`
 font-size: 25px;
