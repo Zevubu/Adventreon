@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     justifyContent: 'space-between',
-    position: "fixed",
+    position: "relitive",
     left: "0",
     bottom: "0",
   },

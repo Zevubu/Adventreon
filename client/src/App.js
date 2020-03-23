@@ -1,6 +1,6 @@
 import React, {useState, useEffect, createContext} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
+import {GlobalStyle} from "./styles/universal-styles"
 // private routes
 import UserRoute from './PrivateRoutes/UserRoutes';
 import LogOutRoute from './PrivateRoutes/LogOutRoute';
@@ -137,6 +137,7 @@ function App() {
               <UserInfoContext.Provider value={{userData, setUserData: UserDataSet, isData, setIsData: setData }}>
                 <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, isAuthenticated, setIsAuthenticated: setAuth}}>
                   <Router>
+                  <GlobalStyle />
                     <div>
                       <NavBar value={userData}/>
                       <Switch>

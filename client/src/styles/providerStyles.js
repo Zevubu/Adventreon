@@ -19,16 +19,30 @@ display: flex;
 const Slide = styled.div`
     height: 100%;
     width: 100%;
-    background-image: url(https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+    background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     
 `
+// background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
+// background-size: cover;
+// background-repeat: no-repeat;
+// background-position: center;
+const SlideBuffer = styled.div`
+height: 100%;
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items: center;
+margin: 5%;
+`
+
 // backgound-color:238, 245, 244;
 const DuoServiceBlock = styled.div`
 height: 100;
@@ -36,7 +50,6 @@ width: 100%;
 background-size: cover;
 background-repeat: no-repeat;
 background-position: center;
-backgound-color:238, 245, 244;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
@@ -45,12 +58,22 @@ align-items: center;
     flex-dierction: column;
     };
 `
+// backgound-color:238, 245, 244;
 const DuoServiceBlockColumn = styled.div`
 height: auto;
 width:50%;
 margin:5px;
 display: flex;
 flex-direction: column;
+justify-content: space-around;
+align-items: center;
+`
+const DuoServiceBlockRow = styled.div`
+height: auto;
+width:50%;
+margin:5px;
+display: flex;
+flex-direction: row;
 justify-content: space-around;
 align-items: center;
 `
@@ -67,9 +90,9 @@ const TextBox = styled.div`
 width:100%;
 height:100%;
 text-align:cente
-background-color: rgba(209, 202, 179, 0.767);
+
 `
-// profile styles
+// profile styles background-color: rgba(209, 202, 179, 0.767);
 
 const ProviderBox = styled.div`
 color: rgb(0, 0, 0);
@@ -155,4 +178,4 @@ width: 50%;
 height: auto;
 `
 
-export {ProviderBox, ShowBox,AppBox, Slider, SliderContent, Slide,ProDuoServiceBlock, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}
+export {ProviderBox, ShowBox,AppBox, Slider, SliderContent, Slide, SlideBuffer, ProDuoServiceBlock, DuoServiceBlockRow, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}

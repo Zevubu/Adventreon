@@ -5,13 +5,12 @@ import{ Slide, SlideBuffer, DuoServiceBlockColumn, Image, TextBox} from '../../s
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
-// function holdingBox (props){
-//     return(
-//         <ServiceBlock>
-            
-//         </ServiceBlock>
-//     )
-// }
+// key={key} id={show.id} showName={show.show_name} about={show.about}
+// imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
+// hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
+// patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
+// booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
+// relig={show.relig} timeStamp={show.time_stamp}
 
 function SlideFiller(props){
     const [vis, setVis] = useState(1);
@@ -19,21 +18,21 @@ function SlideFiller(props){
     const [Click, setClick] = useState(false);
 
     if(Click){
-        return <Redirect to={"/hosts/" + props.id} />
+        return <Redirect to={"/shows/" + props.id} />
     }
         
     
     return(
        
             <Slide id={props.id} onClick={i=>setClick(true)} bgImg={props.bImg}>
-                <SlideBuffer bgImg={props.pImg} style={{opacity: vis ,backgroundColor: bgC}} onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}>
+                <SlideBuffer bgImg={props.imgB} style={{opacity: vis ,backgroundColor: bgC}} onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}>
                     <DuoServiceBlockColumn>
-                        <Image src={props.pImg} alt={props.userName}/>
+                        <Image src={props.imgP} alt={props.showName}/>
                     </DuoServiceBlockColumn>
                     <DuoServiceBlockColumn>
                         <TextBox>
-                            <H3>{props.userName}</H3>
-                            <PB>{props.title}</PB>
+                            <H3>{props.showName}</H3>
+                            <PB>{props.hostName}</PB>
                         </TextBox>
                         {/* <a className="nav-link" style={{textDecoration: 'none'}} href={"/hosts/" + props.id}><Button variant='contained'>View {props.userName}'s profile</Button></a> */}
                     </DuoServiceBlockColumn>
