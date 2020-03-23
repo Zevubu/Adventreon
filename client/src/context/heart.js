@@ -11,10 +11,15 @@ export const useUser = () => useContext(UserContext);
 export const HostContext = createContext();
 export const useHost = () => useContext(HostContext);
 
+// Temp context
+export const TempContext = createContext();
+export const useTemp = () => useContext(TempContext);
+
 // managment context
 export const ManagmentContext = createContext();
 export const useManagment = () => useContext(ManagmentContext);
 
 // user info context
 export const UserInfoContext = createContext();
-export const useUserInfo= () => useContext(UserInfoContext);
+export const useUserInfo = () => useContext(UserInfoContext);
+
