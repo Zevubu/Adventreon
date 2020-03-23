@@ -14,17 +14,14 @@ import Paper from '@material-ui/core/Paper';
 
 function SlideFiller(props){
     return(
-        <Slide id={props.id}>
+        <Slide id={props.id} style={{backgroundImage: `url(${props.img})` }} >
             <DuoServiceBlockColumn>
-                <Image src={props.img} alt={props.userName}/>
-            </DuoServiceBlockColumn>
-            <DuoServiceBlockColumn>
-                <TextBox>
-                    <H2>{props.userName}</H2>
+                <TextBox style={{opacity: '0.5',backgroundColor: 'grey'}} onMouseEnter={(e)=> e.target.style.opacity='1'} onMouseLeave={(e)=> e.target.style.opacity="0.5"}>
+                    <H2 >{props.userName}</H2>
                     <PB>{props.title}</PB>
                     <PS>{props.about}</PS>
                 </TextBox>
-                <a className="nav-link" style={{textDecoration: 'none'}}href={"/hosts/" + props.id}><Button variant="contained">View {props.userName}'s profile</Button></a>
+                <a className="nav-link" style={{textDecoration: 'none'}}href={"/hosts/" + props.id}><Button variant="outline">View {props.userName}'s profile</Button></a>
             </DuoServiceBlockColumn>
         </Slide>
     )
