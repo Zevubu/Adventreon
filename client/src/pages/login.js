@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Card, Form, Input, Button,Error } from '../styles/signUpOutStyles';
 import {FillerDiv} from "../styles/homeStyle";
-import { useAuth, useUser, useHost, useManagment, useUserInfo} from "../context/heart";
+import { useAuth, useUser, useHost, useManagment, useTemp, useUserInfo} from "../context/heart";
 import API from "../API/loggedOutAPI";
 
 function Login (){
@@ -11,12 +11,14 @@ function Login (){
     const [isError, setIsError] = useState(false);
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const [thisTemp, setThisTemp] = useState(false);
     // context pulls
     const { setAuthTokens, isAuthenticated, setIsAuthenticated } = useAuth();
     const {isUser,setIsUser} = useUser();
     const {isHost, setIsHost} = useHost();
     const {setIsManager,isManager } = useManagment();
     const {setUserData, setIsData, isData} = useUserInfo();
+    const {setIsTempP, isTempP} = useTemp();
     
   
     const referer = '/';
@@ -30,7 +32,7 @@ function Login (){
             // console.log(`login result${JSON.stringify(result)}`)
             if (result.status === 200) {
               console.log(`User type: ${JSON.stringify(result.data.user_info.user_type)}`)
-              console.log(`User type test:${JSON.stringify(result.data.user_info.user_type) === "\"user\""} `)
+              console.log(`User type test:${JSON.stringify(result.data.user_info.user_type) === "\"temp\""} `)
               localStorage.setItem("tokens", JSON.stringify(result.data.token));
               localStorage.setItem("user", JSON.stringify(result.data.user_info));
               setAuthTokens(result.data.token);
@@ -45,13 +47,18 @@ function Login (){
               }else if (JSON.stringify(result.data.user_info.user_type) === "\"manager\""){
                 localStorage.setItem("user_type","80CDswONc34RI8");
                 setIsManager(true);
+              }else if (JSON.stringify(result.data.user_info.user_type) === "\"temp\""){
+                localStorage.setItem("user_type","97yLn756tQb58uyThk0ujn");
+                console.log(`TEMP TEST TRUE!`)
+                setThisTemp(true)
+                setIsTempP(true)
               }
             } else {
               setIsError(true);
               console.log("loggin error")
             }
           }).then(i =>{
-            setLoggedIn(true);
+              setLoggedIn(true);          
           }).catch(e => {
             setIsError(true);
             console.log(e)
@@ -59,9 +66,13 @@ function Login (){
     }
 
     if (isLoggedIn) {
-        return <Redirect to='/' />
-    
-        
+      if(thisTemp === true){
+        console.log("THIS TEMP CONFIRM!")
+        return <Redirect to='/tempsu'/>
+      }else{
+        console.log("THIS TEMP FAIL!")
+         return <Redirect to='/' />
+      }  
     }
     
     return(
@@ -85,7 +96,7 @@ function Login (){
           />
           <Button onClick={postLogin}>Sign In</Button>
         </Form>
-        <Link>Don't have an account?</Link>
+        <Link to="/signup">Don't have an account yet?</Link>
         { isError &&<Error>The username or password provided were incorrect!</Error> }
       </Card>
     )

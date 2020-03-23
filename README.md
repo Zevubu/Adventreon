@@ -6,10 +6,12 @@ to add to sql:
         host,
         shows,
         episodes,
-Language:
-    host, languages spoken
-    shows,
-    episodes,
+    Language:
+        host, languages spoken
+        shows,
+        episodes,
+    Name and ProfileName.
+    active Boolean.
 genre could = sub_category
 b_img to episodes.
 

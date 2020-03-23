@@ -50,7 +50,6 @@ function Hosts (){
                     dots
                 >
                   {Hosts.map((host, key) => (
-      
                             <SliderFiller
                                 key={key} id={host.id} userName={host.user_name} userType={host.user_type}
                                 title={host.title} about={host.about} img={host.p_img}

@@ -4,12 +4,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // private routes
 import UserRoute from './PrivateRoutes/UserRoutes';
 import LogOutRoute from './PrivateRoutes/LogOutRoute';
+import TempRoute from './PrivateRoutes/TempRoute';
+import ManagmentRoute from './PrivateRoutes/ManagmentRoute';
+import HostRoute from './PrivateRoutes/HostRoute';
 
-import { AuthContext, UserContext, HostContext, ManagmentContext, UserInfoContext} from "./context/heart";
+import { AuthContext, UserContext, HostContext, ManagmentContext, TempContext, UserInfoContext} from "./context/heart";
 
 import NavBar from "./componets/navbar";
 import Footer from './componets/footer';
-
 
 import HomePage from "./pages/home/index";
 import Login from "./pages/login";
@@ -17,10 +19,17 @@ import SignUp from './pages/sign_up';
 import profile from './pages/profile';
 
 import HostsPage from './pages/hosts';
-import EnterPage from './pages/catagory.js/entertainment';
-import CounsPage from './pages/catagory.js/counseling';
-import ReligPage from './pages/catagory.js/religious';
-import AllCatPage from './pages/catagory.js/allCat';
+import EnterPage from './pages/catagory/entertainment';
+import CounsPage from './pages/catagory/counseling';
+import ReligPage from './pages/catagory/religious';
+import AllCatPage from './pages/catagory/allCat';
+
+// tools
+import InviteHost from './pages/tools/invite_host';
+import HostSignUp from './pages/tools/host-sign-up';
+import ShowBuilder from './pages/tools/show-builder';
+import AddEpisode from './pages/tools/add_episode';
+
 
 import HostProfile from './pages/profiles/host'
 import ShowProfile from './pages/profiles/show'
@@ -32,6 +41,7 @@ function App() {
   const [isUser,setIsUser] = useState();
   const [isHost,setIsHost] = useState();
   const [isManager, setIsManager] = useState();
+  const [isTempP, setIsTempP] = useState();
   // userdata hold
   const [userData, setUserData] = useState();
   const [isData, setIsData] = useState();
@@ -50,12 +60,8 @@ function App() {
   }
 
   const setAuth = (data) => {
-    if(!isAuthenticated){
       console.log(` Is authenticated: ${data}`)
       setIsAuthenticated(data)
-    }else{
-      setIsAuthenticated(false)
-    }
   }
 
   const setUser =(data) => {
@@ -73,8 +79,13 @@ function App() {
     setIsManager(data)
   }
 
+  const setTempP = (data) => {
+    console.log(`Is Temp: ${data}`)
+    setIsTempP(data);
+  }
+
   const setData = (data) =>{
-    setIsData(true)
+    setIsData(data)
   }
   
   const UserDataSet= (data) => {
@@ -119,39 +130,44 @@ function App() {
 // I need to build and impliment an 18 and up context.
 
   return (
-    <ManagmentContext.Provider value={{isManager, setIsManager:setManager}}>
-        <HostContext.Provider value={{isHost, setIsHost:setHost}}>
-          <UserContext.Provider value={{isUser, setIsUser: setUser}}>
-            <UserInfoContext.Provider value={{userData, setUserData: UserDataSet, isData, setIsData: setData }}>
-              <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, isAuthenticated, setIsAuthenticated: setAuth}}>
-                <Router>
-                  <div>
-                    <NavBar value={userData}/>
-                    <Switch>
-                      <Route exact path="/" component={HomePage} />
-                      <LogOutRoute exact path="/login" component={Login} />
-                      <LogOutRoute exact path="/signup" component={SignUp} />
-                      <UserRoute path="/profile" state={{value:userData}}  component={profile}/>
-                      <Route exact path="/hosts" component={HostsPage} />
-                      <Route exact path="/hosts/:id" component={HostProfile} />
-                      <Route exact path="/shows" component={HostsPage} />
-                      <Route exact path="/shows/:id" component={ShowProfile} />
-                      <Route exact path="/episodes/:id" component={EpisodeProfile} />
-                      <Route exact path="/episodes" component={HostsPage} />
-                      <Route exact path="/entertain" component={EnterPage} />
-                      <Route exact path="/counseling" component={CounsPage} />
-                      <Route exact path="/religious" component={ReligPage} />
-                      <Route exact path="/allcat" component={AllCatPage} />
-                    </Switch>
-                    <Footer/>
-                    </div>
-                </Router>
-            </AuthContext.Provider>
-          </UserInfoContext.Provider>
-        </UserContext.Provider>
-      </HostContext.Provider>
-  </ManagmentContext.Provider>
-
+    <TempContext.Provider value={{isTempP, setIsTempP:setTempP}}>
+      <ManagmentContext.Provider value={{isManager, setIsManager:setManager}}>
+          <HostContext.Provider value={{isHost, setIsHost:setHost}}>
+            <UserContext.Provider value={{isUser, setIsUser: setUser}}>
+              <UserInfoContext.Provider value={{userData, setUserData: UserDataSet, isData, setIsData: setData }}>
+                <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, isAuthenticated, setIsAuthenticated: setAuth}}>
+                  <Router>
+                    <div>
+                      <NavBar value={userData}/>
+                      <Switch>
+                        <Route exact path="/" component={HomePage} />
+                        <LogOutRoute exact path="/login" component={Login} />
+                        <LogOutRoute exact path="/signup" component={SignUp} />
+                        <UserRoute path="/profile" state={{value:userData}}  component={profile}/>
+                        <Route exact path="/hosts" component={HostsPage} />
+                        <Route exact path="/hosts/:id" component={HostProfile} />
+                        <Route exact path="/shows" component={HostsPage} />
+                        <Route exact path="/shows/:id" component={ShowProfile} />
+                        <Route exact path="/episodes/:id" component={EpisodeProfile} />
+                        <Route exact path="/episodes" component={HostsPage} />
+                        <Route exact path="/entertain" component={EnterPage} />
+                        <Route exact path="/counseling" component={CounsPage} />
+                        <Route exact path="/religious" component={ReligPage} />
+                        <Route exact path="/allcat" component={AllCatPage} />
+                        <TempRoute exact path="/tempsu" component={HostSignUp} />
+                        <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
+                        <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
+                        <HostRoute exact path="/episodebuilder" component={AddEpisode}/>
+                      </Switch>
+                      <Footer/>
+                      </div>
+                  </Router>
+                </AuthContext.Provider>
+              </UserInfoContext.Provider>
+            </UserContext.Provider>
+          </HostContext.Provider>
+        </ManagmentContext.Provider>
+      </TempContext.Provider>
   );
 }
 

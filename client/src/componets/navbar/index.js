@@ -2,14 +2,19 @@ import React, {useState} from "react";
 import {Link} from 'react-router-dom';
 import {H2} from '../../styles/homeStyle';
 import {NavBody,  NavBtnB, NavBtnM, OptionBox, Logo} from "../../styles/componentStyles";
-import { useAuth, useUser, useManagment, useUserInfo } from "../../context/heart";
+import { useAuth, useUser, useHost, useManagment, useTemp, useUserInfo } from "../../context/heart";
+
 import SimpleMenu from './menu.js';
 import ResMenu from './resmenu';
+import HostMenue from './hostMenu';
+import ManagerMenue from './manegMenue';
+
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 // import { UserInfoContext } from "../../App"
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { isStyledComponent } from "styled-components";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,6 +31,8 @@ function NavBar (props){
     console.log(`navbar data: ${JSON.stringify(props)}`)
     const { setAuthTokens, isAuthenticated, setIsAuthenticated} = useAuth();
     const {isUser, setIsUser} = useUser();
+    const {isHost, setIsHost} = useHost();
+    const {isTempP, setIsTempP} = useTemp();
     const {isManager, setIsManager} = useManagment();
     const {userData, setUserData} = useUserInfo();
     const matches = useMediaQuery('(min-width:600px)');
@@ -39,8 +46,9 @@ function NavBar (props){
         setIsUser();
         setIsManager()
         setIsAuthenticated();
+        setIsHost();
     }
-
+    // && isTempP
     return(
         <NavBody  className={classes.root}>
             <OptionBox>
@@ -51,9 +59,14 @@ function NavBar (props){
             <OptionBox>
                 {matches ?
                 <OptionBox>
+                    {isAuthenticated && isTempP &&(
+                        <div>
+                            <Link style={{ textDecoration: 'none' }} to="/tempsu"><Button variant="contained" color="secondary">MAKE YOUR HOST PROFILE HERE!</Button></Link>
+                        </div>
+                    )} 
                     <Link style={{ textDecoration: 'none' }} to="/"><Button variant="outlined" color="secondary">Home</Button></Link>
                     <br></br>
-                    <Link style={{ textDecoration: 'none' }}><SimpleMenu></SimpleMenu></Link>
+                    <SimpleMenu></SimpleMenu>
                     <br></br>
                     <Link style={{ textDecoration: 'none' }} to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link>
                     {isAuthenticated && isUser && (
@@ -61,6 +74,18 @@ function NavBar (props){
                             <Link style={{ textDecoration: 'none' }} to="/profile"><Button variant="contained" color="secondary">Profile</Button></Link>
                         </div>
                     )} 
+                    { isAuthenticated && isHost &&(
+                        <div>
+                            <HostMenue/>
+                        </div>
+                    )}
+
+                    { isAuthenticated && isManager &&(
+                        <div>
+                            <ManagerMenue/>
+                        </div>
+                    )}
+
                 </OptionBox>
                 :
                 <ResMenu></ResMenu>           

@@ -9,7 +9,6 @@ function UserRoute({ component: Component, ...rest }) {
   const {isUser} = useUser();
   const {isData} =  useUserInfo();
    
-  console.log(`What is Auth token: ${authTokens}`)
 
   return (
     <Route

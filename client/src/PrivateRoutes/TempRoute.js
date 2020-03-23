@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useAuth, useManagment} from "../context/heart";
+import { useAuth, useTemp } from "../context/heart";
 
-function ManagmentRoute({ component: Component, ...rest }) {
+function TempRoute({ component: Component, ...rest }) {
   const {authTokens} = useAuth();
-  const {isManager} =useManagment();
+  const {isTempP} = useTemp();
    
 //   console.log(`What is Auth token: ${authTokens}`)
 
@@ -12,15 +12,15 @@ function ManagmentRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={props =>
-        authTokens && isManager? (
+      isTempP? (
           <Component {...props} />
         ) : (
           <Redirect
-            to={{ pathname: "/", state: { referer: props.location } }} />
+            to={{ pathname: "/episodes", state: { referer: props.location } }} />
         )
       }
     />
   );
 }
 
-export default ManagmentRoute;
+export default TempRoute;
