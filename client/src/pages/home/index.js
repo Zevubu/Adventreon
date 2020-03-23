@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {IntroBlock, MarronBtn, CCCDiv, FillerDiv, IntroTxTDiv,H1,P} from "../../styles/homeStyle"
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/homeHosts";
-// import ShowsBlock from "../../componets/homeShows";
+import ShowsBlock from "../../componets/homeShows";
 import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
 function Home (){
@@ -38,7 +38,7 @@ function Home (){
             {/* Hosts area start */}
             <HostsBlock/>
             {/* Shows area */}
-            {/* <ShowsBlock/> */}
+            <ShowsBlock/>
         
         </div>
     )

@@ -20,14 +20,14 @@ text-shadow: 0.5px 0.5px rgb(98, 98, 98);
 font-family: 'Baloo 2', cursive;
 `
 const H3 = styled.p`
-font-size: 25px;
+font-size: 23px;
 margin:0;
-text-shadow: 0.4px 0.4px rgb(98, 98, 98);
+text-shadow: 0.4px 0.4px rgb(215, 218, 224);
 `
 const P = styled.p`
-font-size: 20px;
+font-size: 18px;
 margin:0;
-text-shadow: 0.3px 0.4px rgb(98, 98, 98);
+text-shadow: 0.4px 0.5px rgb(23, 25, 27);
 `
 const PS = styled.p`
 font-size: 15px;
@@ -46,7 +46,7 @@ font-family: 'AthelasBold';
 color: rgb(100, 126, 160);
 `
 const PB = styled(P)`
-color: rgb(100, 126, 160);
+color: rgb(215, 218, 224);
 `
 const H1M = styled(H1)`
 color: rgb(182, 104, 130);
@@ -117,7 +117,7 @@ margin:5px;
 
 const BlueHeader = styled(Header)`
 color: rgb(238, 245, 244);
-background-color: rgb(100, 126, 160);
+background-color: rgb(100, 126, 160, 0.6);
 padding:10px 0px;
 width:100%;
 text-align: center;
@@ -128,26 +128,27 @@ flex-direction: column;
 `
 const MarronHeader = styled(Header)`
 color: rgb(238, 245, 244);
-background-color: rgb(182, 104, 130);
+background-color: rgb(182, 104, 130, 0.3);
 padding:10px 0px;
 width:100%;
 text-align: center;
 `
+
+
 const TealHeader = styled(Header)`
 color: rgb(238, 245, 244);
-background-color: rgb(115, 162, 175);
+background-color: rgb(115, 162, 200, 0.3);
 padding:10px 0px;
 width:100%;
 text-align: center;
 `
 // Buttons
 const Btn = styled.button`
-border-radius: 10px 90px 90px 90px;
+border-radius: 10px 10px 90px 90px;
 border-color: #9bacb3;
 font-family: 'AthelasReg';
 color: rgb(0, 0, 0);
-padding:10px;
-font-size: 20px;
+font-size: 18px;
 width: auto;
 `
 

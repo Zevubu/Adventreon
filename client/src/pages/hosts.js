@@ -3,9 +3,6 @@ import {DivWBorder, ProviderBox, BigBlock, BlueHeader,H2,} from "../styles/homeS
 import API from "../API/loggedOutAPI";
 import HostFiller from "../componets/HostFiller/index"
 
-
-
-
 function Hosts (){
     const [Hosts, setHosts] = useState([]);
     // const [DSBcount, setDSBcount] = useState(0)
