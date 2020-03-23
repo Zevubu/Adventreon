@@ -2,6 +2,7 @@ const express = require('express');
 const routes = require("./routes");
 const cors = require('cors');
 const passport = require("passport")
+const fileUpload = require('express-fileupload');
 // const {jwtOptions, strategy, passport} = require("./JWT/index");
 
 const PORT = process.env.PORT || 3001;
@@ -9,6 +10,9 @@ const app = express();
 
 // passport.use(strategy)
 app.use(passport.initialize())
+
+//file transfer module 
+app.use(fileUpload ({createParentPath: true},{debug: true}) )
 
 // parse requests of content-type: application/json
 app.use(express.urlencoded({extended:true}));

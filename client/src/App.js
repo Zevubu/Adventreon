@@ -8,6 +8,10 @@ import TempRoute from './PrivateRoutes/TempRoute';
 import ManagmentRoute from './PrivateRoutes/ManagmentRoute';
 import HostRoute from './PrivateRoutes/HostRoute';
 
+///temp component for uploads
+import Uploader from './componets/upload'
+////
+
 import { AuthContext, UserContext, HostContext, ManagmentContext, TempContext, UserInfoContext} from "./context/heart";
 
 import NavBar from "./componets/navbar";
@@ -155,6 +159,7 @@ function App() {
                         <Route exact path="/counseling" component={CounsPage} />
                         <Route exact path="/religious" component={ReligPage} />
                         <Route exact path="/allcat" component={AllCatPage} />
+                        <Route exact path="/uploads" component={Uploader} />
                         <TempRoute exact path="/tempsu" component={HostSignUp} />
                         <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
                         <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
