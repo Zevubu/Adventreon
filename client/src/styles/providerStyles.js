@@ -67,7 +67,7 @@ const TextBox = styled.div`
 width:200px;
 text-align:center;
 margin-bottom:10px;
-border-radius: 50px 23px 50px 23px;
+border-radius: 50px 50px 50px 50px;
 background-color: rgba(209, 202, 179, 0.767);
 `
 // profile styles
