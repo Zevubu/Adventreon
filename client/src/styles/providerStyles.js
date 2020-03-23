@@ -64,10 +64,9 @@ align-items: center;
 margin:0 auto;
 `
 const TextBox = styled.div`
-width:200px;
-text-align:center;
-margin-bottom:10px;
-border-radius: 50px 50px 50px 50px;
+width:100%;
+height:100%;
+text-align:cente
 background-color: rgba(209, 202, 179, 0.767);
 `
 // profile styles

@@ -16,7 +16,7 @@ function SlideFiller(props){
     const [vis, setVis] = useState(0.6)
     return(
         <Slide id={props.id} style={{backgroundImage: `url(${props.img})` }} >
-            <DuoServiceBlockColumn>
+            
                 <TextBox style={{opacity: vis ,backgroundColor: 'grey'}} onMouseEnter={(e)=> setVis(0.8)} onMouseLeave={(e)=> setVis(0.6)}>
                     <H2 >{props.userName}</H2>
                     <PB>{props.title}</PB>
@@ -24,7 +24,7 @@ function SlideFiller(props){
                     <a className="nav-link" style={{textDecoration: 'none'}}href={"/hosts/" + props.id}><Button variant="outline">View {props.userName}'s profile</Button></a>
                 </TextBox>
                 
-            </DuoServiceBlockColumn>
+            
         </Slide>
     )
 }
