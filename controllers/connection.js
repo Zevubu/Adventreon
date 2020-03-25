@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mysql = require('mysql');
-const keys = require("../keys");
+
 let connection
 module.exports = async (params) => new Promise(
     
