@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams} from "react-router";
 // import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import API from "../../API/epiLogOut";
-import {P, Btn, H1NB, H3, BlueHeader,H2,} from "../../styles/homeStyle"
+import {P, Btn, H1NB,H1, H3, BlueHeader,H2,} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisFiller from "../../componets/CatagoryFiller/epi_filler"
 import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler";
@@ -66,8 +66,20 @@ function Episode(){
                 </BlueHeader>
                 <ProviderBox>
                     <ProDuoServiceBlock>
-                        <H3>{epi.v_link}</H3>
-                        <ProImage src={epi.img} alt={epi.epi_name}/>
+                        <iframe 
+                            width="560" 
+                            height="315" 
+                            src={`https://www.youtube.com/embed/${epi.v_link}`} 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe> 
+                        <ProDuoServiceBlockColumn>
+                            <H1>Chatbox</H1>
+                            <H3>People will talk can chat here.</H3>
+                            <H3>we have plans to make it some someone can rent a private chat box</H3>
+                            <H3>But that will come in later</H3>
+                        </ProDuoServiceBlockColumn>
                     </ProDuoServiceBlock>
                     <ProDuoServiceBlockColumn>
                         <ProTextBoxN>
@@ -79,10 +91,7 @@ function Episode(){
                             <H3>About</H3>
                             <br/>
                             <P>{epi.about}</P> 
-                        </ProTextBox>
-                        <ProDuoServiceBlock>
-                            <H3>{epi.v_link}</H3>
-                        </ProDuoServiceBlock> 
+                        </ProTextBox> 
                         <ProTextBox>
                             <H3>Tip Me Here.</H3>
                             <br/>

@@ -43,7 +43,7 @@ function Shows (){
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getShows()
+        const result = await API.getReligShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };
@@ -65,7 +65,7 @@ function Shows (){
                         style={{opacity: vis ,backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                    >Shows</H2>
+                    >Religous services</H2>
                 </HeaderItem>
                 {/* <HeaderItem>
                     <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>

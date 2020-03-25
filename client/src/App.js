@@ -23,13 +23,14 @@ import SignUp from './pages/sign_up';
 import profile from './pages/profile';
 
 import HostsPage from './pages/hosts';
+import ShowPage from "./pages/shows"
 import EnterPage from './pages/catagory/entertainment';
 import CounsPage from './pages/catagory/counseling';
 import ReligPage from './pages/catagory/religious';
 import AllCatPage from './pages/catagory/allCat';
 
 // tools
-import InviteHost from './pages/tools/invite_host';
+import InviteHost from './pages/tools/Management/invite_host';
 import HostSignUp from './pages/tools/host-sign-up';
 import ShowBuilder from './pages/tools/show-builder';
 import AddEpisode from './pages/tools/add_episode';
@@ -38,6 +39,7 @@ import AddEpisode from './pages/tools/add_episode';
 import HostProfile from './pages/profiles/host'
 import ShowProfile from './pages/profiles/show'
 import EpisodeProfile from './pages/profiles/episode'
+import Show from './pages/profiles/show';
 
 function App() {
   const [authTokens, setAuthTokens] = useState();
@@ -151,7 +153,7 @@ function App() {
                         <UserRoute path="/profile" state={{value:userData}}  component={profile}/>
                         <Route exact path="/hosts" component={HostsPage} />
                         <Route exact path="/hosts/:id" component={HostProfile} />
-                        <Route exact path="/shows" component={HostsPage} />
+                        <Route exact path="/shows" component={ShowPage} />
                         <Route exact path="/shows/:id" component={ShowProfile} />
                         <Route exact path="/episodes/:id" component={EpisodeProfile} />
                         <Route exact path="/episodes" component={HostsPage} />
@@ -161,7 +163,11 @@ function App() {
                         <Route exact path="/allcat" component={AllCatPage} />
                         <Route exact path="/uploads" component={Uploader} />
                         <TempRoute exact path="/tempsu" component={HostSignUp} />
+                        <ManagmentRoute path="/profilem" state={{value:userData}}  component={profile}/>
                         <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
+                        <ManagmentRoute exact path="/tempsum" component={HostSignUp} />
+                        <ManagmentRoute exact path="/showbuilderm" state={{value:userData}} component={ShowBuilder}/>
+                        <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
                         <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
                         <HostRoute exact path="/episodebuilder" component={AddEpisode}/>
                       </Switch>

@@ -13,16 +13,16 @@ router.route("/all")
       const user = await query(conn, showQuery.findAll())
       res.send(user)
     })
-    // .post(async (req, res) =>{
-    //   const {show_name, about, img, img_b, catagory, sub_catagory, host_id, host_name,  host_img, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, entertain ,couns, relig} = req.body;
-    //   const conn = await connection(dbConfig).catch(e => {});
-    //   const user = await query(
-    //     conn,
-    //     showQuery.createNew(),
-    //     [show_name, about, img, img_b, catagory, sub_catagory, host_id, host_name,  host_img, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, entertain ,couns, relig]
-    //   )
-    //   res.send[user]
-    // });
+    .post(async (req, res) =>{
+      const {show_name, about, img, img_b, catagory, sub_catagory, host_id, host_name,  host_img, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, entertain ,couns, relig} = req.body;
+      const conn = await connection(dbConfig).catch(e => {});
+      const user = await query(
+        conn,
+        showQuery.createNew(),
+        [show_name, about, img, img_b, catagory, sub_catagory, host_id, host_name,  host_img, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, entertain ,couns, relig]
+      )
+      res.send[user]
+    });
 
 // Matches with "/api/shows/entertain
 router.route("/entertain")

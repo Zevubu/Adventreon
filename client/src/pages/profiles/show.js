@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams} from "react-router";
 import {Link} from 'react-router-dom';
 import API from "../../API/loggedOutAPI";
+import eAPI from "../../API/epiLogOut"
 import {P, Btn, H1NB, H3, BlueHeader,H2,} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler"
@@ -40,7 +41,7 @@ function Show(){
            
          };
          const fetchEpis = async () =>{
-            const result = await API.getEpisByShow(`${id}`)
+            const result = await eAPI.getEpisByShowID(`${id}`)
                 console.log(result.data)
                 setEpisodes(result.data)
               
@@ -122,7 +123,7 @@ function Show(){
         // sub_catagory,
         // host_id, x
         // host_name, 
-        // host_img, 
+        // b_img, 
         // credits, 
         // price, 
         // payment, 
@@ -142,7 +143,7 @@ function Show(){
                         <EpisodeFiller
                         key={key} id={episode.id} epiName={episode.epi_name} about={episode.about} pImg={episode.img} bImg={Show.b_img}
                         showId={episode.show_id} showName={episode.show_name} catagory={episode.catagory} subCatagory={episode.sub_catagory}
-                        hostId={episode.host_id} hostName={episode.host_name} hostImg={episode.host_img} credits={episode.credits}
+                        hostId={episode.host_id} hostName={episode.host_name} bImg={episode.b_img} credits={episode.credits}
                         price={episode.price} payment={episode.payment} patreon={episode.patreon} wpTitle={episode.wp_title} webpage={episode.webpage}
                         Videolink={episode.v_link} showDate={episode.show_date} startTime={episode.start_time} endTime={episode.end_time}
                         eighteenPlus={episode.eighteen_plus} booked={episode.booked} 
