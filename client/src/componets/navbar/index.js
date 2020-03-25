@@ -53,7 +53,7 @@ function NavBar (props){
         <NavBody  className={classes.root}>
             <OptionBox>
                 <OptionBox>
-                    <Logo>Cantina</Logo>
+                    <Logo>Adventreon</Logo>
                 </OptionBox>
             </OptionBox>
             <OptionBox>

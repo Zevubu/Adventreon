@@ -169,11 +169,11 @@ background-color: rgb(115, 162, 175);
 `
 // Intro Block styles
 const IntroBlock = styled.div`
-background-image: url(https://www.ancient-origins.net/sites/default/files/field/image/sassy_top.jpg);
+background-image: url(https://images.unsplash.com/photo-1505842465776-3b4953ca4f44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
 background-repeat: no-repeat;
 background-size: Cover;
 background-position-x: center;
-background-position-y: 20%;
+background-position-y: center;
 border-bottom: rgb(115, 162, 175) solid 2px;
 font-family: 'AthelasReg';
 color: rgb(238, 245, 244);
@@ -189,8 +189,8 @@ display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
-width: 450px;
-height: 200px;
+width: 50%;
+height: 100%;
 margin-left: 50px;
 margin-bottum: 200px;
 `
