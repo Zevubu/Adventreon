@@ -18,11 +18,14 @@ function Home (){
             <IntroBlock>
                 <FillerDiv/>
                     <IntroTxTDiv>
+
                         <CCCDiv>
-                            <H1>Cantina</H1>
-                            <P>A site we made for you.</P>
+                            <H1>Adventreon</H1>
+                            <br/>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/EEIk7gwjgIM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </CCCDiv>
-                        {!isAuthenticated && (
+                        
+                        {/* {!isAuthenticated && (
                             <Link to="/signup"><MarronBtn>Sign-up here.</MarronBtn></Link>
                         )}
                         {isAuthenticated && isUser &&(
@@ -31,7 +34,7 @@ function Home (){
                         )}
                         {isAuthenticated && isHost &&(
                             <Link to="/"><MarronBtn>View Your shows.</MarronBtn></Link>
-                        )}
+                        )} */}
                         
                     </IntroTxTDiv>
             </IntroBlock>

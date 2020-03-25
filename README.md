@@ -16,6 +16,7 @@ genre could = sub_category
 b_img to episodes.
 
 
+mysql://b17dffcd68f5dc:d3a3eab1@us-cdbr-iron-east-01.cleardb.net/heroku_5d1d73cbafea06a?reconnect=true   
 
 make post asking people about page translation soft wear.
 make post asking people about dictation of page for sight impaired. and subtitles for hearing impaired.

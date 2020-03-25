@@ -1,10 +1,16 @@
 require("dotenv").config();
 const mysql = require('mysql');
-const keys = require("../keys");
 
+// let connection
 module.exports = async (params) => new Promise(
+    
     (resolve, reject) => {
-        const connection = mysql.createConnection(params);
+        // if (process.env.JAWSDB_URL) {
+            // Database is JawsDB on Heroku
+           const connection = mysql.createConnection(process.env.JAWSDB_URL);
+        // } else {
+        // connection = mysql.createConnection(params);
+        // }
         connection.connect(error => {
             if (error) {
                 console.log(error)
@@ -13,4 +19,6 @@ module.exports = async (params) => new Promise(
             }
             resolve(connection);
         })
-});
+    }
+
+);
