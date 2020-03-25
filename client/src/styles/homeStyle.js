@@ -9,10 +9,18 @@ margin:0;
 text-shadow: 2px 2px rgb(98, 98, 98);
 
 `
-const H1NB = styled(H1)`
+const H1NB = styled.p`
+font-size: 24px;
 text-shadow: 1px 1px rgb(98, 98, 98);
 font-family: 'Baloo 2', cursive;
 `
+const HEp = styled.p`
+font-size 20px;
+margin:0;
+text-shadow: 0.5px 0.5px rgb(98, 98, 98);
+font-family: 'Baloo 2', cursive;
+`
+
 const H2 = styled.p`
 font-size: 30px;
 margin:0;
@@ -20,7 +28,7 @@ text-shadow: 0.5px 0.5px rgb(98, 98, 98);
 font-family: 'Baloo 2', cursive;
 `
 const H3 = styled.p`
-font-size: 23px;
+font-size: 17px;
 margin:0;
 text-shadow: 0.4px 0.4px rgb(215, 218, 224);
 `
@@ -300,4 +308,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {IntroBlock, Btn, MarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem, BlueHeader, BlueHeaderC,MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG}
+export {IntroBlock, Btn, MarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem, BlueHeader, BlueHeaderC,MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}

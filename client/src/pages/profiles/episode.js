@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams} from "react-router";
 // import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import API from "../../API/epiLogOut";
-import {P, Btn, H1NB,H1, H3, BlueHeader,H2,} from "../../styles/homeStyle"
+import {P, Btn, H1NB,H1, H3, BlueHeader,H2,HEp} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisFiller from "../../componets/CatagoryFiller/epi_filler"
 import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler";
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+
 // key={key} id={episode.id} epiName={episode.epi_name} about={episode.about} pImg={episode.img} bImg={Show.b_img}
 // showId={episode.show_id} showName={episode.show_name} catagory={episode.catagory} subCatagory={episode.sub_catagory}
 // hostId={episode.host_id} hostName={episode.host_name} hostImg={episode.host_img} credits={episode.credits}
@@ -82,14 +85,14 @@ function Episode(){
                         </ProDuoServiceBlockColumn>
                     </ProDuoServiceBlock>
                     <ProDuoServiceBlockColumn>
+                    <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey', marginbottom: '20px'}}x>
                         <ProTextBoxN>
                             <H1NB id={epi.show_id}>{epi.show_name}</H1NB>
-                            <H2>{epi.epi_name}</H2>
+                            <HEp>{epi.epi_name}</HEp>
                             <H3 id={epi.host_id}>By {epi.host_name}</H3>
                         </ProTextBoxN>
                         <ProTextBox>
                             <H3>About</H3>
-                            <br/>
                             <P>{epi.about}</P> 
                         </ProTextBox> 
                         <ProTextBox>
@@ -104,14 +107,13 @@ function Episode(){
                         </ProTextBox>
                         <ProTextBox>
                             <H3>My patreon.</H3>
-                            <br/>
                             <P>{epi.patreon}</P>
                         </ProTextBox>
                         <ProTextBox>
                             <H3>{epi.wp_title}</H3>
-                            <br/>
                             <a href={epi.webpage}><P>{epi.webpage}</P></a>
                         </ProTextBox>
+                        </Paper>
                     </ProDuoServiceBlockColumn>
                 </ProviderBox>
             </div>
