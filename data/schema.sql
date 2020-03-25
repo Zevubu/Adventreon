@@ -11,13 +11,14 @@ CREATE TABLE users(
 	id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	user_name varchar(50) NOT NULL,
     user_type varchar(50) NOT NULL,
+    mhswitch boolean,
 	dob date NOT NULL,
     email varchar(50) NOT NULL,
     password varchar(35) NOT NULL,
-    title varchar(100) NOT NULL,
-    about varchar(1500) NOT NULL,
-    p_img varchar(500) NOT NULL,
-	b_img varchar(500) NOT NULL,
+    title varchar(100) NULL,
+    about varchar(1500) NULL,
+    p_img varchar(500) NULL,
+	b_img varchar(500) NULL,
     shows varchar(2000) NUll,
     payment varchar(1000) NULL,
     patreon varchar(1000) NULL,
@@ -72,7 +73,7 @@ CREATE TABLE episodes(
     sub_catagory varchar(50) NOT NULL,
     host_id varchar(100) NOT NULL,
 	host_name varchar(50) NOT NULL,
-    host_img varchar(300) NOT NULL,
+    b_img varchar(300) NOT NULL,
 	credits varchar(1000) NULL,
     price  varchar(20) NOT NULL,
     payment varchar(200) NUll,
@@ -94,7 +95,8 @@ CREATE TABLE episodes(
 	INDEX idx_events_userId (id)
 );
 
-SELECT * FROM users;
-SELECT * FROM users WHERE user_type="host";
-SELECT * FROM shows;
 SELECT * FROM episodes;
+
+SELECT * FROM users;
+SELECT * FROM users WHERE user_type='host' AND entertain=1 OR mhswitch=1 AND user_type='mod' AND entertain=1;
+SELECT * FROM shows;

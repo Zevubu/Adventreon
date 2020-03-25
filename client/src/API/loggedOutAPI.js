@@ -47,6 +47,11 @@ export default {
         console.log(`userData: ${userData}`);
         return axios.post("/api/users", userData).catch(err => console.log(`Account creation error:${err}`));
     },
+    createShow: function(showData){
+        console.log(`CREAT CHECK!`);
+        console.log(`userData: ${showData}`);
+        return axios.post("/api/shows/all", showData).catch(err => console.log(`Show creation error:${err}`));
+    },
     postLogIn: function(userData){
         return axios.post("/auth/login", userData).catch(err => console.log(`Login error:${err}`));
     },
