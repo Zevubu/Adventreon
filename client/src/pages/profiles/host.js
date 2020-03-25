@@ -61,7 +61,7 @@ function Host(){
                         <ProImage src={Host.p_img} alt={Host.user_name}/>
                     </ProDuoServiceBlock>
                     <ProDuoServiceBlockColumn>
-                        <Paper elevation={3} style={{padding: '10px', borderRadius: '50px'}}>
+                        <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey'}}>
                         <ProTextBoxN>
                             <H1NB>{Host.user_name}</H1NB>
                             <H3>{Host.title}</H3>

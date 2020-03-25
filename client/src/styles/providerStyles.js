@@ -103,6 +103,7 @@ height:auto;
 @media only screen and (max-width: 600px) {
     width: 100%;
     grid-template-columns: none;
+    align-items: center;
     };
 `
 const ShowBox = styled.div`
@@ -112,6 +113,12 @@ grid-template-columns: auto auto auto;
 grid-template-rows: auto auto;
 height:auto;
 margin-bottom: 100px;
+@media only screen and (max-width: 600px) {
+    width: 100%;
+    grid-template-columns: none;
+    align-items: center;
+    };
+
 `
 const ProDuoServiceBlock = styled.div`
 height: auto;
@@ -134,6 +141,8 @@ grid-template-columns: auto auto;
 grid-template-rows: auto;
 align-items: center;
 @media only screen and (max-width: 600px) {
+    align-items: center;
+    margin: auto;
     };
 
 `
