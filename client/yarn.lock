@@ -878,6 +878,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+
 "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.9.2":
   version "7.9.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
@@ -943,9 +944,9 @@
     to-fast-properties "^2.0.0"
 
 "@brainhubeu/react-carousel@^1.13.3":
-  version "1.13.15"
-  resolved "https://registry.yarnpkg.com/@brainhubeu/react-carousel/-/react-carousel-1.13.15.tgz#ea0360c95db92b56ea1b694082c204820a04c726"
-  integrity sha512-hqfv/xjBFFqZ4v4krjP5ck+G7xF4lT5KgdpGMq5QCmk7nzr5u0cFnxzG2FSpjWnthTYIaX4gpgxITTRvGZMEgw==
+  version "1.13.16"
+  resolved "https://registry.yarnpkg.com/@brainhubeu/react-carousel/-/react-carousel-1.13.16.tgz#38e6af9285d27401b1aa6c759bc076a919c25740"
+  integrity sha512-B5Gn3C0cLlSc2ULomD2xjk7NOXgkrkDUh6+HiZX9VlYU8fz3eEq3OHG47UksEScr9CzPKmqBOcRjY1k8Ld0NZw==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
