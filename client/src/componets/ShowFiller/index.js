@@ -15,14 +15,14 @@ function ShowFiller(props){
    
 
     return(
-        <DuoServiceBlock bgImg={props.bImg}>
+        <DuoServiceBlock bgImg={props.imgB}>
             <DuoServiceBlockColumn>
-                <Image src={props.pImg} alt={props.userName}/>
+                <Image src={props.imgP} alt={props.showName}/>
             </DuoServiceBlockColumn>
             <DuoServiceBlockColumn>
                 <TextBox>
                     <H2B>{props.userName}</H2B>
-                    <PG>{props.title}</PG>
+                    <PG>{props.hostName}</PG>
                     <PS>{props.about}</PS>
                 </TextBox>
                 <a style={{textDecoration: 'none'}} className="nav-link" href={"/Shows/" + props.id}><Button variant="contained">Veiw {props.userName}'s profile</Button></a>

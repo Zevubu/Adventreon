@@ -35,7 +35,7 @@ router.route('/find/:id')
       res.send(user)
   }) 
 
-  // Matches with "/api/episodes/find/:id"
+  // Matches with "/api/episodes/show/:id"
 router.route('/show/:id')
 .get(async (req, res) => {
     const { id } = req.params;

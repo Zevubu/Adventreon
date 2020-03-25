@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import {DivWBorder, MarronHeader, H2, PT} from "../../styles/homeStyle"
-import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
-import API from "../../API/loggedOutAPI";
+import {DivWBorder, MarronHeader, H2, PT} from "../../../styles/homeStyle"
+import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../../styles/signUpOutStyles"
+import API from "../../../API/loggedOutAPI";
 import {useForm} from 'react-hook-form';
-import { ShowBox } from "../../styles/providerStyles";
+import { ShowBox } from "../../../styles/providerStyles";
 
 
 function Invite (){
