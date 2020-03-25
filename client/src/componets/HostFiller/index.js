@@ -25,7 +25,7 @@ function HostFiller(props){
                     <PG>{props.title}</PG>
                     <PS>{props.about}</PS>
                 </TextBox>
-                <a style={{textDecoration: 'none'}} className="nav-link" href={"/hosts/" + props.id}><Button variant="contained">Veiw {props.userName}'s profile</Button></a>
+                <a style={{textDecoration: 'none'}} className="nav-link" href={"/hosts/" + props.id}><Button variant="contained">View {props.userName}'s profile</Button></a>
             </DuoServiceBlockColumn>
         </DuoServiceBlock>
     )
