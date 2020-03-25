@@ -130,7 +130,7 @@ flex-direction: row;
 justify-content: space-between;
 align-items: center;
 @media only screen and (max-width: 600px) {
-    width: 50%;
+    width: 75%;
     };
 `
 const ProDuoServiceBlockColumn = styled.div`
@@ -143,6 +143,7 @@ align-items: center;
 @media only screen and (max-width: 600px) {
     align-items: center;
     margin: auto;
+    width: 75%;
     };
 
 `
@@ -167,7 +168,7 @@ align-items: center;
 // `
 const ProTextBox = styled.div`
 display: inline-block
-margin-bottom:15px;
+margin-bottom:5px;
 border-radius: 5px 50px 50px 50px;
 background-color: rgba(209, 202, 179, 0.767);
 padding:16px;
@@ -178,13 +179,17 @@ const ProTextBoxN = styled(ProTextBox)`
 display: inline-block;
 height: auto;
 background-color: rgb(115, 162, 175);
-margin:15px;
+margin:5px;
 opacity: 0.8;
 font-family: 'Baloo 2', cursive;
 `
 const ProImage = styled(Image)`
-width: 50%;
+width: 60%;
 height: auto;
+@media only screen and (max-width: 600px) {
+    width: 75%;
+    margin-bottom: 20px;
+    };
 `
 
 export {ProviderBox, ShowBox,AppBox, Slider, SliderContent, Slide, SlideBuffer, ProDuoServiceBlock, DuoServiceBlockRow, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}

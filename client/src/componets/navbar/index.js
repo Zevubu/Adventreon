@@ -69,27 +69,25 @@ function NavBar (props){
                     <SimpleMenu></SimpleMenu>
                     <br></br>
                     <Link style={{ textDecoration: 'none' }} to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link>
-                    {isAuthenticated && isUser && (
-                        <div>
-                            <Link style={{ textDecoration: 'none' }} to="/profile"><Button variant="contained" color="secondary">Profile</Button></Link>
-                        </div>
-                    )} 
-                    { isAuthenticated && isHost &&(
-                        <div>
-                            <HostMenue/>
-                        </div>
-                    )}
-
-                    { isAuthenticated && isManager &&(
-                        <div>
-                            <ManagerMenue/>
-                        </div>
-                    )}
-
                 </OptionBox>
                 :
                 <ResMenu></ResMenu>           
-                }      
+                }       {isAuthenticated && isUser && (
+                    <div>
+                        <Link style={{ textDecoration: 'none' }} to="/profile"><Button variant="contained" color="secondary">Profile</Button></Link>
+                    </div>
+                )} 
+                { isAuthenticated && isHost &&(
+                    <div>
+                        <HostMenue/>
+                    </div>
+                )}
+
+                { isAuthenticated && isManager &&(
+                    <div>
+                        <ManagerMenue/>
+                    </div>
+                )}
                     {!isAuthenticated && (
                         <OptionBox>
                             <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><Button style={small ? {fontSize:'6.45px'}: {}} variant="contained" color="secondary">Sign up</Button></Link>

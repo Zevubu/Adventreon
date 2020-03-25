@@ -6,6 +6,8 @@ import eAPI from "../../API/epiLogOut"
 import {P, Btn, H1NB, H3, BlueHeader,H2,} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler"
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 // chiquioasis
 // show_name,x
@@ -79,36 +81,30 @@ function Show(){
                     <ProDuoServiceBlock>
                         <ProImage src={Show.img} alt={Show.show_name}/>
                     </ProDuoServiceBlock>
-                    <ProDuoServiceBlock>
                         <ProDuoServiceBlockColumn>
+                    <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey', marginbottom: '20px'}}x>
                             <ProTextBoxN>
                                 <H1NB>{Show.show_name}</H1NB>
                                 <Link href={"/hosts/" + Show.host_id}><H3 id={Show.host_id}>By {Show.host_name}</H3></Link>
                             </ProTextBoxN>
                             <ProTextBox>
                                 <H3>About</H3>
-                                <br/>
                                 <P>{Show.about}</P> 
                             </ProTextBox> 
-                            </ProDuoServiceBlockColumn>
-                            <ProDuoServiceBlockColumn>
                             <ProTextBox>
                                 <H3>Tip Me Here.</H3>
-                                <br/>
                                 <P>{Show.payment}</P>
                             </ProTextBox>
                             <ProTextBox>
                                 <H3>My patreon.</H3>
-                                <br/>
                                 <P>{Show.patreon}</P>
                             </ProTextBox>
                             <ProTextBox>
                                 <H3>{Show.wp_title}</H3>
-                                <br/>
                                 <a href={Show.webpage}><P>{Show.webpage}</P></a>
                             </ProTextBox>
+                            </Paper>
                         </ProDuoServiceBlockColumn>
-                   </ProDuoServiceBlock>
                 </ProviderBox>
                 <BlueHeader>
                     <H2>{Show.show_name}'s Episodes. </H2>

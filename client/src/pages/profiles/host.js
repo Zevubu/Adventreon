@@ -61,29 +61,25 @@ function Host(){
                         <ProImage src={Host.p_img} alt={Host.user_name}/>
                     </ProDuoServiceBlock>
                     <ProDuoServiceBlockColumn>
-                        <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey'}}>
+                        <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey', marginbottom: '20px'}}>
                         <ProTextBoxN>
                             <H1NB>{Host.user_name}</H1NB>
-                            <H3>{Host.title}</H3>
+                            <H3 style={{fontWeight: 'bold'}}>{Host.title}</H3>
                         </ProTextBoxN>
                         <ProTextBox>
                             <H3>About</H3>
-                            <br/>
                             <P>{Host.about}</P> 
                         </ProTextBox> 
                         <ProTextBox>
                             <H3>Tip Me Here.</H3>
-                            <br/>
                             <P>{Host.payment}</P>
                         </ProTextBox>
                         <ProTextBox>
                             <H3>My patreon.</H3>
-                            <br/>
                             <P>{Host.patreon}</P>
                         </ProTextBox>
                         <ProTextBox>
                             <H3>{Host.wp_title}</H3>
-                            <br/>
                             <a href={Host.webpage}><P>{Host.webpage}</P></a>
                         </ProTextBox>
                         </Paper>
