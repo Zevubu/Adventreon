@@ -1,5 +1,6 @@
 import React, {useState,useRef} from 'react';
 import axios from 'axios';
+import Messenger from '../Services/messanger'
 
 function Uploader(){
   const myRef = useRef({selectedFile: null});
@@ -37,13 +38,8 @@ return(
       <input type="file" ref={myRef}/>
       <p style={{opacity: 0.9}}>&nbsp;User&nbsp;<input id="uName" type="text"/>&nbsp; 
     <button onClick={() => {uploadHandler()}}>Upload!</button></p>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick"/>
-<input type="hidden" name="hosted_button_id" value="92TZKHPM5****"/>
-<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."/>
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
-</form>
-
+   
+<Messenger room={"tofu"} isMod="true" />
     </div>
 )
 

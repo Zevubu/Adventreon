@@ -33,7 +33,7 @@ export default function Footer() {
           id="panel1a-header"
         >
           <Typography className={classes.heading}>
-            <Logo style={{fontSize: '15px'}}>Cantina &copy; 2020</Logo>
+            <Logo style={{fontSize: '15px'}}>Adventreon &copy; 2020</Logo>
             <Typography>Expand for Contact Details</Typography>
           </Typography>
           <Typography>Tip the makers of this site</Typography>

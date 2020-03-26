@@ -5,3 +5,4 @@ KEYS.js
 keys.env
 .history
 uploads
+client/src/Services/config.js
