@@ -10,8 +10,12 @@ const [chat, setChat] = useState ({
     adenvtreon: [],
     content: '',
     readError: null,
-    writeError: null
+    writeError: null,
 });
+
+const [name, setName] = useState({
+  name: ''
+})
 
 const matches = useMediaQuery('(min-width:600px)');
 
@@ -27,17 +31,27 @@ function handleChange(event) {
 }
 
     async function handleSubmit(event) {
+      console.log(name.name)
+      if(name.name === ''){
+        event.preventDefault();
+        let nName = prompt("Please enter in a chat name",`Anon${(Math.random() * 999)}`);
+        setName({name: nName})
+      }
+      else{
+        console.log('else')
         event.preventDefault();
         setChat({ writeError: null });
         try {
           await db.ref("adenvtreon").push({
             content: text.content,
-            timestamp: Date.now(),
+            timestamp: Date(Date.now()),
+            name: name.name
           });
           setText({ content: '' });
         } catch (error) {
           setChat({ writeError: error.message });
         }
+      }
       }
 
 
@@ -58,10 +72,19 @@ return (
       <Paper style={matches ? {backgroundColor: 'grey', width: '50%', padding: '20px', height: '600px', overflow: 'auto'} :{backgroundColor: 'grey', width: '70%', padding: '20px', height: '300px', overflow: 'auto'} }>
       <div className="adenvtreon">
         {chat.adenvtreon.map(chat => {
+          
+        if(chat.name === name.name){
+          return <Paper elevation={2} style={{fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#add8e6'}} key={chat.timestamp}>{chat.content} 
+          <br/>
+          <p style={{fontSize: '5px'}}>{chat.name}~ @{chat.timestamp}</p>
+          </Paper>
+        }
+        else{
           return <Paper elevation={2} style={{fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px'}} key={chat.timestamp}>{chat.content} 
           <br/>
-          <p style={{fontSize: '5px'}}>{chat.timestamp}</p>
+          <p style={{fontSize: '5px'}}>{chat.name}~ @{chat.timestamp}</p>
           </Paper>
+        }
         })}
       </div>
       </Paper>
