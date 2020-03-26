@@ -34,14 +34,15 @@ function handleChange(event) {
 }
 
     async function handleSubmit(event) {
-      console.log(name.name)
-      if(name.name === ''){
+      if(text.content === ''){
+        alert('You cannot send an empty mesage!')
+      }
+      else if(name.name === '' || name.name === null){
         event.preventDefault();
         let nName = prompt("Please enter in a chat name",`Anon${(Math.random() * 999)}`);
         setName({name: nName})
       }
-      else{
-        console.log('else')
+      else if(name.name !== ''){
         event.preventDefault();
         setChat({ writeError: null });
         try {
