@@ -5,7 +5,10 @@ import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
-function Messenger (){
+///Messenger takes in room={'foo'} as a prop
+//this determines the room that post will be sent too
+
+function Messenger (props){
 const [chat, setChat] = useState ({
     adenvtreon: [],
     content: '',
@@ -42,7 +45,7 @@ function handleChange(event) {
         event.preventDefault();
         setChat({ writeError: null });
         try {
-          await db.ref("adenvtreon").push({
+          await db.ref(props.room).push({
             content: text.content,
             timestamp: Date(Date.now()),
             name: name.name
@@ -57,7 +60,7 @@ function handleChange(event) {
 
 
 useEffect(() =>{
-    db.ref("adenvtreon").on("value", snapshot => {
+    db.ref(props.room).on("value", snapshot => {
         let adenvtreon = [];
         snapshot.forEach((snap) => {
             adenvtreon.push(snap.val());
@@ -70,7 +73,7 @@ useEffect(() =>{
 return (
     <div>
       <Paper style={matches ? {backgroundColor: 'grey', width: '50%', padding: '20px', height: '600px', overflow: 'auto'} :{backgroundColor: 'grey', width: '70%', padding: '20px', height: '300px', overflow: 'auto'} }>
-      <div className="adenvtreon">
+      <div className={props.room}>
         {chat.adenvtreon.map(chat => {
           
         if(chat.name === name.name){
@@ -80,7 +83,7 @@ return (
           </Paper>
         }
         else{
-          return <Paper elevation={2} style={{fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px'}} key={chat.timestamp}>{chat.content} 
+          return <Paper elevation={2} style={{fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px', marginLeft: '30px'}} key={chat.timestamp}>{chat.content} 
           <br/>
           <p style={{fontSize: '5px'}}>{chat.name}~ @{chat.timestamp}</p>
           </Paper>
