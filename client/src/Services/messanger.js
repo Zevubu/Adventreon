@@ -7,6 +7,9 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 ///Messenger takes in room={'foo'} as a prop
 //this determines the room that post will be sent too
+//Mesenger also takes in isMod{bool} as a prop
+//this determines if the post will be conidered a mod post or not
+//This MAY be exploitable because currently it is prop, and so can be altered 
 
 function Messenger (props){
 const [chat, setChat] = useState ({
@@ -15,6 +18,8 @@ const [chat, setChat] = useState ({
     readError: null,
     writeError: null,
 });
+
+// const [isMod, setMod] = useState(false)
 
 const [name, setName] = useState({
   name: ''
@@ -49,7 +54,8 @@ function handleChange(event) {
           await db.ref(props.room).push({
             content: text.content,
             timestamp: Date(Date.now()),
-            name: name.name
+            name: name.name,
+            mod: props.isMod
           });
           setText({ content: '' });
         } catch (error) {
@@ -78,13 +84,13 @@ return (
         {chat.adenvtreon.map(chat => {
           
         if(chat.name === name.name){
-          return <Paper elevation={2} style={{fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#add8e6'}} key={chat.timestamp}>{chat.content} 
+          return <Paper elevation={2} style={chat.mod ? {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#FDFD96'} : {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#add8e6'}} key={chat.timestamp}>{chat.content} 
           <br/>
           <p style={{fontSize: '5px'}}>{chat.name}~ @{chat.timestamp}</p>
           </Paper>
         }
         else{
-          return <Paper elevation={2} style={{fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px', marginLeft: '30px'}} key={chat.timestamp}>{chat.content} 
+          return <Paper elevation={2} style={chat.mod ?{fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px', marginLeft: '30px',backgroundColor: '#FDFD96' } : {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px', marginLeft: '30px'}} key={chat.timestamp}>{chat.content} 
           <br/>
           <p style={{fontSize: '5px'}}>{chat.name}~ @{chat.timestamp}</p>
           </Paper>

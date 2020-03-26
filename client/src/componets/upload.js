@@ -39,7 +39,7 @@ return(
       <p style={{opacity: 0.9}}>&nbsp;User&nbsp;<input id="uName" type="text"/>&nbsp; 
     <button onClick={() => {uploadHandler()}}>Upload!</button></p>
    
-<Messenger room={"tofu"} />
+<Messenger room={"tofu"} isMod="true" />
     </div>
 )
 
