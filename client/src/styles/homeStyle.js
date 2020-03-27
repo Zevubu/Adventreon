@@ -22,7 +22,7 @@ font-family: 'Baloo 2', cursive;
 `
 
 const H2 = styled.p`
-font-size: 30px;
+font-size: 25px;
 margin:0;
 text-shadow: 0.5px 0.5px rgb(98, 98, 98);
 font-family: 'Baloo 2', cursive;
@@ -308,4 +308,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {IntroBlock, Btn, MarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem, BlueHeader, BlueHeaderC,MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {IntroBlock, Btn, MarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem,HeaderC, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}

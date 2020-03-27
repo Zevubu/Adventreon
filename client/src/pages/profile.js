@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useParams} from "react-router";
+import React, { useContext } from "react";
+
 // import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 // import API from "../../API/loggedOutAPI";
-import {P, PS,PM, Btn, H1NB, H3, BlueHeaderC,H2,DivWBorder} from "../styles/homeStyle"
-import{ProviderBox, AppBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProTextBox} from '../styles/providerStyles'
+import {P, PS, H1NB, H3, BlueHeaderC,H2} from "../styles/homeStyle"
+import{ProviderBox, ProTextBoxN, ProDuoServiceBlockColumn, ProTextBox} from '../styles/providerStyles'
 import {UserInfoContext} from "../context/heart" 
 
-function UserInfo(props){
+function UserInfo(){
     // const {value} = props
     // const [userInfo, setUserInfo] = useState(value);
     const { userData } = useContext(UserInfoContext)

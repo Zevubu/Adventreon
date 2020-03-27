@@ -9,7 +9,7 @@ import{ Slide, DuoServiceBlockColumn, Image, TextBox} from '../../styles/provide
 //     )
 // }
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 
 function SlideFiller(props){
     return(

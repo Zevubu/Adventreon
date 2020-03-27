@@ -1,13 +1,13 @@
-import React, { useState, useEffect} from "react";
-import {DivWBorder, ProviderBox, BigBlock, BlueHeader,H2,} from "../styles/homeStyle"
+import React from "react";
+import {DivWBorder, BigBlock} from "../styles/homeStyle"
 
-import API from "../API/loggedOutAPI";
+// import API from "../API/loggedOutAPI";
 import EnterShows from '../componets/ShowBodies/EnterShow'
 import CounsShows from '../componets/ShowBodies/CounsShow'
 import ReligShows from '../componets/ShowBodies/ReligShow'
 
 function Shows (){
-    const [Shows, setShows] = useState([]);
+    // const [Shows, setShows] = useState([]);
     // const [DSBcount, setDSBcount] = useState(0)
 
     // useEffect(() => {

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import { Link, Redirect } from "react-router-dom";
-import {Btn, PS, PB, H2, H3} from "../../styles/homeStyle"
+import { Redirect } from "react-router-dom";
+import { PB, H2} from "../../styles/homeStyle"
 import{ Slide, SlideBuffer, DuoServiceBlockColumn, Image, TextBox} from '../../styles/providerStyles'
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+// import Button from '@material-ui/core/Button';
+// import Paper from '@material-ui/core/Paper';
 
 // key={key} id={show.id} showName={show.show_name} about={show.about}
 // imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
@@ -13,23 +13,23 @@ import Paper from '@material-ui/core/Paper';
 // relig={show.relig} timeStamp={show.time_stamp}
 
 function SlideFiller(props){
-    const [vis, setVis] = useState(1);
+    // const [vis, setVis] = useState(1);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
 
     if(Click){
         return <Redirect to={"/shows/" + props.id} />
     }   
-    
+    // opacity: vis ,
     return(
         <Slide id={props.id} onClick={i=>setClick(true)} bgImg={props.bImg}>
-            <SlideBuffer bgImg={props.imgB} style={{opacity: vis ,backgroundColor: bgC}} onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}>
+            <SlideBuffer bgImg={props.imgB} style={{backgroundColor: bgC}} onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}>
                 <DuoServiceBlockColumn>
                     <Image src={props.imgP} alt={props.showName}/>
                 </DuoServiceBlockColumn>
                 <DuoServiceBlockColumn>
                     <TextBox>
-                        <H3>{props.showName}</H3>
+                        <H2>{props.showName}</H2>
                         <PB>{props.hostName}</PB>
                     </TextBox>
                     {/* <a className="nav-link" style={{textDecoration: 'none'}} href={"/hosts/" + props.id}><Button variant='contained'>View {props.userName}'s profile</Button></a> */}

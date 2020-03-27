@@ -1,20 +1,20 @@
 import React, { useState, useEffect} from "react";
-import {DivWBorder, BigBlock, BlueHeader, TealHeader, H2, MarronBtn, HeaderItem} from "../../styles/homeStyle";
+import { BigBlock, BlueHeader, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-import {Logo} from "../../styles/componentStyles";
+// import {Logo} from "../../styles/componentStyles";
 import API from "../../API/loggedOutAPI";
 
 import SliderFiller from "../HostFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
  
 
 function Hosts (){ 
     const [Hosts, setHosts] = useState([]);
-    const [vis, setVis] = useState(1);
+    // const [vis, setVis] = useState(1);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -34,7 +34,7 @@ function Hosts (){
         return <Redirect to="/hosts" />
     }
     
-
+// opacity: vis ,
     return(
         <BigBlock>
             {/* Hosts will be auto populated from database, Items put in as filler*/}
@@ -44,7 +44,7 @@ function Hosts (){
                 <HeaderItem>
                 <H2                            
                     onClick={i=>setClick(true)}
-                    style={{opacity: vis ,backgroundColor: bgC}} 
+                    style={{backgroundColor: bgC}} 
                     onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                     onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
                 >

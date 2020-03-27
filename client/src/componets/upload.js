@@ -26,7 +26,7 @@ function Uploader(){
         console.log(uData);
       })
       axios.post(`http://${ip}/api/data/upload`, formData).then(function (res){
-          if (res.status == 200){
+          if (res.status === 200){
             alert("File uploaded");
             window.location.reload(false);
         }

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams} from "react-router";
 // import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import API from "../../API/epiLogOut";
-import {P, Btn, H1NB,H1, H3, BlueHeader,H2,HEp} from "../../styles/homeStyle"
-import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
-import EpisFiller from "../../componets/CatagoryFiller/epi_filler"
-import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler";
-import Button from '@material-ui/core/Button';
+import {P, H1NB, H1, H3, BlueHeader, H2, HEp} from "../../styles/homeStyle"
+import{ ProviderBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProTextBox} from '../../styles/providerStyles'
+// import EpisFiller from "../../componets/CatagoryFiller/epi_filler"
+// import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler";
+// import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
 // key={key} id={episode.id} epiName={episode.epi_name} about={episode.about} pImg={episode.img} bImg={Show.b_img}
@@ -58,7 +58,7 @@ function Episode(){
            
          };
          fetchEpis(); 
-     }, []);
+     });
 
     return(
         <div>
@@ -70,12 +70,13 @@ function Episode(){
                 <ProviderBox>
                     <ProDuoServiceBlock>
                         <iframe 
+                            title={`https://www.youtube.com/embed/${epi.v_link}`}
                             width="560" 
                             height="315" 
                             src={`https://www.youtube.com/embed/${epi.v_link}`} 
                             frameborder="0" 
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
+                            allowFullScreen>
                         </iframe> 
                         <ProDuoServiceBlockColumn>
                             <H1>Chatbox</H1>

@@ -34,7 +34,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function Shows (){
     const [shows, setShows] = useState([]);
-    const [vis, setVis] = useState(1);
+    // const [vis, setVis] = useState(1);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -53,7 +53,7 @@ function Shows (){
     if(Click){
         return <Redirect to="/shows" />
     }
-         
+    // opacity: vis , 
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
@@ -62,7 +62,7 @@ function Shows (){
                 <HeaderItem>
                     <H2
                         onClick={i=>setClick(true)}
-                        style={{opacity: vis ,backgroundColor: bgC}} 
+                        style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
                     >Shows</H2>

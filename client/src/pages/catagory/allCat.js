@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import {DivWBorder, ProviderBox, BigBlock, BlueHeader,H2,} from "../../styles/homeStyle"
+import {DivWBorder, ProviderBox, BigBlock, BlueHeader} from "../../styles/homeStyle"
 import API from "../../API/loggedOutAPI";
 import HostFiller from "../../componets/HostFiller/index"
 import ShowFiller from "../../componets/CatagoryFiller/show_filler"
