@@ -5,6 +5,11 @@ import API from "../../API/loggedOutAPI";
 
 import SliderFiller from "../ShowFiller/slide_filler";
 
+import EnterShows from '../ShowBodies/EnterShow'
+import CounsShows from '../ShowBodies/CounsShow'
+import ReligShows from '../ShowBodies/ReligShow'
+
+
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 // import Button from '@material-ui/core/Button';
@@ -41,14 +46,14 @@ function Shows (){
     const num = matches ? 5 : 1
     const scNum = matches ? 4 : 1
 
-    useEffect(() => {
-       const fetchShows = async () =>{
-        const result = await API.getShows()
-            console.log(`show data ${result.data}`)
-            setShows(result.data)
-        };
-        fetchShows(); 
-    }, []);
+    // useEffect(() => {
+    //    const fetchShows = async () =>{
+    //     const result = await API.getShows()
+    //         console.log(`show data ${result.data}`)
+    //         setShows(result.data)
+    //     };
+    //     fetchShows(); 
+    // }, []);
 
     if(Click){
         return <Redirect to="/shows" />
@@ -58,7 +63,7 @@ function Shows (){
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
-            <BlueHeader>
+            {/* <BlueHeader>
                 <HeaderItem>
                     <H2
                         onClick={i=>setClick(true)}
@@ -67,13 +72,22 @@ function Shows (){
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
                     >Shows</H2>
                 </HeaderItem>
-                {/* <HeaderItem>
+                <HeaderItem>
                     <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
-                </HeaderItem> */}
-            </BlueHeader>
-            <br/>
+                </HeaderItem>
+            </BlueHeader> */}
+            <div>
+                <EnterShows />
+            </div>
+            <div>
+                <CounsShows />
+            </div>
+            <div>
+                <ReligShows /> 
+            </div>
+                
             
-            <Carousel
+            {/* <Carousel
                 // autoPlay={5000}
                 animationSpeed={1500}
                 slidesPerPage={num}
@@ -96,7 +110,7 @@ function Shows (){
                             relig={show.relig} timeStamp={show.time_stamp}
                         />
                 ))}
-            </Carousel>
+            </Carousel> */}
         </BigBlock>
     )
 }

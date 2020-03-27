@@ -177,7 +177,7 @@ background-color: rgb(115, 162, 175);
 `
 // Intro Block styles
 const IntroBlock = styled.div`
-background-image: url(https://images.unsplash.com/photo-1505842465776-3b4953ca4f44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1505842465776-3b4953ca4f44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"});
 background-repeat: no-repeat;
 background-size: Cover;
 background-position-x: center;
@@ -190,7 +190,6 @@ height: 600px;
 display: flex;
 flex-direction: column;
 justify-content: space-evenly;
-margin-bottom:35px;
 `
 const IntroTxTDiv = styled.div`
 display: flex;

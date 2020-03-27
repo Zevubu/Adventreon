@@ -58,7 +58,7 @@ function Episode(){
            
          };
          fetchEpis(); 
-     });
+     }, []);
 
     return(
         <div>

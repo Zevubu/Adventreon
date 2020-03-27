@@ -51,7 +51,7 @@ function Shows (){
     }, []);
 
     if(Click){
-        return <Redirect to="/shows" />
+        return <Redirect to="/religious" />
     }
     // opacity: vis ,  
     return(

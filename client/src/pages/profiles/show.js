@@ -50,7 +50,7 @@ function Show(){
             };
          fetchShow(); 
          fetchEpis();
-     });
+     }, []);
 // show_name,
 // about,
 // img, 
