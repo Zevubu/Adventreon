@@ -131,6 +131,7 @@ justify-content: space-between;
 align-items: center;
 @media only screen and (max-width: 600px) {
     width: 75%;
+    flex-direction: column;
     };
 `
 const ProDuoServiceBlockColumn = styled.div`
