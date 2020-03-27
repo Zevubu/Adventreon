@@ -1,4 +1,4 @@
-import React, { createContext, useContext} from 'react';
+import { createContext, useContext} from 'react';
 // Auth and token context 
 export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);

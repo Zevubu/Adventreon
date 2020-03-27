@@ -1,11 +1,11 @@
 
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useAuth, useUser } from "../context/heart";
+import { useAuth } from "../context/heart";
 
 function LogOutRoute({ component: Component, ...rest }) {
   const {authTokens, isAuthenticated} = useAuth();
-  const {isUser} = useUser();
+
    
   console.log(`What is Auth token: ${authTokens}`)
 

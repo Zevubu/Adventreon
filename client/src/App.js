@@ -1,4 +1,4 @@
-import React, {useState, useEffect, createContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {GlobalStyle} from "./styles/universal-styles"
 // private routes
@@ -39,7 +39,7 @@ import AddEpisode from './pages/tools/add_episode';
 import HostProfile from './pages/profiles/host'
 import ShowProfile from './pages/profiles/show'
 import EpisodeProfile from './pages/profiles/episode'
-import Show from './pages/profiles/show';
+// import Show from './pages/profiles/show';
 
 function App() {
   const [authTokens, setAuthTokens] = useState();

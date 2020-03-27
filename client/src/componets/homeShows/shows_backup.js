@@ -1,5 +1,5 @@
 import React from "react";
-import {DivWBorder, TriServiceBlock, ServiceBlock, BigBlock, Btn, BlueBtn, MarronBtn, TealBtn,CCCDiv, HoldDiv, BlueHeader, MarronHeader, HeaderItem,TealHeader, H2, P, PS, H3B, H3M, H3T, PG} from "../../styles/homeStyle"
+import {DivWBorder, TriServiceBlock, ServiceBlock, BigBlock,CCCDiv, HoldDiv, BlueHeader, MarronHeader, HeaderItem,TealHeader, H2, P, PS, H3B, H3M, H3T, PG} from "../../styles/homeStyle"
 import { Logo } from "../../styles/componentStyles";
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';

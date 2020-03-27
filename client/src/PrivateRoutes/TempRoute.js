@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useAuth, useTemp } from "../context/heart";
+import { useTemp } from "../context/heart";
 
 function TempRoute({ component: Component, ...rest }) {
-  const {authTokens} = useAuth();
   const {isTempP} = useTemp();
    
 //   console.log(`What is Auth token: ${authTokens}`)

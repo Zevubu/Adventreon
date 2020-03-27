@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import {DivWBorder, BigBlock, BlueHeader, H2, MarronBtn, HeaderItem} from "../../styles/homeStyle";
+import { BigBlock, BlueHeader, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../API/loggedOutAPI";
 
@@ -7,8 +7,8 @@ import SliderFiller from "../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+// import Button from '@material-ui/core/Button';
+// import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // show_name,x 
@@ -34,7 +34,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function Shows (){
     const [shows, setShows] = useState([]);
-    const [vis, setVis] = useState(1);
+    // const [vis, setVis] = useState(1);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -53,7 +53,7 @@ function Shows (){
     if(Click){
         return <Redirect to="/shows" />
     }
-         
+    // opacity: vis ,
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
@@ -62,7 +62,7 @@ function Shows (){
                 <HeaderItem>
                     <H2
                         onClick={i=>setClick(true)}
-                        style={{opacity: vis ,backgroundColor: bgC}} 
+                        style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
                     >Shows</H2>

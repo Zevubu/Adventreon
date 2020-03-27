@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import {Link} from 'react-router-dom';
-import {H2} from '../../styles/homeStyle';
-import {NavBody,  NavBtnB, NavBtnM, OptionBox, Logo} from "../../styles/componentStyles";
+// import {H2} from '../../styles/homeStyle';
+import {NavBody,  OptionBox, Logo} from "../../styles/componentStyles";
 import { useAuth, useUser, useHost, useManagment, useTemp, useUserInfo } from "../../context/heart";
 
 import SimpleMenu from './menu.js';
@@ -11,10 +11,10 @@ import ManagerMenue from './manegMenue';
 
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 // import { UserInfoContext } from "../../App"
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { isStyledComponent } from "styled-components";
+// import { isStyledComponent } from "styled-components";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -47,6 +47,7 @@ function NavBar (props){
         setIsManager()
         setIsAuthenticated();
         setIsHost();
+        setIsTempP();
     }
     // && isTempP
     return(

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams} from "react-router";
 // import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import API from "../../API/loggedOutAPI";
-import {P, Btn, H1NB, H3, BlueHeader,H2,} from "../../styles/homeStyle"
+import {P, H1NB, H3, BlueHeader, H2} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import ShowFiller from "../../componets/CatagoryFiller/show_filler"
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
 //  user_name,x
@@ -47,7 +47,7 @@ function Host(){
             };
          fetchHost(); 
          fetchShows();
-     }, []);
+     });
 
     return(
         <div>
@@ -62,32 +62,32 @@ function Host(){
                     </ProDuoServiceBlock>
                     <ProDuoServiceBlockColumn>
                         <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey', marginbottom: '20px'}}>
-                        <ProTextBoxN>
-                            <H1NB>{Host.user_name}</H1NB>
-                            <H3 style={{fontWeight: 'bold'}}>{Host.title}</H3>
-                        </ProTextBoxN>
-                        <ProTextBox>
-                            <H3>About</H3>
-                            <P>{Host.about}</P> 
-                        </ProTextBox> 
-                        <ProTextBox>
-                            <H3>Tip Me Here.</H3>
-                            <br/>
-                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                <input type="hidden" name="cmd" value="_s-xclick"/>
-                                <input type="hidden" name="hosted_button_id" value="92TZKHPM5****"/>
-                                <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."/>
-                                <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
-                            </form>
-                        </ProTextBox>
-                        <ProTextBox>
-                            <H3>My patreon.</H3>
-                            <P>{Host.patreon}</P>
-                        </ProTextBox>
-                        <ProTextBox>
-                            <H3>{Host.wp_title}</H3>
-                            <a href={Host.webpage}><P>{Host.webpage}</P></a>
-                        </ProTextBox>
+                            <ProTextBoxN>
+                                <H1NB>{Host.user_name}</H1NB>
+                                <H3 style={{fontWeight: 'bold'}}>{Host.title}</H3>
+                            </ProTextBoxN>
+                            <ProTextBox>
+                                <H3>About</H3>
+                                <P>{Host.about}</P> 
+                            </ProTextBox> 
+                            <ProTextBox>
+                                <H3>Tip Me Here.</H3>
+                                <br/>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick"/>
+                                    <input type="hidden" name="hosted_button_id" value="92TZKHPM5****"/>
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."/>
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
+                                </form>
+                            </ProTextBox>
+                            <ProTextBox>
+                                <H3>My patreon.</H3>
+                                <P>{Host.patreon}</P>
+                            </ProTextBox>
+                            <ProTextBox>
+                                <H3>{Host.wp_title}</H3>
+                                <a href={Host.webpage}><P>{Host.webpage}</P></a>
+                            </ProTextBox>
                         </Paper>
                     </ProDuoServiceBlockColumn>
                    

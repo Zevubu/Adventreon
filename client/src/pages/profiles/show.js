@@ -3,10 +3,10 @@ import { useParams} from "react-router";
 import {Link} from 'react-router-dom';
 import API from "../../API/loggedOutAPI";
 import eAPI from "../../API/epiLogOut"
-import {P, Btn, H1NB, H3, BlueHeader,H2,} from "../../styles/homeStyle"
+import {P, H1NB, H3, BlueHeader, H2} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler"
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
 // chiquioasis
@@ -50,7 +50,7 @@ function Show(){
             };
          fetchShow(); 
          fetchEpis();
-     }, []);
+     });
 // show_name,
 // about,
 // img, 

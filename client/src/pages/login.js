@@ -13,15 +13,15 @@ function Login (){
     const [password, setPassword] = useState("");
     const [thisTemp, setThisTemp] = useState(false);
     // context pulls
-    const { setAuthTokens, isAuthenticated, setIsAuthenticated } = useAuth();
-    const {isUser,setIsUser} = useUser();
-    const {isHost, setIsHost} = useHost();
-    const {setIsManager,isManager } = useManagment();
-    const {setUserData, setIsData, isData} = useUserInfo();
-    const {setIsTempP, isTempP} = useTemp();
+    const { setAuthTokens, setIsAuthenticated } = useAuth();
+    const { setIsUser} = useUser();
+    const { setIsHost} = useHost();
+    const { setIsManager } = useManagment();
+    const { setUserData } = useUserInfo();
+    const { setIsTempP } = useTemp();
     
   
-    const referer = '/';
+    // const referer = '/';
 
     function postLogin(event){
         event.preventDefault()
