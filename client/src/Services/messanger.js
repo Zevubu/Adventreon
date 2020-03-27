@@ -72,14 +72,14 @@ useEffect(() =>{
         snapshot.forEach((snap) => {
             adenvtreon.push(snap.val());
 })
- setChat({adenvtreon: adenvtreon})
+ setChat({adenvtreon: adenvtreon.reverse()})
     }) 
 },[])
 
 
 return (
     <div>
-      <Paper style={matches ? {backgroundColor: 'grey', width: '50%', padding: '20px', height: '600px', overflow: 'auto'} :{backgroundColor: 'grey', width: '70%', padding: '20px', height: '300px', overflow: 'auto'} }>
+      <Paper style={matches ? {backgroundColor: 'grey', width: '50%', padding: '20px', height: '400px', overflow: 'auto'} :{backgroundColor: 'grey', width: '70%', padding: '20px', height: '300px', overflow: 'auto'} }>
       <div className={props.room}>
         {chat.adenvtreon.map(chat => {
           
