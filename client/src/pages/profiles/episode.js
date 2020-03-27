@@ -8,6 +8,7 @@ import{ ProviderBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, 
 // import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler";
 // import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import Messenger from '../../Services/messanger'
 
 // key={key} id={episode.id} epiName={episode.epi_name} about={episode.about} pImg={episode.img} bImg={Show.b_img}
 // showId={episode.show_id} showName={episode.show_name} catagory={episode.catagory} subCatagory={episode.sub_catagory}
@@ -78,13 +79,11 @@ function Episode(){
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                             allowFullScreen>
                         </iframe> 
-                        <ProDuoServiceBlockColumn>
-                            <H1>Chatbox</H1>
-                            <H3>People will talk can chat here.</H3>
-                            <H3>we have plans to make it some someone can rent a private chat box</H3>
-                            <H3>But that will come in later</H3>
-                        </ProDuoServiceBlockColumn>
                     </ProDuoServiceBlock>
+                        <ProDuoServiceBlockColumn>
+                            <Messenger ismod={false} room="test"/>
+                        </ProDuoServiceBlockColumn>
+                    
                     <ProDuoServiceBlockColumn>
                     <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey', marginbottom: '20px'}}x>
                         <ProTextBoxN>

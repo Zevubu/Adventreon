@@ -79,7 +79,7 @@ useEffect(() =>{
 
 return (
     <div>
-      <Paper style={matches ? {backgroundColor: 'grey', width: '50%', padding: '20px', height: '400px', overflow: 'auto'} :{backgroundColor: 'grey', width: '70%', padding: '20px', height: '300px', overflow: 'auto'} }>
+      <Paper style={matches ? {backgroundColor: 'grey', width: '100%', padding: '20px', height: '400px', overflow: 'auto'} :{backgroundColor: 'grey', width: '70%', padding: '20px', height: '300px', overflow: 'auto'} }>
       <div className={props.room}>
         {chat.adenvtreon.map(chat => {
           
@@ -99,7 +99,7 @@ return (
       </div>
       </Paper>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} style={matches ? {width: '44%', marginBottom: '20px', padding: '20px'} : {width: '53%', marginBottom: '20px', padding: '20px'}} value={text.content}></input>
+        <input onChange={handleChange} style={matches ? {width: '65%', marginBottom: '20px', padding: '20px'} : {width: '53%', marginBottom: '20px', padding: '20px'}} value={text.content}></input>
         <button style={{padding: '20px'}} type="submit">Send</button>
       </form>
     </div>
