@@ -3,6 +3,7 @@ import { db } from "./firebase";
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import wordFilter from './wordFilter'
 
 
 ///Messenger takes in room={'foo'} as a prop
@@ -18,6 +19,11 @@ const [chat, setChat] = useState ({
     readError: null,
     writeError: null,
 });
+
+Messenger.defaultProps = {
+ isMod: false,
+ child: false
+}
 
 // const [isMod, setMod] = useState(false)
 
@@ -67,6 +73,7 @@ function handleChange(event) {
 
 
 useEffect(() =>{
+  // console.log("pulling Ref " + props.room)
     db.ref(props.room).on("value", snapshot => {
         let adenvtreon = [];
         snapshot.forEach((snap) => {
@@ -79,18 +86,17 @@ useEffect(() =>{
 
 return (
     <div>
-      <Paper style={matches ? {backgroundColor: 'grey', width: '100%', padding: '20px', height: '400px', overflow: 'auto'} :{backgroundColor: 'grey', width: '70%', padding: '20px', height: '300px', overflow: 'auto'} }>
+      <Paper style={matches ? {backgroundColor: 'grey', width: '75%', padding: '20px', height: '200px', overflow: 'auto'} :{backgroundColor: 'grey', width: '70%', padding: '20px', height: '300px', overflow: 'auto'} }>
       <div className={props.room}>
         {chat.adenvtreon.map(chat => {
-          
         if(chat.name === name.name){
-          return <Paper elevation={2} style={chat.mod ? {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#FDFD96'} : {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#add8e6'}} key={chat.timestamp}>{chat.content} 
+          return <Paper elevation={2} style={chat.mod ? {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#FDFD96'} : {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#add8e6'}} key={chat.timestamp}>{props.child ? wordFilter(chat.content) : chat.content} 
           <br/>
           <p style={{fontSize: '5px'}}>{chat.name}~ @{chat.timestamp}</p>
           </Paper>
         }
         else{
-          return <Paper elevation={2} style={chat.mod ?{fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px', marginLeft: '30px',backgroundColor: '#FDFD96' } : {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px', marginLeft: '30px'}} key={chat.timestamp}>{chat.content} 
+          return <Paper elevation={2} style={chat.mod ?{fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px', marginLeft: '30px',backgroundColor: '#FDFD96' } : {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px', marginLeft: '30px'}} key={chat.timestamp}>{props.child ? wordFilter(chat.content) : chat.content}
           <br/>
           <p style={{fontSize: '5px'}}>{chat.name}~ @{chat.timestamp}</p>
           </Paper>
