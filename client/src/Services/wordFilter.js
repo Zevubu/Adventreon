@@ -1,17 +1,25 @@
 const words = require('./bannedwords.js')
 
-
- function wordFilter (text) {
-    console.log(words)
+function wordFilter (text) {
     let arr = text.trim().split(" ")
-    console.log(arr);
     let count = 0;
-    for(i=0; i < arr.length; i++){
-        if(arr[i] === words[count]){
-            arr[i] = '####'
+
+    function filter(){
+        if(count === text.length){
+            console.log(arr.toString().split(",").join(" "))
+        }
+        else{
+            for(let i=0; i < arr.length; i++){
+                if(arr[i].toLowerCase() === words[count]){
+                    arr[i] = '####'
+                }
+            }
+            count = count + 1;
+            filter()
         }
     }
-    console.log(arr.toString())
+    return filter()
 }
 
-wordFilter("this is a really poopy day!")
+
+export default wordFilter

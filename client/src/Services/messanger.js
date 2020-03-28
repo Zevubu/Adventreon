@@ -3,6 +3,7 @@ import { db } from "./firebase";
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import wordFilter from './wordFilter'
 
 
 ///Messenger takes in room={'foo'} as a prop
