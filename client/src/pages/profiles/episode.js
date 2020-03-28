@@ -81,7 +81,7 @@ function Episode(){
                         </iframe> 
                     </ProDuoServiceBlock>
                         <ProDuoServiceBlockColumn>
-                            <Messenger ismod={false} room={epi.show_id}/>
+                            <Messenger room={epi.v_link} isMod={false} />
                         </ProDuoServiceBlockColumn>
                     
                     <ProDuoServiceBlockColumn>
