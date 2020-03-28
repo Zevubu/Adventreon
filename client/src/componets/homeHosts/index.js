@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock, BlueHeader, H2, HeaderItem} from "../../styles/homeStyle";
+import { BigBlock, MarronHeader, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 // import {Logo} from "../../styles/componentStyles";
 import API from "../../API/loggedOutAPI";
@@ -40,7 +40,7 @@ function Hosts (){
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
             {/* <DivWBorder style={{marginBottom: '100px'}}> */}
-            <BlueHeader>
+            <MarronHeader>
                 <HeaderItem>
                 <H2                            
                     onClick={i=>setClick(true)}
@@ -53,7 +53,7 @@ function Hosts (){
                 {/* <HeaderItem>
                     <a className="nav-link" href="/Hosts" style={{textDecoration: 'none'}}><Button variant="contained" color='secondary'>See all</Button></a>
                 </HeaderItem> */}
-            </BlueHeader>
+            </MarronHeader>
             <br/>
             
             <Carousel

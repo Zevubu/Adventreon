@@ -6,7 +6,7 @@ import HostsBlock from "../../componets/homeHosts";
 import ShowsBlock from "../../componets/homeShows";
 // import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
-function Home (){
+function ReligHome (){
     // const {isAuthenticated} = useAuth();
     // const {isUser} = useUser();
     // const { isHost } = useHost();
@@ -49,15 +49,13 @@ function Home (){
                         
                     </IntroTxTDiv>
             </IntroBlock>
-            
-            
+            {/* Hosts area start */}
+            <HostsBlock/>
             {/* Shows area */}
             <ShowsBlock/>
-            {/* Hosts area */}
-            <HostsBlock/>
         
         </div>
     )
 }
 
-export default Home; 
+export default ReligHome; 
