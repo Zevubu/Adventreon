@@ -40,6 +40,7 @@ function handleChange(event) {
 }
 
     async function handleSubmit(event) {
+      let newText = wordFilter(text.content)
       if(text.content === ''){
         alert('You cannot send an empty mesage!')
       }
@@ -53,7 +54,7 @@ function handleChange(event) {
         setChat({ writeError: null });
         try {
           await db.ref(props.room).push({
-            content: text.content,
+            content: newText,
             timestamp: Date(Date.now()),
             name: name.name,
             mod: props.isMod
