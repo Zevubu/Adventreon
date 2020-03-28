@@ -1,6 +1,6 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock, CCCDiv, FillerDiv, IntroTxTDiv,H1} from "../../styles/homeStyle"
+import {IntroBlock, CCCDiv, FillerDiv, IntroTxTDiv,H1, H2} from "../../styles/homeStyle"
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/homeHosts";
 import ShowsBlock from "../../componets/homeShows";
@@ -21,6 +21,7 @@ function CounsHome (){
 
                         <CCCDiv>
                             <H1>Adventreon</H1>
+                            <H2>Counseling</H2>
                             <br/>
                             <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 

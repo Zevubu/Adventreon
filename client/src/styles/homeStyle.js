@@ -184,7 +184,7 @@ background-position-x: center;
 background-position-y: center;
 border-bottom: rgb(115, 162, 175) solid 2px;
 font-family: 'AthelasReg';
-color: rgb(238, 245, 244);
+color: ${props => props.color || "rgb(238, 245, 244)"};
 font-size: 20px;
 height: 600px;
 display: flex;

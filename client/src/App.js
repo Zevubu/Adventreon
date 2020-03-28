@@ -24,9 +24,9 @@ import profile from './pages/profile';
 
 import HostsPage from './pages/hosts';
 import ShowPage from "./pages/shows"
-import EnterPage from './pages/catagory/entertainment';
-import CounsPage from './pages/catagory/counseling';
-import ReligPage from './pages/catagory/religious';
+import EnterPage from './pages/home/enter-home';
+import CounsPage from './pages/home/couns-home';
+import ReligPage from './pages/home/relig-home';
 import AllCatPage from './pages/catagory/allCat';
 
 // tools
