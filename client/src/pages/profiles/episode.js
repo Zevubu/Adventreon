@@ -49,13 +49,13 @@ import Messenger from '../../Services/messanger'
 
 function Episode(){
     let { id } = useParams();
-    const [epis, setEpis] = useState([]);
+    const [epi, setEpi] = useState({});
     // const [services, setServices] = useState([])
 
     useEffect(() => {
         const fetchEpis = async () =>{
          const result = await API.getEpisodesByID(`${id}`)
-             setEpis(result.data)
+             setEpi(result.data[0])
            
          };
          fetchEpis(); 
@@ -63,8 +63,8 @@ function Episode(){
 
     return(
         <div>
-        {epis.map((epi, key) => (
-            <div key={key}>
+        {/* {epis.map((epi, key) => (
+            <div key={key}> */}
                 <BlueHeader id={epi.id}>
                     <H2>{epi.epi_name}</H2>
                 </BlueHeader>
@@ -80,10 +80,9 @@ function Episode(){
                             allowFullScreen>
                         </iframe> 
                     </ProDuoServiceBlock>
-                        <ProDuoServiceBlockColumn>
-                            <Messenger room={epi.v_link} isMod={false} />
-                        </ProDuoServiceBlockColumn>
-                    
+
+                    <Messenger isMod={false} room={id}/>
+
                     <ProDuoServiceBlockColumn>
                     <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey', marginbottom: '20px'}}x>
                         <ProTextBoxN>
@@ -116,8 +115,8 @@ function Episode(){
                         </Paper>
                     </ProDuoServiceBlockColumn>
                 </ProviderBox>
-            </div>
-        ))}
+            {/* </div>
+        ))} */}
         </div>             
     )
 }
