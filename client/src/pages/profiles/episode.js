@@ -3,12 +3,13 @@ import { useParams} from "react-router";
 // import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import API from "../../API/epiLogOut";
 import {P, H1NB, H1, H3, BlueHeader, H2, HEp} from "../../styles/homeStyle"
-import{ ProviderBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProTextBox} from '../../styles/providerStyles'
+import{ ProDuoServiceBlockColumnB, ProviderBox, ProTextBoxN, ProDuoServiceBlockB, ProDuoServiceBlockColumn, ProTextBox} from '../../styles/providerStyles'
 // import EpisFiller from "../../componets/CatagoryFiller/epi_filler"
 // import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler";
 // import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import Messenger from '../../Services/messanger'
+import Messenger from '../../Services/messanger';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // key={key} id={episode.id} epiName={episode.epi_name} about={episode.about} pImg={episode.img} bImg={Show.b_img}
 // showId={episode.show_id} showName={episode.show_name} catagory={episode.catagory} subCatagory={episode.sub_catagory}
@@ -51,6 +52,8 @@ function Episode(){
     let { id } = useParams();
     const [epi, setEpi] = useState({});
     // const [services, setServices] = useState([])
+    const matches = useMediaQuery('(min-width:600px)');
+    const frame = matches ? 560 : 375
 
     useEffect(() => {
         const fetchEpis = async () =>{
@@ -69,21 +72,21 @@ function Episode(){
                     <H2>{epi.epi_name}</H2>
                 </BlueHeader>
                 <ProviderBox>
-                    <ProDuoServiceBlock>
+                    <ProDuoServiceBlockB>
                         <iframe 
                             title={`https://www.youtube.com/embed/${epi.v_link}`}
-                            width="560" 
+                            width={frame}
                             height="315" 
                             src={`https://www.youtube.com/embed/${epi.v_link}`} 
                             frameborder="0" 
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                             allowFullScreen>
                         </iframe> 
-                    </ProDuoServiceBlock>
-
                     <Messenger isMod={false} room={id}/>
+                    </ProDuoServiceBlockB>
 
-                    <ProDuoServiceBlockColumn>
+                    { matches ?
+                    <ProDuoServiceBlockColumnB>
                     <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey', marginbottom: '20px'}}x>
                         <ProTextBoxN>
                             <H1NB id={epi.show_id}>{epi.show_name}</H1NB>
@@ -113,7 +116,10 @@ function Episode(){
                             <a href={epi.webpage}><P>{epi.webpage}</P></a>
                         </ProTextBox>
                         </Paper>
-                    </ProDuoServiceBlockColumn>
+                    </ProDuoServiceBlockColumnB>
+                    :
+                    ""
+                    }
                 </ProviderBox>
             {/* </div>
         ))} */}
