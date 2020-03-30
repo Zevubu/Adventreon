@@ -134,6 +134,24 @@ align-items: center;
     flex-direction: column;
     };
 `
+
+const ProDuoServiceBlockB = styled.div`
+height: auto;
+width: auto;
+margin:20px;
+backgound-color:238, 245, 2440.767);
+display: flex;
+flex-direction: column;
+align-items: center;
+@media only screen and (max-width: 600px) {
+    width: 75%;
+    flex-direction: column;
+    };
+`
+
+
+
+
 const ProDuoServiceBlockColumn = styled.div`
 height: auto;
 width:50%;
@@ -148,6 +166,31 @@ align-items: center;
     };
 
 `
+
+const ProDuoServiceBlockColumnB = styled.div`
+height: 250px;
+width: 50%;
+margin: 30px;
+grid-template-columns: auto auto;
+grid-template-rows: auto;
+align-items: center;
+@media only screen and (max-width: 600px) {
+    align-items: center;
+    margin: auto;
+    width: 75%;
+    };
+
+`
+
+
+
+
+
+
+
+
+
+
 const AppBox = styled.div`
 height: auto;
 width: auto;
@@ -193,4 +236,4 @@ height: auto;
     };
 `
 
-export {ProviderBox, ShowBox,AppBox, Slider, SliderContent, Slide, SlideBuffer, ProDuoServiceBlock, DuoServiceBlockRow, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}
+export {ProviderBox,ProDuoServiceBlockB, ProDuoServiceBlockColumnB, ShowBox,AppBox, Slider, SliderContent, Slide, SlideBuffer, ProDuoServiceBlock, DuoServiceBlockRow, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}
