@@ -15,7 +15,13 @@ import { signInWithGoogle } from '../Services/Signin'
 
 function Messenger (props){
 const [chat, setChat] = useState ({
-    adenvtreon: [],
+    adenvtreon: [{
+      content: 'Please Login to See Chat',
+      timestamp: '',
+      mod: true,
+      uid: '',
+      email: 'adventreon@gmail.com'
+    }],
     content: '',
     readError: null,
     writeError: null,
@@ -89,7 +95,6 @@ function handleChange(event) {
           await db.ref(props.room).push({
             content: text.content,
             timestamp: Date(Date.now()),
-            name: name.name,
             mod: props.isMod,
             uid: auth().currentUser.uid,
             email: auth().currentUser.email
@@ -120,7 +125,13 @@ return (
       <Paper style={matches ? {backgroundColor: 'grey', width: '520px', padding: '20px', height: '200px', overflow: 'auto'} :{backgroundColor: 'grey', width: '335px', padding: '20px', height: '300px', overflow: 'auto'} }>
       <div className={props.room}>
         {chat.adenvtreon.map(chat => {
-        if(chat.email === auth().currentUser.email){
+        if(auth().currentUser === null){
+          return <Paper elevation={2} style={chat.mod ? {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#FDFD96'} : {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#add8e6'}} key={chat.timestamp}>{props.child ? wordFilter(chat.content) : chat.content} 
+          <br/>
+          <p style={{fontSize: '5px'}}>{chat.email}~ @{chat.timestamp}</p>
+          </Paper>
+        }
+        else if(chat.email === auth().currentUser.email){
           return <Paper elevation={2} style={chat.mod ? {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#FDFD96'} : {fontFamily: 'Baloo 2, cursive', width:'50%',padding:'5px', paddingBottom: '15px', marginBottom: '15px',backgroundColor: '#add8e6'}} key={chat.timestamp}>{props.child ? wordFilter(chat.content) : chat.content} 
           <br/>
           <p style={{fontSize: '5px'}}>{chat.email}~ @{chat.timestamp}</p>
