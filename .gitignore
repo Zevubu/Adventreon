@@ -1,4 +1,5 @@
 .env
+.envhold
 node_modules
 keys.js
 KEYS.js

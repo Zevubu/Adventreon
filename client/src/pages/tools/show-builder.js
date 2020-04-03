@@ -4,8 +4,9 @@ import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, P
 import API from "../../API/loggedOutAPI";
 import {useForm} from 'react-hook-form';
 import {UserInfoContext} from "../../context/heart"
-  // show_name, x
-        // about, x
+        // show_name, x
+        // show_type,
+        // about, x 
         // img, x
         // img_b,x 
         // catagory,x 
@@ -37,6 +38,7 @@ function ShowBuild (){
      
         API.createShow({ 
             "show_name": data.showName,
+            "show_type": "episodical",
             "about": data.about,
             "img": data.pImg,
             "img_b": data.bImg,

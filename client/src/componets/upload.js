@@ -1,6 +1,7 @@
 import React, {useState,useRef} from 'react';
 import axios from 'axios';
 import Messenger from '../Services/messanger'
+import { auth } from '../Services/firebase';
 
 function Uploader(){
   const myRef = useRef({selectedFile: null});
