@@ -65,11 +65,11 @@ function NavBar (props){
                             <Link style={{ textDecoration: 'none' }} to="/tempsu"><Button variant="contained" color="secondary">MAKE YOUR HOST PROFILE HERE!</Button></Link>
                         </div>
                     )} 
-                    <Link style={{ textDecoration: 'none' }} to="/"><Button variant="outlined" color="secondary">Home</Button></Link>
+                    {/* <Link style={{ textDecoration: 'none' }} to="/"><Button variant="outlined" color="secondary">Home</Button></Link> */}
                     <br></br>
                     <SimpleMenu></SimpleMenu>
                     <br></br>
-                    <Link style={{ textDecoration: 'none' }} to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link>
+                    {/* <Link style={{ textDecoration: 'none' }} to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link> */}
                 </OptionBox>
                 :
                 <ResMenu></ResMenu>           
