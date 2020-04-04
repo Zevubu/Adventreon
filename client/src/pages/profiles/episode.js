@@ -82,7 +82,7 @@ function Episode(){
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                             allowFullScreen>
                         </iframe> 
-                    <Messenger isMod={false} room={id}/>
+                    <Messenger child={false} isMod={false} room={id}/>
                     </ProDuoServiceBlockB>
 
                     { matches ?

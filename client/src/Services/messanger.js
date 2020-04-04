@@ -52,6 +52,8 @@ const [text, setText] = useState({
 async function googleSignIn() {
   try {
     await signInWithGoogle();
+    window.location.reload(false);
+    console.log('logged in')
   } catch (error) {
     setChat({ error: error.message });
   }
@@ -77,7 +79,7 @@ function handleChange(event) {
     });
 }   
 
-    async function handleSubmit(event) {
+   function handleSubmit(event) {
       if(text.content === ''){
         event.preventDefault();
         console.log(auth().currentUser)
@@ -92,7 +94,7 @@ function handleChange(event) {
         console.log(auth().currentUser)
         setChat({ writeError: null });
         try {
-          await db.ref(props.room).push({
+           db.ref(props.room).push({
             content: text.content,
             timestamp: Date(Date.now()),
             mod: props.isMod,
@@ -101,6 +103,7 @@ function handleChange(event) {
           });
           setText({ content: '' });
         } catch (error) {
+          console.log(error)
           setChat({ writeError: error.message });
         }
       }
@@ -114,8 +117,8 @@ useEffect(() =>{
         let adenvtreon = [];
         snapshot.forEach((snap) => {
             adenvtreon.push(snap.val());
+            setChat({adenvtreon: adenvtreon.reverse()})
 })
- setChat({adenvtreon: adenvtreon.reverse()})
     }) 
 },[])
 
