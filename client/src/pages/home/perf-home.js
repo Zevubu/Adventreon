@@ -19,8 +19,8 @@ function MusicHome (){
                 <FillerDiv/>
                     <IntroTxTDiv>
                         <CCCDiv>
-                            <H1>Life</H1>
-                            <H2>Watch, learn, and listen</H2>
+                            <H1>Performance</H1>
+                            <H2>This world's full of some wonderfully odd people, isn't it?</H2>
                             <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             width="560" 

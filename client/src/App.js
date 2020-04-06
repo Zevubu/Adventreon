@@ -24,9 +24,10 @@ import profile from './pages/profile';
 
 import HostsPage from './pages/hosts';
 import ShowPage from "./pages/shows"
-import EnterPage from './pages/home/enter-home';
+import MusicPage from "./pages/home/music-home"
+import EnterPage from './pages/home/perf-home';
 import CounsPage from './pages/home/couns-home';
-import ReligPage from './pages/home/relig-home';
+import SpirtPage from './pages/home/sp-home';
 import AllCatPage from './pages/catagory/allCat';
 
 // tools
@@ -159,7 +160,8 @@ function App() {
                         <Route exact path="/episodes" component={HostsPage} />
                         <Route exact path="/entertain" component={EnterPage} />
                         <Route exact path="/counseling" component={CounsPage} />
-                        <Route exact path="/religious" component={ReligPage} />
+                        <Route exact path="/religious" component={SpirtPage} />
+                        <Route exact path="/music" component={MusicPage} />
                         <Route exact path="/allcat" component={AllCatPage} />
                         <Route exact path="/uploads" component={Uploader} />
                         <TempRoute exact path="/tempsu" component={HostSignUp} />
