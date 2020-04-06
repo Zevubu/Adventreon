@@ -1,6 +1,16 @@
 # Shtiker_iso
 
 Tip your artist first... but then... yes please tip us we worked our ass off on this website. 
+Spiritual 
+action plan 4/4/2020:
+    Get crud working
+    get photo upload working
+    login, log out with google.
+    styling
+    18+ implemented.
+    filter of english.
+
+
 to add to sql:
     dynamic styles:
         host,

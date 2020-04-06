@@ -79,4 +79,14 @@ router.route('/find/:id')
   //   res.send(status)
   // });
 
+  // Matches with "/api/shows/find/:id"
+  router.route('/epis/:id')
+  .get(async (req, res) => {
+      const { id } = req.params;
+      const conn = await connection(dbConfig).catch(e => {});
+      const user = await query(conn, showQuery.findByEpis(), [id])
+      res.send(user)
+  })
+ 
+
   module.exports = router;

@@ -14,16 +14,16 @@ router.route("/all")
       const user = await query(conn, epiQuery.findAll())
       res.send(user)
     })
-    // .post(async (req, res) =>{
-    //   const {epi_name, about, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, host_img, credits, price, payment, patreon, wp_title, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, entertain ,couns, relig} = req.body;
-    //   const conn = await connection(dbConfig).catch(e => {});
-    //   const user = await query(
-    //     conn,
-    //     epiQuery.createNew(),
-    //     [epi_name, about, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, host_img, credits, price, payment, patreon, wp_title, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, entertain ,couns, relig]
-    //   )
-    //   res.send[user]
-    // });
+    .post(async (req, res) =>{
+      const {epi_name, about, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, b_img, credits, price, payment, patreon, wp_title, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, entertain ,couns, relig} = req.body;
+      const conn = await connection(dbConfig).catch(e => {});
+      const user = await query(
+        conn,
+        epiQuery.createNew(),
+        [epi_name, about, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, b_img, credits, price, payment, patreon, wp_title, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, entertain ,couns, relig]
+      )
+      res.send[user]
+    });
 
 
 // Matches with "/api/episodes/find/:id"

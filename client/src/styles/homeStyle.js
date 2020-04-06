@@ -152,12 +152,13 @@ text-align: center;
 `
 // Buttons
 const Btn = styled.button`
-border-radius: 10px 10px 90px 90px;
+border-radius: 90px 90px 90px 90px;
 border-color: #9bacb3;
 font-family: 'AthelasReg';
 color: rgb(0, 0, 0);
 font-size: 18px;
 width: auto;
+height: auto;
 `
 
 const BlueBtn = styled(Btn)`
@@ -168,8 +169,14 @@ background-color: rgb(100, 126, 160);
 const MarronBtn = styled(Btn)`
 color: rgb(238, 245, 244);
 background-color: #f50057;
+font-size: 18px;
+`
+const BigMarronBtn = styled(MarronBtn)`
+height:100px;
+font-size: 25px;
 
 `
+
 const TealBtn = styled(Btn)`
 color: rgb(238, 245, 244);
 background-color: rgb(115, 162, 175);
@@ -307,4 +314,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {IntroBlock, Btn, MarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem,HeaderC, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {IntroBlock, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem,HeaderC, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
