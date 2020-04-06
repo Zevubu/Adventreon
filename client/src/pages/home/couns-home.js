@@ -2,8 +2,8 @@ import React from "react";
 // import {Link} from 'react-router-dom'
 import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,P} from "../../styles/homeStyle"
 // import SignUp from "./signUp";
-import HostsBlock from "../../componets/CP_fillers/muse_home_hs/perf_host";
-import ShowsBlock from "../../componets/CP_fillers/muse_home_hs/muse_shows";
+import HostsBlock from "../../componets/CP_fillers/perf_home_hs/perf_host";
+import ShowsBlock from "../../componets/CP_fillers/perf_home_hs/perf_shows";
 // import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
 function MusicHome (){
