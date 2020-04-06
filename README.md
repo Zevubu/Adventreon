@@ -1,6 +1,16 @@
 # Shtiker_iso
 
 Tip your artist first... but then... yes please tip us we worked our ass off on this website. 
+Spiritual 
+action plan 4/4/2020:
+    Get crud working
+    get photo upload working
+    login, log out with google.
+    styling
+    18+ implemented.
+    filter of english.
+
+
 to add to sql:
     dynamic styles:
         host,
@@ -48,6 +58,10 @@ I don't think we should handle any money in regards to distributions amongst art
 
 
 pictures use info:
+    Spiritual Guidance Background
+    Diego Jimenez
+    @diegojimenez
+    https://images.unsplash.com/photo-1494783435443-c15feee0a80a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80
 
     profile filler img:
         Daniel Lincoln

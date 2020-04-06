@@ -6,40 +6,47 @@ const H1 = styled.p`
 font-family: 'AthelasBoldItalic';
 font-size: 45px;
 margin:0;
+color:${props => props.color || "rgb(233, 233, 232)"};
 text-shadow: 2px 2px rgb(98, 98, 98);
 
 `
 const H1NB = styled.p`
 font-size: 24px;
-text-shadow: 1px 1px rgb(98, 98, 98);
+color:${props => props.color || "rgb(233, 233, 232)"};
+text-shadow: 1.5px 1.5px rgb(98, 98, 98);
 font-family: 'Baloo 2', cursive;
 `
 const HEp = styled.p`
 font-size 20px;
 margin:0;
-text-shadow: 0.5px 0.5px rgb(98, 98, 98);
+color:${props => props.color || "rgb(233, 233, 232)"};
+text-shadow: 1px 1px rgb(98, 98, 98);
 font-family: 'Baloo 2', cursive;
 `
 
 const H2 = styled.p`
 font-size: 25px;
 margin:0;
+color:${props => props.color || "rgb(233, 233, 232)"};
 text-shadow: 0.5px 0.5px rgb(98, 98, 98);
 font-family: 'Baloo 2', cursive;
 `
 const H3 = styled.p`
 font-size: 17px;
 margin:0;
-text-shadow: 0.4px 0.4px rgb(215, 218, 224);
+color:${props => props.color || "rgb(233, 233, 232)"};
+text-shadow: 0.8px 0.8px rgb(215, 218, 224);
 `
 const P = styled.p`
 font-size: 18px;
 margin:0;
-text-shadow: 0.4px 0.5px rgb(23, 25, 27);
+color:${props => props.color || "rgb(233, 233, 232)"};
+text-shadow: 0.8px 0.8px rgb(23, 25, 27);
 `
 const PS = styled.p`
 font-size: 15px;
 margin:0;
+color:${props => props.color || "rgb(233, 233, 232)"};
 text-shadow: 0.2px 0.2px rgb(98, 98, 98);
 `
 // colored text
@@ -122,7 +129,11 @@ flex-direction: column;
 const HeaderItem = styled.div`
 margin:5px;
 `
-
+const SpHeaderA = styled(Header)`
+color: rgb(238, 245, 244);
+background-color: ${props => props.BGcolor || "rgb(236, 228, 195, 0.666)"};
+text-align: center;
+`
 const BlueHeader = styled(Header)`
 color: rgb(238, 245, 244);
 background-color: rgb(100, 126, 160, 0.6);
@@ -136,7 +147,7 @@ flex-direction: column;
 `
 const MarronHeader = styled(Header)`
 color: rgb(238, 245, 244);
-background-color: rgb(182, 104, 130, 0.3);
+background-color: rgb(182, 104, 130, 0.666);
 padding:10px 0px;
 width:100%;
 text-align: center;
@@ -152,12 +163,13 @@ text-align: center;
 `
 // Buttons
 const Btn = styled.button`
-border-radius: 10px 10px 90px 90px;
+border-radius: 90px 90px 90px 90px;
 border-color: #9bacb3;
 font-family: 'AthelasReg';
 color: rgb(0, 0, 0);
 font-size: 18px;
 width: auto;
+height: auto;
 `
 
 const BlueBtn = styled(Btn)`
@@ -168,12 +180,21 @@ background-color: rgb(100, 126, 160);
 const MarronBtn = styled(Btn)`
 color: rgb(238, 245, 244);
 background-color: #f50057;
+font-size: 18px;
+`
+const BigMarronBtn = styled(MarronBtn)`
+height:100px;
+font-size: 25px;
 
 `
+
 const TealBtn = styled(Btn)`
 color: rgb(238, 245, 244);
 background-color: rgb(115, 162, 175);
 
+`
+const SpDiv = styled.div`
+background-color: rgba(${props => props.bgImg ||"231, 222, 230, 0.867"});
 `
 // Intro Block styles
 const IntroBlock = styled.div`
@@ -182,7 +203,7 @@ background-repeat: no-repeat;
 background-size: Cover;
 background-position-x: center;
 background-position-y: center;
-border-bottom: rgb(115, 162, 175) solid 2px;
+border-bottom: rgb(180, 180, 180) solid 2px;
 font-family: 'AthelasReg';
 color: ${props => props.color || "rgb(238, 245, 244)"};
 font-size: 20px;
@@ -191,6 +212,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 `
+
 const IntroTxTDiv = styled.div`
 display: flex;
 flex-direction: column;
@@ -211,8 +233,8 @@ margin:0 auto;
 // service and coach section styles.
 
 const DivWBorder = styled.div`
-border: rgb(180, 180, 180) solid 2px;
-margin-bottom:35px;
+border: ${props => props.BDcolor ||"rgb(180, 180, 180)"} solid 2px;
+margin: ${props => props.Margin ||"5.23px 0px"};
 @media only screen and (max-width: 600px) {
     width: 100%;
     }
@@ -300,11 +322,11 @@ justify-content: center;
 align-items: center;
 margin:0 auto;
 `
-
+ 
 const TextBox = styled.div`
 width:200px;
 text-align:center;
 margin-bottom:10px;
 `
 
-export {IntroBlock, Btn, MarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem,HeaderC, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {IntroBlock, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem,HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}

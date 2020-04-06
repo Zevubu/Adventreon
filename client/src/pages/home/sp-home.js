@@ -1,36 +1,35 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2} from "../../styles/homeStyle"
+import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,P} from "../../styles/homeStyle"
 // import SignUp from "./signUp";
-import HostsBlock from "../../componets/homeHosts";
-import ShowsBlock from "../../componets/homeShows";
+import HostsBlock from "../../componets/CP_fillers/sp_home_hs.js/sp_host";
+import ShowsBlock from "../../componets/CP_fillers/sp_home_hs.js/sp_shows";
 // import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
-function ReligHome (){
+function SpirtHome (){
     // const {isAuthenticated} = useAuth();
     // const {isUser} = useUser();
     // const { isHost } = useHost();
     // const { isManager } = useManagment();
 
     return(
-        <div> 
+        <SpDiv> 
             {/* Intro Block */}
-            <IntroBlock>
+            <IntroBlock bgImg="https://images.unsplash.com/photo-1494783435443-c15feee0a80a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
                 <FillerDiv/>
                     <IntroTxTDiv>
-
                         <CCCDiv>
-                            <H1>Adventreon</H1>
-                            <H2>Religious Services</H2>
-                            <br/>
-                            <iframe 
+                            <H1 color="rgb(233, 233, 232)">Spirtual Respite</H1>
+                            <H2 color="rgb(23, 283, 232)">All creeds and practises are welcome</H2>
+                            <P color="rgb(233, 233, 232)"> Except for those who wish todo harm</P>
+                            {/* <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             width="560" 
                             height="315" 
                             src="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
+                            allowfullscreen></iframe> */}
                         </CCCDiv>
                         
                         {/* {!isAuthenticated && (
@@ -51,12 +50,13 @@ function ReligHome (){
                     </IntroTxTDiv>
             </IntroBlock>
             {/* Hosts area start */}
+            <ShowsBlock/>
+
             <HostsBlock/>
             {/* Shows area */}
-            <ShowsBlock/>
         
-        </div>
+        </SpDiv>
     )
 }
 
-export default ReligHome; 
+export default SpirtHome; 

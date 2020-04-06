@@ -1,28 +1,26 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock, CCCDiv, FillerDiv, IntroTxTDiv,H1, H2} from "../../styles/homeStyle"
+import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,P} from "../../styles/homeStyle"
 // import SignUp from "./signUp";
-import HostsBlock from "../../componets/homeHosts";
-import ShowsBlock from "../../componets/homeShows";
+import HostsBlock from "../../componets/CP_fillers/muse_home_hs/muse_host";
+import ShowsBlock from "../../componets/CP_fillers/muse_home_hs/muse_shows";
 // import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
-function EnterHome (){
+function MusicHome (){
     // const {isAuthenticated} = useAuth();
     // const {isUser} = useUser();
     // const { isHost } = useHost();
     // const { isManager } = useManagment();
 
     return(
-        <div> 
+        <SpDiv> 
             {/* Intro Block */}
-            <IntroBlock>
+            <IntroBlock bgImg="https://images.unsplash.com/photo-1494783435443-c15feee0a80a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
                 <FillerDiv/>
                     <IntroTxTDiv>
-
                         <CCCDiv>
-                            <H1>Adventreon</H1>
-                            <H2>Entertainment</H2>
-                            <br/>
+                            <H1>Auditory Stimulation</H1>
+                            <H2>& other delights</H2>
                             <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             width="560" 
@@ -51,12 +49,13 @@ function EnterHome (){
                     </IntroTxTDiv>
             </IntroBlock>
             {/* Hosts area start */}
+            <ShowsBlock/>
+
             <HostsBlock/>
             {/* Shows area */}
-            <ShowsBlock/>
         
-        </div>
+        </SpDiv>
     )
 }
 
-export default EnterHome; 
+export default MusicHome; 

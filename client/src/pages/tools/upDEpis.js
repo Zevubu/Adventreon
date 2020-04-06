@@ -89,8 +89,8 @@ function ShowBuild (){
                     <option>choose one</option>
                     <option value="one_off">One off</option>
                     <option value="episodical">Episodical</option>
-                    <option value="ls_one_off">Livestream one off</option>
-                    <option value="ls_episodical">Livestream episodical</option>
+                    <option value="episodical">Livestream one off</option>
+                    <option value="episodical">Livestream episodical</option>
                 </select>
             </FormBoxWError>
             <PT>What WebPage this show belong in?</PT>
@@ -101,8 +101,8 @@ function ShowBuild (){
                             <option>choose one</option>
                             <option value="music">Music</option>
                             <option value="performance">Performance</option>
-                            <option value="Coaching">Coaching</option>
-                            <option value="spiritual">Spiritual Guidance</option>
+                            <option value="counseling">Counseling</option>
+                            <option value="religious">Spiritual</option>
                         </select>
                         {errors.password && errors.password.type === "required" &&(<PE>This is required!</PE>)} 
                         {errors.password && errors.password.type === "pattern" &&(<PE>Password must contain one uppercase letter, one lower case letter, and one number.</PE>)} 
@@ -128,16 +128,18 @@ function ShowBuild (){
             <FormBigBox onSubmit={handleSubmit(onShowSubmit)}>
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}   
-                {catType==="music" &&(
+                {catType==="entertainment" &&(
                     <FormBoxWError>
                         <PT>Sub-category</PT>
                         <select name="subcatagory" ref ={register({required: true})}>
                             <option>choose one</option>
-                            <option value="variety">Variety show</option>
-                            <option value="acoustic">Acoustic</option>
-                            <option value="dj">DJ</option>
-                            <option value="edm">EDM</option>
-                            <option value="educate">Educational</option>
+                            <option value="Religious">Variety show</option>
+                            <option value="fant_sify">story arched webisode</option>
+                            <option value="fant_sify">Music/dj</option>
+                            <option value="fant_sify">Music/EDM</option>
+                            <option value="fant_sify">Music/acustic</option>
+                            <option value="fant_sify">Live action play</option>
+                            <option value="fant_sify">Educational</option>
                             <option value="blog">Personal Blog</option>
                             
                         </select>
@@ -145,53 +147,31 @@ function ShowBuild (){
                         {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
                     </FormBoxWError>
                 )}
-                {catType==="performance" &&(
-                    <FormBoxWError>
-                        <PT>Sub-category</PT>
-                        <select name="subcatagory"  ref ={register({required: true})}>
-                            <option>choose one</option>
-                            <option value="variety">Variety show</option>
-                            <option value="story">Story arched</option>
-                            <option value="play">Play</option>
-                            <option value="educate">Educational</option>
-                            <option value="blog">Personal Blog</option>
-                                
-                        </select>
-                        {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                        {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
-                    </FormBoxWError>
+                {catType==="counseling" &&(
+                <FormBoxWError>
+                    <PT>Sub-category</PT>
+                    <select name="subcatagory"  ref ={register({required: true})}>
+                        <option>choose one</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="counseling">Counseling</option>
+                        <option value="religious">Religious services</option>
+                    </select>
+                    {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
+                    {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
+                </FormBoxWError>
                 )}
-                               
-                {catType==="coaching" &&(
-                    <FormBoxWError>
-                        <PT>Sub-category</PT>
-                        <select name="subcatagory"  ref ={register({required: true})}>
-                            <option>choose one</option>
-                            <option value="Religious">Variety show</option>
-                            <option value="fant_sify">story arched</option>
-                            <option value="fant_sify">Live action play</option>
-                            <option value="fant_sify">Educational</option>
-                            <option value="blog">Personal Blog</option>
-                                
-                        </select>
-                        {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                        {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
-                    </FormBoxWError>
-                )}
-                {catType==="spiritual" &&(
-                    <FormBoxWError>
-                        <PT>Sub-category</PT>
-                        <select name="subcatagory"  ref ={register}>
-                            <option>choose one</option>
-                            <option value="Guide">Guidance/Sermon/Prayer</option>
-                            <option value="spells">Spells</option>
-                            <option value="Readings">Readings</option>
-                            <option value="Educate">Educational</option>
-                            <option value="blog">Personal Blog</option>
-                        </select>
-                        {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                        {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
-                    </FormBoxWError>
+                {catType==="religious" &&(
+                <FormBoxWError>
+                    <PT>Sub-category</PT>
+                    <select name="subcatagory"  ref ={register}>
+                        <option>choose one</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="counseling">Counseling</option>
+                        <option value="religious">Religious services</option>
+                    </select>
+                    {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
+                    {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
+                </FormBoxWError>
                 )}
                
                 <FormLittleBox>
