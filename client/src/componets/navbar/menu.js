@@ -28,9 +28,10 @@ export default function SimpleMenu() {
         onClose={handleClose}
       >
         <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/"><MenuItem >Home</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/entertain"><MenuItem onClick={handleClose}>Entertainment</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/counseling"><MenuItem onClick={handleClose}>Counseling</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/religious"><MenuItem onClick={handleClose}>Religous Services</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/music"><MenuItem onClick={handleClose}>Music</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/entertain"><MenuItem onClick={handleClose}>Performance</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/counseling"><MenuItem onClick={handleClose}>Life</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/religious"><MenuItem onClick={handleClose}>Spirtual Respite</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/allcat"><MenuItem onClick={handleClose}>All</MenuItem></Link>
       </Menu>
     </div>

@@ -58,6 +58,10 @@ I don't think we should handle any money in regards to distributions amongst art
 
 
 pictures use info:
+    Spiritual Guidance Background
+    Diego Jimenez
+    @diegojimenez
+    https://images.unsplash.com/photo-1494783435443-c15feee0a80a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80
 
     profile filler img:
         Daniel Lincoln
