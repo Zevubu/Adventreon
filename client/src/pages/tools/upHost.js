@@ -7,7 +7,29 @@ import { useForm } from 'react-hook-form';
 
 function UpHost (){
 
-    const { register, handleSubmit, watch, errors } = useForm()
+    const { register, handleSubmit, watch, errors } = useForm({
+        defaultValues: {
+            user_name: '',
+            dob: '',
+            email: '',
+            password: '',
+            title: '',
+            about: 'HELLO MY BABY HELLO MY HONEY HELLO MY RAGTIME GAL', 
+            p_img: '',
+            b_img: '',
+            shows: '',
+            paymen: '',
+            patreon: '',
+            wp_title: '',
+            webpage: '',
+            video_channel:'',
+            rsvp_attend:'',
+            rsvp_perform:'',
+            entertain:true,
+            couns:false, 
+            relig:false
+        }
+    })
     const onSubmit = (data, e) =>{
         console.log(data)
         console.log(`entertain:${data.entertain} couns:${data.couns} relig:${data.relig}`)
