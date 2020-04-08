@@ -33,6 +33,7 @@ import AllCatPage from './pages/catagory/allCat';
 // tools
 import InviteHost from './pages/tools/Management/invite_host';
 import HostSignUp from './pages/tools/host-sign-up';
+import UpHost from './pages/tools/upHost';
 import ShowBuilder from './pages/tools/show-builder';
 import AddEpisode from './pages/tools/add_episode';
 
@@ -168,6 +169,7 @@ function App() {
                         <ManagmentRoute path="/profilem" state={{value:userData}}  component={profile}/>
                         <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
                         <ManagmentRoute exact path="/tempsum" component={HostSignUp} />
+                        <Route exact path="/pup" component={UpHost} />
                         <ManagmentRoute exact path="/showbuilderm" state={{value:userData}} component={ShowBuilder}/>
                         <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
                         <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
