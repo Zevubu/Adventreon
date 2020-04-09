@@ -1,30 +1,31 @@
-import React from "react";
+import React, {useContext, useState, useEffect} from "react";
 import {DivWBorder, MarronHeader, H2, PT, PS} from "../../styles/homeStyle"
 import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
 import API from "../../API/loggedOutAPI";
 import { useForm } from 'react-hook-form';
-
-
+import {UserInfoContext} from "../../context/heart" 
 function UpHost (){
+    const { userData } = useContext(UserInfoContext)
+    console.log(`profile user data: ${JSON.stringify(userData)}`)
 
     const { register, handleSubmit, watch, errors } = useForm({
         defaultValues: {
-            user_name: '',
-            dob: '',
-            email: '',
+            user_name: userData.user_name,
+            dob: userData.dob,
+            email: userData.email,
             password: '',
-            title: '',
-            about: 'HELLO MY BABY HELLO MY HONEY HELLO MY RAGTIME GAL', 
-            p_img: '',
-            b_img: '',
-            shows: '',
-            paymen: '',
-            patreon: '',
-            wp_title: '',
-            webpage: '',
-            video_channel:'',
-            rsvp_attend:'',
-            rsvp_perform:'',
+            title: userData.title,
+            about: userData.aboutt, 
+            p_img: userData.p_img,
+            b_img: userData.b_img,
+            shows: userData.shows,
+            paymen: userData.paymen,
+            patreon: userData.patreon,
+            wp_title: userData.wp_title,
+            webpage: userData.webpage,
+            video_channel: userData.video_channel,
+            rsvp_attend: userData.rsvp_attend,
+            rsvp_perform: userData.rsvp_perform,
             entertain:true,
             couns:false, 
             relig:false
