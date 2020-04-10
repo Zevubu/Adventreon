@@ -15,7 +15,7 @@ function UpHost (){
             email: userData.email,
             password: '',
             title: userData.title,
-            about: userData.aboutt, 
+            about: userData.about, 
             p_img: userData.p_img,
             b_img: userData.b_img,
             shows: userData.shows,
