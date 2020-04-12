@@ -7,13 +7,13 @@ import {UserInfoContext, useHost, useManagment} from "../../context/heart"
 import {Link} from 'react-router-dom';
 // H = userData, Y= form ie data, S = showData, N doesn't need to be implimnted
 // X = already built, B= Boolean
-// epi_name, Y 
-// about, Y
+// epi_name, Y  // epiName
+// about, Y // epiType
 // show_id, S 
 // show_name, S 
 // img, Y
 // catagory, S 
-// sub_catagory, S
+// sub_catagory, s
 // host_id, H
 // host_name, H 
 // b_img, Y 
@@ -66,7 +66,7 @@ function EpiAdd (){
         }
      
         API.createEpisode({ 
-            "epi_name": data.showName,
+            "epi_name": data.epiName,
             "about": showType,
             "show_id": data.about,
             "show_name": data.pImg,
@@ -103,7 +103,8 @@ function EpiAdd (){
             <H2>Episode creation page</H2>
         </MarronHeader>
         <FormBigBox>
-         
+        
+         {/* DONT TOUCH VVV */}
             <PT>What show does this episode belong to?</PT>
             <FormBoxWError>
                 <PT>Select a show</PT>
@@ -125,6 +126,7 @@ function EpiAdd (){
 
         </FormBigBox>
         {/* form starts here */}
+    
         {Show && ( 
             <FormBigBox onSubmit={handleSubmit(onShowSubmit)}>
                 <p>show ID{JSON.stringify(Show.showName)}</p>
@@ -133,13 +135,13 @@ function EpiAdd (){
                
                 <FormLittleBox>
                     <FormBoxWError>
-                            <PT>Show Name</PT>
+                            <PT>Episode Name</PT>
                             <Input
-                                name="showName"
+                                name="epi_name"
                                 ref ={register({required: true})}
                             /> 
-                            {errors.showName && errors.showName.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.showName && errors.showName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
+                            {errors.epiName && errors.epiName.type === "required" &&(<PE>This is required!</PE>)}
+                            {errors.epiName && errors.epiName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                     </FormBoxWError>
                     <FormBoxWError>
                         <PT>Paypal</PT>
@@ -177,7 +179,7 @@ function EpiAdd (){
                         </FormBoxWError>
                    
                     <FormBoxWError>
-                            <PT>Show Image</PT>
+                            <PT>Episode Image</PT>
                             <Input
                                 type="file"
                                 name="pImg"
@@ -245,7 +247,7 @@ function EpiAdd (){
                     <FormBoxWError>
                         <FormBox>
                             <PT>WebPage title</PT>
-                            <PS>IE: "Buy our Shwag here!", "Veiw my webpage!" so on.</PS>
+                            <PS>IE: "Buy our Shwag here!", "View my webpage!" so on.</PS>
                             {/* Will inclued an example of exactly what you need to do. */}
                             <Input
                                 name="wpTitle"
@@ -271,7 +273,7 @@ function EpiAdd (){
                     {/* contact info email... Name? DOB number */}
                     {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
-                        <Btn type="submit" value="Submit">Submit show</Btn>
+                        <Btn type="submit" value="Submit">Submit Episode</Btn>
                         {/* disabled={disable} */}
                     </FormBox>
                 
