@@ -10,20 +10,20 @@ function UpHost (){
 
     const { register, handleSubmit, watch, errors } = useForm({
         defaultValues: {
-            user_name: userData.user_name,
-            dob: userData.dob,
+            userName: userData.user_name,
+            DOB: userData.dob,
             email: userData.email,
             password: '',
             title: userData.title,
             about: userData.about, 
-            p_img: userData.p_img,
-            b_img: userData.b_img,
+            pImg: userData.p_img,
+            bImg: userData.b_img,
             shows: userData.shows,
-            paymen: userData.paymen,
+            paypal: userData.payment,
             patreon: userData.patreon,
-            wp_title: userData.wp_title,
+            wpTitle: userData.wp_title,
             webpage: userData.webpage,
-            video_channel: userData.video_channel,
+            livefeed: userData.video_channel,
             rsvp_attend: userData.rsvp_attend,
             rsvp_perform: userData.rsvp_perform,
             entertain:true,
@@ -149,7 +149,6 @@ function UpHost (){
                     <FormBoxWError>
                             <PT>Profile Image*</PT>
                             <Input
-                                type="text"
                                 name="pImg"
                                 ref ={register({required: true})}
                             /> 
