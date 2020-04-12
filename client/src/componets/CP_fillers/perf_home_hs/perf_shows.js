@@ -62,7 +62,7 @@ function Shows (){
     }
     // opacity: vis ,
     return(
-        <BigBlock>
+        <BigBlock> 
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
             {/* <BlueHeader>

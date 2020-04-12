@@ -32,6 +32,7 @@ export default function SimpleMenu() {
         <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/showbuilderm"><MenuItem onClick={handleClose}>Make a Show</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/episodebuilderm"><MenuItem onClick={handleClose}>Make an episode</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/profilem"><MenuItem onClick={handleClose}>Your Profile</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/pup"><MenuItem onClick={handleClose}>Update Profile</MenuItem></Link>
       </Menu>
     </div>
   );

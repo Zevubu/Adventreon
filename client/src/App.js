@@ -26,13 +26,14 @@ import HostsPage from './pages/hosts';
 import ShowPage from "./pages/shows"
 import MusicPage from "./pages/home/music-home"
 import EnterPage from './pages/home/perf-home';
-import CounsPage from './pages/home/couns-home';
+import LifePage from './pages/home/life-home';
 import SpirtPage from './pages/home/sp-home';
 import AllCatPage from './pages/catagory/allCat';
 
 // tools
 import InviteHost from './pages/tools/Management/invite_host';
 import HostSignUp from './pages/tools/host-sign-up';
+import UpHost from './pages/tools/upHost';
 import ShowBuilder from './pages/tools/show-builder';
 import AddEpisode from './pages/tools/add_episode';
 
@@ -159,7 +160,7 @@ function App() {
                         <Route exact path="/episodes/:id" component={EpisodeProfile} />
                         <Route exact path="/episodes" component={HostsPage} />
                         <Route exact path="/entertain" component={EnterPage} />
-                        <Route exact path="/counseling" component={CounsPage} />
+                        <Route exact path="/counseling" component={LifePage} />
                         <Route exact path="/religious" component={SpirtPage} />
                         <Route exact path="/music" component={MusicPage} />
                         <Route exact path="/allcat" component={AllCatPage} />
@@ -168,6 +169,7 @@ function App() {
                         <ManagmentRoute path="/profilem" state={{value:userData}}  component={profile}/>
                         <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
                         <ManagmentRoute exact path="/tempsum" component={HostSignUp} />
+                        <Route exact path="/pup" state={{value:userData}} component={UpHost} />
                         <ManagmentRoute exact path="/showbuilderm" state={{value:userData}} component={ShowBuilder}/>
                         <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
                         <HostRoute exact path="/showbuilder" component={ShowBuilder}/>

@@ -33,16 +33,7 @@ router.route('/find/:id')
       const conn = await connection(dbConfig).catch(e => {});
       const user = await query(conn, epiQuery.findById(), [id])
       res.send(user)
-  }) 
-
-  // Matches with "/api/episodes/show/:id"
-router.route('/show/:id')
-.get(async (req, res) => {
-    const { id } = req.params;
-    const conn = await connection(dbConfig).catch(e => {});
-    const user = await query(conn, epiQuery.findByShow(), [id])
-    res.send(user)
-}) 
+  })   
   // .put(async (req, res) => {
   //   const { id } = req.params;
   //   const vals = req.body;
@@ -57,6 +48,16 @@ router.route('/show/:id')
   //   const status = await query(conn, epiQuery.deleteById(), [id])
   //   res.send(status)
   // });
+
+  // Matches with "/api/episodes/show/:id"
+router.route('/show/:id')
+.get(async (req, res) => {
+    const { id } = req.params;
+    const conn = await connection(dbConfig).catch(e => {});
+    const user = await query(conn, epiQuery.findByShow(), [id])
+    res.send(user)
+}) 
+
 
 // Matches with "/api/episodes/host/:id"
   router.route('/host/:id')

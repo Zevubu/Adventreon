@@ -20,7 +20,7 @@ function UserInfo(){
                 <PS>Only you can see this profile</PS>
             </BlueHeaderC>
             <ProviderBox>
-                <ProDuoServiceBlockColumn>
+                <ProDuoServiceBlockColumn id={userData.id}>
                     <ProTextBoxN>
                         <H1NB>{userData.user_name}</H1NB>
                     </ProTextBoxN>

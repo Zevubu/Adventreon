@@ -40,10 +40,10 @@ function Hosts (){
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
             {/* <DivWBorder style={{marginBottom: '100px'}}> */}
-            <DivWBorder BDcolor="rgba(66, 83, 94, 0.777)">
-                <SpHeaderA BGcolor="rgba(23, 23, 23, 0.877)">
+            <DivWBorder BDcolor="rgba(24, 129, 50, 0.938)">
+                <SpHeaderA BGcolor="rgba(22, 18, 83, 0.477)">
                     <HeaderItem>
-                    <H2                           
+                    <H2                            
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
