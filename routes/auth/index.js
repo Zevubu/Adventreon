@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
         username: user.username || null
     });
 }); 
-
+ 
 router.post('/login', async (req, res) => {
     const { userName, password } = req.body;
     const expTime = parseInt(CONFIG.jwt_expiration);
@@ -33,7 +33,7 @@ router.post('/login', async (req, res) => {
     const conn = await connection(dbConfig).catch(e => {});
     const user = await query(
         conn,
-        `SELECT id, user_name, user_type, dob, email, about, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, time_stamp FROM users WHERE user_name=? AND password=?`,
+        `SELECT id, user_name, user_type, mhswitch, dob, email, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig time_stamp FROM users WHERE user_name=? AND password=?`,
         [userName, password]
     );
     res.send({user_info: user[0], token: jwt.sign({user_id: this.id}, CONFIG.jwt_encryption, {expiresIn: expTime})} || {id: null, userName: null })
