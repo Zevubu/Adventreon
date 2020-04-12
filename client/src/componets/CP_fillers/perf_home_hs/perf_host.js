@@ -40,16 +40,16 @@ function Hosts (){
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
             {/* <DivWBorder style={{marginBottom: '100px'}}> */}
-            <DivWBorder BDcolor="rgba(66, 83, 94, 0.777)">
-                <SpHeaderA BGcolor="rgba(213, 148, 238, 0.877)">
+            <DivWBorder BDcolor="rgba(255, 187, 0, 1)">
+                <SpHeaderA BGcolor="rgba(155, 51, 74, 0.938)">
                     <HeaderItem>
-                    <H2 color="rgb(66, 83, 94)"                            
+                    <H2                           
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
                     >
-                    Host's</H2>
+                    Hosts</H2>
                     </HeaderItem>
                     {/* <HeaderItem>
                         <a className="nav-link" href="/Hosts" style={{textDecoration: 'none'}}><Button variant="contained" color='secondary'>See all</Button></a>

@@ -7,7 +7,7 @@ font-family: 'AthelasBoldItalic';
 font-size: 45px;
 margin:0;
 color:${props => props.color || "rgb(233, 233, 232)"};
-text-shadow: 2px 2px rgb(98, 98, 98);
+text-shadow: 2px 2px ${props => props.TSColor || "rgb(98, 98, 98)"};
 
 `
 const H1NB = styled.p`
@@ -20,7 +20,7 @@ const HEp = styled.p`
 font-size 20px;
 margin:0;
 color:${props => props.color || "rgb(233, 233, 232)"};
-text-shadow: 1px 1px rgb(98, 98, 98);
+text-shadow: 1px 1px ${props => props.TSColor || "rgb(98, 98, 98)"};
 font-family: 'Baloo 2', cursive;
 `
 
@@ -28,26 +28,26 @@ const H2 = styled.p`
 font-size: 25px;
 margin:0;
 color:${props => props.color || "rgb(233, 233, 232)"};
-text-shadow: 0.5px 0.5px rgb(98, 98, 98);
+text-shadow: 0.5px 0.5px ${props => props.TSColor || "rgb(98, 98, 98)"};
 font-family: 'Baloo 2', cursive;
 `
 const H3 = styled.p`
 font-size: 17px;
 margin:0;
 color:${props => props.color || "rgb(233, 233, 232)"};
-text-shadow: 0.8px 0.8px rgb(215, 218, 224);
+text-shadow: 0.8px 0.8px ${props => props.TSColor || "rgb(98, 98, 98)"};
 `
 const P = styled.p`
 font-size: 18px;
 margin:0;
 color:${props => props.color || "rgb(233, 233, 232)"};
-text-shadow: 0.8px 0.8px rgb(23, 25, 27);
+text-shadow: 0.8px 0.8px ${props => props.TSColor || "rgb(98, 98, 98)"};
 `
 const PS = styled.p`
 font-size: 15px;
 margin:0;
 color:${props => props.color || "rgb(233, 233, 232)"};
-text-shadow: 0.2px 0.2px rgb(98, 98, 98);
+text-shadow: 0.2px 0.2px ${props => props.TSColor || "rgb(98, 98, 98)"};
 `
 // colored text
 const H1B = styled(H1)`
@@ -130,8 +130,8 @@ const HeaderItem = styled.div`
 margin:5px;
 `
 const SpHeaderA = styled(Header)`
-color: rgb(238, 245, 244);
-background-color: ${props => props.BGcolor || "rgb(236, 228, 195, 0.666)"};
+color: ${props => props.Color ||"rgb(238, 245, 244)"};
+background: ${props => props.BGcolor || "rgb(236, 228, 195, 0.666)"};
 text-align: center;
 `
 const BlueHeader = styled(Header)`
@@ -194,16 +194,16 @@ background-color: rgb(115, 162, 175);
 
 `
 const SpDiv = styled.div`
-background-color: rgba(${props => props.bgImg ||"231, 222, 230, 0.867"});
+background: ${props => props.BGcolor ||"rgba(231, 222, 230, 0.867)"};
 `
 // Intro Block styles
 const IntroBlock = styled.div`
 background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1505842465776-3b4953ca4f44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"});
-background-repeat: no-repeat;
-background-size: Cover;
-background-position-x: center;
-background-position-y: center;
-border-bottom: rgb(180, 180, 180) solid 2px;
+background-repeat: ${props => props.BGR || "no-repeat"};
+background-size:${props => props.BGPsize || "cover"};
+background-position-x: ${props => props.BGPy || "center"};
+background-position-y: ${props => props.BGPx || "center"};
+border-bottom: ${props => props.BDcolor || "rgb(180, 180, 180)"}  solid 2px;
 font-family: 'AthelasReg';
 color: ${props => props.color || "rgb(238, 245, 244)"};
 font-size: 20px;

@@ -13,14 +13,14 @@ function MusicHome (){
     // const { isManager } = useManagment();
 
     return(
-        <SpDiv> 
+        <SpDiv BGcolor="linear-gradient(to bottom, rgba(23, 23, 23, 1) 25%, rgba(223, 223, 223, 0.777) 46%, rgba(23, 23, 23, 0.777) 56%, rgba(223, 223, 223, 0.777) 100%)"> 
             {/* Intro Block */}
-            <IntroBlock bgImg="https://images.unsplash.com/photo-1494783435443-c15feee0a80a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
+            <IntroBlock color="rgba(0, 0, 0, 0.938)" bgImg="https://images.unsplash.com/photo-1579090423747-52a4ff1a6a21?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=997&q=80">
                 <FillerDiv/>
                     <IntroTxTDiv>
                         <CCCDiv>
-                            <H1>Auditory Stimulation</H1>
-                            <H2>& other delights</H2>
+                            <H1 color="rgba(0, 0, 0, 0.938)" TSColor="rgb(233, 233, 232)">Auditory Stimulation</H1>
+                            <H2 color="rgba(0, 0, 0, 0.938)" TSColor="rgb(233, 233, 232)">& other delights</H2>
                             <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             width="560" 

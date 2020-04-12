@@ -1,11 +1,18 @@
 import React, { useState, useEffect} from "react";
-import {BigBlock, H2, HeaderItem,SpHeaderA, DivWBorder} from "../../../../styles/homeStyle";
+import { BigBlock, BlueHeader, H2, HeaderItem} from "../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-import API from "../../../../API/loggedOutAPI";
+import API from "../../../API/loggedOutAPI";
 
-import SliderFiller from "../../../ShowFiller/slide_filler";
+// import SliderFiller from "../ShowFiller/slide_filler";
 
-import Carousel from '@brainhubeu/react-carousel';
+import EnterShows from './Fillers/guideShow';
+import CounsShows from './Fillers/spellShow';
+import ReligShows from './Fillers/readingShow';
+import EduShows from './Fillers/EduShow';
+import VlogShows from './Fillers/VlogShow';
+
+
+// import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 // import Button from '@material-ui/core/Button';
 // import Paper from '@material-ui/core/Paper';
@@ -41,41 +48,54 @@ function Shows (){
     const num = matches ? 5 : 1
     const scNum = matches ? 4 : 1
 
-    useEffect(() => {
-       const fetchShows = async () =>{
-        const result = await API.getEntShows()
-            console.log(`show data ${result.data}`)
-            setShows(result.data)
-        };
-        fetchShows(); 
-    }, []);
+    // useEffect(() => {
+    //    const fetchShows = async () =>{
+    //     const result = await API.getShows()
+    //         console.log(`show data ${result.data}`)
+    //         setShows(result.data)
+    //     };
+    //     fetchShows(); 
+    // }, []);
 
     if(Click){
-        return <Redirect to="/" />
+        return <Redirect to="/shows" />
     }
-    // opacity: vis , 
+    // opacity: vis ,
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
-            <DivWBorder BDcolor="rgba(, 83, 94, 0.777)" Margin ="0px 0px 23px 0px">
-            <SpHeaderA BGcolor="rgba(223, 223, 223, 1)">
+            {/* <BlueHeader>
                 <HeaderItem>
-                    <H2 color="rgb(23, 23, 23)" TSColor="rgb(223, 223, 223)"
+                    <H2
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                    >Guidance</H2>
+                    >Shows</H2>
                 </HeaderItem>
-                {/* <HeaderItem>
+                <HeaderItem>
                     <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
-                </HeaderItem> */}
-            </SpHeaderA>
-            </DivWBorder>
-            <br/>
+                </HeaderItem>
+            </BlueHeader> */}
+            <div>
+                <EnterShows />
+            </div>
+            <div>
+                <CounsShows />
+            </div>
+            <div>
+                <ReligShows /> 
+            </div>
+            <div>
+                <EduShows /> 
+            </div>
+            <div>
+                <VlogShows /> 
+            </div>
+                
             
-            <Carousel
+            {/* <Carousel
                 // autoPlay={5000}
                 animationSpeed={1500}
                 slidesPerPage={num}
@@ -98,7 +118,7 @@ function Shows (){
                             relig={show.relig} timeStamp={show.time_stamp}
                         />
                 ))}
-            </Carousel>
+            </Carousel> */}
         </BigBlock>
     )
 }
