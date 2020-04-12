@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 function NavBar (props){
     const classes = useStyles();
     // const [userProps, setUserProps] = useState(props)
-    console.log(`navbar data: ${JSON.stringify(props)}`)
+    console.log(`navbar data 1: ${JSON.stringify(props)}`)
     const { setAuthTokens, isAuthenticated, setIsAuthenticated} = useAuth();
     const {isUser, setIsUser} = useUser();
     const {isHost, setIsHost} = useHost();
