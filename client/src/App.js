@@ -26,7 +26,7 @@ import HostsPage from './pages/hosts';
 import ShowPage from "./pages/shows"
 import MusicPage from "./pages/home/music-home"
 import EnterPage from './pages/home/perf-home';
-import CounsPage from './pages/home/couns-home';
+import LifePage from './pages/home/life-home';
 import SpirtPage from './pages/home/sp-home';
 import AllCatPage from './pages/catagory/allCat';
 
@@ -159,7 +159,7 @@ function App() {
                         <Route exact path="/episodes/:id" component={EpisodeProfile} />
                         <Route exact path="/episodes" component={HostsPage} />
                         <Route exact path="/entertain" component={EnterPage} />
-                        <Route exact path="/counseling" component={CounsPage} />
+                        <Route exact path="/counseling" component={LifePage} />
                         <Route exact path="/religious" component={SpirtPage} />
                         <Route exact path="/music" component={MusicPage} />
                         <Route exact path="/allcat" component={AllCatPage} />

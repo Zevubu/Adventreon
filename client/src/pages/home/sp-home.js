@@ -13,15 +13,15 @@ function SpirtHome (){
     // const { isManager } = useManagment();
 
     return(
-        <SpDiv> 
+        <SpDiv>
             {/* Intro Block */}
             <IntroBlock bgImg="https://images.unsplash.com/photo-1494783435443-c15feee0a80a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
                 <FillerDiv/>
                     <IntroTxTDiv>
                         <CCCDiv>
                             <H1 color="rgb(233, 233, 232)">Spirtual Respite</H1>
-                            <H2 color="rgb(23, 283, 232)">All creeds and practises are welcome</H2>
-                            <P color="rgb(233, 233, 232)"> Except for those who wish todo harm</P>
+                            <H2 color="rgb(23, 283, 232)">All creeds and practices are welcome</H2>
+                            <P color="rgb(233, 233, 232)"> Except for those who wish to do harm</P>
                             {/* <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             width="560" 
