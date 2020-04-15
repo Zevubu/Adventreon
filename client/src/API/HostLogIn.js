@@ -14,9 +14,16 @@ export default {
         return axios.get("/api/episodes/all").catch(err => console.log(`Get all shows error:${err}`));
     },
     createEpisode: function(epiData){
-        console.log(`CREAT CHECK!`);
-        console.log(`userData: ${epiData}`);
+        // console.log(`CREAT CHECK!`);
+        // console.log(`userData: ${epiData}`);
         return axios.post("/api/episodes/all", epiData).catch(err => console.log(`Episode creation error:${err}`));
+    },
+    updatedProfile: function(id, hostData){
+        console.log(`Host id: ${id}. Host Data: ${hostData}`)
+        return axios.put(`/api/hosts/all/${id}`, hostData).catch(err => console.log(`Host update error:${err}`))
+    },
+    getHostByID: function(id){
+        return axios.get("/api/hosts/all/" + id).catch(err => console.log(`Find hosts by id error:${err}`));
     },
    
 

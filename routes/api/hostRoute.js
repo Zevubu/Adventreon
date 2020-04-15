@@ -14,12 +14,13 @@ router.route("/all")
       res.send(user)
     })
     // .post(async (req, res) =>{
-    //   const {user_name, user_type, dob, email, password, title, about, p_img ,  b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig} = req.body;
+    //   const {user_name, user_type,
+    //  dob, email, password, title, about, p_img ,  b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig} = req.body;
     //   const conn = await connection(dbConfig).catch(e => {});
     //   const user = await query(
     //     conn,
     //     hostQuery.createNew(),
-    //     [uuser_name, user_type, dob, email, password, title, about, p_img ,  b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig]
+    //     [user_name, user_type, dob, email, password, title, about, p_img ,  b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig]
     //   )
     //   res.send[user]
     // });
@@ -56,14 +57,14 @@ router.route('/all/:id')
       const user = await query(conn, hostQuery.findById(), [id])
       res.send(user)
   })
-  // .put(async (req, res) => {
-  //   const { id } = req.params;
-  //   const vals = req.body;
-  //   const values = Object.keys(vals).map(k => `${k}=${vals[k]}`)
-  //   const conn = await connection(dbConfig).catch(e => {});
-  //   const status = await query(conn, hostQuery.updateById, [values,id])
-  //   res.send(status)
-  // })
+  .put(async (req, res) => {
+    const { id } = req.params;
+    const vals = req.body;
+    const values = Object.keys(vals).map(k => `${k}=${vals[k]}`)
+    const conn = await connection(dbConfig).catch(e => res.send(e));
+    const status = await query(conn, hostQuery.updateById(), [values,id])
+    res.send(status)
+  })
   // .delete(async (req, res) => {
   //   const { id } = req.params;
   //   const conn = await connection(dbConfig).catch(e => {});

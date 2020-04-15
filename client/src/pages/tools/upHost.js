@@ -1,19 +1,41 @@
 import React, {useContext, useState, useEffect} from "react";
+import { useParams} from "react-router";
 import {DivWBorder, MarronHeader, H2, PT, PS} from "../../styles/homeStyle"
 import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
-import API from "../../API/loggedOutAPI";
+import API from "../../API/HostLogIn";
 import { useForm } from 'react-hook-form';
 import {UserInfoContext} from "../../context/heart" 
 function UpHost (){
     const { userData } = useContext(UserInfoContext)
-    console.log(`profile user data: ${JSON.stringify(userData)}`)
+    const { id } = useParams();
+    // const [valid, setValid] = useState()
+    const [Host, setHost] = useState({});
+    // console.log(`profile user data: ${JSON.stringify(Host)}`)
 
-    const { register, handleSubmit, watch, errors } = useForm({
+    useEffect(() => {
+        // add a password check here. 
+         const fetchHost = async () =>{
+            const result = await API.getHostByID(`${id}`)
+            console.log(`Profile update result ${JSON.stringify(result.data)}`)
+            setHost(result.data[0])
+        }
+        fetchHost();
+    
+    },[])
+   if(Host){
+    // for (var key in Host) {
+    //     console.log(`Keys: ${key}`); // logs keys in myObject
+    //     console.log(Host[key]); // logs values in myObject
+    //   }
+        console.log(Host.user_name)
+        // setValid(true)
+        // register(Host)
+    } 
+  const { register, handleSubmit, watch, errors } = useForm({
         defaultValues: {
             userName: userData.user_name,
             DOB: userData.dob,
             email: userData.email,
-            password: '',
             title: userData.title,
             about: userData.about, 
             pImg: userData.p_img,
@@ -26,14 +48,18 @@ function UpHost (){
             livefeed: userData.video_channel,
             rsvp_attend: userData.rsvp_attend,
             rsvp_perform: userData.rsvp_perform,
-            entertain:true,
-            couns:false, 
-            relig:false
+            entertain:userData.entertain,
+            couns:userData.couns, 
+            relig:userData.relign
         }
     })
+    
+
+  
+
     const onSubmit = (data, e) =>{
         console.log(data)
-        console.log(`entertain:${data.entertain} couns:${data.couns} relig:${data.relig}`)
+        // console.log(`entertain:${data.entertain} couns:${data.couns} relig:${data.relig}`)
         // const checkEmail = async () =>{
         //    const result = await API.getEmailCheck({
         //     "user_email": data.email
@@ -42,39 +68,38 @@ function UpHost (){
         // }
         // checkEmail()
 
-        API.createAccount({ 
+        API.updatedProfile(Host.id,{ 
             "user_name": data.userName,
-            "user_type": "Host",
             "dob": data.DOB,
             "email": data.email,
-            "password": data.password,
             "title": data.title,
             "about": data.about, 
             "p_img": data.pImg,
             "b_img": data.bImg,
-            "shows": '',
+            "shows": userData.shows,
             "payment": data.paypal,
             'patreon': data.patreon,
             'wp_title': data.wpTitle,
             'webpage': data.webpage,
             'video_channel':data.livefeed,
-            'rsvp_attend':'',
-            'rsvp_perform':'',
-            "entertain":true,
-            "couns":false, 
-            "relig":false
+            'rsvp_attend':userData.rsvp_attend,
+            'rsvp_perform':userData.rsvp_perform,
+            "entertain":userData.entertain,
+            "couns":userData.couns, 
+            "relig":userData.couns
             }).then(e.target.reset())
             .catch(err => console.log(err))
     }
 
     return(
+     
         <DivWBorder> 
             {/* <a id="signup"/> */}
             {/* Sign up form */}
             <MarronHeader>
                 <H2>Host Profile creation page!</H2>
             </MarronHeader>
-
+        {Host &&(
             <FormBigBox onSubmit={handleSubmit(onSubmit)}>
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}
@@ -109,7 +134,7 @@ function UpHost (){
                             {errors.DOB && errors.DOB.type === "required" &&(<PE>This is required!</PE>)}
                             {errors.DOB && errors.DOB.type === "pattern" &&(<div><PE>Must be a valid pnone number.</PE><PE>Excepted formats (123)456-7890 x, 123-456-7890 x, 123 456 7890 x, 1234567890 x</PE></div>)} 
                     </FormBoxWError>
-                    <FormBoxWError>
+                    {/* <FormBoxWError>
                             <PT>Password*</PT>
                             <Input
                                 type="password"
@@ -131,7 +156,7 @@ function UpHost (){
                             />
                             {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
                             {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
-                    </FormBoxWError>  
+                    </FormBoxWError>   */}
                     {/* bulk text area. opition to hide text? */}
                 </FormLittleBox>
 
@@ -150,7 +175,7 @@ function UpHost (){
                             <PT>Profile Image*</PT>
                             <Input
                                 name="pImg"
-                                ref ={register({required: true})}
+                                ref ={register}
                             /> 
                             {errors.pImg && errors.pImg.type === "required" &&(<PE>This is required!</PE>)}
                             {errors.PImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}                          
@@ -276,6 +301,8 @@ function UpHost (){
                     </FormBox>
                 </FormLittleBox>            
             </FormBigBox>
+            
+        )}
              <a className="nav-link" href="/login"><Btn>Already have an account Login</Btn></a>
         </DivWBorder>
     )

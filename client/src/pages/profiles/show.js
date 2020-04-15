@@ -44,7 +44,7 @@ function Show(){
          };
          const fetchEpis = async () =>{
             const result = await eAPI.getEpisByShowID(`${id}`)
-                console.log(result.data)
+                // console.log(result.data)
                 setEpisodes(result.data)
               
             };

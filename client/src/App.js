@@ -169,9 +169,10 @@ function App() {
                         <ManagmentRoute path="/profilem" state={{value:userData}}  component={profile}/>
                         <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
                         <ManagmentRoute exact path="/tempsum" component={HostSignUp} />
-                        <Route exact path="/pup" state={{value:userData}} component={UpHost} />
+                        <ManagmentRoute exact path="/pupm/:id" state={{value:userData}} component={UpHost} />
                         <ManagmentRoute exact path="/showbuilderm" state={{value:userData}} component={ShowBuilder}/>
                         <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
+                        <HostRoute exact path="/pup/:id" state={{value:userData}} component={UpHost} />
                         <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
                         <HostRoute exact path="/episodebuilder" component={AddEpisode}/>
                       </Switch>

@@ -29,6 +29,7 @@ export default function SimpleMenu() {
       >
         <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/showbuilder"><MenuItem onClick={handleClose}>Entertainment</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/episodebuilder"><MenuItem onClick={handleClose}>Counseling</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/pup"><MenuItem onClick={handleClose}>Update Profile</MenuItem></Link>
       </Menu>
     </div>
   );
