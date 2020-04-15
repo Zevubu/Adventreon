@@ -3,9 +3,11 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Link} from 'react-router-dom';
+import {useUserInfo } from "../../context/heart";
 
 export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const {userData, setUserData} = useUserInfo();
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -32,7 +34,7 @@ export default function SimpleMenu() {
         <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/showbuilderm"><MenuItem onClick={handleClose}>Make a Show</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/episodebuilderm"><MenuItem onClick={handleClose}>Make an episode</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/profilem"><MenuItem onClick={handleClose}>Your Profile</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/pup"><MenuItem onClick={handleClose}>Update Profile</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to={"/pupm/" + userData.id}><MenuItem onClick={handleClose}>Update Profile</MenuItem></Link>
       </Menu>
     </div>
   );
