@@ -211,9 +211,9 @@ align-items: center;
 const ProTextBox = styled.div`
 display: inline-block
 margin-bottom:5px;
-border-radius: ${props => props.BorderRadius || "0px 0px 0px 0px"};
-border: ${props => props.BDcolor ||"rgb(180, 180, 180)"} solid 2px;
-background-color: ${props => props.BGcolor || "rgba(180, 180, 180, 0.5)"};
+border-radius: ${props => props.BorderRadius || "0px"};
+border: ${props => props.BDcolor ||"rgba(180, 180, 180, 0.6)"} solid 2px;
+background-color: ${props => props.BGcolor || "rgba(23, 23, 23, 0.5)"};
 padding:16px;
 font-family: 'Baloo 2', cursive;
 `
