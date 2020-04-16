@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock, BlueHeader, H2, HeaderItem} from "../../styles/homeStyle";
+import { BigBlock, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../API/loggedOutAPI";
 
@@ -58,19 +58,21 @@ function Shows (){
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
-            <BlueHeader>
-                <HeaderItem>
-                    <H2
-                        onClick={i=>setClick(true)}
-                        style={{backgroundColor: bgC}} 
-                        onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
-                        onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                    >Religous services</H2>
-                </HeaderItem>
-                {/* <HeaderItem>
-                    <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
-                </HeaderItem> */}
-            </BlueHeader>
+            <DivWBorder BDcolor="rgba(180, 180, 180, 0.2)">
+                <SpHeaderA>
+                    <HeaderItem>
+                        <H2
+                            onClick={i=>setClick(true)}
+                            style={{backgroundColor: bgC}} 
+                            onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
+                            onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
+                        >Religous services</H2>
+                    </HeaderItem>
+                    {/* <HeaderItem>
+                        <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
+                    </HeaderItem> */}
+                </SpHeaderA>
+            </DivWBorder>
             <br/>
             
             <Carousel

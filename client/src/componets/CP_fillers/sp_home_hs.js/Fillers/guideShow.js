@@ -58,8 +58,8 @@ function Shows (){
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
-            <DivWBorder Margin ="0px 0px 23px 0px">
-            <SpHeaderA>
+            <DivWBorder Margin ="0px 0px 23px 0px" >
+            <SpHeaderA BGcolor="rgba(236, 228, 195, 0.666)">
                 <HeaderItem>
                     <H2 color="rgb(66, 83, 94)"
                         onClick={i=>setClick(true)}
