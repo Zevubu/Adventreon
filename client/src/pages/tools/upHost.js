@@ -296,7 +296,7 @@ function UpHost (){
                     {/* contact info email... Name? DOB number */}
                     {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
-                        <Btn type="submit" value="Submit">Done? Lets get started.</Btn>
+                        <Btn type="submit" value="Submit">Update</Btn>
                         {/* disabled={disable} */}
                     </FormBox>
                 </FormLittleBox>            
