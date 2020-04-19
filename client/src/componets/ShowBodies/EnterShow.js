@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import {BigBlock, BlueHeader, H2, HeaderItem} from "../../styles/homeStyle";
+import {BigBlock, DivWBorder, SpHeaderA, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../API/loggedOutAPI";
 
@@ -58,7 +58,8 @@ function Shows (){
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
-            <BlueHeader>
+            <DivWBorder BDcolor="rgba(180, 180, 180, 0.2)">
+            <SpHeaderA>
                 <HeaderItem>
                     <H2
                         onClick={i=>setClick(true)}
@@ -70,7 +71,8 @@ function Shows (){
                 {/* <HeaderItem>
                     <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
                 </HeaderItem> */}
-            </BlueHeader>
+            </SpHeaderA>
+            </DivWBorder>
             <br/>
             
             <Carousel

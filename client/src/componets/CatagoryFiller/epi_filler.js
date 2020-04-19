@@ -13,7 +13,6 @@ import Button from '@material-ui/core/Button';
 // couns={episode.couns} relig={episode.relig} timeStamp={episode.time_stamp}
 
 function EpisodeFiller(props){
-   
 
     return(
         <DuoServiceBlock bgImg={props.bImg}>

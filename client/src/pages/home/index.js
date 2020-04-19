@@ -50,11 +50,11 @@ function Home (){
                     </IntroTxTDiv>
             </IntroBlock>
             
-            
+              {/* Hosts area */}
+            <HostsBlock/>
             {/* Shows area */}
             <ShowsBlock/>
-            {/* Hosts area */}
-            <HostsBlock/>
+          
         
         </div>
     )

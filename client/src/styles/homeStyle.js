@@ -130,8 +130,8 @@ const HeaderItem = styled.div`
 margin:5px;
 `
 const SpHeaderA = styled(Header)`
-color: ${props => props.Color ||"rgb(238, 245, 244)"};
-background: ${props => props.BGcolor || "rgb(236, 228, 195, 0.666)"};
+color: ${props => props.Color ||"rgba(238, 245, 244, 1)"};
+background: ${props => props.BGcolor || "rgba(236, 228, 195, 0)"};
 text-align: center;
 `
 const BlueHeader = styled(Header)`

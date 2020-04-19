@@ -54,7 +54,7 @@ function NavBar (props){
         <NavBody  className={classes.root}>
             <OptionBox>
                 <OptionBox>
-                    <Logo>Adventreon</Logo>
+                <Link style={{ textDecoration: 'none', color:'black' }} to="/"><Logo>Adventreon</Logo></Link>
                 </OptionBox>
             </OptionBox>
             <OptionBox>
