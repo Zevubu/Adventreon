@@ -5,9 +5,9 @@ import API from "../../../API/loggedOutAPI";
 
 // import SliderFiller from "../ShowFiller/slide_filler";
 
-import EnterShows from './Fillers/guideShow';
-import CounsShows from './Fillers/spellShow';
-import ReligShows from './Fillers/readingShow';
+import LiveShows from './Fillers/LiveShow';
+import AcouShows from './Fillers/acousticShow';
+import EdmShows from './Fillers/EdmShow';
 import EduShows from './Fillers/EduShow';
 import VlogShows from './Fillers/VlogShow';
 
@@ -79,13 +79,13 @@ function Shows (){
                 </HeaderItem>
             </BlueHeader> */}
             <div>
-                <EnterShows />
+                <LiveShows/>
             </div>
             <div>
-                <CounsShows />
+                <AcouShows/>
             </div>
             <div>
-                <ReligShows /> 
+                <EdmShows /> 
             </div>
             <div>
                 <EduShows /> 

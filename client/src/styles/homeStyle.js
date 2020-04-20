@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 // Font sizes, types and styles;
 const H1 = styled.p`
-font-family: 'AthelasBoldItalic';
 font-size: 45px;
 margin:0;
 color:${props => props.color || "rgb(233, 233, 232)"};
@@ -14,14 +13,12 @@ const H1NB = styled.p`
 font-size: 24px;
 color:${props => props.color || "rgb(233, 233, 232)"};
 text-shadow: 1.5px 1.5px rgb(98, 98, 98);
-font-family: 'Baloo 2', cursive;
 `
 const HEp = styled.p`
 font-size 20px;
 margin:0;
 color:${props => props.color || "rgb(233, 233, 232)"};
 text-shadow: 1px 1px ${props => props.TSColor || "rgb(98, 98, 98)"};
-font-family: 'Baloo 2', cursive;
 `
 
 const H2 = styled.p`
@@ -29,7 +26,6 @@ font-size: 25px;
 margin:0;
 color:${props => props.color || "rgb(233, 233, 232)"};
 text-shadow: 0.5px 0.5px ${props => props.TSColor || "rgb(98, 98, 98)"};
-font-family: 'Baloo 2', cursive;
 `
 const H3 = styled.p`
 font-size: 17px;
@@ -57,7 +53,6 @@ const H2B = styled(H2)`
 color: rgb(100, 126, 160);
 `
 const H3B = styled(H3)`
-font-family: 'AthelasBold';
 color: rgb(100, 126, 160);
 `
 const PB = styled(P)`
@@ -115,7 +110,6 @@ margin:0 auto;
 // headers
 const Header = styled.div`
 color: rgb(238, 245, 244);
-font-family: 'AthelasBoldItalic';
 padding:10px 0px;
 font-size: 20px;
 width:100%;
@@ -165,7 +159,6 @@ text-align: center;
 const Btn = styled.button`
 border-radius: 90px 90px 90px 90px;
 border-color: #9bacb3;
-font-family: 'AthelasReg';
 color: rgb(0, 0, 0);
 font-size: 18px;
 width: auto;
@@ -204,13 +197,12 @@ background-size:${props => props.BGPsize || "cover"};
 background-position-x: ${props => props.BGPy || "center"};
 background-position-y: ${props => props.BGPx || "center"};
 border-bottom: ${props => props.BDcolor || "rgb(180, 180, 180)"}  solid 2px;
-font-family: 'AthelasReg';
 color: ${props => props.color || "rgb(238, 245, 244)"};
 font-size: 20px;
 height: 600px;
 display: flex;
 flex-direction: column;
-justify-content: space-evenly;
+justify-content: center;
 `
 
 const IntroTxTDiv = styled.div`
@@ -230,6 +222,10 @@ justify-content: space-between;
 align-items: center;
 margin:0 auto;
 `
+const DivWPad = styled.div`
+margin:40px;
+border: ${props => props.BDcolor ||"rgba(180, 180, 180, 0.6)"} solid 2px;
+`
 // service and coach section styles.
 
 const DivWBorder = styled.div`
@@ -239,6 +235,15 @@ margin: ${props => props.Margin ||"5.23px 0px"};
     width: 100%;
     }
 
+`
+const ProTextBox = styled.div`
+display: inline-block
+margin-bottom:5px;
+border-radius: ${props => props.BorderRadius || "0px"};
+border: ${props => props.BDcolor ||"rgba(180, 180, 180, 0.6)"} solid 2px;
+background-color: ${props => props.BGcolor || "rgba(23, 23, 23, 0.5)"};
+padding:16px;
+text-align: center;
 `
 
 const ServiceBlock = styled.div`
@@ -329,4 +334,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {IntroBlock, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem,HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {ProTextBox,DivWPad, IntroBlock, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem,HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}

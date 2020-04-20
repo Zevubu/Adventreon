@@ -45,7 +45,6 @@ const PE = styled.p`
 color:red;
 `
 const Btn = styled.button`
-font-family: 'AthelasReg';
 color: ${props => props.textColor || "rgb(0, 0, 0)"};
 background-color:${props => props.backgroundColor || "rgb(238, 245, 244)"}; 
 border-color: #9bacb3;

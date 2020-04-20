@@ -6,8 +6,9 @@ import styled, {createGlobalStyle} from "styled-components";
 // background-position-y: 20%;
 //  font-family: 'AthelasReg';
 const GlobalStyle = createGlobalStyle`
+
 body{
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
     background-color: rgb(53, 52, 53);
     width:100%;
     height:100%;

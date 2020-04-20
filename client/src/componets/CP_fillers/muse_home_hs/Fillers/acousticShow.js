@@ -43,7 +43,7 @@ function Shows (){
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getReligShows()
+        const result = await API.getCounsShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };
@@ -51,27 +51,27 @@ function Shows (){
     }, []);
 
     if(Click){
-        return <Redirect to="/religious" />
+        return <Redirect to="/counseling" />
     }
-    // opacity: vis ,  
+    // opacity: vis ,
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
             <DivWBorder BDcolor="rgba(66, 83, 94, 0.777)">
-                <SpHeaderA BGcolor="rgba(85, 85, 85, 1)">
-                    <HeaderItem>
-                        <H2 color="rgb(207, 207, 207)"
-                            onClick={i=>setClick(true)}
-                            style={{backgroundColor: bgC}} 
-                            onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
-                            onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                        >Readings</H2>
-                    </HeaderItem>
-                    {/* <HeaderItem>
-                        <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
-                    </HeaderItem> */}
-                </SpHeaderA>
+            <SpHeaderA BGcolor="rgba(146, 146, 146, 1)">
+                <HeaderItem>
+                    <H2 color="rgb(46, 46, 46)" TSColor="rgb(223, 223, 223)"
+                        onClick={i=>setClick(true)}
+                        style={{backgroundColor: bgC}} 
+                        onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
+                        onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
+                    >Acoustic</H2>
+                </HeaderItem>
+                {/* <HeaderItem>
+                    <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
+                </HeaderItem> */}
+            </SpHeaderA>
             </DivWBorder>
             <br/>
             

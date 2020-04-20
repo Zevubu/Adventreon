@@ -1,6 +1,6 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,P} from "../../styles/homeStyle"
+import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,P,ProTextBox} from "../../styles/homeStyle";
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/CP_fillers/sp_home_hs.js/sp_host";
 import ShowsBlock from "../../componets/CP_fillers/sp_home_hs.js/sp_shows";
@@ -19,9 +19,11 @@ function SpirtHome (){
                 <FillerDiv/>
                     <IntroTxTDiv>
                         <CCCDiv>
-                            <H1 color="rgb(233, 233, 232)">Spirtual Respite</H1>
-                            <H2 color="rgb(23, 283, 232)">All creeds and practices are welcome</H2>
-                            <P color="rgb(233, 233, 232)"> Except for those who wish to do harm</P>
+                            <ProTextBox>
+                                <H1 color="rgb(233, 233, 232)">Spirtual Respite</H1>
+                                <H2 color="rgb(23, 283, 232)">All creeds and practices are welcome</H2>
+                                <P color="rgb(233, 233, 232)"> Except for those who wish to do harm</P>
+                            </ProTextBox>
                             {/* <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             width="560" 

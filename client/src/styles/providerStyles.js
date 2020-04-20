@@ -215,7 +215,6 @@ border-radius: ${props => props.BorderRadius || "0px"};
 border: ${props => props.BDcolor ||"rgba(180, 180, 180, 0.6)"} solid 2px;
 background-color: ${props => props.BGcolor || "rgba(23, 23, 23, 0.5)"};
 padding:16px;
-font-family: 'Baloo 2', cursive;
 `
 const ProTextBoxN = styled(ProTextBox)`
 display: inline-block;
@@ -223,7 +222,6 @@ height: auto;
 background-color: rgb(115, 162, 175);
 margin:5px;
 opacity: 0.8;
-font-family: 'Baloo 2', cursive;
 `
 const ProImage = styled(Image)`
 width: 100%;
