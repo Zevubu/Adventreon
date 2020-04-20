@@ -7,6 +7,7 @@ import {GlobalStyle} from "./styles/universal-styles";
 import UserRoute from './PrivateRoutes/UserRoutes';
 import LogOutRoute from './PrivateRoutes/LogOutRoute';
 import TempRoute from './PrivateRoutes/TempRoute';
+import TempMRoute from './PrivateRoutes/TempMRoute';
 import ManagmentRoute from './PrivateRoutes/ManagmentRoute';
 import HostRoute from './PrivateRoutes/HostRoute';
 
@@ -14,7 +15,7 @@ import HostRoute from './PrivateRoutes/HostRoute';
 import Uploader from './componets/upload'
 ////
 
-import { AuthContext, UserContext, HostContext, ManagmentContext, TempContext, UserInfoContext} from "./context/heart";
+import { AuthContext, UserContext, HostContext, ManagmentContext, TempContext,TempMContext, UserInfoContext} from "./context/heart";
 
 import NavBar from "./componets/navbar";
 import Footer from './componets/footer';
@@ -34,10 +35,12 @@ import AllCatPage from './pages/catagory/allCat';
 
 // tools
 import InviteHost from './pages/tools/Management/invite_host';
+import InviteManeg from './pages/tools/Management/invite_manager';
 import HostSignUp from './pages/tools/host-sign-up';
 import UpHost from './pages/tools/upHost';
 import ShowBuilder from './pages/tools/show-builder';
 import AddEpisode from './pages/tools/add_episode';
+import ManegSignUp from './pages/tools/Management/maneg-sign-up' 
 
 
 import HostProfile from './pages/profiles/host'
@@ -52,46 +55,52 @@ function App() {
   const [isHost,setIsHost] = useState();
   const [isManager, setIsManager] = useState();
   const [isTempP, setIsTempP] = useState();
+  const [isTempM, setIsTempM] = useState();
   // userdata hold
   const [userData, setUserData] = useState();
   const [isData, setIsData] = useState();
 
   const setTokens = (data) => {
     if(JSON.stringify(data) !== undefined){
-      console.log(`Token Test: ${JSON.stringify(data) !== undefined}`)
-      console.log(`Token Data: ${JSON.stringify(data)}`)
+      // console.log(`Token Test: ${JSON.stringify(data) !== undefined}`)
+      // console.log(`Token Data: ${JSON.stringify(data)}`)
       localStorage.setItem("tokens", JSON.stringify(data));
       setAuthTokens(data);
     }else{
       setAuthTokens(false);
-      console.log(`Token Test Fail: ${JSON.stringify(data) !== undefined}`)
-      console.log(`Token Data Fail: ${JSON.stringify(data)}`)
+      // console.log(`Token Test Fail: ${JSON.stringify(data) !== undefined}`)
+      // console.log(`Token Data Fail: ${JSON.stringify(data)}`)
     } 
   }
 
   const setAuth = (data) => {
-      console.log(` Is authenticated: ${data}`)
+      // console.log(` Is authenticated: ${data}`)
       setIsAuthenticated(data)
   }
 
   const setUser =(data) => {
-    console.log(`Is user: ${data}`)
+    // console.log(`Is user: ${data}`)
     setIsUser(data)
   }
 
   const setHost =(data) => {
-    console.log(`Is Host: ${data}`)
+    // console.log(`Is Host: ${data}`)
     setIsHost(data)
   }
 
   const setManager = (data) => {
-    console.log(`Manager data: ${data}`)
+    // console.log(`Manager data: ${data}`)
     setIsManager(data)
   }
 
   const setTempP = (data) => {
-    console.log(`Is Temp: ${data}`)
+    // console.log(`Is Temp: ${data}`)
     setIsTempP(data);
+  }
+
+  const setTempM = (data) => {
+    // console.log(`Is Temp: ${data}`)
+    setIsTempM(data);
   }
 
   const setData = (data) =>{
@@ -122,7 +131,7 @@ function App() {
         setIsAuthenticated(true);
         setUserData(JSON.parse(user))
         setIsData(true)
-        console.log(`IS USER CHECK: ${userType === "8KdWkYINFSD81fI"}`)
+        // console.log(`IS USER CHECK: ${userType === "8KdWkYINFSD81fI"}`)
         if(userType === "8KdWkYINFSD81fI"){
           // console.log(`IS USER CHECK: ${userType}`)
           setIsUser(true);
@@ -140,55 +149,59 @@ function App() {
 // I need to build and impliment an 18 and up context.
 
   return (
-    <TempContext.Provider value={{isTempP, setIsTempP:setTempP}}>
-      <ManagmentContext.Provider value={{isManager, setIsManager:setManager}}>
-          <HostContext.Provider value={{isHost, setIsHost:setHost}}>
-            <UserContext.Provider value={{isUser, setIsUser: setUser}}>
-              <UserInfoContext.Provider value={{userData, setUserData: UserDataSet, isData, setIsData: setData }}>
-                <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, isAuthenticated, setIsAuthenticated: setAuth}}>
-                  <Router>
-                  <GlobalFonts/>  
-                  <GlobalStyle />
-                 
-                    <div>
-                      <NavBar value={userData}/>
-                      <Switch>
-                        <Route exact path="/" component={HomePage} />
-                        <LogOutRoute exact path="/login" component={Login} />
-                        <LogOutRoute exact path="/signup" component={SignUp} />
-                        <UserRoute path="/profile" state={{value:userData}}  component={profile}/>
-                        <Route exact path="/hosts" component={HostsPage} />
-                        <Route exact path="/hosts/:id" component={HostProfile} />
-                        <Route exact path="/shows" component={ShowPage} />
-                        <Route exact path="/shows/:id" component={ShowProfile} />
-                        <Route exact path="/episodes/:id" component={EpisodeProfile} />
-                        <Route exact path="/episodes" component={HostsPage} />
-                        <Route exact path="/entertain" component={EnterPage} />
-                        <Route exact path="/counseling" component={LifePage} />
-                        <Route exact path="/religious" component={SpirtPage} />
-                        <Route exact path="/music" component={MusicPage} />
-                        <Route exact path="/allcat" component={AllCatPage} />
-                        <Route exact path="/uploads" component={Uploader} />
-                        <TempRoute exact path="/tempsu" component={HostSignUp} />
-                        <ManagmentRoute path="/profilem" state={{value:userData}}  component={profile}/>
-                        <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
-                        <ManagmentRoute exact path="/tempsum" component={HostSignUp} />
-                        <ManagmentRoute exact path="/pupm/:id" state={{value:userData}} component={UpHost} />
-                        <ManagmentRoute exact path="/showbuilderm" state={{value:userData}} component={ShowBuilder}/>
-                        <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
-                        <HostRoute exact path="/pup/:id" state={{value:userData}} component={UpHost} />
-                        <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
-                        <HostRoute exact path="/episodebuilder" component={AddEpisode}/>
-                      </Switch>
-                      <Footer/>
-                      </div>
-                  </Router>
-                </AuthContext.Provider>
-              </UserInfoContext.Provider>
-            </UserContext.Provider>
-          </HostContext.Provider>
-        </ManagmentContext.Provider>
-      </TempContext.Provider>
+    <TempMContext.Provider value={{isTempM, setIsTempM:setTempM }}>
+      <TempContext.Provider value={{isTempP, setIsTempP:setTempP}}>
+        <ManagmentContext.Provider value={{isManager, setIsManager:setManager}}>
+            <HostContext.Provider value={{isHost, setIsHost:setHost}}>
+              <UserContext.Provider value={{isUser, setIsUser: setUser}}>
+                <UserInfoContext.Provider value={{userData, setUserData: UserDataSet, isData, setIsData: setData }}>
+                  <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, isAuthenticated, setIsAuthenticated: setAuth}}>
+                    <Router>
+                    <GlobalFonts/>  
+                    <GlobalStyle />
+                      <div>
+                        <NavBar value={userData}/>
+                        <Switch>
+                          <Route exact path="/" component={HomePage} />
+                          <LogOutRoute exact path="/login" component={Login} />
+                          <LogOutRoute exact path="/signup" component={SignUp} />
+                          <UserRoute path="/profile/:id" state={{value:userData}}  component={profile}/>
+                          <Route exact path="/hosts" component={HostsPage} />
+                          <Route exact path="/hosts/:id" component={HostProfile} />
+                          <Route exact path="/shows" component={ShowPage} />
+                          <Route exact path="/shows/:id" component={ShowProfile} />
+                          <Route exact path="/episodes/:id" component={EpisodeProfile} />
+                          <Route exact path="/episodes" component={HostsPage} />
+                          <Route exact path="/entertain" component={EnterPage} />
+                          <Route exact path="/counseling" component={LifePage} />
+                          <Route exact path="/religious" component={SpirtPage} />
+                          <Route exact path="/music" component={MusicPage} />
+                          <Route exact path="/allcat" component={AllCatPage} />
+                          <Route exact path="/uploads" component={Uploader} />
+                          <TempMRoute exact path="/tempsum/:id" component={ManegSignUp} />
+                          <TempRoute exact path="/tempsu/:id" component={HostSignUp} />
+                          <ManagmentRoute path="/profilem/:id" state={{value:userData}}  component={profile}/>
+                          <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
+                          <ManagmentRoute exact path="/hostsum/:id" component={HostSignUp} />
+                          <ManagmentRoute exact path="/invitem" component={InviteManeg} />
+                          <ManagmentRoute exact path="/manegsu/:id" component={ManegSignUp} />
+                          <ManagmentRoute exact path="/pupm/:id" state={{value:userData}} component={UpHost} />
+                          <ManagmentRoute exact path="/showbuilderm" state={{value:userData}} component={ShowBuilder}/>
+                          <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
+                          <HostRoute exact path="/pup/:id" state={{value:userData}} component={UpHost} />
+                          <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
+                          <HostRoute exact path="/episodebuilder" component={AddEpisode}/>
+                        </Switch>
+                        <Footer/>
+                        </div>
+                    </Router>
+                  </AuthContext.Provider>
+                </UserInfoContext.Provider>
+              </UserContext.Provider>
+            </HostContext.Provider>
+          </ManagmentContext.Provider>
+        </TempContext.Provider>
+      </TempMContext.Provider>
   );
 }
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useTemp } from "../context/heart";
+import { useTempM } from "../context/heart";
 
 function TempRoute({ component: Component, ...rest }) {
-  const {isTempP} = useTemp();
+  const {isTempM} = useTempM();
    
 //   console.log(`What is Auth token: ${authTokens}`)
 
@@ -11,7 +11,7 @@ function TempRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={props =>
-      isTempP? (
+      isTempM? (
           <Component {...props} />
         ) : (
           <Redirect

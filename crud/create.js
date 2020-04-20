@@ -12,10 +12,10 @@ module.exports = async (conn, table, columns, values) => {
   const VALUES = valuesForQuery(values)
   try {
     const user = await query(conn, `INSERT INTO ${table}(${columns.join(', ')}) VALUES ${VALUES};`);
-    if (user.insertId) {
-      console.log(user.insertId);
-      return await query(conn, `SELECT * FROM ${table} WHERE ID=?`, [user.insertId]);
-    }
+    // if (user.insertId) {
+    //   console.log(user.insertId);
+    //   return await query(conn, `SELECT * FROM ${table} WHERE ID=?`, [user.insertId]);
+    // }
     return user;
   } catch(e) { console.log(e)}
 }

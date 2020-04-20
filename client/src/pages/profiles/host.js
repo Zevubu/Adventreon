@@ -29,9 +29,10 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 //  couns, 
 //  relig
 
-function Host(){
+function HostPage(){
     let { id } = useParams();
-    const [Hosts, setHosts] = useState([]);
+    console.log(`TESTING ID TEST ${id}`)
+    const [Host, setHosts] = useState([]);
     const [shows, setShows] = useState([]);
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
@@ -41,7 +42,7 @@ function Host(){
     useEffect(() => {
         const fetchHost = async () =>{
          const result = await API.getHostByID(`${id}`)
-             setHosts(result.data)
+             setHosts(result.data[0])
            
          };
          const fetchShows = async () =>{
@@ -56,8 +57,7 @@ function Host(){
 
     return(
         <ProBigBox>
-        {Hosts.map((Host, key) => (
-            <div key={key}>
+            <div>
                 <SpHeaderA id={Host.id}>
                     <Paper elevation={3} style={{padding: '0px', borderRadius: '0px',backgroundColor: 'rgba(180,180,180,0.2)', marginbottom: '20px'}}>
                         <ProTextBox>
@@ -67,7 +67,6 @@ function Host(){
                     </Paper>
                 </SpHeaderA>
                 <ProviderBox>
-                   
                         <ProDuoServiceBlockColumn>
                             <Paper elevation={3} style={{padding: '0px', borderRadius: '0px',backgroundColor: 'rgba(180,180,180,0.2)', marginbottom: '20px'}}>
                                 {/* <ProTextBox>
@@ -105,14 +104,11 @@ function Host(){
                                 </ProTextBox>
                             </Paper>
                         </ProDuoServiceBlockColumn>
-                   
                 </ProviderBox>
                 {/* <SpHeaderA>
                     <H2>{Host.user_name}'s shows. </H2>
                 </SpHeaderA> */}
             </div>
-        ))}
-             
              <Carousel
                 // autoPlay={5000}
                 animationSpeed={1500}
@@ -123,8 +119,6 @@ function Host(){
                 infinite
                 dots
             >
-            
-         
                 {shows.map((show, key) => (
     
                         <SliderFiller
@@ -141,4 +135,4 @@ function Host(){
     )
 }
 
-export default Host;
+export default HostPage;
