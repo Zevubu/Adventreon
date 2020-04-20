@@ -27,7 +27,7 @@ function Hosts (){
             console.log(`host data ${result.data}`)
             setHosts(result.data)
         };
-        fetchHosts(); 
+            fetchHosts(); 
     }, []);
 
     if(Click){
