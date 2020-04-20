@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Card, Form, Input, Button,Error } from '../styles/signUpOutStyles';
 import {FillerDiv} from "../styles/homeStyle";
-import { useAuth, useUser, useHost, useManagment, useTemp, useUserInfo} from "../context/heart";
+import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo} from "../context/heart";
 import API from "../API/loggedOutAPI";
 
 function Login (){
@@ -19,6 +19,7 @@ function Login (){
     const { setIsManager } = useManagment();
     const { setUserData } = useUserInfo();
     const { setIsTempP } = useTemp();
+    const { setIsTempM } = useTempM();
     
   
     // const referer = '/';
@@ -49,9 +50,14 @@ function Login (){
                 setIsManager(true);
               }else if (JSON.stringify(result.data.user_info.user_type) === "\"temp\""){
                 localStorage.setItem("user_type","97yLn756tQb58uyThk0ujn");
-                console.log(`TEMP TEST TRUE!`)
-                setThisTemp(true)
-                setIsTempP(true)
+                console.log(`TEMP TEST TRUE!`);
+                setThisTemp(true);
+                setIsTempP(true);
+              }else if (JSON.stringify(result.data.user_info.user_type) === "\"tempm\""){
+                localStorage.setItem("user_type","9823ugrbhjdmds90r6wq8bcnmr3q");
+                console.log(`TEMP TEST TRUE!`);
+                setThisTemp(true);
+                setIsTempM(true);
               }
             } else {
               setIsError(true);

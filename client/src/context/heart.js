@@ -15,6 +15,10 @@ export const useHost = () => useContext(HostContext);
 export const TempContext = createContext();
 export const useTemp = () => useContext(TempContext);
 
+// Tempm context
+export const TempMContext = createContext();
+export const useTempM = () => useContext(TempMContext);
+
 // managment context
 export const ManagmentContext = createContext();
 export const useManagment = () => useContext(ManagmentContext);

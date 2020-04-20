@@ -45,7 +45,7 @@ export default {
     createAccount: function(userData){
         console.log(`CREAT CHECK!`);
         console.log(`userData: ${userData}`);
-        return axios.post("/api/users", userData).catch(err => console.log(`Account creation error:${err}`));
+        return axios.post("/auth/register", userData).catch(err => console.log(`Account creation error:${err}`));
     },
     createShow: function(showData){
         console.log(`CREAT CHECK!`);
@@ -58,6 +58,9 @@ export default {
     getEmailCheck: function(email){
         console.log(`EmailData: ${email}`);
         return axios.post("/api/opening/emailcheck", email).catch(err => console.log(`find email error:${err}`))
+    },
+    deleteUserById: function(id){
+        return axios.delete("'/auth/deleteuser/" + id).catch(err => console.log(`Delete user by id error:${err}`));
     }
 
 }

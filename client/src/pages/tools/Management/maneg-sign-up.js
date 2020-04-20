@@ -1,16 +1,18 @@
-import React from "react";
-import {DivWBorder, MarronHeader, H2, PT, PS} from "../../styles/homeStyle"
-import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
-import API from "../../API/behindDaScenes";
+import React,{useState,} from "react";
+import {useParams} from "react-router";
+import {DivWBorder, MarronHeader, H2, PT, PS} from "../../../styles/homeStyle"
+import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../../styles/signUpOutStyles"
+import API from "../../../API/behindDaScenes";
 import {useForm} from 'react-hook-form';
-
+import {Redirect} from "react-router-dom";
 
 function SignUp (){
-
+    let { id } = useParams();
+    const [Complete, setComplete] = useState();
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = (data, e) =>{
-        console.log(data)
-        console.log(`entertain:${data.entertain} couns:${data.couns} relig:${data.relig}`)
+        // console.log(data)
+        // console.log(`entertain:${data.entertain} couns:${data.couns} relig:${data.relig}`)
         // const checkEmail = async () =>{
         //    const result = await API.getEmailCheck({
         //     "user_email": data.email
@@ -18,10 +20,14 @@ function SignUp (){
         //     console.log(result)
         // }
         // checkEmail()
+        if(Complete){
+            return <Redirect to='/' />
+        }
 
         API.createAccount({ 
             "user_name": data.userName,
-            "user_type": "Host",
+            "user_type": "manager",
+            "mhswitch": true,
             "dob": data.DOB,
             "email": data.email,
             "password": data.password,
@@ -43,10 +49,13 @@ function SignUp (){
             }).then(e.target.reset())
             .catch(err => console.log(err))
     }
-    // function(){
-                
-    // }
-
+    // .then(function(){
+    //     console.log(`Delete ID test: ${id}`)
+    //     API.deleteUserById(`${id}`)
+    //     .then(function(){
+    //         return <Redirect to='/' />
+    //     }).catch(err => console.log(err))
+    // })
     return(
         <DivWBorder> 
             {/* <a id="signup"/> */}

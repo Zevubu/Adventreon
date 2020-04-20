@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 // import {H2} from '../../styles/homeStyle';
 import {NavBody,H2, OptionBox,PullBox, LogoImage} from "../../styles/componentStyles";
 
-import { useAuth, useUser, useHost, useManagment, useTemp, useUserInfo } from "../../context/heart";
+import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo } from "../../context/heart";
 import Logo from "../../img/masked-logo-Adventreon-blue.png"
 import SimpleMenu from './menu.js';
 import ResMenu from './resmenu';
@@ -34,6 +34,7 @@ function NavBar (props){
     const {isUser, setIsUser} = useUser();
     const {isHost, setIsHost} = useHost();
     const {isTempP, setIsTempP} = useTemp();
+    const {isTempM, setIsTempM} = useTempM();
     const {isManager, setIsManager} = useManagment();
     const {userData, setUserData} = useUserInfo();
     const matches = useMediaQuery('(min-width:600px)');
@@ -49,6 +50,7 @@ function NavBar (props){
         setIsAuthenticated();
         setIsHost();
         setIsTempP();
+        setIsTempM();
     }
     // && isTempP
     return(
@@ -66,7 +68,12 @@ function NavBar (props){
                 <OptionBox>
                     {isAuthenticated && isTempP &&(
                         <div>
-                            <Link style={{ textDecoration: 'none' }} to="/tempsu"><Button variant="contained" color="secondary">MAKE YOUR HOST PROFILE HERE!</Button></Link>
+                            <Link style={{ textDecoration: 'none' }} to={"/tempsu/" + userData.id}><Button variant="contained" color="secondary">MAKE YOUR HOST PROFILE HERE!</Button></Link>
+                        </div>
+                    )} 
+                       {isAuthenticated && isTempM &&(
+                        <div>
+                            <Link style={{ textDecoration: 'none' }} to={"/tempsum/" + userData.id}><Button variant="contained" color="secondary">MAKE YOUR MANAGEMENT PROFILE HERE!</Button></Link>
                         </div>
                     )} 
                     {/* <Link style={{ textDecoration: 'none' }} to="/"><Button variant="outlined" color="secondary">Home</Button></Link> */}
