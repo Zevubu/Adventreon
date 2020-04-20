@@ -43,10 +43,11 @@ CREATE TABLE shows(
     img_b varchar(300) NOT NULL,
     catagory varchar(50) NOT NULL,
     sub_catagory varchar(50) NOT NULL,
+    v_link varchar(400) NULL,
     episode_ids varchar(1000) NUll,
     host_id varchar(100) NOT NULL,
-    host_name varchar(50) NOT NULL,
-    host_img varchar(300) NOT NULL,
+    host_name varchar(50) NULL,
+    host_img varchar(300) NULL,
     payment varchar(1000) NUll,
     patreon varchar(1000) NUll,
     wp_title varchar(80) NUll,
@@ -73,15 +74,15 @@ CREATE TABLE episodes(
 	catagory varchar(50) NOT NULL,
     sub_catagory varchar(50) NOT NULL,
     host_id varchar(100) NOT NULL,
-	host_name varchar(50) NOT NULL,
+	host_name varchar(50) NULL,
     b_img varchar(300) NOT NULL,
 	credits varchar(1000) NULL,
     price  varchar(20) NOT NULL,
     payment varchar(200) NUll,
-    patreon varchar(200) NUll,
-    wp_title varchar(80) NUll,
-    webpage varchar(1000) NUll,
-    v_link varchar(400) NUll,
+    patreon varchar(200) NULL,
+    wp_title varchar(80) NULL,
+    webpage varchar(1000) NULL,
+    v_link varchar(400) NULL,
 	show_date date NOT NULL,
     start_time time(0) NULL,
     end_time time(0) NULL,
@@ -95,7 +96,6 @@ CREATE TABLE episodes(
 	time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	INDEX idx_events_userId (id)
 );
-
 
 SELECT * FROM episodes;
 

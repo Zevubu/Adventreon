@@ -1,9 +1,10 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 // import {H2} from '../../styles/homeStyle';
-import {NavBody,  OptionBox, Logo} from "../../styles/componentStyles";
-import { useAuth, useUser, useHost, useManagment, useTemp, useUserInfo } from "../../context/heart";
+import {NavBody,H2, OptionBox,PullBox, LogoImage} from "../../styles/componentStyles";
 
+import { useAuth, useUser, useHost, useManagment, useTemp, useUserInfo } from "../../context/heart";
+import Logo from "../../img/masked-logo-Adventreon-blue.png"
 import SimpleMenu from './menu.js';
 import ResMenu from './resmenu';
 import HostMenue from './hostMenu';
@@ -52,11 +53,14 @@ function NavBar (props){
     // && isTempP
     return(
         <NavBody  className={classes.root}>
-            <OptionBox>
-                <OptionBox>
-                <Link style={{ textDecoration: 'none', color:'black' }} to="/"><Logo>Adventreon</Logo></Link>
-                </OptionBox>
-            </OptionBox>
+            <Link style={{ textDecoration: 'none', color:'black' }} to="/">
+                <PullBox>
+                    <PullBox>
+                            <LogoImage src={Logo} alt="Logo" />
+                    </PullBox>
+                        <H2>ADVENTREON</H2>
+                </PullBox>
+            </Link>
             <OptionBox>
                 {matches ?
                 <OptionBox>

@@ -1,5 +1,5 @@
 const showQuery ={
-    createNew: () => `INSERT INTO shows (show_name, show_type, about, img, img_b, catagory, sub_catagory, host_id, host_name, host_img, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, entertain ,couns, relig) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+    createNew: () => `INSERT INTO shows (show_name, show_type, about, img, img_b, catagory, sub_catagory, v_link, host_id, host_name, host_img, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, entertain ,couns, relig) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
     findAll: () => `SELECT * FROM shows`,
     findAllEnt:  () => `SELECT * FROM shows WHERE entertain=1`,
     findAllCouns:  () => `SELECT * FROM shows WHERE couns=1`,

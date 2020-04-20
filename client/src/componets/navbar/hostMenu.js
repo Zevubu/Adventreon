@@ -27,8 +27,9 @@ export default function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/showbuilder"><MenuItem onClick={handleClose}>Entertainment</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/episodebuilder"><MenuItem onClick={handleClose}>Counseling</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/showbuilder"><MenuItem onClick={handleClose}>Make a Show</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/episodebuilder"><MenuItem onClick={handleClose}>Make an episode</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/profile"><MenuItem onClick={handleClose}>Your Profile</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/pup"><MenuItem onClick={handleClose}>Update Profile</MenuItem></Link>
       </Menu>
     </div>

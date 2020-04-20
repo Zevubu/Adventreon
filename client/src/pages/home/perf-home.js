@@ -1,6 +1,6 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,P} from "../../styles/homeStyle"
+import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,ProTextBox} from "../../styles/homeStyle";
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/CP_fillers/perf_home_hs/perf_host";
 import ShowsBlock from "../../componets/CP_fillers/perf_home_hs/perf_shows";
@@ -19,8 +19,10 @@ function MusicHome (){
                 <FillerDiv/>
                     <IntroTxTDiv>
                         <CCCDiv>
-                            <H1>Performance</H1>
-                            <H2>This world's full of some wonderfully odd people, isn't it?</H2>
+                            <ProTextBox>
+                                <H1>Performance</H1>
+                                <H2>This world's full of some wonderfully odd people, isn't it?</H2>
+                            </ProTextBox>
                             <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             width="560" 

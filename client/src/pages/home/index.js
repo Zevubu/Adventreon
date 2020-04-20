@@ -1,6 +1,7 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock, CCCDiv, FillerDiv, IntroTxTDiv,H1} from "../../styles/homeStyle"
+import {IntroBlock, CCCDiv, FillerDiv, IntroTxTDiv,H1, ProTextBox} from "../../styles/homeStyle";
+
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/homeHosts";
 import ShowsBlock from "../../componets/homeShows";
@@ -20,12 +21,14 @@ function Home (){
                     <IntroTxTDiv>
 
                         <CCCDiv>
-                            <H1>Adventreon</H1>
-                            <br/>
+                            {/* <ProTextBox>
+                                <H1>ADVENTREON</H1>
+                            </ProTextBox>
+                            <br/> */}
                             <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
-                            width="560" 
-                            height="315" 
+                            width="840" 
+                            height="472.5" 
                             src="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import {BigBlock, H2, HeaderItem,SpHeaderA, DivWBorder} from "../../../../styles/homeStyle";
+import { BigBlock, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../../../API/loggedOutAPI";
 
@@ -43,7 +43,7 @@ function Shows (){
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getEntShows()
+        const result = await API.getReligShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };
@@ -51,27 +51,27 @@ function Shows (){
     }, []);
 
     if(Click){
-        return <Redirect to="/" />
+        return <Redirect to="/religious" />
     }
-    // opacity: vis , 
+    // opacity: vis ,  
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
-            <DivWBorder BDcolor="rgba(, 83, 94, 0.777)" Margin ="0px 0px 23px 0px">
-            <SpHeaderA BGcolor="rgba(223, 223, 223, 1)">
+            <DivWBorder BDcolor="rgba(66, 83, 94, 0.777)">
+            <SpHeaderA BGcolor="rgba(146, 146, 146, 1)">
                 <HeaderItem>
-                    <H2 color="rgb(23, 23, 23)" TSColor="rgb(223, 223, 223)"
-                        onClick={i=>setClick(true)}
-                        style={{backgroundColor: bgC}} 
-                        onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
-                        onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                    >Guidance</H2>
-                </HeaderItem>
-                {/* <HeaderItem>
-                    <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
-                </HeaderItem> */}
-            </SpHeaderA>
+                    <H2 color="rgb(46, 46, 46)" TSColor="rgb(223, 223, 223)"
+                            onClick={i=>setClick(true)}
+                            style={{backgroundColor: bgC}} 
+                            onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
+                            onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
+                        >EDM</H2>
+                    </HeaderItem>
+                    {/* <HeaderItem>
+                        <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
+                    </HeaderItem> */}
+                </SpHeaderA>
             </DivWBorder>
             <br/>
             
