@@ -3,13 +3,6 @@ import {DuoServiceBlock, DuoServiceBlockColumn,Image, TextBox, PS,H2B,PG} from "
 import Button from '@material-ui/core/Button';
 // import Paper from '@material-ui/core/Paper';
 
-// function holdingBox (props){
-//     return(
-//         <ServiceBlock>
-            
-//         </ServiceBlock>
-//     )
-// }
 
 function ShowFiller(props){
    

@@ -6,3 +6,4 @@ KEYS.js
 keys.env
 .history
 uploads
+config.js

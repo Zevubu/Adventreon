@@ -1,12 +1,13 @@
 import React, { useState, useEffect} from "react";
-import {DivWBorder, SpHeaderA, BigBlock, H2, HeaderItem} from "../../styles/homeStyle";
+import {DivWBorder,LookBox,LookBtn,LookTextBox, SpHeaderA, BigBlock, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../API/loggedOutAPI";
 
 import SliderFiller from "../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
+import '../../styles/Carousel.css';
+// import '@brainhubeu/react-carousel/lib/style.css';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -74,31 +75,34 @@ function Shows (){
                 </SpHeaderA>
             </DivWBorder>
             <br/>
-            
-            <Carousel
-                // autoPlay={5000}
-                animationSpeed={1500}
-                slidesPerPage={num}
-                offset={50}
-                slidesPerScroll={scNum}
-                arrows
-                infinite
-                dots
-            >
-            
-         
-                {shows.map((show, key) => (
-    
-                        <SliderFiller
-                            key={key} id={show.id} showName={show.show_name} about={show.about}
-                            imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
-                            hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
-                            patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
-                            booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
-                            relig={show.relig} timeStamp={show.time_stamp}
-                        />
-                ))}
-            </Carousel>
+            <LookBox>
+                <LookTextBox></LookTextBox>
+                <LookBtn>
+                    <div>
+                        <Carousel
+                            // autoPlay={5000}
+                            animationSpeed={1500}
+                            slidesPerPage={num}
+                            offset={50}
+                            slidesPerScroll={scNum}
+                            arrows
+                            infinite
+                        >
+                            {shows.map((show, key) => (
+                
+                                    <SliderFiller
+                                        key={key} id={show.id} showName={show.show_name} about={show.about}
+                                        imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
+                                        hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
+                                        patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
+                                        booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
+                                        relig={show.relig} timeStamp={show.time_stamp}
+                                    />
+                            ))}
+                        </Carousel> 
+                    </div>
+                </LookBtn>   
+            </LookBox>
         </BigBlock>
     )
 }

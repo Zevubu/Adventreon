@@ -1,12 +1,13 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
+import { BigBlock,LookBox,LookBtn,LookTextBox, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../API/loggedOutAPI";
 
 import SliderFiller from "../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
+import '../../styles/Carousel.css';
+// import '@brainhubeu/react-carousel/lib/style.css';
 // import Button from '@material-ui/core/Button';
 // import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -43,7 +44,7 @@ function Shows (){
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getCounsShows()
+        const result = await API.getReligShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };
@@ -51,9 +52,9 @@ function Shows (){
     }, []);
 
     if(Click){
-        return <Redirect to="/counseling" />
+        return <Redirect to="/religious" />
     }
-    // opacity: vis ,
+    // opacity: vis ,  
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
@@ -66,7 +67,7 @@ function Shows (){
                             style={{backgroundColor: bgC}} 
                             onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                             onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                        >Counseling</H2>
+                        >Religous services</H2>
                     </HeaderItem>
                     {/* <HeaderItem>
                         <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
@@ -74,31 +75,36 @@ function Shows (){
                 </SpHeaderA>
             </DivWBorder>
             <br/>
-            
-            <Carousel
-                // autoPlay={5000}
-                animationSpeed={1500}
-                slidesPerPage={num}
-                offset={50}
-                slidesPerScroll={scNum}
-                arrows
-                infinite
-                dots
-            >
-            
-         
-                {shows.map((show, key) => (
-    
-                        <SliderFiller
-                            key={key} id={show.id} showName={show.show_name} about={show.about}
-                            imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
-                            hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
-                            patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
-                            booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
-                            relig={show.relig} timeStamp={show.time_stamp}
-                        />
-                ))}
-            </Carousel>
+            <LookBox>
+                <LookTextBox></LookTextBox>
+                <LookBtn>
+                    <div>
+                        <Carousel
+                            // autoPlay={5000}
+                            animationSpeed={1500}
+                            slidesPerPage={num}
+                            offset={50}
+                            slidesPerScroll={scNum}
+                            arrows
+                            infinite
+                        >
+                        
+                    
+                            {shows.map((show, key) => (
+                
+                                    <SliderFiller
+                                        key={key} id={show.id} showName={show.show_name} about={show.about}
+                                        imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
+                                        hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
+                                        patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
+                                        booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
+                                        relig={show.relig} timeStamp={show.time_stamp}
+                                    />
+                            ))}
+                        </Carousel> 
+                    </div>
+                </LookBtn>   
+            </LookBox>
         </BigBlock>
     )
 }

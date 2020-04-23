@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {NavBody,H2, OptionBox,PullBox, LogoImage} from "../../styles/componentStyles";
 
 import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo } from "../../context/heart";
-import Logo from "../../img/masked-logo-Adventreon-blue.png"
+import Logo from "../../img/better-bordered-masked-logo-Adventreon-blue.png"
 import SimpleMenu from './menu.js';
 import ResMenu from './resmenu';
 import HostMenue from './hostMenu';

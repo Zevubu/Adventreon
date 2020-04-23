@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import GlobalFonts from "./fonts/fonts";
 import {GlobalStyle} from "./styles/universal-styles";
-
 // private routes
 import UserRoute from './PrivateRoutes/UserRoutes';
 import LogOutRoute from './PrivateRoutes/LogOutRoute';

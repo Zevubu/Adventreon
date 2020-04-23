@@ -7,7 +7,8 @@ import {P, H1, H3, BlueHeader, SpHeaderA, H2} from "../../styles/homeStyle"
 import{ ProviderBox, ShowBox, ProTextBoxN, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisodeFiller from "../../componets/EpiFiller/slide_filler"
 import Carousel from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
+import '../../styles/Carousel.css';
+// import '@brainhubeu/react-carousel/lib/style.css';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Paper from '@material-ui/core/Paper';
 

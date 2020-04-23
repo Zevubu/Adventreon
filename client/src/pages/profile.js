@@ -6,7 +6,8 @@ import {P, H1, H3, SpHeaderA, H2} from "../styles/homeStyle"
 import{ProBigBox, ProviderBox, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../styles/providerStyles'
 import SliderFiller from "../componets/ShowFiller/slide_filler"
 import Carousel from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
+import '../styles/Carousel.css';
+// import '@brainhubeu/react-carousel/lib/style.css';
 import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 

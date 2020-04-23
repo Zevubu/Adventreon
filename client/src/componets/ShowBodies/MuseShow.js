@@ -1,11 +1,13 @@
-import React, {useState,useEffect} from "react";
-import {BigBlock,LookBtn,LookTextBox,LookBox,DivWBorder,SpHeaderA,H2,HeaderItem} from "../../styles/homeStyle";
-import {Redirect} from "react-router-dom";
+import React, { useState, useEffect} from "react";
+import {BigBlock, LookBox,LookBtn,LookTextBox, DivWBorder, SpHeaderA, H2, HeaderItem} from "../../styles/homeStyle";
+import { Redirect } from "react-router-dom";
 import API from "../../API/loggedOutAPI";
+
 import SliderFiller from "../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
-import '../../styles/Carousel.css';
+
+// import '@brainhubeu/react-carousel/lib/style.css';
 // import Button from '@material-ui/core/Button';
 // import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -38,8 +40,7 @@ function Shows (){
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
-    const scNum = matches ? 5 : 1
-    const Icon = "button"
+    const scNum = matches ? 4 : 1
 
     useEffect(() => {
        const fetchShows = async () =>{
@@ -57,6 +58,7 @@ function Shows (){
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
+            {/* <a id="Shows"/> */}
             <DivWBorder BDcolor="rgba(180, 180, 180, 0.2)">
             <SpHeaderA>
                 <HeaderItem>
@@ -65,8 +67,11 @@ function Shows (){
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                    >Entertainment!</H2>
+                    >Music</H2>
                 </HeaderItem>
+                {/* <HeaderItem>
+                    <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
+                </HeaderItem> */}
             </SpHeaderA>
             </DivWBorder>
             <br/>
@@ -81,7 +86,7 @@ function Shows (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            infinite   
                         >
                         
                     

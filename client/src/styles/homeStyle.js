@@ -125,7 +125,7 @@ margin:5px;
 `
 const SpHeaderA = styled(Header)`
 color: ${props => props.Color ||"rgba(238, 245, 244, 1)"};
-background: ${props => props.BGcolor || "rgba(236, 228, 195, 0)"};
+background: ${props => props.BGcolor || "rgba(0, 0, 0, 0)"};
 text-align: center;
 `
 const BlueHeader = styled(Header)`
@@ -156,6 +156,101 @@ width:100%;
 text-align: center;
 `
 // Buttons
+const LookBtn = styled.div`
+width: 100%;
+height: ;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 1;
+`
+const LookTextBox = styled.div`
+width: 94.8%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 10;
+margin-left:41px;
+margin-right:41px;
+box-shadow:inset -46px 0px 23px 0px rgba(53, 52, 53, 1);
+@media only screen and (max-width: 1400px) {
+    width: 94.3%;
+    };
+@media only screen and (max-width: 1300px) {
+    width: 93.65%;
+    };
+@media only screen and (max-width: 1200px) {
+    width: 90.8%;
+    };
+@media only screen and (max-width: 1010px) {
+    width: 91.38%;
+    };
+@media only screen and (max-width: 860px) {
+    width: 90.38%;
+    };
+@media only screen and (max-width: 800px) {
+    width: 90%;
+    };
+@media only screen and (max-width: 780px) {
+    width: 89%;
+    };
+@media only screen and (max-width: 760px) {
+    width: 88.75%;
+    };
+@media only screen and (max-width: 740px) {
+    width: 88.65%;
+    };
+@media only screen and (max-width: 730px) {
+    width: 88.55%;
+    }
+@media only screen and (max-width: 720px) {
+    width: 88.45%;
+    }
+@media only screen and (max-width: 710px) {
+    width: 88.35%;
+    }
+@media only screen and (max-width: 700px) {
+    width: 88.25%;
+    }
+@media only screen and (max-width: 690px) {
+    width: 88.15%;
+    };
+@media only screen and (max-width: 680px) {
+    width: 88%;
+    };
+@media only screen and (max-width: 660px) {
+    width: 87.75%;
+    };
+@media only screen and (max-width: 640px) {
+    width: 87.65%;
+    };
+@media only screen and (max-width: 630px) {
+    width: 87.55%;
+    }
+@media only screen and (max-width: 620px) {
+    width: 87.45%;
+    }
+@media only screen and (max-width: 610px) {
+    width: 87.35%;
+    }
+@media only screen and (max-width: 600px) {
+    width: 87.25%;
+    }
+`
+const LookBox = styled.div`
+width: 100%;
+height: 196.7px;
+position: relative;
+margin-bottom:23px;
+`
+const LookHostBox = styled.div`
+width: 100%;
+height: 223.98px;
+position: relative;
+margin-bottom:23px;
+`
+
 const Btn = styled.button`
 border-radius: 90px 90px 90px 90px;
 border-color: #9bacb3;
@@ -318,6 +413,10 @@ display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 `
+const BigBlockR = styled.div`
+display: flex;
+flex-direction: row;
+`
 const Image = styled.img`
 width: 100%;
 height: auto;
@@ -334,4 +433,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {ProTextBox,DivWPad, IntroBlock, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, HeaderItem,HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {ProTextBox,DivWPad, IntroBlock,LookBtn,LookTextBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}

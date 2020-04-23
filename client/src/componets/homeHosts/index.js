@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock, MarronHeader, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
+import { BigBlock,LookBtn,LookTextBox,LookBox,LookHostBox, MarronHeader, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 // import {Logo} from "../../styles/componentStyles";
 import API from "../../API/loggedOutAPI";
@@ -7,7 +7,8 @@ import API from "../../API/loggedOutAPI";
 import SliderFiller from "../HostFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
+import '../../styles/Carousel.css';
+// import '@brainhubeu/react-carousel/lib/style.css';
 // import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
  
@@ -57,29 +58,33 @@ function Hosts (){
             </SpHeaderA>
             </DivWBorder>
             <br/>
-            
-            <Carousel
-                // autoPlay={5000}
-                animationSpeed={1500}
-                slidesPerPage={num}
-                offset={50}
-                slidesPerScroll={scNum}
-                arrows
-                infinite
-                dots
-            >
-                {Hosts.map((host, key) => (
-                    <SliderFiller
-                        key={key} id={host.id} userName={host.user_name} userType={host.user_type}
-                        title={host.title} about={host.about} pImg={host.p_img} bImg={host.b_img}
-                        services ={host.shows} appointments={host.appointments}
-                        availability={host.availability} screened={host.screened} 
-                        timeStamp={host.time_stamp}
-                    />
-                ))}
+            <LookHostBox>
+                <LookTextBox></LookTextBox>
+                <LookBtn>
+                    <div>
+                        <Carousel
+                            // autoPlay={5000}
+                            animationSpeed={1500}
+                            slidesPerPage={num}
+                            offset={50}
+                            slidesPerScroll={scNum}
+                            arrows
+                            infinite
+                        >
+                            {Hosts.map((host, key) => (
+                                <SliderFiller
+                                    key={key} id={host.id} userName={host.user_name} userType={host.user_type}
+                                    title={host.title} about={host.about} pImg={host.p_img} bImg={host.b_img}
+                                    services ={host.shows} appointments={host.appointments}
+                                    availability={host.availability} screened={host.screened} 
+                                    timeStamp={host.time_stamp}
+                                />
+                            ))}
 
-            </Carousel>
-            {/* </DivWBorder> */}
+                        </Carousel> 
+                    </div>
+                </LookBtn>   
+            </LookHostBox>
         </BigBlock>
     )
 }

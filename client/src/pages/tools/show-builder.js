@@ -1,10 +1,10 @@
 import React, {useContext, useState} from "react";
-import {DivWBorder, MarronHeader, MarronBtn, BigMarronBtn, H2, PT, PS} from "../../styles/homeStyle"
+import {DivWBorder, MarronHeader, BigMarronBtn, H2, PT, PS} from "../../styles/homeStyle"
 import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
 import API from "../../API/loggedOutAPI";
 import {useForm} from 'react-hook-form';
 import {UserInfoContext, useHost, useManagment} from "../../context/heart"
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
         // show_name, x
         // show_type,x
         // about, x 

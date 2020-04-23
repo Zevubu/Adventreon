@@ -7,7 +7,8 @@ import API from "../../../API/loggedOutAPI";
 import SliderFiller from "../../HostFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
+import '../../../styles/Carousel.css';
+// import '@brainhubeu/react-carousel/lib/style.css';
 // import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
  

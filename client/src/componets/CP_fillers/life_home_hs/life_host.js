@@ -1,13 +1,13 @@
 import React, { useState, useEffect} from "react";
 import { BigBlock, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-// import {Logo} from "../../styles/componentStyles";
 import API from "../../../API/loggedOutAPI";
 
 import SliderFiller from "../../HostFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
+import '../../../styles/Carousel.css';
+// import '@brainhubeu/react-carousel/lib/style.css';
 // import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
  
