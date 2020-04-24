@@ -6,7 +6,7 @@ font-family:'glacial indiffrence';
 
 // Nac Bar styles
 const NavBody = styled.div`
-    background-color: rgba(238, 245, 244, 0.867);
+    background: linear-gradient(to bottom, rgba(32, 142, 161, 0.577) 5%, rgba(46, 46, 46, 0.877) 100%);
     border-bottom: rgb(115, 162, 175) solid 2px;
     border-top: rgb(115, 162, 175) solid 2px;
     height: 65px;
@@ -16,6 +16,7 @@ const NavBody = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position:relative;
 `
 const NavBtn = styled.button`
 background-color: rgb(238, 245, 244);

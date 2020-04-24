@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../styles/homeStyle";
+import { BigBlock,LookBtn,LookTextBox,LookHostBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 // import {Logo} from "../../styles/componentStyles";
 import API from "../../../API/loggedOutAPI";
@@ -41,8 +41,8 @@ function Hosts (){
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
             {/* <DivWBorder style={{marginBottom: '100px'}}> */}
-            <DivWBorder BDcolor="rgba(255, 187, 0, 1)">
-                <SpHeaderA BGcolor="rgba(155, 51, 74, 0.938)">
+            <DivWBorder >
+                <SpHeaderA >
                     <HeaderItem>
                     <H2                           
                         onClick={i=>setClick(true)}
@@ -58,28 +58,33 @@ function Hosts (){
                 </SpHeaderA>
             </DivWBorder>
             <br/>
-            
-            <Carousel
-                // autoPlay={5000}
-                animationSpeed={1500}
-                slidesPerPage={num}
-                offset={50}
-                slidesPerScroll={scNum}
-                arrows
-                infinite
-                dots
-            >
-                {Hosts.map((host, key) => (
-                    <SliderFiller
-                        key={key} id={host.id} userName={host.user_name} userType={host.user_type}
-                        title={host.title} about={host.about} pImg={host.p_img} bImg={host.b_img}
-                        services ={host.shows} appointments={host.appointments}
-                        availability={host.availability} screened={host.screened} 
-                        timeStamp={host.time_stamp}
-                    />
-                ))}
+            <LookHostBox>
+                <LookTextBox></LookTextBox>
+                <LookBtn>
+                    <div>
+                        <Carousel
+                            // autoPlay={5000}
+                            animationSpeed={1500}
+                            slidesPerPage={num}
+                            offset={50}
+                            slidesPerScroll={scNum}
+                            arrows
+                            infinite
+                        >
+                            {Hosts.map((host, key) => (
+                                <SliderFiller
+                                    key={key} id={host.id} userName={host.user_name} userType={host.user_type}
+                                    title={host.title} about={host.about} pImg={host.p_img} bImg={host.b_img}
+                                    services ={host.shows} appointments={host.appointments}
+                                    availability={host.availability} screened={host.screened} 
+                                    timeStamp={host.time_stamp}
+                                />
+                            ))}
 
-            </Carousel>
+                        </Carousel> 
+                    </div>
+                </LookBtn>   
+            </LookHostBox>
             {/* </DivWBorder> */}
         </BigBlock>
     )

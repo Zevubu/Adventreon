@@ -171,9 +171,9 @@ function App() {
                           <Route exact path="/shows/:id" component={ShowProfile} />
                           <Route exact path="/episodes/:id" component={EpisodeProfile} />
                           <Route exact path="/episodes" component={HostsPage} />
-                          <Route exact path="/entertain" component={EnterPage} />
-                          <Route exact path="/counseling" component={LifePage} />
-                          <Route exact path="/religious" component={SpirtPage} />
+                          <Route exact path="/performance" component={EnterPage} />
+                          <Route exact path="/life" component={LifePage} />
+                          <Route exact path="/spirtualrespite" component={SpirtPage} />
                           <Route exact path="/music" component={MusicPage} />
                           <Route exact path="/allcat" component={AllCatPage} />
                           <Route exact path="/uploads" component={Uploader} />
