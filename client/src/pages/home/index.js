@@ -1,6 +1,6 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock, CCCDiv, FillerDiv, IntroTxTDiv,H1, ProTextBox} from "../../styles/homeStyle";
+import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1, ProTextBox} from "../../styles/homeStyle";
 
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/homeHosts";
@@ -12,11 +12,10 @@ function Home (){
     // const {isUser} = useUser();
     // const { isHost } = useHost();
     // const { isManager } = useManagment();
-
     return(
-        <div> 
+        <SpDiv> 
             {/* Intro Block */}
-            <IntroBlock>
+            <IntroBlock  BDcolor="rgba(66, 83, 94, 0.777)">
                 <FillerDiv/>
                     <IntroTxTDiv>
 
@@ -59,7 +58,7 @@ function Home (){
             <ShowsBlock/>
           
         
-        </div>
+        </SpDiv>
     )
 }
 

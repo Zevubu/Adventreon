@@ -13,7 +13,7 @@ function SpirtHome (){
     // const { isManager } = useManagment();
 
     return(
-        <SpDiv>
+        <SpDiv BGcolor="rgba(231, 222, 230, 0.867)">
             {/* Intro Block */}
             <IntroBlock bgImg="https://images.unsplash.com/photo-1494783435443-c15feee0a80a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
                 <FillerDiv/>

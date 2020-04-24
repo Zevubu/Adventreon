@@ -125,7 +125,7 @@ margin:5px;
 `
 const SpHeaderA = styled(Header)`
 color: ${props => props.Color ||"rgba(238, 245, 244, 1)"};
-background: ${props => props.BGcolor || "rgba(0, 0, 0, 0)"};
+background: ${props => props.BGcolor || "linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)"};
 text-align: center;
 `
 const BlueHeader = styled(Header)`
@@ -173,7 +173,7 @@ left: 0;
 z-index: 10;
 margin-left:41px;
 margin-right:41px;
-box-shadow:inset -46px 0px 23px 0px rgba(53, 52, 53, 1);
+box-shadow:inset -46px -10px 23px 10px ${props => props.FdColor ||"rgba(53, 52, 53, 1)"};
 @media only screen and (max-width: 1400px) {
     width: 94.3%;
     };
@@ -282,7 +282,9 @@ background-color: rgb(115, 162, 175);
 
 `
 const SpDiv = styled.div`
-background: ${props => props.BGcolor ||"rgba(231, 222, 230, 0.867)"};
+background: ${props => props.BGcolor ||"rgba(0, 0, 0, 0)"};
+width:100%;
+height:100%;
 `
 // Intro Block styles
 const IntroBlock = styled.div`
@@ -324,7 +326,7 @@ border: ${props => props.BDcolor ||"rgba(180, 180, 180, 0.6)"} solid 2px;
 // service and coach section styles.
 
 const DivWBorder = styled.div`
-border: ${props => props.BDcolor ||"rgb(180, 180, 180)"} solid 2px;
+border-top: ${props => props.BDcolor ||"rgb(115, 162, 175)"} solid 2px;
 margin: ${props => props.Margin ||"5.23px 0px"};
 @media only screen and (max-width: 600px) {
     width: 100%;

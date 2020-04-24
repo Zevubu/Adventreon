@@ -59,13 +59,13 @@ function Shows (){
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
-            <DivWBorder BDcolor="rgba(180, 180, 180, 0.2)">
-                <SpHeaderA>
+            <DivWBorder>
+                <SpHeaderA BGcolor="linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)">
                     <HeaderItem>
                         <H2
                             onClick={i=>setClick(true)}
                             style={{backgroundColor: bgC}} 
-                            onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
+                            onMouseEnter={(e)=> setbgC('rgba(46, 46, 46, 0.777)')} 
                             onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
                         >Shows</H2>
                     </HeaderItem>

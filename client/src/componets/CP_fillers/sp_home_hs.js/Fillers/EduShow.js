@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import {BigBlock, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
+import {BigBlock,LookBtn,LookTextBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../../../API/loggedOutAPI";
 
@@ -75,31 +75,36 @@ function Shows (){
                 </SpHeaderA>
             </DivWBorder>
             <br/>
-            
-            <Carousel
-                // autoPlay={5000}
-                animationSpeed={1500}
-                slidesPerPage={num}
-                offset={50}
-                slidesPerScroll={scNum}
-                arrows
-                infinite
-                dots
-            >
-            
-         
-                {shows.map((show, key) => (
-    
-                        <SliderFiller
-                            key={key} id={show.id} showName={show.show_name} about={show.about}
-                            imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
-                            hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
-                            patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
-                            booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
-                            relig={show.relig} timeStamp={show.time_stamp}
-                        />
-                ))}
-            </Carousel>
+            <LookBox>
+                <LookTextBox></LookTextBox>
+                <LookBtn>
+                    <div>
+                        <Carousel
+                            // autoPlay={5000}
+                            animationSpeed={1500}
+                            slidesPerPage={num}
+                            offset={50}
+                            slidesPerScroll={scNum}
+                            arrows
+                            infinite
+                        >
+                        
+                    
+                            {shows.map((show, key) => (
+                
+                                    <SliderFiller
+                                        key={key} id={show.id} showName={show.show_name} about={show.about}
+                                        imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
+                                        hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
+                                        patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
+                                        booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
+                                        relig={show.relig} timeStamp={show.time_stamp}
+                                    />
+                            ))}
+                        </Carousel> 
+                    </div>
+                </LookBtn>   
+            </LookBox>
         </BigBlock>
     )
 }

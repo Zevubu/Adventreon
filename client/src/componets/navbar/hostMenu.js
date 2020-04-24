@@ -2,8 +2,17 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import {styled } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
-
+const BTN = styled(Button)({
+  border: 0,
+  borderRadius: 3,
+  boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
+  color: '#6dd3d6',
+  height: 35,
+  padding: '0 30px',
+  variant:"outlined"
+});
 export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -17,9 +26,9 @@ export default function SimpleMenu() {
 
   return (
     <div>
-      <Button variant="outlined" color="secondary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <BTN variant="outlined" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         Tools
-      </Button>
+      </BTN>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -27,10 +36,10 @@ export default function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/showbuilder"><MenuItem onClick={handleClose}>Make a Show</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057'}} to="/episodebuilder"><MenuItem onClick={handleClose}>Make an episode</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/profile"><MenuItem onClick={handleClose}>Your Profile</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#f50057' }} to="/pup"><MenuItem onClick={handleClose}>Update Profile</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/showbuilder"><MenuItem onClick={handleClose}>Make a Show</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/episodebuilder"><MenuItem onClick={handleClose}>Make an episode</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435' }} to="/profile"><MenuItem onClick={handleClose}>Your Profile</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435' }} to="/pup"><MenuItem onClick={handleClose}>Update Profile</MenuItem></Link>
       </Menu>
     </div>
   );

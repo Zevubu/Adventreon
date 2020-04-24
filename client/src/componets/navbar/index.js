@@ -4,14 +4,14 @@ import {Link} from 'react-router-dom';
 import {NavBody,H2, OptionBox,PullBox, LogoImage} from "../../styles/componentStyles";
 
 import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo } from "../../context/heart";
-import Logo from "../../img/better-bordered-masked-logo-Adventreon-blue.png"
+import Logo from "../../img/masked-logo-Adventreon-blue.png"
 import SimpleMenu from './menu.js';
 import ResMenu from './resmenu';
 import HostMenue from './hostMenu';
 import ManagerMenue from './manegMenue';
 
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, styled } from '@material-ui/core/styles';
 // import Paper from '@material-ui/core/Paper';
 // import { UserInfoContext } from "../../App"
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -23,8 +23,17 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1),
       },
     },
-  }));
+}));
 
+const BTN = styled(Button)({
+  background: '#6dd3d6',
+  border: 0,
+  borderRadius: 3,
+  boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
+  color: 'black',
+  height: 35,
+  padding: '0 30px',
+});
 
 function NavBar (props){
     const classes = useStyles();
@@ -84,31 +93,33 @@ function NavBar (props){
                 </OptionBox>
                 :
                 <ResMenu></ResMenu>           
-                }       {isAuthenticated && isUser && (
-                    <div>
-                        <Link style={{ textDecoration: 'none' }} to="/profile"><Button variant="contained" color="secondary">Profile</Button></Link>
-                    </div>
-                )} 
+                }      
                 { isAuthenticated && isHost &&(
                     <div>
                         <HostMenue/>
                     </div>
                 )}
-
                 { isAuthenticated && isManager &&(
                     <div>
                         <ManagerMenue/>
                     </div>
                 )}
-                    {!isAuthenticated && (
-                        <OptionBox>
-                            <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><Button style={small ? {fontSize:'6.45px'}: {}} variant="contained" color="secondary">Sign up</Button></Link>
-                            <Link style={{ textDecoration: 'none' }} className="nav-link" to="/login"><Button style={small ? {fontSize:'7px'}: {}} variant="contained" color="secondary">Login</Button></Link>
-                        </OptionBox>
-                    )}  
-                    {isAuthenticated && (
-                        <Link style={{ textDecoration: 'none' }} to={{pathname:"/", state:{value:userData} }}><Button variant="contained" color="secondary" onClick={logOut}>Sign Out</Button></Link> 
-                    )}
+                 {isAuthenticated && isHost || isManager && (
+                    <div>
+                        <Link style={{ textDecoration: 'none' }} to="/profile"><BTN variant="contained" >Profile</BTN></Link>
+                    </div>
+                )} 
+                {!isAuthenticated && (
+                    <OptionBox>
+                        <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><BTN style={small ? {fontSize:'6.45px'}: {}} variant="contained">Sign up</BTN></Link>
+                        <Link style={{ textDecoration: 'none' }} className="nav-link" to="/login"><BTN style={small ? {fontSize:'7px'}: {}} variant="contained">Login</BTN></Link>
+                        <BTN>hello</BTN>
+                    </OptionBox>
+                )}  
+                {isAuthenticated && (
+                    <Link style={{ textDecoration: 'none' }} to={{pathname:"/", state:{value:userData} }}><BTN variant="contained" onClick={logOut}>Sign Out</BTN></Link> 
+                    
+                )}
             </OptionBox>
         </NavBody>
     )
