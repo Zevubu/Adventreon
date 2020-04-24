@@ -1,7 +1,7 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
 import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1, ProTextBox} from "../../styles/homeStyle";
-
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/homeHosts";
 import ShowsBlock from "../../componets/homeShows";
@@ -12,6 +12,7 @@ function Home (){
     // const {isUser} = useUser();
     // const { isHost } = useHost();
     // const { isManager } = useManagment();
+    const matches = useMediaQuery('(min-width:600px)');
     return(
         <SpDiv> 
             {/* Intro Block */}
@@ -26,8 +27,8 @@ function Home (){
                             <br/> */}
                             <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
-                            width="840" 
-                            height="472.5" 
+                            width={ matches ? "840" :"400"}
+                            height={ matches ? "472.5" : "275"}
                             src="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 

@@ -4,8 +4,20 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Link} from 'react-router-dom';
 
+import { makeStyles, styled } from '@material-ui/core/styles';
+
 export default function ResMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const BTN = styled(Button)({
+    background: '#6dd3d6',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
+    color: 'black',
+    height: 20, 
+    padding: '0 30px',
+  });
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -17,9 +29,9 @@ export default function ResMenu() {
 
   return (
     <div>
-      <Button style={{fontSize: '8px'}}variant="outlined" color="secondary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <BTN style={{fontSize: '8px'}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         Services
-      </Button>
+      </BTN>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
