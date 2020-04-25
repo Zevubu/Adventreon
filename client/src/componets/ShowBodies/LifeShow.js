@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { BigBlock,LookBox,LookBtn,LookTextBox, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-import API from "../../API/loggedOutAPI";
+import API from "../../API/showLogOut";
 
 import SliderFiller from "../ShowFiller/slide_filler";
 
@@ -44,7 +44,7 @@ function Shows (){
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getCounsShows()
+        const result = await API.getLifeShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };

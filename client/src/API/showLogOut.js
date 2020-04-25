@@ -6,6 +6,24 @@ export default {
     getShows: function(){
         return axios.get("/api/shows/all").catch(err => console.log(`Get all shows error:${err}`));
     },
+    getPrefShows: function(){
+        return axios.get("/api/shows/performance").catch(err => console.log(`Get preformance shows error:${err}`));
+    },
+    getPrefStorShows: function(){
+        return axios.get("/api/shows/performance/story").catch(err => console.log(`Get preformance shows error:${err}`));
+    },
+    getMuseShows: function(){
+        return axios.get("/api/shows/music").catch(err => console.log(`Get music shows error:${err}`));
+    },
+    getVisShows: function(){
+        return axios.get("/api/shows/visual").catch(err => console.log(`Get visual shows error:${err}`));
+    },
+    getLifeShows: function(){
+        return axios.get("/api/shows/life").catch(err => console.log(`Get life shows error:${err}`));
+    },
+    getSpritShows: function(){
+        return axios.get("/api/shows/spiritual").catch(err => console.log(`Get spiritual shows error:${err}`));
+    },
     getEntShows: function(){
         return axios.get("/api/shows/entertain").catch(err => console.log(`Get Entertain shows error:${err}`));
     },

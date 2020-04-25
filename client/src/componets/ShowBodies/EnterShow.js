@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react";
 import {BigBlock,LookBtn,LookTextBox,LookBox,DivWBorder,SpHeaderA,H2,HeaderItem} from "../../styles/homeStyle";
 import {Redirect} from "react-router-dom";
-import API from "../../API/loggedOutAPI";
+import API from "../../API/showLogOut";
 import SliderFiller from "../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
@@ -43,7 +43,7 @@ function Shows (){
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getEntShows()
+        const result = await API.getPrefShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };
@@ -65,7 +65,7 @@ function Shows (){
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(46, 46, 46, 0.777)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                    >Performance</H2>
+                    >Performance Art</H2>
                 </HeaderItem>
             </SpHeaderA>
             </DivWBorder>
