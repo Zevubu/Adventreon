@@ -86,7 +86,7 @@ function Shows (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            // infinite
                         >
                             {shows.map((show, key) => (
                 

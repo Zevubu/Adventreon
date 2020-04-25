@@ -5,9 +5,10 @@ import { BigBlock} from "../../../styles/homeStyle";
 
 
 
-import GuidShows from './Fillers/guideShow';
-import SpellShows from './Fillers/spellShow';
-import ReadShows from './Fillers/readingShow';
+import CounsShows from './Fillers/counsShow';
+import CookShows from './Fillers/CookShow';
+import LifeHackShows from './Fillers/LifeHackShow';
+import VarietyShows from './Fillers/VarShow'
 import EduShows from './Fillers/EduShow';
 import VlogShows from './Fillers/VlogShow';
 
@@ -21,13 +22,16 @@ function Shows (){
     return(
         <BigBlock>
             <div>
-                <GuidShows />
+                <CounsShows />
             </div>
             <div>
-                <SpellShows />
+                <CookShows />
             </div>
             <div>
-                <ReadShows /> 
+                <LifeHackShows/> 
+            </div>
+            <div>
+                <VarietyShows/> 
             </div>
             <div>
                 <EduShows /> 

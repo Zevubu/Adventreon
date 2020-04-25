@@ -3,9 +3,10 @@ import { BigBlock, BlueHeader, H2, HeaderItem} from "../../../styles/homeStyle";
 // import { Redirect } from "react-router-dom";
 // , { useState}
 
-import EnterShows from './Fillers/guideShow';
-import CounsShows from './Fillers/spellShow';
-import ReligShows from './Fillers/readingShow';
+import StoryShows from './Fillers/StoryShow';
+import MixShows from './Fillers/MixShow';
+import PlayShows from './Fillers/PlayShow';
+import VarShows from './Fillers/VarShow'
 import EduShows from './Fillers/EduShow';
 import VlogShows from './Fillers/VlogShow';
 
@@ -18,13 +19,16 @@ function Shows (){
     return(
         <BigBlock> 
             <div>
-                <EnterShows />
+                <StoryShows />
             </div>
             <div>
-                <CounsShows />
+                <PlayShows />
             </div>
             <div>
-                <ReligShows /> 
+                <MixShows /> 
+            </div>
+            <div>
+                <VarShows /> 
             </div>
             <div>
                 <EduShows /> 
