@@ -99,14 +99,13 @@ function Show(){
                     <ProDuoServiceBlock>
                         {oneOff &&(
                              <iframe 
-                            title={`https://www.youtube.com/embed/${Show.v_link}`}
-                            width={frame}
-                            height="315" 
-                            src={`https://www.youtube.com/embed/${Show.v_link}`} 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                            allowFullScreen>
-                        </iframe>
+                                src={Show.v_link}
+                                width="640" 
+                                height="360" 
+                                frameborder="0" 
+                                allow="autoplay; fullscreen" 
+                                allowfullscreen> 
+                             </iframe>
                         )}
                         {episodical && (
                              <ProImage src={Show.img} alt={Show.show_name}/>

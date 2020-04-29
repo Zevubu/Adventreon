@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Redirect } from "react-router-dom";
 import { PB, H2} from "../../styles/homeStyle"
-import{ Slide, SlideBuffer, DuoServiceBlockColumn, Image, TextBox} from '../../styles/providerStyles'
+import{ Slide, ShowSlide, SlideBuffer, DuoServiceBlockColumn, Image, TextBox} from '../../styles/providerStyles'
 // import Button from '@material-ui/core/Button';
 // import Paper from '@material-ui/core/Paper';
 
@@ -22,28 +22,19 @@ function SlideFiller(props){
     }   
     // opacity: vis ,
     return(
-        <Slide id={props.id} onClick={i=>setClick(true)} bgImg={props.bImg}>
+        <ShowSlide id={props.id} onClick={i=>setClick(true)} bgImg={props.bImg}>
             <SlideBuffer bgImg={props.imgB} style={{backgroundColor: bgC}} onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}>
-                <DuoServiceBlockColumn>
+                {/* <DuoServiceBlockColumn>
                     <Image src={props.imgP} alt={props.showName}/>
-                </DuoServiceBlockColumn>
+                </DuoServiceBlockColumn> */}
                 <DuoServiceBlockColumn>
                     <TextBox>
                         <H2>{props.showName}</H2>
                         <PB>{props.hostName}</PB>
                     </TextBox>
-                    {/* <a className="nav-link" style={{textDecoration: 'none'}} href={"/hosts/" + props.id}><Button variant='contained'>View {props.userName}'s profile</Button></a> */}
                 </DuoServiceBlockColumn>
             </SlideBuffer>       
-        </Slide>   
-        
-        // <Slide id={props.id} style={{backgroundImage: `url(${props.bImg})` }} > 
-        //     <TextBox style={{opacity: vis ,backgroundColor: bgC}} onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}>
-        //         <H2 >{props.userName}</H2>
-        //         <PB>{props.title}</PB>
-        //         <a className="nav-link" style={{textDecoration: 'none'}}href={"/hosts/" + props.id}><Button variant="outline">View {props.userName}'s profile</Button></a>
-        //     </TextBox>   
-        // </Slide>
+        </ShowSlide>   
     )
 }
 export default SlideFiller

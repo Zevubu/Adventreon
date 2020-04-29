@@ -18,12 +18,12 @@ function Home (){
             <IntroBlock  BDcolor="rgba(66, 83, 94, 0.777)">
                 <FillerDiv/>
                     <IntroTxTDiv>
-
-                        <CCCDiv>
-                            {/* <ProTextBox>
+                    <iframe src="https://player.vimeo.com/video/412924050" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                        {/* <CCCDiv>
+                            <ProTextBox>
                                 <H1>ADVENTREON</H1>
                             </ProTextBox>
-                            <br/> */}
+                            <br/>
                             <iframe 
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             width="840" 
@@ -32,7 +32,7 @@ function Home (){
                             frameborder="0" 
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen></iframe>
-                        </CCCDiv>
+                        </CCCDiv> */}
                         
                         {/* {!isAuthenticated && (
                             <Link to="/signup"><MarronBtn>Sign-up here.</MarronBtn></Link>

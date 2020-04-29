@@ -5,6 +5,7 @@ import styled, {createGlobalStyle} from "styled-components";
 // background-position-x: center;
 // background-position-y: 20%;
 //  font-family: 'AthelasReg';
+// background-color: rgb(53, 52, 53);background-color: rgb(43, 42, 42);
 const GlobalStyle = createGlobalStyle`
 
 body{
