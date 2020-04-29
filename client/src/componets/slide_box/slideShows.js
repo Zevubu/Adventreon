@@ -1,13 +1,15 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock,LookBtn,LookTextBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
+import { BigBlock,LookBox,LookBtn,LookTextBox, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-import API from "../../../../API/loggedOutAPI";
+import API from "../../API/showLogOut";
 
-import SliderFiller from "../../../ShowFiller/slide_filler";
+import SliderFiller from "../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
-import '../../../../styles/Carousel.css';
+import '../../styles/Carousel.css';
 // import '@brainhubeu/react-carousel/lib/style.css';
+// import Button from '@material-ui/core/Button';
+// import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // show_name,x 
@@ -31,8 +33,9 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 // couns, 
 // relig
 
-function Shows (){
-    const [shows, setShows] = useState([]);
+function SlideShows ([showsArray]){
+    
+    const [shows, setShows] = useState([showsArray]);
     // const [vis, setVis] = useState(1);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
@@ -40,32 +43,23 @@ function Shows (){
     const num = matches ? 5 : 1
     const scNum = matches ? 4 : 1
 
-    useEffect(() => {
-       const fetchShows = async () =>{
-        const result = await API.getReligShows()
-            console.log(`show data ${result.data}`)
-            setShows(result.data)
-        };
-        fetchShows(); 
-    }, []);
-
     if(Click){
-        return <Redirect to="/" />
+        return <Redirect to={`/life`} />
     }
-    // opacity: vis ,  
+    // opacity: vis ,
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
             <DivWBorder>
-                <SpHeaderA>
+                <SpHeaderA BGcolor="linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)">
                     <HeaderItem>
                         <H2
                             onClick={i=>setClick(true)}
                             style={{backgroundColor: bgC}} 
-                            onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
+                            onMouseEnter={(e)=> setbgC('rgba(46, 46, 46, 0.777)')} 
                             onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                        >Readings</H2>
+                        >Life</H2>
                     </HeaderItem>
                     {/* <HeaderItem>
                         <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
@@ -84,7 +78,7 @@ function Shows (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            // infinite
                         >
                         
                     
@@ -107,4 +101,4 @@ function Shows (){
     )
 }
 
-export default Shows;
+export default SlideShows;

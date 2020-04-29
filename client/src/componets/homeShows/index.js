@@ -4,7 +4,8 @@ import { BigBlock} from "../../styles/homeStyle";
 // , { useState} 
 
 import MuseShows from '../ShowBodies/MuseShow'
-import EnterShows from '../ShowBodies/EnterShow'
+import PerfShows from '../ShowBodies/EnterShow'
+import VisShows from '../ShowBodies/VisualShow'
 import LifeShows from '../ShowBodies/LifeShow'
 import ReligShows from '../ShowBodies/SpShow'
 
@@ -16,10 +17,13 @@ function Shows (){
     return(
         <BigBlock>
             <div>
-                <EnterShows />
+                <MuseShows />
             </div>
             <div>
-                <MuseShows />
+                <PerfShows />
+            </div>
+            <div>
+                <VisShows />
             </div>
             <div>
                 <LifeShows />

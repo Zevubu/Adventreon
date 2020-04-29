@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { BigBlock,LookBtn,LookTextBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-import API from "../../../../API/loggedOutAPI";
+import API from "../../../../API/showLogOut";
 
 import SliderFiller from "../../../ShowFiller/slide_filler";
 
@@ -42,7 +42,7 @@ function Shows (){
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getCounsShows()
+        const result = await API.getPrefVarShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };
@@ -52,25 +52,25 @@ function Shows (){
     if(Click){
         return <Redirect to="/" />
     }
-    // opacity: vis ,
+    // opacity: vis ,  
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
             <DivWBorder>
-            <SpHeaderA>
-                <HeaderItem>
-                    <H2
-                        onClick={i=>setClick(true)}
-                        style={{backgroundColor: bgC}} 
-                        onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
-                        onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                    >Spells</H2>
-                </HeaderItem>
-                {/* <HeaderItem>
-                    <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
-                </HeaderItem> */}
-            </SpHeaderA>
+                <SpHeaderA>
+                    <HeaderItem>
+                        <H2
+                            onClick={i=>setClick(true)}
+                            style={{backgroundColor: bgC}} 
+                            onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
+                            onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
+                        >Variety</H2>
+                    </HeaderItem>
+                    {/* <HeaderItem>
+                        <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
+                    </HeaderItem> */}
+                </SpHeaderA>
             </DivWBorder>
             <br/>
             <LookBox>
@@ -84,7 +84,7 @@ function Shows (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            // infinite
                         >
                         
                     

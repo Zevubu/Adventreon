@@ -34,8 +34,23 @@ const Slide = styled.div`
     background-position: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    margin: 5%;
+`
+
+const ShowSlide = styled.div`
+    height: 169.5px;
+    width: 100%;
+    background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
     
 `
 // background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
@@ -47,9 +62,8 @@ height: 100%;
 width: 100%;
 display: flex;
 flex-direction: row;
-justify-content: space-around;
+justify-content: center;
 align-items: center;
-margin: 5%;
 `
 
 // backgound-color:238, 245, 244;
@@ -98,8 +112,7 @@ margin:0 auto;
 const TextBox = styled.div`
 width:100%;
 height:100%;
-text-align:cente
-
+text-align:center;
 `
 // profile styles background-color: rgba(209, 202, 179, 0.767);
 
@@ -232,4 +245,4 @@ height: auto;
     };
 `
 
-export { ProBigBox, ProviderBox,ProDuoServiceBlockB, ProDuoServiceBlockColumnB, ShowBox,AppBox, Slider, SliderContent, Slide, SlideBuffer, ProDuoServiceBlock, DuoServiceBlockRow, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}
+export { ProBigBox, ProviderBox,ProDuoServiceBlockB, ProDuoServiceBlockColumnB, ShowBox,AppBox, Slider, SliderContent, Slide,ShowSlide, SlideBuffer, ProDuoServiceBlock, DuoServiceBlockRow, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}

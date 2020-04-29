@@ -85,7 +85,6 @@ color: rgb(115, 162, 175);
 const PG = styled(P)`
 color: rgb(140, 140, 140);
 `
-
 // space filler
 const FillerDiv = styled.div`
 width: 400px;
@@ -165,77 +164,58 @@ left: 0;
 z-index: 1;
 `
 const LookTextBox = styled.div`
-width: 94.8%;
+width: 56px;
 height: 100%;
 position: absolute;
 top: 0;
 left: 0;
 z-index: 10;
-margin-left:41px;
+margin-left:93.59%;
 margin-right:41px;
-box-shadow:inset -46px -10px 23px 10px ${props => props.FdColor ||"rgba(53, 52, 53, 1)"};
+box-shadow:inset -46px 0px 23px 0px ${props => props.FdColor ||"rgba(53, 52, 53, 1)"};
 @media only screen and (max-width: 1400px) {
-    width: 94.3%;
-    };
-@media only screen and (max-width: 1300px) {
-    width: 93.65%;
+    margin-left:93%;
     };
 @media only screen and (max-width: 1200px) {
-    width: 90.8%;
+    margin-left:91%;
     };
 @media only screen and (max-width: 1010px) {
-    width: 91.38%;
+    margin-left:90%;
     };
 @media only screen and (max-width: 860px) {
-    width: 90.38%;
+    margin-left:89%;
     };
 @media only screen and (max-width: 800px) {
-    width: 90%;
+    margin-left:88%;
     };
 @media only screen and (max-width: 780px) {
-    width: 89%;
+    margin-left:87.5%;
     };
 @media only screen and (max-width: 760px) {
-    width: 88.75%;
+    margin-left:88%;
     };
 @media only screen and (max-width: 740px) {
-    width: 88.65%;
+    margin-left:87.5%;
     };
 @media only screen and (max-width: 730px) {
-    width: 88.55%;
+    margin-left:87%;
     }
 @media only screen and (max-width: 720px) {
-    width: 88.45%;
+    margin-left:86.7%;
     }
 @media only screen and (max-width: 710px) {
-    width: 88.35%;
+    margin-left:86.5%;
     }
 @media only screen and (max-width: 700px) {
-    width: 88.25%;
+    margin-left:86.2%;
     }
 @media only screen and (max-width: 690px) {
-    width: 88.15%;
+    margin-left:85.99%;
     };
-@media only screen and (max-width: 680px) {
-    width: 88%;
-    };
-@media only screen and (max-width: 660px) {
-    width: 87.75%;
-    };
-@media only screen and (max-width: 640px) {
-    width: 87.65%;
-    };
-@media only screen and (max-width: 630px) {
-    width: 87.55%;
-    }
-@media only screen and (max-width: 620px) {
-    width: 87.45%;
-    }
-@media only screen and (max-width: 610px) {
-    width: 87.35%;
-    }
 @media only screen and (max-width: 600px) {
-    width: 87.25%;
+    margin-left:81.5%;
+    box-shadow:none;
+    width: 0px;
     }
 `
 const LookBox = styled.div`

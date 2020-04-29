@@ -1,15 +1,12 @@
 import React, { useState, useEffect} from "react";
 import { BigBlock,LookBox,LookBtn,LookTextBox, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-import API from "../../API/loggedOutAPI";
-
+import API from "../../API/showLogOut";
 import SliderFiller from "../ShowFiller/slide_filler";
-
+// import SlideShows from "../slide_box/slideShows";
 import Carousel from '@brainhubeu/react-carousel';
 import '../../styles/Carousel.css';
 // import '@brainhubeu/react-carousel/lib/style.css';
-// import Button from '@material-ui/core/Button';
-// import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // show_name,x 
@@ -44,7 +41,7 @@ function Shows (){
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getCounsShows()
+        const result = await API.getLifeShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };
@@ -58,7 +55,6 @@ function Shows (){
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
-            {/* <a id="Shows"/> */}
             <DivWBorder>
                 <SpHeaderA BGcolor="linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)">
                     <HeaderItem>
@@ -79,6 +75,7 @@ function Shows (){
                 <LookTextBox></LookTextBox>
                 <LookBtn>
                     <div>
+                {/* <SlideShows value={shows}></SlideShows> */}
                         <Carousel
                             // autoPlay={5000}
                             animationSpeed={1500}
@@ -86,7 +83,7 @@ function Shows (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            // infinite
                         >
                         
                     

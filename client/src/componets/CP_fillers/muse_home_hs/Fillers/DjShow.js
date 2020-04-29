@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import {BigBlock,LookBtn,LookTextBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
+import { BigBlock,LookBtn,LookTextBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../../../API/showLogOut";
 
@@ -8,6 +8,7 @@ import SliderFiller from "../../../ShowFiller/slide_filler";
 import Carousel from '@brainhubeu/react-carousel';
 import '../../../../styles/Carousel.css';
 // import '@brainhubeu/react-carousel/lib/style.css';
+
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // show_name,x 
@@ -42,7 +43,7 @@ function Shows (){
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getPrefBlogShows()
+        const result = await API.getMuseDjShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };
@@ -52,20 +53,20 @@ function Shows (){
     if(Click){
         return <Redirect to="/" />
     }
-    // opacity: vis , 
+    // opacity: vis ,  
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
-            <DivWBorder>
-                <SpHeaderA>
-                    <HeaderItem>
-                        <H2
+            <DivWBorder BDcolor="rgba(66, 83, 94, 0.777)">
+            <SpHeaderA BGcolor="rgba(146, 146, 146, 1)">
+                <HeaderItem>
+                    <H2 color="rgb(46, 46, 46)" TSColor="rgb(223, 223, 223)"
                             onClick={i=>setClick(true)}
                             style={{backgroundColor: bgC}} 
                             onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                             onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                        >Personal Vlogs</H2>
+                        >Dj Sets</H2>
                     </HeaderItem>
                     {/* <HeaderItem>
                         <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
@@ -84,7 +85,7 @@ function Shows (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            // infinite
+                            infinite
                         >
                         
                     

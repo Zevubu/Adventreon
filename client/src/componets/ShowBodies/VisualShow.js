@@ -1,13 +1,13 @@
-import React, { useState, useEffect} from "react";
-import {BigBlock,LookBtn,LookTextBox,LookBox, H2, HeaderItem,SpHeaderA, DivWBorder} from "../../../../styles/homeStyle";
-import { Redirect } from "react-router-dom";
-import API from "../../../../API/loggedOutAPI";
-
-import SliderFiller from "../../../ShowFiller/slide_filler";
+import React, {useState,useEffect} from "react";
+import {BigBlock,LookBtn,LookTextBox,LookBox,DivWBorder,SpHeaderA,H2,HeaderItem} from "../../styles/homeStyle";
+import {Redirect} from "react-router-dom";
+import API from "../../API/showLogOut";
+import SliderFiller from "../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
-import '../../../../styles/Carousel.css';
-// import '@brainhubeu/react-carousel/lib/style.css';
+import '../../styles/Carousel.css';
+// import Button from '@material-ui/core/Button';
+// import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // show_name,x 
@@ -38,11 +38,12 @@ function Shows (){
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
-    const scNum = matches ? 4 : 1
+    const scNum = matches ? 5 : 1
+    const Icon = "button"
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getEntShows()
+        const result = await API.getVisShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };
@@ -50,31 +51,27 @@ function Shows (){
     }, []);
 
     if(Click){
-        return <Redirect to="/" />
+        return <Redirect to="/performance" />
     }
     // opacity: vis , 
     return(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
-            {/* <a id="Shows"/> */}
-            <DivWBorder Margin ="0px 0px 23px 0px" BDcolor="rgba(10, 56, 54, 0.883)">
-            <SpHeaderA BGcolor="rgba(231, 168, 194, 1)">
+            <DivWBorder>
+            <SpHeaderA BGcolor="linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)">
                 <HeaderItem>
                     <H2
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
-                        onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
+                        onMouseEnter={(e)=> setbgC('rgba(46, 46, 46, 0.777)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                    >Guidance</H2>
+                    >Visual art</H2>
                 </HeaderItem>
-                {/* <HeaderItem>
-                    <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
-                </HeaderItem> */}
             </SpHeaderA>
             </DivWBorder>
             <br/>
             <LookBox>
-                <LookTextBox FdColor="rgba(226, 126, 168, 1)"></LookTextBox>
+                <LookTextBox></LookTextBox>
                 <LookBtn>
                     <div>
                         <Carousel
@@ -84,7 +81,7 @@ function Shows (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            // infinite 
                         >
                         
                     

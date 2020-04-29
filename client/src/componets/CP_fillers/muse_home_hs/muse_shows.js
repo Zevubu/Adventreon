@@ -4,10 +4,11 @@ import { BigBlock} from "../../../styles/homeStyle";
 // , { useState} 
 
 import LiveShows from './Fillers/LiveShow';
-import AcouShows from './Fillers/acousticShow';
+import AcouShows from './Fillers/AcousticShow';
 import EdmShows from './Fillers/EdmShow';
 import EduShows from './Fillers/EduShow';
 import VlogShows from './Fillers/VlogShow';
+import DjShows from './Fillers/DjShow'
 
 function Shows (){
     // const [Click, setClick] = useState(false);
@@ -24,6 +25,9 @@ function Shows (){
             </div>
             <div>
                 <EdmShows /> 
+            </div>
+            <div>
+                <DjShows />
             </div>
             <div>
                 <EduShows /> 

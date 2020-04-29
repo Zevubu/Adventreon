@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import {BigBlock,LookBtn,LookTextBox,LookBox, H2, HeaderItem,SpHeaderA, DivWBorder} from "../../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-import API from "../../../../API/loggedOutAPI";
+import API from "../../../../API/showLogOut";
 
 import SliderFiller from "../../../ShowFiller/slide_filler";
 
@@ -43,7 +43,7 @@ function Shows (){
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getEntShows()
+        const result = await API.getMuseShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };

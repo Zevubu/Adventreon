@@ -1,13 +1,12 @@
 import React, {useState,useEffect} from "react";
 import {BigBlock,LookBtn,LookTextBox,LookBox,DivWBorder,SpHeaderA,H2,HeaderItem} from "../../styles/homeStyle";
 import {Redirect} from "react-router-dom";
-import API from "../../API/loggedOutAPI";
+import API from "../../API/showLogOut";
 import SliderFiller from "../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
 import '../../styles/Carousel.css';
-// import Button from '@material-ui/core/Button';
-// import Paper from '@material-ui/core/Paper';
+// import '@brainhubeu/react-carousel/lib/style.css';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // show_name,x 
@@ -39,16 +38,15 @@ function Shows (){
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
     const scNum = matches ? 5 : 1
-    const Icon = "button"
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getEntShows()
+        const result = await API.getPrefShows()
             console.log(`show data ${result.data}`)
             setShows(result.data)
         };
         fetchShows(); 
-    }, []);
+    }, []); 
 
     if(Click){
         return <Redirect to="/performance" />
@@ -65,7 +63,7 @@ function Shows (){
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(46, 46, 46, 0.777)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                    >Performance</H2>
+                    >Performance Art</H2>
                 </HeaderItem>
             </SpHeaderA>
             </DivWBorder>
@@ -81,10 +79,8 @@ function Shows (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            // infinite
                         >
-                        
-                    
                             {shows.map((show, key) => (
                 
                                     <SliderFiller

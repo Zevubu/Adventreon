@@ -50,7 +50,7 @@ function Hosts (){
                     onMouseEnter={(e)=> setbgC('rgba(46, 46, 46, 0.777)')} 
                     onMouseLeave={(e)=> setbgC('rgba(32, 142, 161, 0)')}
                 >
-                 Host's</H2>
+                 Hosts</H2>
                 </HeaderItem>
                 {/* <HeaderItem>
                     <a className="nav-link" href="/Hosts" style={{textDecoration: 'none'}}><Button variant="contained" color='secondary'>See all</Button></a>
