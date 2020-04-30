@@ -17,6 +17,9 @@ const NavBody = styled.div`
     justify-content: space-between;
     align-items: center;
     position:relative;
+    @media only screen and (max-width: 600px) {
+        height: 120px;
+        }
 `
 const NavBtn = styled.button`
 background-color: rgb(238, 245, 244);
@@ -47,7 +50,9 @@ display: flex;
 flex-direction: row;
 justify-content: space-evenly;
 align-items: center;
-margin: 10px;
+margin: 10px;@media only screen and (max-width: 600px) {
+    flex-direction: column;
+    }
 `
 const PullBox = styled.div`
 display: flex;

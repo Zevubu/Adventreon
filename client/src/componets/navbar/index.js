@@ -25,15 +25,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const BTN = styled(Button)({
-  background: '#6dd3d6',
-  border: 0,
-  borderRadius: 3,
-  boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
-  color: 'black',
-  height: 35,
-  padding: '0 30px',
-});
+
 
 function NavBar (props){
     const classes = useStyles();
@@ -48,6 +40,16 @@ function NavBar (props){
     const {userData, setUserData} = useUserInfo();
     const matches = useMediaQuery('(min-width:600px)');
     const small = useMediaQuery('(max-width:485px)')
+
+    const BTN = styled(Button)({
+        background: '#6dd3d6',
+        border: 0,
+        borderRadius: 3,
+        boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
+        color: 'black',
+        height: matches ? 35 : 20,
+        padding: '0 30px',
+      });
   
     function logOut() {
         localStorage.clear();
@@ -113,7 +115,6 @@ function NavBar (props){
                     <OptionBox>
                         <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><BTN style={small ? {fontSize:'6.45px'}: {}} variant="contained">Sign up</BTN></Link>
                         <Link style={{ textDecoration: 'none' }} className="nav-link" to="/login"><BTN style={small ? {fontSize:'7px'}: {}} variant="contained">Login</BTN></Link>
-                        <BTN>hello</BTN>
                     </OptionBox>
                 )}  
                 {isAuthenticated && (
