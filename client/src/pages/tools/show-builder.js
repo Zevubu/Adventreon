@@ -1,10 +1,11 @@
 import React, {useContext, useState} from "react";
-import {DivWBorder, MarronHeader, BigMarronBtn, H2, PT, PS} from "../../styles/homeStyle"
+import {DivWBorder, MarronHeader, BigMarronBtn, H2, PT, PS} from "../../styles/homeStyle";
 import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
 import API from "../../API/loggedOutAPI";
 import {useForm} from 'react-hook-form';
-import {UserInfoContext, useHost, useManagment} from "../../context/heart"
+import {UserInfoContext, useHost, useManagment} from "../../context/heart";
 import {Link} from 'react-router-dom';
+import VimeoUp from '../../vimeo-upload/index'
         // show_name, x
         // show_type,x
         // about, x 
@@ -246,13 +247,17 @@ function ShowBuild (){
                     {showType === "one_off" &&(
                         <FormBoxWError>
                             <PT>Video link</PT>
+                            <VimeoUp
+                                name="videoLink"
+                                ref ={register}
+                            />
                             {/* Will inclued an example of exactly what you need to do. */}
-                            <Input
+                            {/* <Input
                                 name="videoLink"
                                 ref ={register}
                             /> 
                             {errors.livefeed && errors.livefeed.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.livefeed && errors.livefeed.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
+                            {errors.livefeed && errors.livefeed.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
                         </FormBoxWError>
                     )}
                     <FormBoxWError>

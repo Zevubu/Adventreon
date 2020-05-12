@@ -4,7 +4,7 @@ import { BigBlock} from "../../../styles/homeStyle";
 // , { useState} 
 
 import LiveShows from './Fillers/LiveShow';
-import AcouShows from './Fillers/AcousticShow';
+import AcouShows from './Fillers/acousticShow';
 import EdmShows from './Fillers/EdmShow';
 import EduShows from './Fillers/EduShow';
 import VlogShows from './Fillers/VlogShow';
