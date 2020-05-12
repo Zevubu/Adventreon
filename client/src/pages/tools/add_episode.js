@@ -5,6 +5,8 @@ import API from "../../API/HostLogIn";
 import {useForm} from 'react-hook-form';
 import {UserInfoContext, useHost, useManagment} from "../../context/heart"
 import {Link} from 'react-router-dom';
+import VimeoUp from '../../vimeo-upload/index'
+
 // H = userData, Y= form ie data, S = showData, N doesn't need to be implimnted
 // X = already built, B= Boolean
 // epi_name, Y  // epiName
@@ -169,13 +171,17 @@ function EpiAdd (){
                     <FormLittleBox>
                         <FormBoxWError>
                             <PT>Video link</PT>
+                            <VimeoUp
+                                name="videoLink"
+                                ref ={register}
+                            />
                             {/* Will inclued an example of exactly what you need to do. */}
-                            <Input
+                            {/* <Input
                                 name="videoLink"
                                 ref ={register}
                             /> 
                             {errors.livefeed && errors.livefeed.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.livefeed && errors.livefeed.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
+                            {errors.livefeed && errors.livefeed.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
                         </FormBoxWError>
                    
                     <FormBoxWError>

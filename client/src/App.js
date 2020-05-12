@@ -124,7 +124,7 @@ function App() {
       const userType =  window.localStorage.getItem('user_type');
       console.log(`local storage check: User type:${userType}, User token: ${token}, User data:${user} `)
       if(!user || !token || !userType){
-        console.log(`User null check! ${user}`)
+        console.log(`User null check!`)
       }else{
         setAuthTokens(token);
         setIsAuthenticated(true);
@@ -192,7 +192,7 @@ function App() {
                           <HostRoute exact path="/episodebuilder" component={AddEpisode}/>
                         </Switch>
                         <Footer/>
-                        </div>
+                      </div>
                     </Router>
                   </AuthContext.Provider>
                 </UserInfoContext.Provider>
