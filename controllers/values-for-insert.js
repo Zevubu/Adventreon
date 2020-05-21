@@ -10,8 +10,10 @@ const valueForQuery = (_values) => {
             case 'string':
                 val = item;
                 break;
+            case'boolean':
+                return item;
             default:
-                return item.toString();
+                return `'${item}'`;
         }
         return `'${val}'`
     })

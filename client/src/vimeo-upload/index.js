@@ -24,10 +24,10 @@ function VimeoUp() {
             <Provider store={store}>
                 <VimeoBox>
                     <VimeoUploadr
-                        createVideoLink="http://localhost:3000/video/vimeo"
-                        getVideoLink="http://localhost:3000/video/vimeo"
+                        createVideoLink="http://localhost:3001/upload"
+                        getVideoLink="http://localhost:3001/upload"
                     />
-                    {/* <VideoComponent src={vimeoLink} controls /> */}
+                    <VideoComponent src={vimeoLink} controls />
                     {uploadSuccess && <VideoComponent src={vimeoLink} controls />}
                 </VimeoBox>
             </Provider> 

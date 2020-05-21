@@ -1,4 +1,6 @@
 const express = require("express");
+const bcrypt = require("bcrypt");
+
 const connection = require("../../controllers/connection");
 const query = require('../../controllers/query');
 const router = express.Router();
@@ -7,37 +9,48 @@ const create = require('../../crud/create');
 const CONFIG = require('../../jwtConfig');
 const jwt= require('jsonwebtoken');
 const userQuery = require("../../query_builders/user-query");
+
 // const {jwtOptions, strategy, passport} = require("../../middleware/passport");
 // /register is not built out for this api yet.
 // /auth/register
-router.post('/register', async (req, res) => {
-    const {user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig} = req.body;
-    const conn = await connection(dbConfig).catch(e => {});
-    const result = await create(
-        conn,
-        'users',
-        ['user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain, couns, relig'],
-        [user_name, user_type, mhswitch, dob, email, { toString: () => `SHA1('${password}')`}, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig]  
-    );
-
-    const [user = {}] = result;
-    res.send({
-        id: user.id || null,
-        user_name: user.user_name || null
-    });
+router.post('/register', (req, res) => {
+    const {user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified} = req.body;
+    bcrypt.hash(password, CONFIG.bcrypt_salt_rounds,  async(err, hash)=>{
+        if (err) throw err;
+        const hashPassword = hash
+        const conn = await connection(dbConfig).catch(e => {});
+        const result = await create(
+            conn,
+            'users',
+            ['user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified'],
+            [user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified]  
+        );
+        const [user = {}] = result;
+        res.send({
+            id: user.id || null,
+            user_name: user.user_name || null
+        });
+    })
 }); 
 // [user_name, { toString: () => `SHA1('${user_type}')`}, dob, email, { toString: () => `SHA1('${password}')`}, title, about, p_img, b_img, shows, { toString: () => `SHA1('${payment}')`}, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig]  
 // /auth/login
 router.post('/login', async (req, res) => {
     const { userName, password } = req.body;
     const expTime = parseInt(CONFIG.jwt_expiration);
-    console.log(`log in request data: ${userName} ${password}`)
+    // console.log(`log in request data: ${userName} ${password}`)
     const conn = await connection(dbConfig).catch(e => {});
+    // const passTest = await query(
+    //     con,
+    //     'SELECT password FROM users WHERE user_name=?',
+    //     [userName]
+    // )
+    // const match = bcrypt.compareSync(password, passTest[0].password)
     const user = await query(
         conn,
-        `SELECT id, user_name, user_type, mhswitch, dob, email, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig time_stamp FROM users WHERE user_name=? AND password=SHA1(?)`,
-        [userName, password]
+        `SELECT id,user_name, user_type, mhswitch, dob, email, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified, time_stamp FROM users WHERE user_name=? AND password=?`,
+        [userName,password]
     );
+    
     res.send({user_info: user[0], token: jwt.sign({user_id: this.id}, CONFIG.jwt_encryption, {expiresIn: expTime})} || {id: null, userName: null })
     
 });

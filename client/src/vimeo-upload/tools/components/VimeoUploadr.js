@@ -24,25 +24,26 @@ class VideoUploader extends Component {
     console.log(`Rejected (VimeoUploadr): ${rejected}`);
 
     // convert to Base64
-    // var acc= accepted[0];
-    // const reader = new FileReader();
-    // reader.onload = (event) => {
-    //   console.log(`Event target result (VimeoUploadr):${event.target.result}`);
-    // };
-    // reader.readAsDataURL(acc);
-
+   
     this.setState({
       accepted
     });
-    console.log(`Accepted (VimeoUploadr): ${JSON.stringify(accepted) }`);
+    // console.log(`Accepted (VimeoUploadr): ${JSON.stringify(accepted) }`);
     const file = accepted.find(f => f);
-    console.log(`file(VimeoUploadr): ${JSON.stringify(file) }`);
+    //  var acc= accepted[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      console.log(`Event target result (VimeoUploadr):${event.target.result}`);
+    };
+    const BFile = reader.readAsDataURL(file);
+
+    console.log(`file(VimeoUploadr): ${JSON.stringify(file)}`);
     console.log(`file size(VimeoUploadr): ${JSON.stringify(file.size) }`);
     console.log(`video data(VimeoUploadr): ${JSON.stringify(file.videoData) }`);
     this.props.uploadVimeo({
       createVideoLink,
       getVideoLink,
-      videoData: file,
+      videoData: BFile,
       size: file.size
     });
   };

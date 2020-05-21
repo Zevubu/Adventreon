@@ -21,7 +21,8 @@ function SignUp (){
 
         API.createAccount({ 
             "user_name": data.userName,
-            "user_type": "Host",
+            "user_type": "host",
+            "mhswitch": false,
             "dob": data.DOB,
             "email": data.email,
             "password": data.password,
@@ -29,17 +30,14 @@ function SignUp (){
             "about": data.about, 
             "p_img": data.pImg,
             "b_img": data.bImg,
-            "shows": '',
+            "catagory": '',
             "payment": data.paypal,
             'patreon': data.patreon,
             'wp_title': data.wpTitle,
             'webpage': data.webpage,
-            'video_channel':data.livefeed,
             'rsvp_attend':'',
-            'rsvp_perform':'',
-            "entertain":true,
-            "couns":false, 
-            "relig":false
+            'rsvp_perform':'', 
+            "verified":false
             }).then(e.target.reset())
             .catch(err => console.log(err))
     }
@@ -166,10 +164,9 @@ function SignUp (){
                         {errors.patreon && errors.patreon.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                     </FormBoxWError>
                 </FormLittleBox>
-                <FormLittleBox>
-                <FormBoxWError>
+                {/* <FormLittleBox>
+                    <FormBoxWError>
                         <PT>Live feed link</PT>
-                        {/* Will inclued an example of exactly what you need to do. */}
                         <Input
                             name="livefeed"
                             ref ={register}
@@ -177,7 +174,7 @@ function SignUp (){
                         {errors.livefeed && errors.livefeed.type === "required" &&(<PE>This is required!</PE>)}
                         {errors.livefeed && errors.livefeed.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                     </FormBoxWError>
-                </FormLittleBox>
+                </FormLittleBox> */}
                 <FormLittleBox>
                     <FormBoxWError>
                         <PT>About</PT>

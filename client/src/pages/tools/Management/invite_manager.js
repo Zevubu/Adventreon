@@ -26,17 +26,14 @@ function Invite (){
             "about": '', 
             "p_img": '',
             "b_img": '',
-            "shows": '',
+            "catagory":'',
             "payment": '',
             'patreon': '',
             'wp_title': '',
             'webpage': '',
-            'video_channel':'',
             'rsvp_attend':'',
-            'rsvp_perform':'',
-            "entertain":false,
-            "couns":false, 
-            "relig":false
+            'rsvp_perform':'', 
+            "verified":false,
             }).then(i => setIsBox(true))
             .then(e.target.reset())
             .catch(err => console.log(err))

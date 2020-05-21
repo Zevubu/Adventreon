@@ -5,6 +5,24 @@ import API from "../../../API/loggedOutAPI";
 import {useForm} from 'react-hook-form';
 // import { ShowBox } from "../../../styles/providerStyles";
 
+// user_name,
+// user_type,
+// mhswitch, 
+// dob, 
+// email, 
+// password, 
+// title, 
+// about, 
+// p_img, 
+// b_img, 
+// catagory, 
+// payment, 
+// patreon, 
+// wp_title, 
+// webpage, 
+// rsvp_attend, 
+// rsvp_perform, 
+// verified
 
 function Invite (){
     const [isBox, setIsBox] = useState();
@@ -18,6 +36,7 @@ function Invite (){
         API.createAccount({ 
             "user_name": data.userName,
             "user_type": "temp",
+            "mhswitch": false,
             "dob": "1988-09-01",
             "email": "filler@fillingthis.fill",
             "password": data.password,
@@ -25,17 +44,14 @@ function Invite (){
             "about": '', 
             "p_img": '',
             "b_img": '',
-            "shows": '',
+            "catagory":'',
             "payment": '',
             'patreon': '',
             'wp_title': '',
             'webpage': '',
-            'video_channel':'',
             'rsvp_attend':'',
-            'rsvp_perform':'',
-            "entertain":false,
-            "couns":false, 
-            "relig":false
+            'rsvp_perform':'', 
+            "verified":false,
             }).then(i => setIsBox(true))
             .then(e.target.reset())
             .catch(err => console.log(err))
