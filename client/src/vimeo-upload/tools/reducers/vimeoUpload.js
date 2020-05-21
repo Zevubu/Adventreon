@@ -1,5 +1,6 @@
 import axios from 'axios';
 import get from 'lodash/get';
+import api from '../../../API/HostLogIn'
 // action types
 export const POST_VIMEO_START = 'vimeo/POST_VIMEO_START';
 export const POST_VIMEO_SUCCESS = 'vimeo/POST_VIMEO_SUCCESS';
@@ -47,28 +48,29 @@ export default (state = initialState, action) => {
 
 // actions
 export const uploadVimeo = ({ createVideoLink, getVideoLink, ...postBody }) => {
-  console.log(`create Video Link(VimeoUpload): ${createVideoLink}`)
-  console.log(`get Video Link(VimeoUpload): ${getVideoLink}`)
-  console.log(`Post body(VimeoUpload):${JSON.stringify(postBody)}`)
+  console.log(`create Video Link 1(VimeoUpload): ${createVideoLink}`)
+  console.log(`get Video Link 1(VimeoUpload): ${getVideoLink}`)
+  console.log(`Post body 1(VimeoUpload):${JSON.stringify(postBody)}`)
   return async dispatch => {
     const success = async (videoUri, videoData, size, uploadLink, result) => {
-      console.log(`Upload Link(VimeoUpload): ${uploadLink}`);
-      console.log(`Video Uri(VimeoUpload): ${videoUri}`);
-      console.log(`Video data(VimeoUpload): ${videoData}`);
-      console.log(`Video size(VimeoUpload): ${size}`);
+      console.log(`Upload Link 2(VimeoUpload): ${uploadLink}`);
+      console.log(`Video Uri 2(VimeoUpload): ${videoUri}`);
+      console.log(`Video data 2(VimeoUpload): ${JSON.stringify(videoData)}`);
+      console.log(`Video size 2(VimeoUpload): ${size}`);
       const apiResult = result.data;
-      console.log(`Api Result(VimeoUpload):${JSON.stringify(apiResult)}`)
+      console.log(`Api Result 2(VimeoUpload):${JSON.stringify(apiResult)}`)
       // check if upload success
       const checkUploadResult = await axios.head(uploadLink, {
         headers: {
           'Tus-Resumable': '1.0.0'
         }
       });
-
+ 
       const uploadLength = get(checkUploadResult, ['headers', 'upload-length']);
       const uploadOffset = get(checkUploadResult, ['headers', 'upload-offset']);
       if (uploadLength === uploadOffset) {
         // complete upload
+        console.log(`3 (vimeoUpload): uploadLength:${uploadLength}, uploadOffset${uploadOffset}`)
         const getVideoExternalLInk = await axios.get(
           `${getVideoLink}${videoUri}`
         );
@@ -110,7 +112,11 @@ export const uploadVimeo = ({ createVideoLink, getVideoLink, ...postBody }) => {
       videoData,
       size,
       uploadOffset
-    ) => {
+    ) => { 
+      console.log(`patch Uri 4 (vimeoUpload): ${videoUri}`)
+      console.log(`patch videoData 4 (vimeoUpload): ${JSON.stringify(videoData)}`)
+      console.log(`patch uploadLink 4 (vimeoUpload): ${uploadLink}`)
+     
       const result = await axios.patch(uploadLink, videoData, {
         headers: {
           'Tus-Resumable': '1.0.0',
@@ -118,7 +124,9 @@ export const uploadVimeo = ({ createVideoLink, getVideoLink, ...postBody }) => {
           'Content-Type': 'application/offset+octet-stream'
         },
         onUploadProgress: function(progressEvent) {
+          console.log(`Patch progress Event 4 (vimeoUpload): ${JSON.stringify(ProgressEvent)}`)
           const total = progressEvent.total || size;
+          console.log(`Patch total 4 (vimeoUpload): ${total}`)
           const loaded = progressEvent.loaded || 0;
           const progress = loaded / total * 100;
           dispatch({
@@ -141,20 +149,30 @@ export const uploadVimeo = ({ createVideoLink, getVideoLink, ...postBody }) => {
         }
       });
       const { videoData, size } = postBody;
+      console.log(`1 Post body dispatch (VimeoUpload):${JSON.stringify(postBody)}`)
 
       // get upload link
-      const createVideoAPIResult = await axios.post(createVideoLink, {
+      const createVideoAPIResult = await api.videoUpload({
         upload: {
           approach: 'tus',
           size: size
         }
       });
+      // const createVideoAPIResult = await axios.post(createVideoLink, {
+      //   upload: {
+      //     approach: 'tus',
+      //     size: size
+      //   }
+      // });
       const createVideoResult = createVideoAPIResult.data;
+      console.log(`1createVideoResult: ${JSON.stringify(createVideoResult)}`);
       if (createVideoResult.status !== 'success') {
         return failed();
       }
       const uploadLink = createVideoResult.uploadLink;
+      console.log(`uploadLink 1: ${uploadLink}`)
       const videoUri = createVideoResult.videoUri;
+      console.log(`videoUri 1:${videoUri}`)
 
       // start to upload
       return patchVimeoFunc(videoUri, uploadLink, videoData, size);

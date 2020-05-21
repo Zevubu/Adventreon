@@ -1,32 +1,40 @@
 import React, {useContext, useState} from "react";
 import {DivWBorder, MarronHeader, BigMarronBtn, H2, PT, PS} from "../../styles/homeStyle";
 import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
-import API from "../../API/loggedOutAPI";
+import API from "../../API/HostLogIn";
 import {useForm} from 'react-hook-form';
 import {UserInfoContext, useHost, useManagment} from "../../context/heart";
 import {Link} from 'react-router-dom';
+import Dropzone from 'react-dropzone';
+import {VideoUploaderWrapper, DropSection, UplaodingMask, UplaodFailedMessage, ProgressBarWrapper, ProgressBar} from '../../styles/VimeoStyles'
 import VimeoUp from '../../vimeo-upload/index'
-        // show_name, x
-        // show_type,x
-        // about, x 
-        // img, x
-        // img_b,x 
-        // catagory,x 
-        // sub_catagory, x
-        // host_id, 
-        // host_name, 
-        // host_img, 
-        // payment, 
-        // patreon, 
-        // wp_title, 
-        // webpage, 
-        // eighteen_plus, 
-        // booked, 
-        // paid, x
-        // canceled, 
-        // entertain, 
-        // couns, 
-        // relig
+// show_name, 
+// show_type, 
+// about, 
+// img, 
+// img_b, 
+// catagory, 
+// sub_catagory, 
+// video_type, 
+// v_link, 
+// host_id, 
+// host_name, 
+// host_img, 
+// credits, 
+// show_date, 
+// start_time, 
+// end_time, 
+// price, 
+// payment, 
+// patreon, 
+// wp_title, 
+// webpage, 
+// eighteen_plus, 
+// booked, 
+// paid, 
+// canceled, 
+// verified
+
 
 function ShowBuild (){
     const { userData } = useContext(UserInfoContext);
@@ -37,8 +45,16 @@ function ShowBuild (){
     const[showType, setShowType] = useState();
     const[episodical, setEpisodical] = useState();
     const[catType, setCatType] = useState();
+    const[videoUp, setVideoUp] = useState();
     const { register, handleSubmit, watch, errors } = useForm();
 
+    function videoUploader (data , e){
+
+        API.videoUpload({
+            "videoData":data.videoLink
+        }).catch(err => console.log(err))
+        
+    }
     
     const onShowSubmit = (data, e) =>{
         console.log(data)
@@ -54,21 +70,25 @@ function ShowBuild (){
             "img_b": data.bImg,
             "catagory": catType,
             "sub_catagory": data.subcatagory,
+            "video_type":'vimeo',
+            "v_link":data.videoLink||"",
             "host_id": userData.id, 
             "host_name": userData.user_name,
             "host_img": userData.p_img,
+            "credits":'',
+            "show_date":'2020-08-23',
+            "start_time":'11:27:00',
+            "end_time":'12:27:00',
+            "price":'',
             "payment": data.paypal,
             'patreon':data.patreon,
             'wp_title': data.wpTitle,
             'webpage': data.webpage,
-            'video_channel':data.videoLink||"",
             'eighteen_plus':true,
             'booked':true,
             "paid":false,
             "canceled":false, 
-            "entertain":false,
-            "couns":false,
-            "relig":false
+            "verified":false
             }).then(e.target.reset())
             .catch(err => console.log(err))
     }
@@ -247,17 +267,16 @@ function ShowBuild (){
                     {showType === "one_off" &&(
                         <FormBoxWError>
                             <PT>Video link</PT>
-                            <VimeoUp
-                                name="videoLink"
-                                ref ={register}
-                            />
+                            {/* <VimeoUp/> */}
                             {/* Will inclued an example of exactly what you need to do. */}
-                            {/* <Input
+                            <Input
+                                type="file"
                                 name="videoLink"
-                                ref ={register}
+                                onChange={videoUploader}
+                                ref={register}
                             /> 
                             {errors.livefeed && errors.livefeed.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.livefeed && errors.livefeed.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
+                            {errors.livefeed && errors.livefeed.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                         </FormBoxWError>
                     )}
                     <FormBoxWError>

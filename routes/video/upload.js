@@ -5,14 +5,88 @@ const VcId = process.env.VIMEO_CLIENT_ID || "";
 const VsKey = process.env.VIMEO_SECRET_KEY || "";
 const VAT = process.env.VIMEO_ACCESS_TOKEN || "";
 
-let Vimeo = require('vimeo').Vimeo;
-let client = new Vimeo(VcId, VsKey, VAT);
+const Vimeo = require('vimeo').Vimeo;
+const client = new Vimeo(VcId, VsKey, VAT);
+
+const Params = {
+
+}
+
 
 module.exports ={
+    tusStarter: function(req, res){
+        const data = req.body;
+        console.log(`Params!!!!!!!!!! ${JSON.stringify(data.upload.size)}`)
+            client.request({
+                method: 'POST',
+                path:`/users/${VcId}/videos`,
+                path:'/me/videos',
+                params:{
+                    'upload': {
+                    'approach': 'tus',
+                        'size': `${data.upload.size}`
+                    }
+                }
+            }, function (error, body, status_code, headers) {
+                if (error) {
+                    console.log(`Client error:${error}`);
+                    res.send(error);
+                }
+                // console.log(`Body!!!! ${body}`);
+                // console.log(`Headers!!!! ${JSON.stringify(headers)}`);
+                // console.log(`Status_code!!!! ${status_code}`);
+                const response = {'status':'success', 'uploadLink':JSON.stringify(body.upload.upload_link), 'videoUri':JSON.stringify(body["uri"])}
+                // console.log(`Response!!!: ${JSON.stringify(response)}`)
+                res.send(response);
+            })
+    },
+    tusPatcher: function(req, res){
+        const data = req.body;
+        console.log(`patch params: ${JSON.stringify(data.data.uploadLink)}`)
+        client.request({
+            method: 'patch',
+            path: `/users/${VcId}/${data.data.uri}`,
+            path:data.uploadLink,
+            videoData:data.videoData,
+            params:{
+                headers: {
+                    'Tus-Resumable': '1.0.0',
+                    'Upload-Offset': data.data.uploadOffset || '0',
+                    'Content-Type': 'application/offset+octet-stream'
+                },
+                onUploadProgress: function(progressEvent) {
+                    console.log(`Patch progress Event 4 (vimeoUpload): ${JSON.stringify(ProgressEvent)}`)
+                    const total = progressEvent.total || data.data.size;
+                    console.log(`Patch total 4 (vimeoUpload): ${total}`)
+                    const loaded = progressEvent.loaded || 0;
+                    const progress = loaded / total * 100;
+                    dispatch({
+                        type: POST_VIMEO_PROGRESS,
+                        payload: {
+                        uploading: true,
+                        progress: progress >= 100 ? 90 : progress
+                        }
+                    });
+                }
+
+            }
+        }, function (error, body, status_code, headers) {
+            if (error) {
+                console.log(`Client error:${error}`);
+                res.send(error);
+            }
+            console.log(`Body!!!! ${JSON.stringify(body)}`);
+            console.log(`Headers!!!! ${JSON.stringify(headers)}`);
+            console.log(`Status_code!!!! ${status_code}`);
+            const response = {'status':'success', 'uploadLink':JSON.stringify(body.upload.upload_link), 'videoUri':JSON.stringify(body["uri"])}
+            console.log(`Response!!!: ${JSON.stringify(response)}`)
+            res.send(response);
+        })
+    },
     vimeoUpload: function(req,res){
        const {videoData} = req.params;
         console.log(`req.params:${videoData}`);
-        var filePath = ''
+        var filePath = videoData;
         console.log('Uploading: ' + filePath)
         var params = {
             'name': 'example of a web page I made',

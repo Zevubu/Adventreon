@@ -35,17 +35,14 @@ function SignUp (){
             "about": data.about, 
             "p_img": data.pImg,
             "b_img": data.bImg,
-            "shows": '',
+            "catagory":"",
             "payment": data.paypal,
             'patreon': data.patreon,
             'wp_title': data.wpTitle,
             'webpage': data.webpage,
-            'video_channel':data.livefeed,
             'rsvp_attend':'',
-            'rsvp_perform':'',
-            "entertain":true,
-            "couns":false, 
-            "relig":false
+            'rsvp_perform':'', 
+            "verified":true,
             }).then(e.target.reset())
             .catch(err => console.log(err))
     }

@@ -309,7 +309,7 @@ router.route("/relig")
     const conn = await connection(dbConfig).catch(e => {});
     const user = await query(conn, showQuery.findAllRelig())
     res.send(user)
-  })
+  }) 
 
 // Matches with "/api/shows/host/:id"
 router.route('/host/:id')

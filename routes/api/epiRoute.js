@@ -15,12 +15,12 @@ router.route("/all")
       res.send(user)
     })
     .post(async (req, res) =>{
-      const {epi_name, about, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, b_img, credits, price, payment, patreon, wp_title, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, entertain ,couns, relig} = req.body;
+      const {show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, catagory, sub_catagory, paid, price, epi_date, start_time, end_time, eighteen_plus, verified} = req.body;
       const conn = await connection(dbConfig).catch(e => {});
       const user = await query(
         conn,
         epiQuery.createNew(),
-        [epi_name, about, show_id, show_name, img, catagory, sub_catagory, host_id, host_name, b_img, credits, price, payment, patreon, wp_title, webpage, v_link, show_date, start_time, end_time, eighteen_plus, booked, paid, canceled, entertain ,couns, relig]
+        [show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, catagory, sub_catagory, paid, price, epi_date, start_time, end_time, eighteen_plus, verified]
       )
       res.send[user]
     });
