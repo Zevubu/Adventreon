@@ -106,9 +106,9 @@ function NavBar (props){
                         <ManagerMenue/>
                     </div>
                 )}
-                 {isAuthenticated && isHost || isManager && (
+                 {isAuthenticated && isHost || isAuthenticated && isManager && (
                     <div>
-                        <Link style={{ textDecoration: 'none' }} to="/profile"><BTN variant="contained" >Profile</BTN></Link>
+                        <Link style={{ textDecoration: 'none' }} to={"/profile/" + userData.id}><BTN variant="contained" >Profile</BTN></Link>
                     </div>
                 )} 
                 {!isAuthenticated && (

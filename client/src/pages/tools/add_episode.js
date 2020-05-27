@@ -29,37 +29,22 @@ import VimeoUp from '../../vimeo-upload/index'
 // eighteen_plus, 
 // verified
 
-// (
-// 'Zevs Test episode',
-// 'I made this',
-// 38,
-// 'zevs test',
-// 'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/37112608_10155733091650745_697307413887320064_o.jpg?_nc_cat=102&_nc_sid=e3f864&_nc_ohc=1KnyLqphPkcAX9eStd-&_nc_ht=scontent-sjc3-1.xx&oh=d4b3247498ae7f7f6c4ed7d3fc779748&oe=5EEA9E58',
-// 'performance',
-// NULL,
-// NULL,
-// 'ZevUbu',
-// NULL,
-// '',
-// '12',
-// NULL,
-// NULL,
-// NULL,
-// NULL,
-// 'https://player.vimeo.com/video/417439888',
-// NULL,
-// '00:30:00')
 function EpiAdd (){
     const { userData } = useContext(UserInfoContext);
-    const { isManager } = useManagment();
-    const { isHost } = useHost();
     // console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
-    const[Show, setShow] = useState();
-    const[shows, setShows] = useState([])
-    const[VideoType, setVideoType] = useState()
-    const[paid, setPaid] = useState(false)
-    const[video, setVideo] = useState()
+    const[Show, setShow] = useState();;
+    const[shows, setShows] = useState([]);
+    const[VideoType, setVideoType] = useState();
+    const[paid, setPaid] = useState(false);
+    const[video, setVideo] = useState();
     const { register, handleSubmit, watch, errors } = useForm();
+    
+    const EpiReset = (re)=>{
+        setVideoType()
+        setVideo();
+        setPaid(false)
+    }
+    
     useEffect(() => {
        const fetchShows = async () =>{
         const result = await API.getShowsByEpisHID(`${userData.id}`)
@@ -69,45 +54,32 @@ function EpiAdd (){
         fetchShows(); 
     }, []);
 
-    if(Show){
-        console.log(Show)
-        console.log(shows[Show].id)
-    }
+    // if(Show){
+    //     console.log(Show)
+    //     console.log(shows[Show].id)
+    // };
     const PaidOnChange = (data, e) =>{
-        console.log(`price data: ${data[0]}`)
-        if(data !== "0"){
+        console.log("Paid function call.")
+        
+        if(data === "0"|| data === undefined||  data === 0|| data === ''||  data === 'undefined'||  data === null){
+            console.log(data)
             console.log(`Set paid check`)
-            setPaid(true)
+            setPaid(false)
+            console.log(paid)
         }
         else{
-            setPaid(false)
-        }
-    }
+            console.log(data)
+            console.log(`Set paid check`)
+            setPaid(true)
+            console.log(paid)
+        };
+    };
     
     const onShowSubmit = (data, e) =>{
-        console.log(data)
-        if(VideoType === "vimeo"){
-            let videoHold = data.videoLink
-            videoHold = videoHold.replace(/\/vimeo.com/,"/player.vimeo.com/video")
-            console.log(`Video hold ${videoHold}`)
-            setVideo(videoHold);
-        }
-        else if(VideoType === "youtube"){
-            let videoHold = data.videoLink
-            videoHold = videoHold.replace(/\/youtu.be/,"/www.youtube.com/embed")
-            console.log(`Video hold ${videoHold}`)
-            setVideo(videoHold)
-        }
-        else if(VideoType === "twitch"){
-            let videoHold = data.videoLink
-            videoHold = videoHold.replace(/\/www.twitch.tv\/videos/,"/player.twitch.tv")
-            console.log(`Video hold ${videoHold}`)
-            setVideo(videoHold)
-        }
-
-
-     
-        API.createEpisode({ 
+        console.log(data);
+        console.log(paid);
+        const EpiUploader = async ()=>{
+            const Build = await API.createEpisode({ 
             "show_id":shows[Show].id,
             "user_id":userData.id,
             "epi_name": data.epiName,
@@ -115,7 +87,7 @@ function EpiAdd (){
             "img": data.Img,
             "video_type":VideoType,
             'v_link':video,
-            "credits":'',
+            "credits":data.credits,
             "show_name":shows[Show].show_name,
             "host_name":userData.user_name,
             "catagory": shows[Show].catagory,
@@ -127,9 +99,52 @@ function EpiAdd (){
             "end_time": '01:30:00',
             "eighteen_plus":false, 
             "verified":true,
-            }).then(e.target.reset())
-            .catch(err => console.log(err))
-    }
+            })
+            .then(e.target.reset())
+            .then(EpiReset())
+            .catch(err => console.log(err));
+
+            Build();
+        };
+        if(video){
+            EpiUploader();
+        };
+        if(VideoType === "vimeo"){
+            let videoHold = data.videoLink;
+            // videoHold = videoHold.replace(/\/vimeo.com/,"/player.vimeo.com/video");
+            videoHold = videoHold.replace(/https:\/\/vimeo.com\//,"/");
+            console.log(`Video last index of ${videoHold.lastIndexOf('/')}`);
+            if(videoHold.lastIndexOf('/') !== -1 && videoHold.lastIndexOf('/') !== 0 ){
+                videoHold = videoHold.substring(0, videoHold.lastIndexOf('/'));
+                videoHold = videoHold.replace(/\//,"https://player.vimeo.com/video/");
+                console.log(`Video hold with extra ${videoHold}`);
+                setVideo(videoHold);
+            }
+            else{
+                videoHold = videoHold.replace(/\//,"https://player.vimeo.com/video/");
+                console.log(`Video hold no extra ${videoHold}`);
+                setVideo(videoHold);
+            };
+        }
+        else if(VideoType === "youtube"){
+            let videoHold = data.videoLink;
+            videoHold = videoHold.replace(/\/youtu.be/,"/www.youtube.com/embed");
+            console.log(`Video hold ${videoHold}`);
+            setVideo(videoHold);
+        }
+        else if(VideoType === "twitch"){
+            let videoHold = data.videoLink;
+            videoHold = videoHold.replace(/\/www.twitch.tv\/videos/,"/player.twitch.tv");
+            console.log(`Video hold ${videoHold}`);
+            setVideo(videoHold);
+        }
+        else if(VideoType === "facebook"){
+            let videoHold = data.videoLink;
+            videoHold = videoHold.replace(/facebook\/videos\//,"plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F");
+            console.log(`Video hold ${videoHold}`);
+            setVideo(videoHold);
+        };
+    };
 
     return(
         <DivWBorder> 
@@ -144,7 +159,7 @@ function EpiAdd (){
             <PT>What show does this episode belong to?</PT>
             <FormBoxWError>
                 <PT>Select a show</PT>
-                <select name="showType" onChange={e => setShow(e.target.value)}>
+                <select name="ShowChoice" onChange={e => setShow(e.target.value)} ref={register({required: true})}>
                     <option>Choose one</option>
                 {shows.map((show, key) => (
                     <option 
@@ -152,6 +167,7 @@ function EpiAdd (){
                     >{show.show_name}</option>
                 ))}
                 </select>
+                {errors.ShowChoice && errors.ShowChoice.type === "required" &&(<PE>This is required!</PE>)}
             </FormBoxWError>
 
         </FormBigBox>
@@ -175,92 +191,66 @@ function EpiAdd (){
                     </FormBoxWError>
                     
                     <FormBoxWError>
+                        <div>
                             <PT>Video source</PT>
-                            <select name="videoType" onChange={e => setVideoType(e.target.value)}>
+                            <select name="videoSource" onChange={e => setVideoType(e.target.value)}  ref={register({required: true})}>
                                 <option>choose one</option>
                                 <option value="vimeo">Vimeo</option>
                                 <option value="youtube">YouTube</option>
-                                <option value="twitch">Twitch</option>
+                                {/* <option value="twitch">Twitch</option> */}
                             </select>
-                              {errors.videoType && errors.videoType.type === "required" &&(<PE>This is required!</PE>)}
-                            {VideoType==="vimeo" &&(
-                                <div>
-                                    <PT>Video link</PT>
-                                    {/* <VimeoUp
-                                    //     name="videoLink"
-                                    //     ref ={register}
-                                    // /> */}
-                                    {/* Will inclued an example of exactly what you need to do. */}
-                                    <Input
-                                        name="videoLink"
-                                        ref ={register}
-                                    /> 
-                                    {errors.videoLink && errors.videoLink.type === "required" &&(<PE>This is required!</PE>)}
-                                </div>
-                            )}
-                            {VideoType==="youtube" &&(
-                                <div>
-                                    <PT>Video link</PT>
-                                    {/* <VimeoUp
-                                    //     name="videoLink"
-                                    //     ref ={register}
-                                    // /> */}
-                                    {/* Will inclued an example of exactly what you need to do. */}
-                                    <Input
-                                        name="videoLink"
-                                        ref ={register}
-                                    /> 
-                                    {errors.videoLink && errors.videoLink.type === "required" &&(<PE>This is required!</PE>)}
-                                </div>
-                            )}
-                            {VideoType==="twitch" &&(
-                                <div>
-                                    <PT>Video link</PT>
-                                    {/* <VimeoUp
-                                    //     name="videoLink"
-                                    //     ref ={register}
-                                    // /> */}
-                                    {/* Will inclued an example of exactly what you need to do. */}
-                                    <Input
-                                        name="videoLink"
-                                        ref ={register}
-                                    /> 
-                                    {errors.videoLink && errors.videoLink.type === "required" &&(<PE>This is required!</PE>)}
-                                </div>
-                            )}
-                           
-                            {/* {errors.videoLink && errors.videoLink.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
-                        </FormBoxWError>
-                        <FormBoxWError>
-                            <PT>Episode Image</PT>
-                            <Input
-                                name="Img"
-                                ref ={register({required: true})}
-                            /> 
-                            {/* <Input
-                                type="file"
-                                name="Img"
-                                ref ={register({required: true})}
-                            />  */}
-                            {errors.Img && errors.Img.type === "required" &&(<PE>This is required!</PE>)}
-                            {/* {errors.PImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}*/}
+                            {errors.videoSource && errors.videoSource.type === "required" &&(<PE>This is required!</PE>)}
+                        </div>
+                        
+                        {VideoType &&(
+                            <div>
+                                <PT>Video link</PT>
+                                {/* <VimeoUp
+                                //     name="videoLink"
+                                //     ref ={register}
+                                // /> */}
+                                {/* Will inclued an example of exactly what you need to do. */}
+                                <Input
+                                    name="videoLink"
+                                    ref ={register}
+                                /> 
+                                {errors.videoLink && errors.videoLink.type === "required" &&(<PE>This is required!</PE>)}
+                            </div>
+                        )}
+                    </FormBoxWError>
+                    <FormBoxWError>
+                        <PT>Episode Image</PT>
+                        <Input
+                            name="Img"
+                            ref ={register({required: true})}
+                        /> 
+                        {/* <Input
+                            type="file"
+                            name="Img"
+                            ref ={register({required: true})}
+                        />  */}
+                        {errors.Img && errors.Img.type === "required" &&(<PE>This is required!</PE>)}
+                        {/* {errors.PImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}*/}
                     </FormBoxWError>
                     {/* bulk text area. opition to hide text? */}
                 </FormLittleBox>
                     <FormBoxWError>
                         <PT>Price</PT>
+                        <PS>If free input 0.</PS>
                         <PS>Pay wall isn't implimented yet.</PS>
+
                         {/* Will inclued an example of exactly what you need to do. */}
                         <Input
                             type="number"
                             name="price"
+                            min='0' 
+                            max='500000'
                             onChange = {e=> PaidOnChange(e.target.value)}
                             ref ={register({required: true})}
                         /> 
-                        {/* {errors.paypal && errors.paypal.type === "required" &&(<PE>This is required!</PE>)} */}
+                        {errors.price && errors.price.type === "required" &&(<PE>This is required!</PE>)}
                         {/* {errors.paypal && errors.paypal.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
                     </FormBoxWError>
-
                 <FormLittleBox>
                     <FormBoxWError>
                         <PT>About</PT>
@@ -278,7 +268,7 @@ function EpiAdd (){
                             rows="10"
                             cols="40"
                             placeholder=""
-                            name="about" 
+                            name="credits" 
                             ref ={register}   
                         /> 
                     </FormBoxWError>
@@ -287,6 +277,7 @@ function EpiAdd (){
                     {/* contact info email... Name? DOB number */}
                     {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
+                        <PT>Double click to submit episode</PT>
                         <Btn type="submit" value="Submit">Submit Episode</Btn>
                         {/* disabled={disable} */}
                     </FormBox>

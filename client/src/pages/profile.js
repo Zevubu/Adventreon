@@ -57,9 +57,9 @@ function HostPage(){
      }, []);
 
     return(
-        <ProBigBox>
+        <ProBigBox bgImg={Host.b_img || "https://images.unsplash.com/photo-1505842465776-3b4953ca4f44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"}>
             <div>
-                <SpHeaderA id={Host.id}>
+                <SpHeaderA id={Host.id} BGcolor="rgba(0,0,0,0)">
                     <Paper elevation={3} style={{padding: '0px', borderRadius: '0px',backgroundColor: 'rgba(180,180,180,0.2)', marginbottom: '20px'}}>
                         <ProTextBox>
                             <H1>{Host.user_name}</H1>

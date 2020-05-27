@@ -1,73 +1,123 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import {DivWBorder, MarronHeader, MarronBtn, BigMarronBtn, H2, PT, PS} from "../../styles/homeStyle"
 import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
-import API from "../../API/loggedOutAPI";
+import API from "../../API/HostLogIn";
 import {useForm} from 'react-hook-form';
 import {UserInfoContext, useHost, useManagment} from "../../context/heart"
-import {Link, Redirect} from 'react-router-dom';
-        // show_name, x
-        // show_type,x
-        // about, x 
-        // img, x
-        // img_b,x 
-        // catagory,x 
-        // sub_catagory, x
-        // host_id, 
-        // host_name, 
-        // host_img, 
-        // payment, 
-        // patreon, 
-        // wp_title, 
-        // webpage, 
-        // eighteen_plus, 
-        // booked, 
-        // paid, x
-        // canceled, 
-        // entertain, 
-        // couns, 
-        // relig
+// import {Link} from 'react-router-dom';
+// import VimeoUp from '../../vimeo-upload/index'
 
-function ShowBuild (){
+// H = userData, Y= form ie data, S = showData, N doesn't need to be implimnted
+// X = already built, B= Boolean
+// show_id, 
+// user_id, 
+// epi_name, 
+// about, 
+// img, 
+// video_type, 
+// v_link, 
+// credits, 
+// show_name, 
+// host_name, 
+// catagory, 
+// sub_catagory, 
+// paid, 
+// price, 
+// epi_date, 
+// start_time, 
+// end_time, 
+// eighteen_plus, 
+// verified
+
+function EpiUpdate (){
     const { userData } = useContext(UserInfoContext);
-    const {isManager} = useManagment();
+    const { isManager } = useManagment();
     const { isHost } = useHost();
-    console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
-// id, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig, timestamp
-    const[showType, setShowType] = useState();
-    const[episodical, setEpisodical] = useState();
-    const[catType, setCatType] = useState();
+    // console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
+    const[Show, setShow] = useState();
+    const[shows, setShows] = useState([])
+    const[VideoType, setVideoType] = useState()
+    const[paid, setPaid] = useState(false)
+    const[video, setVideo] = useState()
     const { register, handleSubmit, watch, errors } = useForm();
+    useEffect(() => {
+       const fetchShows = async () =>{
+        const result = await API.getShowsByEpisHID(`${userData.id}`)
+            console.log(`show by host id and epis data ${JSON.stringify(result.data)}`)
+            setShows(result.data)
+        };
+        fetchShows(); 
+    }, []);
 
+    if(Show){
+        console.log(Show)
+        console.log(shows[Show].id)
+    }
+    const PaidOnChange = (data, e) =>{
+        console.log("Paid function call.")
+        
+        if(data === "0"|| data === undefined||  data === 0|| data === ''||  data === 'undefined'||  data === null){
+            console.log(data)
+            console.log(`Set paid check`)
+            setPaid(false)
+            console.log(paid)
+        }
+        else{
+            console.log(data)
+            console.log(`Set paid check`)
+            setPaid(true)
+            console.log(paid)
+        }
+    }
     
     const onShowSubmit = (data, e) =>{
         console.log(data)
-        if(showType === "episodical"){
-            setEpisodical(true)
+        console.log(paid)
+        if(VideoType === "vimeo"){
+            let videoHold = data.videoLink
+            videoHold = videoHold.replace(/\/vimeo.com/,"/player.vimeo.com/video")
+            console.log(`Video hold ${videoHold}`)
+            setVideo(videoHold);
+        }
+        else if(VideoType === "youtube"){
+            let videoHold = data.videoLink
+            videoHold = videoHold.replace(/\/youtu.be/,"/www.youtube.com/embed")
+            console.log(`Video hold ${videoHold}`)
+            setVideo(videoHold)
+        }
+        else if(VideoType === "twitch"){
+            let videoHold = data.videoLink
+            videoHold = videoHold.replace(/\/www.twitch.tv\/videos/,"/player.twitch.tv")
+            console.log(`Video hold ${videoHold}`)
+            setVideo(videoHold)
+        }
+        else if(VideoType === "facebook"){
+            let videoHold = data.videoLink
+            videoHold = videoHold.replace(/facebook\/videos\//,"plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F")
+            console.log(`Video hold ${videoHold}`)
+            setVideo(videoHold)
         }
      
-        API.createShow({ 
-            "show_name": data.showName,
-            "show_type": showType,
+        API.createEpisode({ 
+            "show_id":shows[Show].id,
+            "user_id":userData.id,
+            "epi_name": data.epiName,
             "about": data.about,
-            "img": data.pImg,
-            "img_b": data.bImg,
-            "catagory": catType,
-            "sub_catagory": data.subcatagory,
-            "host_id": userData.id, 
-            "host_name": userData.user_name,
-            "host_img": userData.p_img,
-            "payment": data.paypal,
-            'patreon':data.patreon,
-            'wp_title': data.wpTitle,
-            'webpage': data.webpage,
-            'video_channel':data.videoLink||"",
-            'eighteen_plus':true,
-            'booked':true,
-            "paid":false,
-            "canceled":false, 
-            "entertain":false,
-            "couns":false,
-            "relig":false
+            "img": data.Img,
+            "video_type":VideoType,
+            'v_link':video,
+            "credits":data.credits,
+            "show_name":shows[Show].show_name,
+            "host_name":userData.user_name,
+            "catagory": shows[Show].catagory,
+            "sub_catagory":shows[Show].sub_catagory,
+            "paid": paid,
+            "price": data.price,
+            "epi_data":"2020-08-23",
+            "start_time":'00:30:00',
+            "end_time": '01:30:00',
+            "eighteen_plus":false, 
+            "verified":true,
             }).then(e.target.reset())
             .catch(err => console.log(err))
     }
@@ -77,267 +127,170 @@ function ShowBuild (){
         {/* <a id="signup"/> */}
         {/* Sign up form */}
         <MarronHeader>
-            <H2>Show creation page!</H2>
+            <H2>Episode creation page</H2>
         </MarronHeader>
         <FormBigBox>
-         
-            <PT>What kind of show would you like to make?</PT>
-            <PS>If your show is a live stream please choose episodical.</PS>
+        
+         {/* DONT TOUCH VVV */}
+            <PT>What show does this episode belong to?</PT>
             <FormBoxWError>
-                <PT>Show type</PT>
-                <select name="showType" onChange={e => setShowType(e.target.value)}>
-                    <option>choose one</option>
-                    <option value="one_off">One off</option>
-                    <option value="episodical">Episodical</option>
-                    <option value="episodical">Livestream one off</option>
-                    <option value="episodical">Livestream episodical</option>
+                <PT>Select a show</PT>
+                <select name="ShowChoice" onChange={e => setShow(e.target.value)} ref={register({required: true})}>
+                    <option>Choose one</option>
+                {shows.map((show, key) => (
+                    <option 
+                    value={key}
+                    >{show.show_name}</option>
+                ))}
                 </select>
+                {errors.ShowChoice && errors.ShowChoice.type === "required" &&(<PE>This is required!</PE>)}
             </FormBoxWError>
-            <PT>What WebPage this show belong in?</PT>
-            <FormBoxWError>
-                {/* Educational */}
-                        <PT>category</PT>
-                        <select name="catagory" onChange={e => setCatType(e.target.value)}>
-                            <option>choose one</option>
-                            <option value="music">Music</option>
-                            <option value="performance">Performance</option>
-                            <option value="counseling">Counseling</option>
-                            <option value="religious">Spiritual</option>
-                        </select>
-                        {errors.password && errors.password.type === "required" &&(<PE>This is required!</PE>)} 
-                        {errors.password && errors.password.type === "pattern" &&(<PE>Password must contain one uppercase letter, one lower case letter, and one number.</PE>)} 
-                        {errors.password && errors.password.type === "minLength" &&(<PE>Password must be 8 charecters or longer.</PE>)} 
-                        {errors.password && errors.password.type === "maxLength" &&(<PE>Password can not be longer then 25 charecters.</PE>)} 
-                </FormBoxWError>
-            {episodical && isHost && ( 
-                <FormBoxWError>
-                    <Link style={{ textDecoration: 'none'}} to="/episodebuilder">
-                        <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
-                    </Link>
-                </FormBoxWError>
-            )}
-            {episodical && isManager && ( 
-                <FormBoxWError>
-                    <Link style={{ textDecoration: 'none'}} to="/episodebuilderm">
-                        <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
-                    </Link>
-                </FormBoxWError>
-            )}
+
         </FormBigBox>
-        {showType && catType && ( 
+        {/* form starts here */}
+    
+        {Show && ( 
             <FormBigBox onSubmit={handleSubmit(onShowSubmit)}>
+                {/* <p>{`show ID: ${JSON.stringify(Show)}`}</p> */}
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}   
-                {catType==="entertainment" &&(
-                    <FormBoxWError>
-                        <PT>Sub-category</PT>
-                        <select name="subcatagory" ref ={register({required: true})}>
-                            <option>choose one</option>
-                            <option value="Religious">Variety show</option>
-                            <option value="fant_sify">story arched webisode</option>
-                            <option value="fant_sify">Music/dj</option>
-                            <option value="fant_sify">Music/EDM</option>
-                            <option value="fant_sify">Music/acustic</option>
-                            <option value="fant_sify">Live action play</option>
-                            <option value="fant_sify">Educational</option>
-                            <option value="blog">Personal Blog</option>
-                            
-                        </select>
-                        {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                        {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
-                    </FormBoxWError>
-                )}
-                {catType==="counseling" &&(
-                <FormBoxWError>
-                    <PT>Sub-category</PT>
-                    <select name="subcatagory"  ref ={register({required: true})}>
-                        <option>choose one</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="counseling">Counseling</option>
-                        <option value="religious">Religious services</option>
-                    </select>
-                    {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                    {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
-                </FormBoxWError>
-                )}
-                {catType==="religious" &&(
-                <FormBoxWError>
-                    <PT>Sub-category</PT>
-                    <select name="subcatagory"  ref ={register}>
-                        <option>choose one</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="counseling">Counseling</option>
-                        <option value="religious">Religious services</option>
-                    </select>
-                    {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                    {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
-                </FormBoxWError>
-                )}
                
                 <FormLittleBox>
                     <FormBoxWError>
-                            <PT>Show Name</PT>
+                            <PT>Episode Name</PT>
                             <Input
-                                name="showName"
+                                name="epiName"
                                 ref ={register({required: true})}
                             /> 
-                            {errors.showName && errors.showName.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.showName && errors.showName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
+                            {errors.epiName && errors.epiName.type === "required" &&(<PE>This is required!</PE>)}
+                            {/* {errors.epiName && errors.epiName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
+                    </FormBoxWError>
+                    
+                    <FormBoxWError>
+                        <div>
+                            <PT>Video source</PT>
+                            <select name="videoSource" onChange={e => setVideoType(e.target.value)}  ref={register({required: true})}>
+                                <option>choose one</option>
+                                <option value="vimeo">Vimeo</option>
+                                <option value="youtube">YouTube</option>
+                                <option value="twitch">Twitch</option>
+                            </select>
+                            {errors.videoSource && errors.videoSource.type === "required" &&(<PE>This is required!</PE>)}
+                        </div>
+                        
+                        {VideoType==="vimeo" &&(
+                            <div>
+                                <PT>Video link</PT>
+                                {/* <VimeoUp
+                                //     name="videoLink"
+                                //     ref ={register}
+                                // /> */}
+                                {/* Will inclued an example of exactly what you need to do. */}
+                                <Input
+                                    name="videoLink"
+                                    ref ={register}
+                                /> 
+                                {errors.videoLink && errors.videoLink.type === "required" &&(<PE>This is required!</PE>)}
+                            </div>
+                        )}
+                        {VideoType==="youtube" &&(
+                            <div>
+                                <PT>Video link</PT>
+                                {/* <VimeoUp
+                                //     name="videoLink"
+                                //     ref ={register}
+                                // /> */}
+                                {/* Will inclued an example of exactly what you need to do. */}
+                                <Input
+                                    name="videoLink"
+                                    ref ={register}
+                                /> 
+                                {errors.videoLink && errors.videoLink.type === "required" &&(<PE>This is required!</PE>)}
+                            </div>
+                        )}
+                        {VideoType==="twitch" &&(
+                            <div>
+                                <PT>Video link</PT>
+                                {/* <VimeoUp
+                                //     name="videoLink"
+                                //     ref ={register}
+                                // /> */}
+                                {/* Will inclued an example of exactly what you need to do. */}
+                                <Input
+                                    name="videoLink"
+                                    ref ={register}
+                                /> 
+                                {errors.videoLink && errors.videoLink.type === "required" &&(<PE>This is required!</PE>)}
+                            </div>
+                        )}
+                        
+                        {/* {errors.videoLink && errors.videoLink.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
                     </FormBoxWError>
                     <FormBoxWError>
-                        <PT>Paypal</PT>
-                        {/* Will inclued an example of exactly what you need to do. */}
+                        <PT>Episode Image</PT>
                         <Input
-                            name="paypal"
+                            name="Img"
                             ref ={register({required: true})}
                         /> 
-                        {errors.paypal && errors.paypal.type === "required" &&(<PE>This is required!</PE>)}
-                        {errors.paypal && errors.paypal.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
-                    </FormBoxWError>
-                    <FormBoxWError>
-                        <PT>Patreon</PT>
-                        {/* Will inclued an example of exactly what you need to do. */}
-                        <Input
-                            name="patreon"
-                            ref ={register}
-                        /> 
-                        {errors.patreon && errors.patreon.type === "required" &&(<PE>This is required!</PE>)}
-                        {errors.patreon && errors.patreon.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
+                        {/* <Input
+                            type="file"
+                            name="Img"
+                            ref ={register({required: true})}
+                        />  */}
+                        {errors.Img && errors.Img.type === "required" &&(<PE>This is required!</PE>)}
+                        {/* {errors.PImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}*/}
                     </FormBoxWError>
                     {/* bulk text area. opition to hide text? */}
-                    </FormLittleBox>
-
-                    <FormLittleBox>
-                    {showType === "one_off" &&(
-                        <FormBoxWError>
-                            <PT>Video link</PT>
-                            {/* Will inclued an example of exactly what you need to do. */}
-                            <Input
-                                name="videoLink"
-                                ref ={register}
-                            /> 
-                            {errors.livefeed && errors.livefeed.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.livefeed && errors.livefeed.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
-                        </FormBoxWError>
-                    )}
-                    <FormBoxWError>
-                            <PT>Show Image</PT>
-                            <Input
-                                type="file"
-                                name="pImg"
-                                ref ={register({required: true})}
-                            /> 
-                            {errors.pImg && errors.pImg.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.PImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}                          
-                    </FormBoxWError>
-                    <FormBoxWError>
-                            <PT>Background Image</PT>
-                            <Input
-                                type="file"
-                                name="bImg"
-                                ref ={register}
-                            /> 
-                            {errors.bImg && errors.bImg.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.bImg && errors.bImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}                          
-                    </FormBoxWError>
                 </FormLittleBox>
+                    <FormBoxWError>
+                        <PT>Price</PT>
+                        <PS>Pay wall isn't implimented yet.</PS>
+                        {/* Will inclued an example of exactly what you need to do. */}
+                        <Input
+                            type="number"
+                            name="price"
+                            onChange = {e=> PaidOnChange(e.target.value)}
+                            ref ={register}
+                        /> 
+                        {/* {errors.paypal && errors.paypal.type === "required" &&(<PE>This is required!</PE>)} */}
+                        {/* {errors.paypal && errors.paypal.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
+                    </FormBoxWError>
                 <FormLittleBox>
                     <FormBoxWError>
                         <PT>About</PT>
                         <TextArea 
                             rows="10"
-                            cols="50"
-                            placeholder="Anything you share is confidential"
+                            cols="40"
+                            placeholder="Tell us about your show"
                             name="about" 
                             ref ={register}   
                         /> 
                     </FormBoxWError>
-                    {/* <FormBoxWError>
-                
-                        <PT>Where would you like to be featured</PT>
-                        <PS>Entertainment</PS>
-                        <Input
-                            value="1"
-                            type="radio"
-                            name="entertain"
-                            ref ={register}
-                        /> 
-                        <PS>Counseling</PS>
-                        <Input
-                            value="1"
-                            type="radio"
-                            name="couns"
-                            ref ={register}
-                        /> 
-                        <PS>Exersize</PS>
-                        <Input
-                            value=""
-                            type="radio"
-                            name="exer"
-                            ref ={register}
-                        /> 
-                        <PS>Religious Services</PS>
-                        <Input
-                            value="1"
-                            type="radio"
-                            name="relig"
-                            ref ={register}
-                        /> 
-
-
-                    </FormBoxWError> */}
                     <FormBoxWError>
-                        <FormBox>
-                            <PT>WebPage title</PT>
-                            <PS>IE: "Buy our Shwag here!", "Veiw my webpage!" so on.</PS>
-                            {/* Will inclued an example of exactly what you need to do. */}
-                            <Input
-                                name="wpTitle"
-                                ref ={register}
-                            /> 
-                            {errors.wpTitle && errors.wpTitle.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.wpTitle && errors.wpTitle.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
-                        </FormBox>
-                        <FormBox>
-                            <PT>WebPage Link</PT>
-                            {/* Will inclued an example of exactly what you need to do. */}
-                            <Input
-                                name="webpage"
-                                ref ={register}
-                            /> 
-                            {errors.wpTitle && errors.wpTitle.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.wpTitle && errors.wpTitle.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
-                        </FormBox>
-                    </FormBoxWError>  
+                        <PT>Credits</PT>
+                        <TextArea 
+                            rows="10"
+                            cols="40"
+                            placeholder=""
+                            name="credits" 
+                            ref ={register}   
+                        /> 
+                    </FormBoxWError>
                 </FormLittleBox>
-            
                 <FormLittleBox>
                     {/* contact info email... Name? DOB number */}
                     {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
-                        <Btn type="submit" value="Submit">Submit show</Btn>
+                        <Btn type="submit" value="Submit">Submit Episode</Btn>
                         {/* disabled={disable} */}
                     </FormBox>
                 
                 </FormLittleBox>       
             </FormBigBox>
         )}      
-        {episodical && isHost && ( 
-            <FormBoxWError>
-                <Link style={{ textDecoration: 'none'}} to="/episodebuilder">
-                    <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
-                </Link>
-            </FormBoxWError>
-        )}
-        {episodical && isManager && ( 
-            <FormBoxWError>
-                <Link style={{ textDecoration: 'none'}} to="/episodebuilderm">
-                    <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
-                </Link>
-            </FormBoxWError>
-        )}
+        {/* FORM ENDS HERE */}
     </DivWBorder>
     )
 }
 
-export default ShowBuild;
+export default EpiUpdate;

@@ -1,11 +1,29 @@
-import React from "react";
+import React,{useState} from "react";
 import {DivWBorder, MarronHeader, H2, PT, PS} from "../../styles/homeStyle"
 import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
 import API from "../../API/behindDaScenes";
 import {useForm} from 'react-hook-form';
-
+// user_name, 
+// user_type, 
+// mhswitch, 
+// dob, 
+// email, 
+// password, 
+// title, 
+// about, 
+// p_img, 
+// b_img, 
+// catagory, 
+// payment,
+// patreon, 
+// wp_title, 
+// webpage, 
+// rsvp_attend, 
+// rsvp_perform, 
+// verified
 
 function SignUp (){
+    const[catType, setCatType] = useState();
 
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = (data, e) =>{
@@ -30,7 +48,7 @@ function SignUp (){
             "about": data.about, 
             "p_img": data.pImg,
             "b_img": data.bImg,
-            "catagory": '',
+            "catagory": catType,
             "payment": data.paypal,
             'patreon': data.patreon,
             'wp_title': data.wpTitle,
@@ -41,10 +59,6 @@ function SignUp (){
             }).then(e.target.reset())
             .catch(err => console.log(err))
     }
-    // function(){
-                
-    // }
-
     return(
         <DivWBorder> 
             {/* <a id="signup"/> */}
@@ -52,13 +66,11 @@ function SignUp (){
             <MarronHeader>
                 <H2>Host Profile creation page!</H2>
             </MarronHeader>
-
             <FormBigBox onSubmit={handleSubmit(onSubmit)}>
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}
                 <PT>Thats right make your profile here.</PT>
                 <FormLittleBox>
-                    
                     <FormBoxWError>
                             <PT>Name*</PT>
                             <Input
@@ -112,9 +124,7 @@ function SignUp (){
                     </FormBoxWError>  
                     {/* bulk text area. opition to hide text? */}
                 </FormLittleBox>
-
                 <FormLittleBox>
-                    
                     <FormBoxWError>
                         <PT>Your Title</PT>
                         <Input
@@ -125,6 +135,19 @@ function SignUp (){
                         {errors.title && errors.title.type === "pattern" &&(<PE>Title must at least 3 characters an no longer than 30. </PE>)}
                     </FormBoxWError>
                     <FormBoxWError>
+                        <PT>category</PT>
+                        <PS>What catagory do you want you profile listed under</PS>
+                        <select name="catagory" onChange={e => setCatType(e.target.value)}>
+                            <option>choose one</option>
+                            <option value="music">Music</option>
+                            <option value="performance">Performance Art</option>
+                            <option value="visual">Visual Art</option>
+                            <option value="life">Life</option>
+                            <option value="spiritual">Spiritual Guidance</option>
+                        </select>
+                        {errors.catagory && errors.catagory.type === "required" &&(<PE>This is required!</PE>)} 
+                    </FormBoxWError>
+                    <FormBoxWError>
                             <PT>Profile Image*</PT>
                             <Input
                                 type="text"
@@ -132,9 +155,7 @@ function SignUp (){
                                 ref ={register({required: true})}
                             /> 
                             {errors.pImg && errors.pImg.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.PImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}                          
-                    </FormBoxWError>
-                    <FormBoxWError>
+                            {errors.PImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                             <PT>Background Image</PT>
                             <Input
                                 name="bImg"
@@ -144,14 +165,14 @@ function SignUp (){
                             {errors.bImg && errors.bImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}                          
                     </FormBoxWError>
                        <FormBoxWError>
-                        <PT>Paypal</PT>
+                        <PT>Payment</PT>
                         {/* Will inclued an example of exactly what you need to do. */}
                         <Input
-                            name="paypal"
-                            ref ={register({required: true})}
+                            name="payment"
+                            ref ={register}
                         /> 
-                        {errors.paypal && errors.paypal.type === "required" &&(<PE>This is required!</PE>)}
-                        {errors.paypal && errors.paypal.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
+                        {errors.payment && errors.payment.type === "required" &&(<PE>This is required!</PE>)}
+                        {/* {errors.payment && errors.payment.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
                     </FormBoxWError>
                     <FormBoxWError>
                         <PT>Patreon</PT>
@@ -164,17 +185,6 @@ function SignUp (){
                         {errors.patreon && errors.patreon.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                     </FormBoxWError>
                 </FormLittleBox>
-                {/* <FormLittleBox>
-                    <FormBoxWError>
-                        <PT>Live feed link</PT>
-                        <Input
-                            name="livefeed"
-                            ref ={register}
-                        /> 
-                        {errors.livefeed && errors.livefeed.type === "required" &&(<PE>This is required!</PE>)}
-                        {errors.livefeed && errors.livefeed.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
-                    </FormBoxWError>
-                </FormLittleBox> */}
                 <FormLittleBox>
                     <FormBoxWError>
                         <PT>About</PT>
@@ -186,40 +196,6 @@ function SignUp (){
                             ref ={register}   
                         /> 
                     </FormBoxWError>
-                    {/* <FormBoxWError>
-                
-                        <PT>Where would you like to be featured</PT>
-                        <PS>Entertainment</PS>
-                        <Input
-                            value="1"
-                            type="radio"
-                            name="entertain"
-                            ref ={register}
-                        /> 
-                        <PS>Counseling</PS>
-                        <Input
-                            value="1"
-                            type="radio"
-                            name="couns"
-                            ref ={register}
-                        /> 
-                        <PS>Exersize</PS>
-                        <Input
-                            value=""
-                            type="radio"
-                            name="exer"
-                            ref ={register}
-                        /> 
-                        <PS>Religious Services</PS>
-                        <Input
-                            value="1"
-                            type="radio"
-                            name="relig"
-                            ref ={register}
-                        /> 
-
-
-                    </FormBoxWError> */}
                     <FormBoxWError>
                         <FormBox>
                             <PT>WebPage title</PT>
@@ -244,10 +220,7 @@ function SignUp (){
                         </FormBox>
                     </FormBoxWError>
                 </FormLittleBox>
-            
                 <FormLittleBox>
-                    {/* contact info email... Name? DOB number */}
-                    {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
                         <Btn type="submit" value="Submit">Done? Lets get started.</Btn>
                         {/* disabled={disable} */}

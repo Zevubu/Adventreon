@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {styled } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
 import {useUserInfo } from "../../context/heart";
-
+ 
 const BTN = styled(Button)({
   border: 0,
   borderRadius: 3,
@@ -46,7 +46,7 @@ export default function SimpleMenu() {
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/episodebuilderm"><MenuItem onClick={handleClose}>Make an episode</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/invitem"><MenuItem onClick={handleClose}>Invite Manager</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/manegsu/" + userData.id}><MenuItem onClick={handleClose}>Make a Manager</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#353435' }} to={"/profilem/" + userData.id}><MenuItem onClick={handleClose}>Your Profile</MenuItem></Link>
+        {/* <Link style={{ textDecoration: 'none' ,color: '#353435' }} to={"/profile/" + userData.id}><MenuItem onClick={handleClose}>Your Profile</MenuItem></Link> */}
         <Link style={{ textDecoration: 'none' ,color: '#353435' }} to={"/pupm/" + userData.id}><MenuItem onClick={handleClose}>Update Profile</MenuItem></Link>
       </Menu>
     </div>

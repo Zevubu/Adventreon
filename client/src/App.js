@@ -164,7 +164,7 @@ function App() {
                           <Route exact path="/" component={HomePage} />
                           <LogOutRoute exact path="/login" component={Login} />
                           <LogOutRoute exact path="/signup" component={SignUp} />
-                          <UserRoute path="/profile/:id" state={{value:userData}}  component={profile}/>
+                          {/* <UserRoute path="/profile/:id" state={{value:userData}}  component={profile}/> */}
                           <Route exact path="/hosts" component={HostsPage} />
                           <Route exact path="/hosts/:id" component={HostProfile} />
                           <Route exact path="/shows" component={ShowPage} />
@@ -179,7 +179,7 @@ function App() {
                           <Route exact path="/uploads" component={Uploader} />
                           <TempMRoute exact path="/tempsum/:id" component={ManegSignUp} />
                           <TempRoute exact path="/tempsu/:id" component={HostSignUp} />
-                          <ManagmentRoute path="/profilem/:id" state={{value:userData}}  component={profile}/>
+                          <ManagmentRoute path="/profile/:id" state={{value:userData}}  component={profile}/>
                           <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
                           <ManagmentRoute exact path="/hostsum/:id" component={HostSignUp} />
                           <ManagmentRoute exact path="/invitem" component={InviteManeg} />
@@ -187,6 +187,7 @@ function App() {
                           <ManagmentRoute exact path="/pupm/:id" state={{value:userData}} component={UpHost} />
                           <ManagmentRoute exact path="/showbuilderm" state={{value:userData}} component={ShowBuilder}/>
                           <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
+                          <HostRoute path="/profile/:id" state={{value:userData}}  component={profile}/>
                           <HostRoute exact path="/pup/:id" state={{value:userData}} component={UpHost} />
                           <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
                           <HostRoute exact path="/episodebuilder" component={AddEpisode}/>

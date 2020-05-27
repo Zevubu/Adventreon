@@ -26,8 +26,8 @@ display: flex;
 `
 
 const Slide = styled.div`
-    height: 100%;
-    width: 100%;
+    height: 223.9px;
+    width: 258.3px;
     background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
     background-size: cover;
     background-repeat: no-repeat;
@@ -41,7 +41,7 @@ const Slide = styled.div`
 
 const ShowSlide = styled.div`
     height: 169.5px;
-    width: 100%;
+    width: 258.3px;
     background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
     background-size: cover;
     background-repeat: no-repeat;
@@ -237,8 +237,9 @@ margin:5px;
 opacity: 0.8;
 `
 const ProImage = styled(Image)`
-width: 100%;
+width: 360px;
 height: auto;
+margin: 5px;
 @media only screen and (max-width: 600px) {
     width: 75%;
     margin-bottom: 20px;
