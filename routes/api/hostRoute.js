@@ -9,7 +9,7 @@ const hostQuery = require("../../query_builders/host-query");
 // Matches with "/api/hosts/all"
 router.route("/all")
     .get(async (req, res) => {
-      const conn = await connection(dbConfig).catch(e => {});
+      const conn = await connection(dbConfig).catch(e => console.log(e));
       const user = await query(conn, hostQuery.findAll())
       res.send(user)
     })
@@ -28,7 +28,7 @@ router.route("/all")
 // Matches with "/api/hosts/entertain"
 router.route("/entertain")
   .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
+    const conn = await connection(dbConfig).catch(e => console.log(e));
     const user = await query(conn, hostQuery.findAllEnt())
     res.send(user)
 }) 
@@ -36,7 +36,7 @@ router.route("/entertain")
 // Matches with "/api/hosts/couns"
 router.route("/couns")
   .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
+    const conn = await connection(dbConfig).catch(e => console.log(e));
     const user = await query(conn, hostQuery.findAllCouns())
     res.send(user)
 })
@@ -44,7 +44,7 @@ router.route("/couns")
 // Matches with "/api/hosts/relig"
 router.route("/relig")
   .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
+    const conn = await connection(dbConfig).catch(e => console.log(e));
     const user = await query(conn, hostQuery.findAllRelig())
     res.send(user)
 })
@@ -53,19 +53,18 @@ router.route("/relig")
 router.route('/all/:id')
   .get(async (req, res) => {
       const { id } = req.params;
-      const conn = await connection(dbConfig).catch(e => {});
+      const conn = await connection(dbConfig).catch(e => console.log(e));
       const user = await query(conn, hostQuery.findById(), [id])
       res.send(user)
   })
   .put(async (req, res) => {
     const { id } = req.params;
-    const {user_name, dob, email, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig} = req.body;
-    const values = Object.keys(vals).map(k => `${k}=${vals[k]}`)
-    const conn = await connection(dbConfig).catch(e => res.send(e));
+    const {user_name, email, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage} = req.body;
+    const conn = await connection(dbConfig).catch(e => console.log(e));
     const status = await query(
       conn,
       hostQuery.updateById(), 
-      [user_name, dob, email, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig, id])
+      [user_name, email, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, id])
     res.send(status)
   })
   // .delete(async (req, res) => {

@@ -4,6 +4,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {styled } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
+import {useUserInfo } from "../../context/heart";
+
 const BTN = styled(Button)({
   border: 0,
   borderRadius: 3,
@@ -15,7 +17,8 @@ const BTN = styled(Button)({
 });
 export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const {userData} = useUserInfo();
+  
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };

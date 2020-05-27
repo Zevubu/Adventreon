@@ -5,9 +5,9 @@ import API from "../../API/HostLogIn";
 import {useForm} from 'react-hook-form';
 import {UserInfoContext, useHost, useManagment} from "../../context/heart";
 import {Link} from 'react-router-dom';
-import Dropzone from 'react-dropzone';
-import {VideoUploaderWrapper, DropSection, UplaodingMask, UplaodFailedMessage, ProgressBarWrapper, ProgressBar} from '../../styles/VimeoStyles'
-import VimeoUp from '../../vimeo-upload/index'
+// import Dropzone from 'react-dropzone';
+// import {VideoUploaderWrapper, DropSection, UplaodingMask, UplaodFailedMessage, ProgressBarWrapper, ProgressBar} from '../../styles/VimeoStyles'
+// import VimeoUp from '../../vimeo-upload/index'
 // show_name, 
 // show_type, 
 // about, 
@@ -44,23 +44,67 @@ function ShowBuild (){
 // id, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig, timestamp
     const[showType, setShowType] = useState();
     const[episodical, setEpisodical] = useState();
+    const[oneOff, setOneOff] = useState();
     const[catType, setCatType] = useState();
-    const[videoUp, setVideoUp] = useState();
+    // const[videoUp, setVideoUp] = useState();
+    const[paid, setPaid] = useState(false)
+    const[video, setVideo] = useState()
+    const[VideoType, setVideoType] = useState()
     const { register, handleSubmit, watch, errors } = useForm();
 
-    function videoUploader (data , e){
+    // function videoUploader (data , e){
 
-        API.videoUpload({
-            "videoData":data.videoLink
-        }).catch(err => console.log(err))
+    //     API.videoUpload({
+    //         "videoData":data.videoLink
+    //     }).catch(err => console.log(err))
         
+    // }
+    const PaidOnChange = (data, e) =>{
+        console.log(`price data: ${data[0]}`)
+        if(data !== "0"){
+            console.log(`Set paid check`)
+            setPaid(true)
+        }
+        else{
+            setPaid(false)
+        }
     }
     
     const onShowSubmit = (data, e) =>{
         console.log(data)
         if(showType === "episodical"){
             setEpisodical(true)
+        }else if(showType === "one_off"){
+            setOneOff(true)
         }
+        if(data.videoLink){
+            if(VideoType === "vimeo"){
+                let videoHold = data.videoLink
+                videoHold = videoHold.replace(/\/vimeo.com/,"/player.vimeo.com/video")
+                console.log(`Video hold ${videoHold}`)
+                setVideo(videoHold);
+            }
+            else if(VideoType === "youtube"){
+                let videoHold = data.videoLink
+                videoHold = videoHold.replace(/\/youtu.be/,"/www.youtube.com/embed")
+                console.log(`Video hold ${videoHold}`)
+                setVideo(videoHold)
+            }
+            else if(VideoType === "twitch"){
+                let videoHold = data.videoLink
+                videoHold = videoHold.replace(/\/www.twitch.tv\/videos/,"/player.twitch.tv")
+                console.log(`Video hold ${videoHold}`)
+                setVideo(videoHold)
+            }
+            else if(VideoType === "facebook"){
+                let videoHold = data.videoLink
+                videoHold = videoHold.replace(/facebook\/videos\//,"plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F")
+                console.log(`Video hold ${videoHold}`)
+                setVideo(videoHold)
+            }
+        }
+       
+     
      
         API.createShow({ 
             "show_name": data.showName,
@@ -70,23 +114,23 @@ function ShowBuild (){
             "img_b": data.bImg,
             "catagory": catType,
             "sub_catagory": data.subcatagory,
-            "video_type":'vimeo',
-            "v_link":data.videoLink||"",
+            "video_type":VideoType,
+            "v_link":video||data.videoLink,
             "host_id": userData.id, 
             "host_name": userData.user_name,
             "host_img": userData.p_img,
-            "credits":'',
+            "credits":data.credits,
             "show_date":'2020-08-23',
             "start_time":'11:27:00',
             "end_time":'12:27:00',
-            "price":'',
+            "price":data.price,
             "payment": data.paypal,
             'patreon':data.patreon,
             'wp_title': data.wpTitle,
             'webpage': data.webpage,
             'eighteen_plus':true,
             'booked':true,
-            "paid":false,
+            "paid":paid,
             "canceled":false, 
             "verified":false
             }).then(e.target.reset())
@@ -103,20 +147,19 @@ function ShowBuild (){
         <FormBigBox>
          
             <PT>What kind of show would you like to make?</PT>
-            <PS>If your show is a live stream please choose episodical.</PS>
+            {/* <PS>If your show is a live stream please choose episodical.</PS> */}
             <FormBoxWError>
                 <PT>Show type</PT>
                 <select name="showType" onChange={e => setShowType(e.target.value)}>
                     <option>choose one</option>
                     <option value="one_off">One off</option>
                     <option value="episodical">Episodical</option>
-                    <option value="ls_one_off">Livestream one off</option>
-                    <option value="ls_episodical">Livestream episodical</option>
+                    {/* <option value="ls_one_off">Livestream one off</option>
+                    <option value="ls_episodical">Livestream episodical</option> */}
                 </select>
             </FormBoxWError>
             <PT>What WebPage this show belong in?</PT>
             <FormBoxWError>
-                {/* Educational */}
                         <PT>category</PT>
                         <select name="catagory" onChange={e => setCatType(e.target.value)}>
                             <option>choose one</option>
@@ -241,15 +284,47 @@ function ShowBuild (){
                             {errors.showName && errors.showName.type === "required" &&(<PE>This is required!</PE>)}
                             {errors.showName && errors.showName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                     </FormBoxWError>
+                    {showType === "one_off" &&(
+                        <FormBoxWError>
+                            <PT>Video source</PT>
+                            <select name="videoSource" onChange={e => setVideoType(e.target.value)}  ref={register({required: true})}>
+                                <option>choose one</option>
+                                <option value="vimeo">Vimeo</option>
+                                <option value="youtube">YouTube</option>
+                                <option value="twitch">Twitch</option>
+                            </select>
+                            {errors.videoSource && errors.videoSource.type === "required" &&(<PE>This is required!</PE>)}
+                        
+                            {VideoType==="vimeo" &&(
+                                <div>
+                                    <PT>Video link</PT>
+                                    {/* <VimeoUp/> */}
+                                    {/* Will inclued an example of exactly what you need to do. */}
+                                    {/* <Input
+                                        type="file"
+                                        name="videoLink"
+                                        onChange={videoUploader}
+                                        ref={register}
+                                    />  */}
+                                    <Input
+                                        name="videoLink"
+                                        ref={register({required: true})}
+                                    /> 
+                                    {errors.videoLink && errors.videoLink.type === "required" &&(<PE>This is required!</PE>)}
+                                    {/* {errors.videoLink && errors.videoLink.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
+                                </div>
+                            )}
+                        </FormBoxWError>
+                    )}
                     <FormBoxWError>
-                        <PT>Paypal</PT>
+                        <PT>Payment Info</PT>
                         {/* Will inclued an example of exactly what you need to do. */}
                         <Input
-                            name="paypal"
+                            name="payment"
                             ref ={register({required: true})}
                         /> 
-                        {errors.paypal && errors.paypal.type === "required" &&(<PE>This is required!</PE>)}
-                        {errors.paypal && errors.paypal.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
+                        {errors.payment && errors.payment.type === "required" &&(<PE>This is required!</PE>)}
+                        {errors.payment && errors.payment.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                     </FormBoxWError>
                     <FormBoxWError>
                         <PT>Patreon</PT>
@@ -264,87 +339,45 @@ function ShowBuild (){
                     {/* bulk text area. opition to hide text? */}
                     </FormLittleBox>
                     <FormLittleBox>
-                    {showType === "one_off" &&(
-                        <FormBoxWError>
-                            <PT>Video link</PT>
-                            {/* <VimeoUp/> */}
-                            {/* Will inclued an example of exactly what you need to do. */}
-                            <Input
-                                type="file"
-                                name="videoLink"
-                                onChange={videoUploader}
-                                ref={register}
-                            /> 
-                            {errors.livefeed && errors.livefeed.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.livefeed && errors.livefeed.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
-                        </FormBoxWError>
-                    )}
+                    <FormBoxWError>
+                        <PT>Price</PT>
+                        <PS>Pay wall isn't implimented yet.</PS>
+                        {/* Will inclued an example of exactly what you need to do. */}
+                        <Input
+                            type="number"
+                            name="price"
+                            onChange = {e=> PaidOnChange(e.target.value)}
+                            ref ={register}
+                        /> 
+                        {/* {errors.paypal && errors.paypal.type === "required" &&(<PE>This is required!</PE>)} */}
+                        {/* {errors.paypal && errors.paypal.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
+                    </FormBoxWError>
                     <FormBoxWError>
                             <PT>Show Image</PT>
-                            <Input
+                            {/* <Input
                                 type="file"
+                                name="pImg"
+                                ref ={register({required: true})}
+                            />  */}
+                            <Input
                                 name="pImg"
                                 ref ={register({required: true})}
                             /> 
                             {errors.pImg && errors.pImg.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.PImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}                          
-                    </FormBoxWError>
-                    <FormBoxWError>
+                            {errors.pImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                             <PT>Background Image</PT>
-                            <Input
+                            {/* <Input
                                 type="file"
+                                name="bImg"
+                                ref ={register}
+                            />  */}
+                            <Input
                                 name="bImg"
                                 ref ={register}
                             /> 
                             {errors.bImg && errors.bImg.type === "required" &&(<PE>This is required!</PE>)}
                             {errors.bImg && errors.bImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}                          
                     </FormBoxWError>
-                </FormLittleBox>
-                <FormLittleBox>
-                    <FormBoxWError>
-                        <PT>About</PT>
-                        <TextArea 
-                            rows="10"
-                            cols="50"
-                            placeholder="Anything you share is confidential"
-                            name="about" 
-                            ref ={register}   
-                        /> 
-                    </FormBoxWError>
-                    {/* <FormBoxWError>
-                
-                        <PT>Where would you like to be featured</PT>
-                        <PS>Entertainment</PS>
-                        <Input
-                            value="1"
-                            type="radio"
-                            name="entertain"
-                            ref ={register}
-                        /> 
-                        <PS>Counseling</PS>
-                        <Input
-                            value="1"
-                            type="radio"
-                            name="couns"
-                            ref ={register}
-                        /> 
-                        <PS>Exersize</PS>
-                        <Input
-                            value=""
-                            type="radio"
-                            name="exer"
-                            ref ={register}
-                        /> 
-                        <PS>Religious Services</PS>
-                        <Input
-                            value="1"
-                            type="radio"
-                            name="relig"
-                            ref ={register}
-                        /> 
-
-
-                    </FormBoxWError> */}
                     <FormBoxWError>
                         <FormBox>
                             <PT>WebPage title</PT>
@@ -368,6 +401,28 @@ function ShowBuild (){
                             {errors.wpTitle && errors.wpTitle.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                         </FormBox>
                     </FormBoxWError>  
+                </FormLittleBox>
+                <FormLittleBox>
+                    <FormBoxWError>
+                        <PT>About</PT>
+                        <TextArea 
+                            rows="10"
+                            cols="40"
+                            placeholder="Anything you share is confidential"
+                            name="about" 
+                            ref ={register}   
+                        /> 
+                    </FormBoxWError>
+                    <FormBoxWError>
+                        <PT>Credits</PT>
+                        <TextArea 
+                            rows="10"
+                            cols="40"
+                            placeholder=""
+                            name="credits" 
+                            ref ={register}   
+                        /> 
+                    </FormBoxWError>
                 </FormLittleBox>
             
                 <FormLittleBox>

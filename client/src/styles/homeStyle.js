@@ -42,7 +42,7 @@ text-shadow: 0.8px 0.8px ${props => props.TSColor || "rgb(98, 98, 98)"};
 const PS = styled.p`
 font-size: 15px;
 margin:0;
-color:${props => props.color || "rgb(233, 233, 232)"};
+color:${props => props.color || "rgb(23, 23, 23)"};
 text-shadow: 0.2px 0.2px ${props => props.TSColor || "rgb(98, 98, 98)"};
 `
 // colored text
