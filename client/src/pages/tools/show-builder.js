@@ -34,14 +34,10 @@ import {Link} from 'react-router-dom';
 // paid, 
 // canceled, 
 // verified
-
-
 function ShowBuild (){
     const { userData } = useContext(UserInfoContext);
     const {isManager} = useManagment();
     const { isHost } = useHost();
-    console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
-// id, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, shows, payment, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig, timestamp
     const[showType, setShowType] = useState();
     const[episodical, setEpisodical] = useState();
     const[oneOff, setOneOff] = useState();
@@ -51,7 +47,16 @@ function ShowBuild (){
     const[video, setVideo] = useState()
     const[VideoType, setVideoType] = useState()
     const { register, handleSubmit, watch, errors } = useForm();
+    
+    // console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
+    const ShowReset = (re)=>{
+        setShowType();
+        setVideoType();
+        setVideo();
+        setPaid(false);
 
+    }
+    
     // function videoUploader (data , e){
 
     //     API.videoUpload({
@@ -60,15 +65,21 @@ function ShowBuild (){
         
     // }
     const PaidOnChange = (data, e) =>{
-        console.log(`price data: ${data[0]}`)
-        if(data !== "0"){
+        console.log("Paid function call.")
+        
+        if(data === "0"|| data === undefined||  data === 0|| data === ''||  data === 'undefined'||  data === null){
+            console.log(data)
             console.log(`Set paid check`)
-            setPaid(true)
+            setPaid(false)
+            console.log(paid)
         }
         else{
-            setPaid(false)
-        }
-    }
+            console.log(data)
+            console.log(`Set paid check`)
+            setPaid(true)
+            console.log(paid)
+        };
+    };
     
     const onShowSubmit = (data, e) =>{
         console.log(data)
@@ -77,36 +88,8 @@ function ShowBuild (){
         }else if(showType === "one_off"){
             setOneOff(true)
         }
-        if(data.videoLink){
-            if(VideoType === "vimeo"){
-                let videoHold = data.videoLink
-                videoHold = videoHold.replace(/\/vimeo.com/,"/player.vimeo.com/video")
-                console.log(`Video hold ${videoHold}`)
-                setVideo(videoHold);
-            }
-            else if(VideoType === "youtube"){
-                let videoHold = data.videoLink
-                videoHold = videoHold.replace(/\/youtu.be/,"/www.youtube.com/embed")
-                console.log(`Video hold ${videoHold}`)
-                setVideo(videoHold)
-            }
-            else if(VideoType === "twitch"){
-                let videoHold = data.videoLink
-                videoHold = videoHold.replace(/\/www.twitch.tv\/videos/,"/player.twitch.tv")
-                console.log(`Video hold ${videoHold}`)
-                setVideo(videoHold)
-            }
-            else if(VideoType === "facebook"){
-                let videoHold = data.videoLink
-                videoHold = videoHold.replace(/facebook\/videos\//,"plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F")
-                console.log(`Video hold ${videoHold}`)
-                setVideo(videoHold)
-            }
-        }
-       
-     
-     
-        API.createShow({ 
+        const ShowUploader =async () =>{
+            const BuildShow = await API.createShow({ 
             "show_name": data.showName,
             "show_type": showType,
             "about": data.about,
@@ -134,7 +117,49 @@ function ShowBuild (){
             "canceled":false, 
             "verified":false
             }).then(e.target.reset())
+            .then(ShowReset())
             .catch(err => console.log(err))
+
+            BuildShow()
+        }
+            if(VideoType === "vimeo"){
+                let videoHold = data.videoLink;
+                // videoHold = videoHold.replace(/\/vimeo.com/,"/player.vimeo.com/video");
+                videoHold = videoHold.replace(/https:\/\/vimeo.com\//,"/");
+                console.log(`Video last index of ${videoHold.lastIndexOf('/')}`);
+                if(videoHold.lastIndexOf('/') !== -1 && videoHold.lastIndexOf('/') !== 0 ){
+                    videoHold = videoHold.substring(0, videoHold.lastIndexOf('/'));
+                    videoHold = videoHold.replace(/\//,"https://player.vimeo.com/video/");
+                    console.log(`Video hold with extra ${videoHold}`);
+                    setVideo(videoHold);
+                }
+                else{
+                    videoHold = videoHold.replace(/\//,"https://player.vimeo.com/video/");
+                    console.log(`Video hold no extra ${videoHold}`);
+                    setVideo(videoHold);
+                };
+            }
+            else if(VideoType === "youtube"){
+                let videoHold = data.videoLink;
+                videoHold = videoHold.replace(/\/youtu.be/,"/www.youtube.com/embed");
+                console.log(`Video hold ${videoHold}`);
+                setVideo(videoHold);
+            }
+            else if(VideoType === "twitch"){
+                let videoHold = data.videoLink;
+                videoHold = videoHold.replace(/\/www.twitch.tv\/videos/,"/player.twitch.tv");
+                console.log(`Video hold ${videoHold}`);
+                setVideo(videoHold);
+            }
+            else if(VideoType === "facebook"){
+                let videoHold = data.videoLink;
+                videoHold = videoHold.replace(/facebook\/videos\//,"plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F");
+                console.log(`Video hold ${videoHold}`);
+                setVideo(videoHold);
+            };
+            if(video){
+                ShowUploader();
+            };
     }
 
     return(
@@ -291,7 +316,7 @@ function ShowBuild (){
                                 <option>choose one</option>
                                 <option value="vimeo">Vimeo</option>
                                 <option value="youtube">YouTube</option>
-                                <option value="twitch">Twitch</option>
+                                {/* <option value="twitch">Twitch</option> */}
                             </select>
                             {errors.videoSource && errors.videoSource.type === "required" &&(<PE>This is required!</PE>)}
                         
@@ -341,11 +366,14 @@ function ShowBuild (){
                     <FormLittleBox>
                     <FormBoxWError>
                         <PT>Price</PT>
+                        <PS>If free input 0.</PS>
                         <PS>Pay wall isn't implimented yet.</PS>
                         {/* Will inclued an example of exactly what you need to do. */}
                         <Input
                             type="number"
                             name="price"
+                            min='0' 
+                            max='500000'
                             onChange = {e=> PaidOnChange(e.target.value)}
                             ref ={register}
                         /> 
@@ -429,6 +457,7 @@ function ShowBuild (){
                     {/* contact info email... Name? DOB number */}
                     {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
+                        <PT>Double click to submit Show</PT>
                         <Btn type="submit" value="Submit">Submit show</Btn>
                         {/* disabled={disable} */}
                     </FormBox>

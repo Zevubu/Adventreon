@@ -79,7 +79,7 @@ function EpiAdd (){
         console.log(data);
         console.log(paid);
         const EpiUploader = async ()=>{
-            const Build = await API.createEpisode({ 
+            const BuildEpi = await API.createEpisode({ 
             "show_id":shows[Show].id,
             "user_id":userData.id,
             "epi_name": data.epiName,
@@ -104,10 +104,7 @@ function EpiAdd (){
             .then(EpiReset())
             .catch(err => console.log(err));
 
-            Build();
-        };
-        if(video){
-            EpiUploader();
+            BuildEpi();
         };
         if(VideoType === "vimeo"){
             let videoHold = data.videoLink;
@@ -143,6 +140,9 @@ function EpiAdd (){
             videoHold = videoHold.replace(/facebook\/videos\//,"plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F");
             console.log(`Video hold ${videoHold}`);
             setVideo(videoHold);
+        };
+        if(video){
+            EpiUploader();
         };
     };
 

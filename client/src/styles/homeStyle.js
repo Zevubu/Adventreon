@@ -122,6 +122,12 @@ flex-direction: column;
 const HeaderItem = styled.div`
 margin:5px;
 `
+// background: ${props => props.BGcolor || "linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)"};
+// background-image: url(${props => props.bgImg || "https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/37112608_10155733091650745_697307413887320064_o.jpg?_nc_cat=102&_nc_sid=e3f864&_nc_ohc=ZfvxFhns5cMAX8ab9Iz&_nc_ht=scontent-sjc3-1.xx&oh=a3081d4cacabdcec3b8e882243f64a61&oe=5EF28758"});
+// background-repeat: ${props => props.BGR || "no-repeat"};
+// background-size:${props => props.BGPsize || "cover"};
+// background-position-x: ${props => props.BGPy || "center"};
+// background-position-y: ${props => props.BGPx || "center"};
 const SpHeaderA = styled(Header)`
 color: ${props => props.Color ||"rgba(238, 245, 244, 1)"};
 background: ${props => props.BGcolor || "linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)"};
@@ -260,7 +266,7 @@ const TealBtn = styled(Btn)`
 color: rgb(238, 245, 244);
 background-color: rgb(115, 162, 175);
 
-`
+` 
 const SpDiv = styled.div`
 background: ${props => props.BGcolor ||"rgba(0, 0, 0, 0)"};
 width:100%;
@@ -278,8 +284,9 @@ color: ${props => props.color || "rgb(238, 245, 244)"};
 font-size: 20px;
 height: 600px;
 display: flex;
-flex-direction: column;
-justify-content: center;
+flex-direction: ${props => props.FlexD || "row"};
+justify-content: ${props => props.JustifyC || "space-evenly"};
+align-items: ${props => props.AlignI || "center"};
 `
 
 const IntroTxTDiv = styled.div`
@@ -291,6 +298,16 @@ width: 50%;
 height: 100%;
 margin-left: 50px;
 margin-bottum: 200px;
+`
+
+const VFrame = styled.iframe`
+    width:640px;
+    height:360px;
+    margin:10px;
+    @media only screen and (max-width: 600px) {
+        width:426.666666667px;
+        height:240px;
+    };
 `
 const CCCDiv = styled.div`
 display: flex;
@@ -315,7 +332,7 @@ margin: ${props => props.Margin ||"5.23px 0px"};
 `
 const ProTextBox = styled.div`
 display: inline-block
-margin-bottom:5px;
+margin:10px;
 border-radius: ${props => props.BorderRadius || "0px"};
 border: ${props => props.BDcolor ||"rgba(180, 180, 180, 0.6)"} solid 2px;
 background-color: ${props => props.BGcolor || "rgba(23, 23, 23, 0.5)"};
@@ -415,4 +432,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {ProTextBox,DivWPad, IntroBlock,LookBtn,LookTextBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {ProTextBox,DivWPad, IntroBlock, VFrame, LookBtn,LookTextBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}

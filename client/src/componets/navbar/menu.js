@@ -29,7 +29,7 @@ export default function SimpleMenu() {
   return (
     <div>
       <BTN variant="outlined" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        <strong>| | |</strong>
+        Catagories
       </BTN>
       <Menu
         id="simple-menu"

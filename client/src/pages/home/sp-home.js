@@ -24,14 +24,12 @@ function SpirtHome (){
                                 <H2 color="rgb(23, 283, 232)">All creeds and practices are welcome</H2>
                                 <P color="rgb(233, 233, 232)"> Except for those who wish to do harm</P>
                             </ProTextBox>
-                            {/* <iframe 
+                            {/* <VFrame
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
-                            width="560" 
-                            height="315" 
                             src="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe> */}
+                            allowfullscreen/> */}
                         </CCCDiv>
                         
                         {/* {!isAuthenticated && (
