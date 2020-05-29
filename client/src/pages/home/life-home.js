@@ -1,6 +1,6 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2, ProTextBox} from "../../styles/homeStyle";
+import {IntroBlock,SpDiv,VFrame, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2, ProTextBox} from "../../styles/homeStyle";
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/CP_fillers/life_home_hs/life_host";
 import ShowsBlock from "../../componets/CP_fillers/life_home_hs/life_shows";
@@ -15,7 +15,7 @@ function MusicHome (){
     return(
         <SpDiv BGcolor="linear-gradient(to bottom, rgba(226, 126, 168, 1) 5%, rgba(46, 46, 46, 0.877) 55%, rgba(32, 142, 161, 0.577) 100%)"> 
             {/* Intro Block */}
-            <IntroBlock BDcolor="rgba(10, 56, 54, 0.883)" bgImg="https://images.unsplash.com/photo-1439405326854-014607f694d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+            <IntroBlock AlignI='flex_start' FlexD="column" JustifyC='space-evenly' BDcolor="rgba(10, 56, 54, 0.883)" bgImg="https://images.unsplash.com/photo-1439405326854-014607f694d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
                 <FillerDiv/>
                     <IntroTxTDiv >
                         <CCCDiv>
@@ -23,14 +23,12 @@ function MusicHome (){
                                 <H1>Life</H1>
                                 <H2>Watch, learn, and listen</H2>
                             </ProTextBox>
-                            <iframe 
+                            <VFrame
                             title="https://www.youtube.com/embed/EEIk7gwjgIM" 
-                            width="560" 
-                            height="315" 
                             src="https://www.youtube.com/embed/EEIk7gwjgIM" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
+                            allowfullscreen/>
                         </CCCDiv>
                         
                         {/* {!isAuthenticated && (

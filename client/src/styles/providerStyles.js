@@ -26,7 +26,7 @@ display: flex;
 `
 
 const Slide = styled.div`
-    height: 223.9px;
+    height: 100%;
     width: 258.3px;
     background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
     background-size: cover;

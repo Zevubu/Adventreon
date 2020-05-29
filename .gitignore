@@ -7,3 +7,5 @@ keys.env
 .history
 uploads
 config.js
+seeds.sql
+seedsOld.sql

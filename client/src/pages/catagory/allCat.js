@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import {DivWBorder, ProviderBox, BigBlock, BlueHeader} from "../../styles/homeStyle"
+import {DivWBorder, ProviderBox, BigBlock} from "../../styles/homeStyle"
 import API from "../../API/loggedOutAPI";
 import HostFiller from "../../componets/HostFiller/index"
 import ShowFiller from "../../componets/CatagoryFiller/show_filler"
@@ -31,9 +31,6 @@ function AllPage (){
             {/* <a id="Hosts"/> */}
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             <DivWBorder>
-                <BlueHeader>
-                    <Logo>Counseling</Logo>
-                </BlueHeader>
                 <ProviderBox>
                 {Hosts.map((host, key) => (
                     <HostFiller

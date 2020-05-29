@@ -1,6 +1,6 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H3,H2, ProTextBox} from "../../styles/homeStyle";
+import {IntroBlock,SpDiv, VFrame,H3,H2, ProTextBox} from "../../styles/homeStyle";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/homeHosts";
@@ -17,15 +17,15 @@ function Home (){
         <SpDiv> 
             {/* Intro Block */}
             <IntroBlock  BDcolor="rgba(66, 83, 94, 0.777)">
-                <FillerDiv/>
-                    <IntroTxTDiv>
-                     <ProTextBox>
-                        <H2>This is how the world starts!</H2>
+                    {/* <IntroTxTDiv> */}
+                    <VFrame src="https://player.vimeo.com/video/412924050" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></VFrame>
+                    <ProTextBox>
                         <H3>This is how the world starts!</H3>
                         <H3>This is how the world starts!</H3>
-                        <H3> Not with a bang but with a whimsy.</H3>
+                        <H3>This is how the world starts!</H3>
+                        <H2> Not with a bang but with a whimsy.</H2>
                     </ProTextBox>    
-                    <iframe src="https://player.vimeo.com/video/412924050" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                        
                        
                            
                         {/* <CCCDiv>
@@ -58,7 +58,7 @@ function Home (){
                         )} */}
                         
                         
-                    </IntroTxTDiv>
+                    {/* </IntroTxTDiv> */}
             </IntroBlock>
             
               {/* Hosts area */}
