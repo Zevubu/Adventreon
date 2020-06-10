@@ -43,8 +43,8 @@ export default {
         return axios.get("/api/hosts/relig").catch(err => console.log(`Get all Relig host error:${err}`));
     },
     createAccount: function(userData){
-        console.log(`CREAT CHECK!`);
-        console.log(`userData: ${userData}`);
+        // console.log(`CREAT CHECK!`);
+        // console.log(`userData: ${userData}`);
         return axios.post("/auth/register", userData).catch(err => console.log(`Account creation error:${err}`));
     },
     postLogIn: function(userData){

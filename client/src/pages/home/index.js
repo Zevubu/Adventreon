@@ -12,7 +12,7 @@ function Home (){
     // const {isUser} = useUser();
     // const { isHost } = useHost();
     // const { isManager } = useManagment();
-    const matches = useMediaQuery('(min-width:600px)');
+    // const matches = useMediaQuery('(min-width:600px)');
     return(
         <SpDiv> 
             {/* Intro Block */}

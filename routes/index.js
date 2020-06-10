@@ -8,8 +8,7 @@ const videoUpload = require('./video/upload')
 Router.use("/api", apiRoutes);
 Router.use('/auth', authRoutes);
 Router.use("/video", videoRoutes.tester);
-Router.use("/upload", videoUpload.vimeoUpload
-);
+Router.use("/upload", videoUpload.vimeoUpload);
 Router.use("/patch", videoUpload.tusPatcher);
 
 Router.use(function(req, res){
