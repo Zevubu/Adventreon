@@ -1,47 +1,32 @@
-import React from "react";
-import {DivWBorder, MarronHeader, H2, PT} from "../styles/homeStyle"
+import React,{useState} from "react";
+import {DivWBorder, MarronHeader, H2, H1, PT} from "../styles/homeStyle"
 import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, PE} from "../styles/signUpOutStyles"
 import API from "../API/loggedOutAPI";
 import {useForm} from 'react-hook-form';
+// import OktaAuth from '@okta/okta-auth-js';
+// import { withAuth } from '@okta/okta-react';
 
 
 function SignUp (){
+    const[sessionToken, setSessionToken]=useState();
+    const[error, setError] = useState();
+
+    if(error){
+        console.log(error)
+    }
 
     const { register, handleSubmit, watch, errors } = useForm()
-    const onSubmit = (data, e) =>{
-        console.log(data)
-        // const checkEmail = async () =>{
-        //    const result = await API.getEmailCheck({
-        //     "user_email": data.email
-        //     })
-        //     console.log(result)
+    const onSubmit = async (data, e) =>{
+        // console.log(data)
 
-
-        // }
-        // checkEmail()
-
-        // user_name,
-        // user_type, 
-        // dob, 
-        // email, 
-        // password, 
-        // title, 
-        // about,x
-        // p_img, 
-        // b_img, 
-        // shows, 
-        // payment, 
-        // patreon, 
-        // wp_title, 
-        // webpage, 
-        // video_channel, 
-        // rsvp_attend, 
-        // rsvp_perform
 
 
         API.createAccount({ 
+            "first_name": data.firstName,
+            "last_name":data.lastName,
             "user_name": data.userName,
             "user_type": "user",
+            'mhswitch':false,
             "dob": data.DOB,
             "email": data.email,
             "password": data.password,
@@ -49,19 +34,16 @@ function SignUp (){
             "about": '', 
             "p_img": '',
             "b_img": '',
-            "shows": '',
+            "catagory": '',
             "payment": '',
             'patreon': '',
             'wp_title': '',
             'webpage': '',
-            'video_channel':'',
             'rsvp_attend':'',
             'rsvp_perform':'',
-            "entertain":false,
-            "couns":false, 
-            "relig":false
+            "verified":false
             }).then(e.target.reset())
-            .catch(err => console.log(err))
+            .catch(err => setError(err))
     }
 
     return(
@@ -71,15 +53,20 @@ function SignUp (){
             <MarronHeader>
                 <H2>Start making positive changes today.</H2>
             </MarronHeader>
+            {error && (
+                <div>
+                    <H1>Form submit error</H1>
+                    <H2>{error}</H2>
+                </div>
+            )}
 
             <FormBigBox onSubmit={handleSubmit(onSubmit)}>
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}
                 <PT>Please share you contact info</PT>
                 <FormLittleBox>
-                    
                     <FormBoxWError>
-                            <PT>Name*</PT>
+                            <PT>Profile name*</PT>
                             <Input
                                 name="userName"
                                 ref ={register({required: true,  pattern: /^[a-z0-9_-]{3,20}$/i })}
@@ -87,6 +74,26 @@ function SignUp (){
                             {errors.userName && errors.userName.type === "required" &&(<PE>This is required!</PE>)}
                             {errors.userName && errors.userName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                     </FormBoxWError>
+                    <FormBoxWError>
+                            <PT>First name*</PT>
+                            <Input
+                                name="firstName"
+                                ref ={register({required: true})}
+                            /> 
+                            {errors.firstName && errors.firstName.type === "required" &&(<PE>This is required!</PE>)}
+                            {/* {errors.firstName && errors.firstName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
+                    </FormBoxWError>
+                    <FormBoxWError>
+                            <PT>Last name*</PT>
+                            <Input
+                                name="lastName"
+                                ref ={register({required: true})}
+                            /> 
+                            {errors.lastName && errors.lastName.type === "required" &&(<PE>This is required!</PE>)}
+                            {/* {errors.lastName && errors.lastName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
+                    </FormBoxWError>
+                </FormLittleBox>
+                <FormLittleBox>
                     <FormBoxWError>
                             <PT>Email*</PT>
                             <Input
@@ -101,10 +108,9 @@ function SignUp (){
                             <Input
                                 name="DOB"
                                 type="date"
-                                ref ={register({required: true, pattern: /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/ })}
+                                ref ={register({required: true})}
                             /> 
                             {errors.DOB && errors.DOB.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.DOB && errors.DOB.type === "pattern" &&(<div><PE>Must be a valid pnone number.</PE><PE>Excepted formats (123)456-7890 x, 123-456-7890 x, 123 456 7890 x, 1234567890 x</PE></div>)} 
                     </FormBoxWError>
                     <FormBoxWError>
                             <PT>Password*</PT>

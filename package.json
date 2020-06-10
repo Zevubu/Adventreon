@@ -24,6 +24,8 @@
     "nodemon": "^2.0.2"
   },
   "dependencies": {
+    "@okta/okta-auth-js": "^3.1.1",
+    "@okta/okta-sdk-nodejs": "^3.3.1",
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
     "cors": "^2.8.5",

@@ -38,6 +38,8 @@ function SignUp (){
         // checkEmail()
 
         API.createAccount({ 
+            "first_name": data.firstName,
+            "last_name":data.lastName,
             "user_name": data.userName,
             "user_type": "host",
             "mhswitch": false,
@@ -72,59 +74,14 @@ function SignUp (){
                 <PT>Thats right make your profile here.</PT>
                 <FormLittleBox>
                     <FormBoxWError>
-                            <PT>Name*</PT>
-                            <Input
-                                name="userName"
-                                ref ={register({required: true})}
-                            /> 
-                            {errors.userName && errors.userName.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.userName && errors.userName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
+                        <PT>Profile name*</PT>
+                        <Input
+                            name="userName"
+                            ref ={register({required: true,  pattern: /^[a-z0-9_-]{3,20}$/i })}
+                        /> 
+                        {errors.userName && errors.userName.type === "required" &&(<PE>This is required!</PE>)}
+                        {errors.userName && errors.userName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                     </FormBoxWError>
-                    <FormBoxWError>
-                            <PT>Email*</PT>
-                            <Input
-                                name="email"
-                                ref ={register({required: true, pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i })}
-                            /> 
-                            {errors.email && errors.email.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.email && errors.email.type === "pattern" &&(<PE>Please use valid email address</PE>)}
-                    </FormBoxWError>
-                    <FormBoxWError>
-                            <PT>Date of birth*</PT>
-                            <Input
-                                name="DOB"
-                                type="date"
-                                ref ={register({required: true, pattern: /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/ })}
-                            /> 
-                            {errors.DOB && errors.DOB.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.DOB && errors.DOB.type === "pattern" &&(<div><PE>Must be a valid pnone number.</PE><PE>Excepted formats (123)456-7890 x, 123-456-7890 x, 123 456 7890 x, 1234567890 x</PE></div>)} 
-                    </FormBoxWError>
-                    <FormBoxWError>
-                            <PT>Password*</PT>
-                            <Input
-                                type="password"
-                                name="password"
-                                ref ={register({required: true, minLength: 8, maxLength: 25, pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,25}$/})}
-                            />  
-                            {errors.password && errors.password.type === "required" &&(<PE>This is required!</PE>)} 
-                            {errors.password && errors.password.type === "pattern" &&(<PE>Password must contain one uppercase letter, one lower case letter, and one number.</PE>)} 
-                            {errors.password && errors.password.type === "minLength" &&(<PE>Password must be 8 charecters or longer.</PE>)} 
-                            {errors.password && errors.password.type === "maxLength" &&(<PE>Password can not be longer then 25 charecters.</PE>)} 
-
-                    </FormBoxWError>
-                    <FormBoxWError>
-                            <PT>Confirm Password*</PT>
-                            <Input
-                                type="password"
-                                name="password2"
-                                ref ={ register({required:true, validate: (value) => value === watch('password')})}                           
-                            />
-                            {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                            {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
-                    </FormBoxWError>  
-                    {/* bulk text area. opition to hide text? */}
-                </FormLittleBox>
-                <FormLittleBox>
                     <FormBoxWError>
                         <PT>Your Title</PT>
                         <Input
@@ -134,6 +91,70 @@ function SignUp (){
                         {errors.title && errors.title.type === "required" &&(<PE>This is required!</PE>)}
                         {errors.title && errors.title.type === "pattern" &&(<PE>Title must at least 3 characters an no longer than 30. </PE>)}
                     </FormBoxWError>
+                    <FormBoxWError>
+                        <PT>First name*</PT>
+                        <Input
+                            name="firstName"
+                            ref ={register({required: true})}
+                        /> 
+                        {errors.firstName && errors.firstName.type === "required" &&(<PE>This is required!</PE>)}
+                        {/* {errors.firstName && errors.firstName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
+                    </FormBoxWError>
+                    <FormBoxWError>
+                        <PT>Last name*</PT>
+                        <Input
+                            name="lastName"
+                            ref ={register({required: true})}
+                        /> 
+                        {errors.lastName && errors.lastName.type === "required" &&(<PE>This is required!</PE>)}
+                        {/* {errors.lastName && errors.lastName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
+                    </FormBoxWError>
+                </FormLittleBox>
+                <FormLittleBox>
+                    <FormBoxWError>
+                        <PT>Email*</PT>
+                        <Input
+                            name="email"
+                            ref ={register({required: true, pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i })}
+                        /> 
+                        {errors.email && errors.email.type === "required" &&(<PE>This is required!</PE>)}
+                        {errors.email && errors.email.type === "pattern" &&(<PE>Please use valid email address</PE>)}
+                    </FormBoxWError>
+                    <FormBoxWError>
+                        <PT>Date of birth*</PT>
+                        <Input
+                            name="DOB"
+                            type="date"
+                            ref ={register({required: true})}
+                        /> 
+                        {errors.DOB && errors.DOB.type === "required" &&(<PE>This is required!</PE>)}
+                        {/* {errors.DOB && errors.DOB.type === "pattern" &&(<div><PE>Must be a valid pnone number.</PE><PE>Excepted formats (123)456-7890 x, 123-456-7890 x, 123 456 7890 x, 1234567890 x</PE></div>)}  */}
+                    </FormBoxWError>
+                    <FormBoxWError>
+                        <PT>Password*</PT>
+                        <Input
+                            type="password"
+                            name="password"
+                            ref ={register({required: true, minLength: 8, maxLength: 25, pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,25}$/})}
+                        />  
+                        {errors.password && errors.password.type === "required" &&(<PE>This is required!</PE>)} 
+                        {errors.password && errors.password.type === "pattern" &&(<PE>Password must contain one uppercase letter, one lower case letter, and one number.</PE>)} 
+                        {errors.password && errors.password.type === "minLength" &&(<PE>Password must be 8 charecters or longer.</PE>)} 
+                        {errors.password && errors.password.type === "maxLength" &&(<PE>Password can not be longer then 25 charecters.</PE>)} 
+                    </FormBoxWError>
+                    <FormBoxWError>
+                        <PT>Confirm Password*</PT>
+                        <Input
+                            type="password"
+                            name="password2"
+                            ref ={ register({required:true, validate: (value) => value === watch('password')})}                           
+                        />
+                        {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
+                        {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
+                    </FormBoxWError>  
+                    {/* bulk text area. opition to hide text? */}
+                </FormLittleBox>
+                <FormLittleBox>
                     <FormBoxWError>
                         <PT>category</PT>
                         <PS>What catagory do you want you profile listed under</PS>
@@ -148,21 +169,21 @@ function SignUp (){
                         {errors.catagory && errors.catagory.type === "required" &&(<PE>This is required!</PE>)} 
                     </FormBoxWError>
                     <FormBoxWError>
-                            <PT>Profile Image*</PT>
-                            <Input
-                                type="text"
-                                name="pImg"
-                                ref ={register({required: true})}
-                            /> 
-                            {errors.pImg && errors.pImg.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.PImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
-                            <PT>Background Image</PT>
-                            <Input
-                                name="bImg"
-                                ref ={register}
-                            /> 
-                            {errors.bImg && errors.bImg.type === "required" &&(<PE>This is required!</PE>)}
-                            {errors.bImg && errors.bImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}                          
+                        <PT>Profile Image*</PT>
+                        <Input
+                            type="text"
+                            name="pImg"
+                            ref ={register({required: true})}
+                        /> 
+                        {errors.pImg && errors.pImg.type === "required" &&(<PE>This is required!</PE>)}
+                        {errors.PImg && errors.pImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
+                        <PT>Background Image</PT>
+                        <Input
+                            name="bImg"
+                            ref ={register}
+                        /> 
+                        {errors.bImg && errors.bImg.type === "required" &&(<PE>This is required!</PE>)}
+                        {errors.bImg && errors.bImg.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}                          
                     </FormBoxWError>
                        <FormBoxWError>
                         <PT>Payment</PT>
