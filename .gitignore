@@ -9,3 +9,4 @@ uploads
 config.js
 seeds.sql
 seedsOld.sql
+schemaNew.sql

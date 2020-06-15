@@ -3,10 +3,12 @@ const Router = require("express").Router();
 const apiRoutes = require("./api/index");
 const authRoutes = require("./auth/index");
 const videoRoutes = require("./video/video-hub");
-const videoUpload = require('./video/upload')
+const videoUpload = require('./video/upload');
+const validateRoutes= require('./auth/validate');
 
 Router.use("/api", apiRoutes);
 Router.use('/auth', authRoutes);
+// Router.use("/validate", validateRoutes);
 Router.use("/video", videoRoutes.tester);
 Router.use("/upload", videoUpload.vimeoUpload);
 Router.use("/patch", videoUpload.tusPatcher);
