@@ -1,8 +1,6 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
 const cryption = require('../../controllers/cryption')
 
-const oktaClient = require('../../controllers/okta_client')
 const connection = require("../../controllers/connection");
 const query = require('../../controllers/query');
 const router = express.Router();
@@ -37,31 +35,6 @@ router.post('/register', async (req, res) => {
             user_name: user.user_name || null
         });
     
-    // const OktaUser = {
-    //     profile: {
-    //         firstName: firstName,
-    //         lastName: lastName,
-    //         displayName:user_name,
-    //         userType: user_type,
-    //         email: email,
-    //         login: email     
-    //     },
-    //     credentials: {
-    //         password: {
-    //             value: password
-    //         }
-    //     }
-    // }
-    // oktaClient.createUser(newUser)
-    // .then(user=>{
-    //     res.status(201);
-    //     res.send(user)
-    // })
-    // .catch(err => {
-    //     res.status(400);
-    //     res.send(err);
-    // })
-    
 
 }); 
 // [user_name, { toString: () => `SHA1('${user_type}')`}, dob, email, { toString: () => `SHA1('${password}')`}, title, about, p_img, b_img, shows, { toString: () => `SHA1('${payment}')`}, patreon, wp_title, webpage, video_channel, rsvp_attend, rsvp_perform, entertain ,couns, relig]  
@@ -72,12 +45,6 @@ router.post('/login', async (req, res) => {
     const cPass = await cryption.stringEncryption(password);
     // console.log(`log in request data: ${userName} ${password}`)
     const conn = await connection(dbConfig).catch(e => {});
-    // const passTest = await query(
-    //     con,
-    //     'SELECT password FROM users WHERE user_name=?',
-    //     [userName]
-    // )
-    // const match = bcrypt.compareSync(password, passTest[0].password)
     const user = await query(
         conn,
         `SELECT id,user_name, user_type, mhswitch, dob, email, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified, time_stamp FROM users WHERE user_name=? AND password=?`,

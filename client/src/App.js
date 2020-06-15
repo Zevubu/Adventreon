@@ -122,7 +122,7 @@ function App() {
       const user =  window.localStorage.getItem('user');
       const token =  window.localStorage.getItem('tokens');
       const userType =  window.localStorage.getItem('user_type');
-      console.log(`local storage check: User type:${userType}, User token: ${token}, User data:${user} `)
+      // console.log(`local storage check: User type:${userType}, User token: ${token}, User data:${user} `)
       if(!user || !token || !userType){
         console.log(`User null check!`)
       }else{

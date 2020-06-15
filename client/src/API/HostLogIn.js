@@ -37,8 +37,5 @@ export default {
         console.log(`CREAT CHECK!`);
         console.log(`userData: ${showData}`);
         return axios.post("/api/shows/all", showData).catch(err => console.log(`Show creation error:${err}`));
-    },
-
-   
-
+    }
 }
