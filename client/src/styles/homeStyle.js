@@ -178,7 +178,7 @@ left: 0;
 z-index: 10;
 margin-left:93.59%;
 margin-right:41px;
-box-shadow:inset -46px 0px 23px 0px ${props => props.FdColor ||"rgba(53, 52, 53, 1)"};
+box-shadow:inset -46px 0px 23px 0px ${props => props.FdColor ||"rgba(43, 42, 42, 1)"};
 @media only screen and (max-width: 1400px) {
     margin-left:93%;
     };
@@ -304,6 +304,7 @@ const VFrame = styled.iframe`
     width:640px;
     height:360px;
     margin:10px;
+    border:0;
     @media only screen and (max-width: 600px) {
         width:426.666666667px;
         height:240px;

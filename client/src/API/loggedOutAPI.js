@@ -33,14 +33,20 @@ export default {
     getHostByID: function(id){
         return axios.get("/api/hosts/all/" + id).catch(err => console.log(`Find hosts by id error:${err}`));
     },
-    getEntHosts: function(){
-        return axios.get("/api/hosts/entertain").catch(err => console.log(`Get all Entertain hosts error:${err}`));
+    getMuseHosts: function(){
+        return axios.get("/api/hosts/music").catch(err => console.log(`Get all Music hosts error:${err}`));
     },
-    getCounsHosts: function(){
-        return axios.get("/api/hosts/couns").catch(err => console.log(`Get all Counseler hosts error:${err}`));
+    getPerfHosts: function(){
+        return axios.get("/api/hosts/performance").catch(err => console.log(`Get all Performance hosts error:${err}`));
     },
-    getReligHosts: function(){
-        return axios.get("/api/hosts/relig").catch(err => console.log(`Get all Relig host error:${err}`));
+    getVisHosts: function(){
+        return axios.get("/api/hosts/visual").catch(err => console.log(`Get all Visual host error:${err}`));
+    },
+    getLifeHosts: function(){
+        return axios.get("/api/hosts/life").catch(err => console.log(`Get all Life host error:${err}`));
+    },
+    getSpritHosts: function(){
+        return axios.get("/api/hosts/spirit").catch(err => console.log(`Get all spirit host error:${err}`));
     },
     createAccount: function(userData){
         // console.log(`CREAT CHECK!`);
@@ -56,6 +62,21 @@ export default {
     },
     deleteUserById: function(id){
         return axios.delete("'/auth/deleteuser/" + id).catch(err => console.log(`Delete user by id error:${err}`));
+    },
+    tokenValidate: function(token){
+        console.log(`Token:${token}`)
+        const options = {
+            method: 'GET',
+            headers: { 
+                'content-Type': 'application/json',
+                'connection': 'keep-alive',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:'/validate'
+        };
+        console.log(options)
+        return axios(options).catch(err => console.log(`Validate user by id error:${err}`));
     }
+
 
 }

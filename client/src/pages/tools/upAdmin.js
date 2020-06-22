@@ -68,6 +68,7 @@ function UpHost (){
     const { id } = useParams();
     // const [valid, setValid] = useState()
     const [Host, setHost] = useState();
+    const[MHSwitch, setMHswitch] = useState()
     // console.log(`profile user data: ${JSON.stringify(Host)}`)
 
 
@@ -77,13 +78,31 @@ function UpHost (){
          const fetchHost = async () =>{
             const result = await API.getHostByID(`${id}`)
             // console.log(`Profile update result ${JSON.stringify(result.data)}`)
-            setHost(result.data[0]);
+            const user = result.data[0]
+            setHost(user);
             setIsPulled(true);
-            // register(Host)
+            if(user.mhswitch === '1'){
+                setMHswitch(true)
+                console.log(`MHSwitch true!`)
+            }else{
+                setMHswitch(false)
+                console.log(`MHSwitch false! ${user.mhswitch}`)
+            }
+
         }
         fetchHost();
     
     },[])
+
+    // if(isPulled && Host && !MHSwitch){
+    //     if(Host.mhswitch === 1){
+    //         setMHswitch(true)
+    //         console.log(`MHSwitch true!`)
+    //     }else{
+    //         setMHswitch(false)
+    //         console.log(`MHSwitch false!`)
+    //     }
+    // }
 
     const { register, handleSubmit, watch, errors } = useForm({})
     
@@ -127,6 +146,7 @@ function UpHost (){
 
         API.updatedProfile(id,{ 
             "user_name": data.userName,
+            "mhswitch": data.mhswitch,
             "email": data.email,
             "title": data.title,
             "about": data.about, 
@@ -221,6 +241,10 @@ function UpHost (){
                                 {errors.catagory && errors.catagory.type === "required" &&(<PE>This is required!</PE>)} 
                             </FormBoxWError>
                             {/* bulk text area. opition to hide text? */}
+                            <FormBoxWError>
+                                <PT>Make your profile findable as a host.</PT>
+                                <Input type="checkbox" name="mhswitch" value={true} ref={register} defaultChecked={MHSwitch}/>
+                            </FormBoxWError>
                         </FormLittleBox>
                         <FormLittleBox>
                             

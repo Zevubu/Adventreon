@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
 
 body{
     font-family: 'Oswald', sans-serif;
-    background-color: rgb(53, 52, 53);
+    background-color: rgb(43, 42, 42);
     width:100%;
     height:100%;
     margin:auto;

@@ -1,15 +1,14 @@
 const express = require("express");
 const cryption = require('../../controllers/cryption')
-
+const {opts} = require('../../passport')
 const connection = require("../../controllers/connection");
 const query = require('../../controllers/query');
-const router = express.Router();
-const dbConfig = require('../../dbConfig');
 const create = require('../../crud/create');
 const CONFIG = require('../../jwtConfig');
+const dbConfig = require('../../dbConfig'); 
 const jwt= require('jsonwebtoken');
 const userQuery = require("../../query_builders/user-query");
-
+const router = express.Router();
 // const {jwtOptions, strategy, passport} = require("../../middleware/passport");
 // /register is not built out for this api yet.
 // /auth/register
@@ -44,13 +43,34 @@ router.post('/login', async (req, res) => {
     const expTime = parseInt(CONFIG.jwt_expiration);
     const cPass = await cryption.stringEncryption(password);
     // console.log(`log in request data: ${userName} ${password}`)
-    const conn = await connection(dbConfig).catch(e => {});
+    const conn = await connection(dbConfig).catch(e => res.send(e));
     const user = await query(
         conn,
-        `SELECT id,user_name, user_type, mhswitch, dob, email, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified, time_stamp FROM users WHERE user_name=? AND password=?`,
+        `SELECT id, user_name, user_type, dob, time_stamp FROM users WHERE user_name=? AND password=?`,
         [userName,cPass]
-    );
-    res.send({user_info: user[0], token: jwt.sign({user_id: this.id}, CONFIG.jwt_encryption, {expiresIn: expTime})} || {id: null, userName: null });
+    ).catch(e => res.status(400));
+
+    const theUser = user[0];
+    if(theUser === undefined){
+        console.log("No Id Error check")
+        res.send({valid:false, error: user})
+    }
+    const token = jwt.sign({id: theUser.id, userName:theUser.user_name}, opts.secretOrKey, {expiresIn: '2d'})
+    
+    if(theUser.user_type === 'manager'){
+        res.send({valid:true, admin: true, host: true, user:true, temp:false, tempm:false, token: token, user_info: {id: theUser.id, user_name: theUser.user_name}} || {user_info:null, token: null });
+    }else if(theUser.user_type === 'host'){
+        res.send({valid:true, admin: false, host:true, user:true, temp:false, tempm:false, token: token, user_info: {id: theUser.id, user_name: theUser.user_name}} || {user_info:null, token: null });
+    }else if(theUser.user_type === 'user'){
+        res.send({valid:true, admin: false, host:false, user:true, temp:false, tempm:false, token: token, user_info: {id: theUser.id, user_name: theUser.user_name}} || {user_info:null, token: null });
+    }else if(theUser.user_type === 'temp'){
+        res.send({valid:true, admin: false, host:false, user:false, temp:true, tempm:false, token: token, user_info: {id: theUser.id, user_name: theUser.user_name}} || {user_info:null, token: null });
+    }else if(theUser.user_type === 'tempm'){
+        res.send({valid:true, admin: false, host:false, user:false, temp:false, tempm:true, token: token, user_info: {id: theUser.id, user_name: theUser.user_name}} || {user_info:null, token: null });
+    }else{
+        res.status(400)
+        // res.send({valid:false, admin: false, host:false, user:false, temp:false, tempm:false,  token: null, user_info:null} || {user_info:null, token: null });
+    }
 });
 // /auth/deleteuser/:id
 router.delete('/deleteuser/:id', async (req, res) => {

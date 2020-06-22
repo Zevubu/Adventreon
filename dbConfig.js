@@ -1,5 +1,5 @@
 const dotenv = require("dotenv");
-const KEYS = require("./keys")
+// const KEYS = require("./keys")
 
 dotenv.config();
 
@@ -10,7 +10,7 @@ const host = process.env.DB_HOST || 'localhost';
 const user = process.env.DB_USER || 'root';
 
 // Get the Password for DB from Environment or use default
-const password = process.env.DB_Pass || KEYS.dbPassword;
+const password = process.env.DB_Pass //|| KEYS.dbPassword;
 // KEYS.dbPassword
 // Get the Database from Environment or use default
 const database = process.env.DB_DATABASE || 'Shtiker_iso';

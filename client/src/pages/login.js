@@ -17,9 +17,9 @@ function Login (){
     const { setIsUser} = useUser();
     const { setIsHost} = useHost();
     const { setIsManager } = useManagment();
-    const { setUserData } = useUserInfo();
-    const { setIsTempP } = useTemp();
-    const { setIsTempM } = useTempM();
+    const { setUserData, userData } = useUserInfo();
+    const { setIsTempP, isTempP } = useTemp();
+    const { setIsTempM, isTempM } = useTempM();
     
   
     // const referer = '/';
@@ -27,44 +27,60 @@ function Login (){
     function postLogin(event){
         event.preventDefault()
         API.postLogIn({
-             userName,
-             password
+          userName,
+          password
         }).then(result => {
-            // console.log(`login result${JSON.stringify(result)}`)
-            if (result.status === 200) {
-              console.log(`User type: ${JSON.stringify(result.data.user_info.user_type)}`)
-              console.log(`User type test:${JSON.stringify(result.data.user_info.user_type) === "\"temp\""} `)
-              localStorage.setItem("tokens", JSON.stringify(result.data.token));
-              localStorage.setItem("user", JSON.stringify(result.data.user_info));
+            console.log(`login result: ${result.data.valid}`)
+            if(result.data.valid === false){
+              setIsError(true);
+              console.log(`loggin error:${result.data.error}`)
+            }
+            else if (result.status === 200){
+              console.log(`result test: ${JSON.stringify(result.data)}`)
+              // console.log(`User type test:${JSON.stringify(result.data.user_info.user_type) === "\"temp\""} `)
+              // localStorage.setItem("tokens", JSON.stringify(result.data.token));
+              // localStorage.setItem("user", JSON.stringify(result.data.user_info));
+
               setAuthTokens(result.data.token);
               setUserData(result.data.user_info);
               setIsAuthenticated(true);
-              if(JSON.stringify(result.data.user_info.user_type) === "\"user\""){
-                localStorage.setItem("user_type","8KdWkYINFSD81fI");
-                setIsUser(true)
-              }else if (JSON.stringify(result.data.user_info.user_type)  === "\"host\""){
-                localStorage.setItem("user_type","20nH54g9NSK90W");
-                setIsHost(true);
-              }else if (JSON.stringify(result.data.user_info.user_type) === "\"manager\""){
+              console.log(`LogIn check`)
+              if(JSON.stringify(result.data.valid) === false){
+                setIsError(true);
+                console.log("loggin error")
+              }else if(JSON.stringify(result.data.admin) === 'true'){
+                console.log(`Admin check!`)
                 localStorage.setItem("user_type","80CDswONc34RI8");
                 setIsManager(true);
-              }else if (JSON.stringify(result.data.user_info.user_type) === "\"temp\""){
+                setThisTemp(false);
+              }else if (JSON.stringify(result.data.host) === 'true'){
+                console.log(`Host check`)
+                localStorage.setItem("user_type","20nH54g9NSK90W");
+                setIsHost(true);
+                setThisTemp(false);
+              }else if (JSON.stringify(result.data.user) === 'true'){
+                console.log(`User check`)
+                localStorage.setItem("user_type","8KdWkYINFSD81fI");
+                setIsUser(true);
+                setThisTemp(false);
+              }else if (JSON.stringify(result.data.temp) === 'true'){
                 localStorage.setItem("user_type","97yLn756tQb58uyThk0ujn");
                 console.log(`TEMP TEST TRUE!`);
                 setThisTemp(true);
                 setIsTempP(true);
-              }else if (JSON.stringify(result.data.user_info.user_type) === "\"tempm\""){
+              }else if (JSON.stringify(result.data.user_info.user_type) === 'true'){
                 localStorage.setItem("user_type","9823ugrbhjdmds90r6wq8bcnmr3q");
                 console.log(`TEMP TEST TRUE!`);
                 setThisTemp(true);
                 setIsTempM(true);
+              }else{
+                setIsError(true);
+                console.log("loggin error")
               }
             } else {
               setIsError(true);
               console.log("loggin error")
             }
-          }).then(i =>{
-              setLoggedIn(true);          
           }).catch(e => {
             setIsError(true);
             console.log(e)
@@ -72,11 +88,18 @@ function Login (){
     }
 
     if (isLoggedIn) {
-      if(thisTemp === true){
-        console.log("THIS TEMP CONFIRM!")
-        return <Redirect to='/tempsu'/>
+      if(thisTemp){
+        if(isTempM){
+          console.log("THIS TEMP CONFIRM!")
+          return <Redirect to={"/tempsu/" + userData.id}/>
+        }else if(isTempP){
+          console.log("THIS TEMP CONFIRM!")
+          return <Redirect to={"/tempsum/" + userData.id}/>
+        }else{
+          console.log("THIS TEMP FAIL!")
+         return <Redirect to='/' />
+        }
       }else{
-        console.log("THIS TEMP FAIL!")
          return <Redirect to='/' />
       }  
     }
