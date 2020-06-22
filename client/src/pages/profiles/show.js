@@ -61,7 +61,7 @@ function Show(){
         }else if(Show.show_type === "episodical"){
             const fetchEpis = async () =>{
                         const result = await eAPI.getEpisByShowID(`${id}`)
-                            console.log(result.data)
+                            // console.log(result.data)
                             setEpisodes(result.data)
                             setEpisodical(true)
                             setPlaying(result.data[0])

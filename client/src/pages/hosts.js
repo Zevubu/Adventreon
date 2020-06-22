@@ -27,11 +27,8 @@ function Hosts (){
                 <ProviderBox>
                 {Hosts.map((host, key) => (
                     <HostFiller
-                    key={key} id={host.id} userName={host.user_name} userType={host.user_type}
-                    title={host.title} about={host.about} pImg={host.p_img} bImg={host.b_img}
-                    services ={host.shows} appointments={host.appointments}
-                    availability={host.availability} screened={host.screened} 
-                    timeStamp={host.time_stamp}
+                    key={key} id={host.id} userName={host.user_name}
+                    title={host.title} pImg={host.p_img} bImg={host.b_img}
                     />
                 ))}
               </ProviderBox>

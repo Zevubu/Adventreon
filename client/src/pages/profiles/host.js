@@ -48,7 +48,7 @@ function HostPage(){
          };
          const fetchShows = async () =>{
             const result = await API.getShowByHost(`${id}`)
-                console.log(result.data)
+                // console.log(result.data)
                 setShows(result.data)
               
             };

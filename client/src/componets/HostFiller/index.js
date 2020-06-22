@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 
 function HostFiller(props){
    
-
+ 
     return(
         <DuoServiceBlock bgImg={props.bImg}>
             <DuoServiceBlockColumn>
@@ -23,7 +23,6 @@ function HostFiller(props){
                 <TextBox>
                     <H2B>{props.userName}</H2B>
                     <PG>{props.title}</PG>
-                    <PS>{props.about}</PS>
                 </TextBox>
                 <a style={{textDecoration: 'none'}} className="nav-link" href={"/hosts/" + props.id}><Button variant="contained">View {props.userName}'s profile</Button></a>
             </DuoServiceBlockColumn>

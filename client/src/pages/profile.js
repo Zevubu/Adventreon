@@ -10,7 +10,7 @@ import '../styles/Carousel.css';
 // import '@brainhubeu/react-carousel/lib/style.css';
 import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+ 
 //  user_name,x
 //  user_type, 
 //  dob,  

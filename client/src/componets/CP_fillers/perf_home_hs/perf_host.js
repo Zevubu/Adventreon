@@ -14,7 +14,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
  
 
 function Hosts (){ 
-    const [Hosts, setHosts] = useState([]);
+    const [hosts, setHosts] = useState([]);
     // const [vis, setVis] = useState(1);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
@@ -23,9 +23,9 @@ function Hosts (){
     const scNum = matches ? 4 : 1
     
     useEffect(() => {
-       const fetchHosts = async () =>{
-        const result = await API.getHosts()
-            console.log(`host data ${result.data}`)
+        const fetchHosts = async () =>{
+            const result = await API.getPerfHosts()
+            // console.log(`perf host data: ${result.status}`)
             setHosts(result.data)
         };
         fetchHosts(); 
@@ -37,6 +37,8 @@ function Hosts (){
     
 // opacity: vis ,
     return(
+        <div>
+        {hosts.length !== 0 &&(
         <BigBlock>
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
@@ -71,13 +73,10 @@ function Hosts (){
                             arrows
                             // infinite
                         >
-                            {Hosts.map((host, key) => (
+                            {hosts.map((host, key) => (
                                 <SliderFiller
-                                    key={key} id={host.id} userName={host.user_name} userType={host.user_type}
-                                    title={host.title} about={host.about} pImg={host.p_img} bImg={host.b_img}
-                                    services ={host.shows} appointments={host.appointments}
-                                    availability={host.availability} screened={host.screened} 
-                                    timeStamp={host.time_stamp}
+                                    key={key} id={host.id} userName={host.user_name}
+                                    title={host.title} pImg={host.p_img} bImg={host.b_img}
                                 />
                             ))}
 
@@ -86,7 +85,8 @@ function Hosts (){
                 </LookBtn>   
             </LookHostBox>
             {/* </DivWBorder> */}
-        </BigBlock>
+        </BigBlock>)}
+        </div>
     )
 }
 

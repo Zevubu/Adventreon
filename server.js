@@ -3,8 +3,9 @@ dotenv.config();
 const express = require('express');
 const routes = require("./routes");
 const cors = require('cors');
-const passport = require("passport")
+const {passport} = require('./passport/index')
 const fileUpload = require('express-fileupload');
+// const bodyParser = require("body-parser");
 // const {jwtOptions, strategy, passport} = require("./JWT/index");
 
 const PORT = process.env.PORT || 3001;
@@ -14,14 +15,20 @@ const VcId = process.env.VIMEO_CLIENT_ID;
 const VsKey = process.env.VIMEO_SECRET_KEY;
 const VAT = process.env.VIMEO_ACCESS_TOKEN;
 
-let Vimeo = require('vimeo').Vimeo;
+// let Vimeo = require('vimeo').Vimeo;
 // console.log(`Vimeo ${JSON.stringify(Vimeo) }`)
-let client = new Vimeo(VcId, VsKey, VAT);
+// let client = new Vimeo(VcId, VsKey, VAT);
 // console.log(client)
 
 // passport.use(strategy)
 app.use(passport.initialize())
 
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
+
+// // parse application/json
+// app.use(bodyParser.json())
 //file transfer module 
 app.use(fileUpload ({createParentPath: true},{debug: true}) )
 

@@ -18,7 +18,7 @@ function Home (){
             {/* Intro Block */}
             <IntroBlock  BDcolor="rgba(66, 83, 94, 0.777)">
                     {/* <IntroTxTDiv> */}
-                    <VFrame src="https://player.vimeo.com/video/412924050" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></VFrame>
+                    <VFrame src="https://player.vimeo.com/video/412924050" frameborder="0px" allow="autoplay; fullscreen" allowfullscreen></VFrame>
                     <ProTextBox>
                         <H3>This is how the world starts!</H3>
                         <H3>This is how the world starts!</H3>

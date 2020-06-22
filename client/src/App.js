@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import GlobalFonts from "./fonts/fonts";
 import {GlobalStyle} from "./styles/universal-styles";
+import API from "./API/loggedOutAPI"
 // private routes
 import UserRoute from './PrivateRoutes/UserRoutes';
 import LogOutRoute from './PrivateRoutes/LogOutRoute';
@@ -37,6 +38,7 @@ import InviteHost from './pages/tools/Management/invite_host';
 import InviteManeg from './pages/tools/Management/invite_manager';
 import HostSignUp from './pages/tools/host-sign-up';
 import UpHost from './pages/tools/upHost';
+import UpAdmin from './pages/tools/upAdmin';
 import ShowBuilder from './pages/tools/show-builder';
 import AddEpisode from './pages/tools/add_episode';
 import ManegSignUp from './pages/tools/Management/maneg-sign-up' 
@@ -124,21 +126,51 @@ function App() {
       const userType =  window.localStorage.getItem('user_type');
       // console.log(`local storage check: User type:${userType}, User token: ${token}, User data:${user} `)
       if(!user || !token || !userType){
-        console.log(`User null check!`)
+        console.log(`User === null`)
       }else{
-        setAuthTokens(token);
-        setIsAuthenticated(true);
-        setUserData(JSON.parse(user))
-        setIsData(true)
-        // console.log(`IS USER CHECK: ${userType === "8KdWkYINFSD81fI"}`)
-        if(userType === "8KdWkYINFSD81fI"){
-          // console.log(`IS USER CHECK: ${userType}`)
-          setIsUser(true);
-        }else if(userType === "20nH54g9NSK90W"){
-          setIsHost(true);
-        }else if(userType === "80CDswONc34RI8"){
-          setIsManager(true);
+        const validateUser = async () =>{
+          const result = await API.tokenValidate(token)
+          // console.log(`Validation Result: ${JSON.stringify(result.data)}`)
+          if(result.data.valid === false){
+            // console.log(`result.data.valid= ${result.data.valid}`)
+            localStorage.clear();
+            setAuthTokens();
+            setUserData()
+            setIsAuthenticated();
+            setIsUser();
+            setIsManager()
+            setIsAuthenticated();
+            setIsHost();
+            setIsTempP();
+            setIsTempM();
+          }else{
+           
+            // Validation Result: {
+            // "valid":true,
+            //   "admin":true,
+            //   "host":true,
+            //   "user":{"id":1,
+            //   "user_name":"ZevUbu",
+            //   "user_type":"manager",
+            //   "dob":"1988-08-23T07:00:00.000Z",
+            //   "time_stamp":"2020-06-08T07:06:51.000Z"
+            // }}
+            setAuthTokens(token);
+            setIsAuthenticated(true);
+            setUserData(JSON.parse(user))
+            setIsData(true)
+            // console.log(`IS USER CHECK`)
+            if(result.data.admin === true){
+              // console.log(`IS USER CHECK: ${result.data.admin}`)
+              setIsManager(true);
+            }else if(result.data.host === true){
+              setIsHost(true);
+            }else if(result.data.user === true){
+              setIsUser(true);
+            }
+          }
         }
+        validateUser()
       }
     };
     checkLS();  
@@ -184,7 +216,7 @@ function App() {
                           <ManagmentRoute exact path="/hostsum/:id" component={HostSignUp} />
                           <ManagmentRoute exact path="/invitem" component={InviteManeg} />
                           <ManagmentRoute exact path="/manegsu/:id" component={ManegSignUp} />
-                          <ManagmentRoute exact path="/pupm/:id" state={{value:userData}} component={UpHost} />
+                          <ManagmentRoute exact path="/pupm/:id" state={{value:userData}} component={UpAdmin} />
                           <ManagmentRoute exact path="/showbuilderm" state={{value:userData}} component={ShowBuilder}/>
                           <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
                           <HostRoute path="/profile/:id" state={{value:userData}}  component={profile}/>

@@ -35,6 +35,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function Shows (){
     const [shows, setShows] = useState([]);
+    // const [temp, setTemp] = useState(false)
     // const [vis, setVis] = useState(1);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
@@ -45,17 +46,25 @@ function Shows (){
     useEffect(() => {
        const fetchShows = async () =>{
         const result = await API.getSpritReadShows()
-            console.log(`show data ${result.data}`)
+            // console.log(`show data ${result.data}`)
             setShows(result.data)
+            // setTemp(true)
         };
         fetchShows(); 
     }, []);
+
+    // if(temp){
+    //     console.log(`Shows.length!: ${shows.lenght}`)
+    //     setTemp(false)
+    // }
 
     if(Click){
         return <Redirect to="/" />
     }
     // opacity: vis ,  
+
     return(
+        <div>{shows.length !== 0 &&(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
@@ -105,7 +114,7 @@ function Shows (){
                     </div>
                 </LookBtn>   
             </LookBox>
-        </BigBlock>
+        </BigBlock>)}</div>
     )
 }
 

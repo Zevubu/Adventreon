@@ -44,7 +44,7 @@ function Shows (){
     useEffect(() => {
        const fetchShows = async () =>{
         const result = await API.getMuseBlogShows()
-            console.log(`show data ${result.data}`)
+            // console.log(`show data ${result.data}`)
             setShows(result.data)
         };
         fetchShows(); 
@@ -55,6 +55,7 @@ function Shows (){
     }
     // opacity: vis , 
     return(
+        <div>{shows.length !== 0 &&(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
@@ -105,6 +106,7 @@ function Shows (){
                 </LookBtn>   
             </LookBox>
         </BigBlock>
+        )}</div>
     )
 }
 
