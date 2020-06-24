@@ -36,6 +36,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 function Shows (){
     const [shows, setShows] = useState([]);
     // const [vis, setVis] = useState(1);
+    const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -43,13 +44,33 @@ function Shows (){
     const scNum = matches ? 4 : 1
 
     useEffect(() => {
-       const fetchShows = async () =>{
-        const result = await API.getSpritBlogShows()
-            console.log(`show data ${result.status}`)
-            setShows(result.data)
-        };
-        fetchShows(); 
+        const fetchShowsCNT = async () =>{
+            const count = await API.getShowSubcatNumCheck({
+                'catagory':'spiritual',
+                'sub_catagory':'blog'
+            })
+            // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
+            if(count.data.total !== 0){
+                setPullSwitch(true)
+                console.log(`Spiritual blog confirm check`)
+            }
+            else{
+                console.log(`Spiritual blog fail check`)
+                return
+            }
+        }
+        fetchShowsCNT()  
     }, []);
+
+    if(pullSwith){
+        const fetchShows = async () =>{
+            const result = await API.getSpritBlogShows()
+                // console.log(`Spiritual blog show data ${result.data}`)
+                setShows(result.data)
+            };
+        setPullSwitch(false)
+        fetchShows();
+    }
 
     if(Click){
         return <Redirect to="/" />

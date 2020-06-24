@@ -24,6 +24,34 @@ router.route("/all")
     res.send[user]
   });
 
+// Matches with "/api/shows/catnumcnt/cat" 
+router.route("/catnumcnt")
+  .post( async (req,res) => {
+    const {catagory} = req.params;
+    console.log(`Show catagory:${catagory}`);
+    const conn = await connection(dbConfig).catch(e => {});
+    const catCount = await query(
+      conn,
+      'SELECT COUNT(*) AS total FROM shows WHERE catagory=?',
+      [catagory]
+    )
+    res.send(catCount)
+  })
+
+// Matches with "/api/shows/subnumcnt" 
+router.post("/subnumcnt", async (req,res) => {
+  const {catagory, sub_catagory} = req.body;
+  console.log(`show req: ${JSON.stringify(req.body)} catagory:${catagory}, sub_catagory:${sub_catagory}`);
+  const conn = await connection(dbConfig).catch(e => {});
+  const catCount = await query(
+    conn,
+    'SELECT count(*) AS total FROM shows WHERE catagory=? and sub_catagory=?',
+    [catagory, sub_catagory]
+  )
+  console.log(`subCatCount:${JSON.stringify(catCount[0])}`)
+  res.send(catCount[0])
+})
+
   // Performance routes
   // Matches with /api/shows/performance
 router.route("/performance")

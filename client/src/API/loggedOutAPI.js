@@ -58,7 +58,13 @@ export default {
     },
     getEmailCheck: function(email){
         console.log(`EmailData: ${email}`);
-        return axios.post("/api/opening/emailcheck", email).catch(err => console.log(`find email error:${err}`))
+        return axios.get("/auth/opening/emailcheck", email).catch(err => console.log(`find email error:${err}`))
+    },
+    getHostNumCheck:function(){
+        return axios.get("/api/hosts/numcnt").catch(err => console.log(`Host num check error:${err}`))
+    },
+    getHostCatNumCheck:function(catagory){
+        return axios.get("/api/hosts/catnumcnt/"+ catagory).catch(err => console.log(`Host Catagory num check error:${err}`))
     },
     deleteUserById: function(id){
         return axios.delete("'/auth/deleteuser/" + id).catch(err => console.log(`Delete user by id error:${err}`));

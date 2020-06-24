@@ -35,6 +35,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 function Shows (){
     const [shows, setShows] = useState([]);
     // const [vis, setVis] = useState(1);
+    const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -42,13 +43,33 @@ function Shows (){
     const scNum = matches ? 4 : 1
 
     useEffect(() => {
-       const fetchShows = async () =>{
-        const result = await API.getMuseShows()
-            // console.log(`show data ${result.data}`)
-            setShows(result.data)
-        };
-        fetchShows(); 
+        const fetchShowsCNT = async () =>{
+            const count = await API.getShowSubcatNumCheck({
+                'catagory':'music',
+                'sub_catagory':'variety'
+            })
+            // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
+            if(count.data.total !== 0){
+                setPullSwitch(true)
+                // console.log(`Music variety confirm check`)
+            }
+            else{
+                // console.log(`Music variety fail check`)
+                return
+            }
+        }
+        fetchShowsCNT()
     }, []);
+
+    if(pullSwith){
+        const fetchShows = async () =>{
+            const result = await API.getMuseVarShows()
+                // console.log(`Music variety show data ${result.data}`)
+                setShows(result.data)
+            };
+        setPullSwitch(false)
+        fetchShows();
+    }
 
     if(Click){
         return <Redirect to="/" />
@@ -67,7 +88,7 @@ function Shows (){
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                    >Live</H2>
+                    >Variety</H2>
                 </HeaderItem>
                 {/* <HeaderItem>
                     <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>

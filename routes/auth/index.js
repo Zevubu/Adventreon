@@ -82,8 +82,9 @@ router.delete('/deleteuser/:id', async (req, res) => {
     res.send(status)
   });
 
-router.get('/emailtest/:email', async (req, res) => {
-    const { email } = req.params;
+//   /auth/emailtest
+router.get('/emailtest', async (req, res) => {
+    const { email } = req.body;
     console.log(`email:${email}`)
     const conn = await connection(dbConfig).catch(e => {});
     const emailCheck = await query(
@@ -91,6 +92,21 @@ router.get('/emailtest/:email', async (req, res) => {
         'SELECT COUNT(*) AS total FROM users WHERE user_email = ?', [email])
     res.send(emailCheck);
 });
+
+//   /auth/nametest
+router.get('/nametest', async (req, res) => {
+    const { user_name } = req.body;
+    console.log(`email:${email}`)
+    const conn = await connection(dbConfig).catch(e => {});
+    const nameCheck = await query(
+        conn,
+        'SELECT COUNT(*) AS total FROM users WHERE user_name = ?', [user_name])
+    res.send(nameCheck);
+});
+
+
+
+
 
 
 

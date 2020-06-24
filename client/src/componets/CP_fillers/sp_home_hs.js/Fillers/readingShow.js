@@ -35,8 +35,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function Shows (){
     const [shows, setShows] = useState([]);
-    // const [temp, setTemp] = useState(false)
     // const [vis, setVis] = useState(1);
+    const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -44,19 +44,33 @@ function Shows (){
     const scNum = matches ? 4 : 1
 
     useEffect(() => {
-       const fetchShows = async () =>{
-        const result = await API.getSpritReadShows()
-            // console.log(`show data ${result.data}`)
-            setShows(result.data)
-            // setTemp(true)
-        };
-        fetchShows(); 
+        const fetchShowsCNT = async () =>{
+            const count = await API.getShowSubcatNumCheck({
+                'catagory':'spiritual',
+                'sub_catagory':'readings'
+            })
+            // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
+            if(count.data.total !== 0){
+                setPullSwitch(true)
+                console.log(`Spiritual readings confirm check`)
+            }
+            else{
+                console.log(`Spiritual readings fail check`)
+                return
+            }
+        }
+        fetchShowsCNT() 
     }, []);
 
-    // if(temp){
-    //     console.log(`Shows.length!: ${shows.lenght}`)
-    //     setTemp(false)
-    // }
+    if(pullSwith){
+        const fetchShows = async () =>{
+            const result = await API.getSpritReadShows()
+                // console.log(`Spiritual readings show data ${result.data}`)
+                setShows(result.data)
+            };
+        setPullSwitch(false)
+        fetchShows();
+    }
 
     if(Click){
         return <Redirect to="/" />

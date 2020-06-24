@@ -6,6 +6,13 @@ export default {
     getShows: function(){
         return axios.get("/api/shows/all").catch(err => console.log(`Get all shows error:${err}`));
     },
+    getShowCatNumCheck:function(input){
+        return axios.post("/api/shows/catnumcnt", input).catch(err => console.log(`Show Catagory num check error:${err}`))
+    },
+    getShowSubcatNumCheck:function(input){
+        // console.log(`Show count sub input${JSON.stringify(input)}`)
+        return axios.post("/api/shows/subnumcnt", input).catch(err => console.log(`Show Sub_Catagory num check error:${err}`))
+    },
     getPrefShows: function(){
         return axios.get("/api/shows/performance").catch(err => console.log(`Get preformance shows error:${err}`));
     },

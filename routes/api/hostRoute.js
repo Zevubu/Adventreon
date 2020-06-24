@@ -31,6 +31,47 @@ router.route("/all")
     //   res.send[user]
     // });
 
+// Matches with "/api/hosts/numcnt" 
+router.route("/numcnt")
+  .get( async (req,res) => {
+    const conn = await connection(dbConfig).catch(e => {});
+    const catCount = await query(
+      conn,
+      'SELECT COUNT(*) AS total FROM users WHERE user_type="host" OR user_type="manager" AND mhswitch=1'
+    )
+    const theCNT = catCount[0]
+    console.log(theCNT)
+    res.send(theCNT)
+  })
+// Matches with "/api/hosts/catnumcnt/:cat" 
+router.route("/catnumcnt/:cat")
+  .get( async (req,res) => {
+    const {cat} = req.params;
+    // console.log(`Host catagory:${cat}`);
+    const conn = await connection(dbConfig).catch(e => {});
+    const catCount = await query(
+      conn,
+      'SELECT COUNT(*) AS total FROM users WHERE catagory=?',
+      [cat]
+    )
+    const theCNT = catCount[0]
+    // console.log(theCNT)
+    res.send(theCNT)
+  })
+
+// // Matches with "/api/hosts/subnumcnt" 
+// router.get("/subnumcnt", async (req,res) => {
+//   const {catagory, subcatagory} = req.params;
+//   console.log(`catagory:${catagory}`);
+//   const conn = await connection(dbConfig).catch(e => {});
+//   const catCount = await query(
+//     conn,
+//     'SELECT count(*) AS total FROM users WHERE catagory=?',
+//     [catagory]
+//   )
+//   res.send(catCount)
+// })
+
 // Matches with "/api/hosts/music"
 router.route("/music")
   .get(async (req, res) => {
