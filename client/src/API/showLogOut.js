@@ -7,7 +7,7 @@ export default {
         return axios.get("/api/shows/all").catch(err => console.log(`Get all shows error:${err}`));
     },
     getShowCatNumCheck:function(input){
-        return axios.post("/api/shows/catnumcnt", input).catch(err => console.log(`Show Catagory num check error:${err}`))
+        return axios.post("/api/shows/catnumcnt/"+ input).catch(err => console.log(`Show Catagory num check error:${err}`))
     },
     getShowSubcatNumCheck:function(input){
         // console.log(`Show count sub input${JSON.stringify(input)}`)
@@ -61,7 +61,6 @@ export default {
     getVisShows: function(){
         return axios.get("/api/shows/visual").catch(err => console.log(`Get visual shows error:${err}`));
     },
- 
     getVisAnaShows: function(){
         return axios.get("/api/shows/visual/analog").catch(err => console.log(`Get visual shows error:${err}`));
     },

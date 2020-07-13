@@ -1,4 +1,5 @@
 const ROLES = {
+    Master: 'master',
     Admin: 'manager',
     Host: 'host',
     User: 'user',

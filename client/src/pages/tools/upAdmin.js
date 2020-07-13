@@ -143,8 +143,10 @@ function UpHost (){
         //     console.log(result)
         // }
         // checkEmail()
+        const token = window.localStorage.getItem('tokens');
+        console.log(`Auth token test ${token}`);
 
-        API.updatedProfile(id,{ 
+        API.updatedProfile(id,token,{ 
             "user_name": data.userName,
             "mhswitch": data.mhswitch,
             "email": data.email,

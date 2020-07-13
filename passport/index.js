@@ -19,27 +19,6 @@ let opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = `${CONFIG.jwt_encryption}`;
 
-const users = [
-    {
-        id: 1,
-        name: 'zevubu',
-        password: 'password',
-        userType: 'admin'
-    },
-    {
-        id: 2,
-        name: 'host',
-        password: 'host',
-        userType: 'host'
-    },
-    {
-        id: 3,
-        name: 'test',
-        password: 'test',
-        userType: 'user'
-    }
-];
-
 const strategy =  new JwtStrategy(opts,(jwt_payload, next)=>{
     console.log('Payload received', jwt_payload);
     // usually this would be a database call:
@@ -59,11 +38,9 @@ const strategy =  new JwtStrategy(opts,(jwt_payload, next)=>{
       }
     }
     userCall()
-    
     // const user = 
     // const user = users[_.findIndex(users, {id: jwt_payload.id})];
     // ^
- 
 });
 
 passport.use(strategy);
@@ -72,12 +49,10 @@ const checkIsInRole = (...roles) => (req, res, next) => {
     if (!req.user) {
       return res.send("No user supplied")
     }
-  
-    const hasRole = roles.find(role => req.user.userType === role || req.user.userType === "admin")
+    const hasRole = roles.find(role => req.user.user_type === role || req.user.user_type === "admin")
     if (!hasRole) {
       return res.send('You do not have permission to access this route')
     }
-  
     return next()
 }
 
@@ -109,7 +84,6 @@ module.exports = {
     ExtractJwt,
     JwtStrategy,
     opts,
-    users,
     strategy,
     checkIsInRole
 };

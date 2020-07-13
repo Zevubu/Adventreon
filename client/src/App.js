@@ -66,7 +66,7 @@ function App() {
       // console.log(`Token Test: ${JSON.stringify(data) !== undefined}`)
       // console.log(`Token Data: ${JSON.stringify(data)}`)
       localStorage.setItem("tokens", JSON.stringify(data));
-      setAuthTokens(data);
+      setAuthTokens(JSON.stringify(data));
     }else{
       setAuthTokens(false);
       // console.log(`Token Test Fail: ${JSON.stringify(data) !== undefined}`)
@@ -85,7 +85,7 @@ function App() {
   }
 
   const setHost =(data) => {
-    // console.log(`Is Host: ${data}`)
+    console.log(`Is Host opening data: ${data}`)
     setIsHost(data)
   }
 
@@ -164,6 +164,7 @@ function App() {
               // console.log(`IS USER CHECK: ${result.data.admin}`)
               setIsManager(true);
             }else if(result.data.host === true){
+              // console.log(`IS HOST CHECK: ${result.data.host}`)
               setIsHost(true);
             }else if(result.data.user === true){
               setIsUser(true);
@@ -211,7 +212,7 @@ function App() {
                           <Route exact path="/uploads" component={Uploader} />
                           <TempMRoute exact path="/tempsum/:id" component={ManegSignUp} />
                           <TempRoute exact path="/tempsu/:id" component={HostSignUp} />
-                          <ManagmentRoute path="/profile/:id" state={{value:userData}}  component={profile}/>
+                          <ManagmentRoute path="/profilem/:id" state={{value:userData}}  component={profile}/>
                           <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
                           <ManagmentRoute exact path="/hostsum/:id" component={HostSignUp} />
                           <ManagmentRoute exact path="/invitem" component={InviteManeg} />
@@ -219,8 +220,8 @@ function App() {
                           <ManagmentRoute exact path="/pupm/:id" state={{value:userData}} component={UpAdmin} />
                           <ManagmentRoute exact path="/showbuilderm" state={{value:userData}} component={ShowBuilder}/>
                           <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
+                          <HostRoute path="/puph/:id" state={{value:userData}}  component={UpHost}/>
                           <HostRoute path="/profile/:id" state={{value:userData}}  component={profile}/>
-                          <HostRoute exact path="/pup/:id" state={{value:userData}} component={UpHost} />
                           <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
                           <HostRoute exact path="/episodebuilder" component={AddEpisode}/>
                         </Switch>

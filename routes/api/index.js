@@ -1,17 +1,20 @@
 const router = require("express").Router();
 
-const hostRoutes = require("./hostRoute");
-const userRoutes = require("./userRoute");
-const showRoutes = require("./showRoute");
-const epiRoutes = require("./epiRoute");
-const kfRoutes = require("./KFRoute");
-const uploadRoutes = require("./uploadRoute");
+const logoutAPI = require('./logoutAPI');
+const baseAPI = require('./api');
+const hostAPI = require('./hostAPI');
+const managAPI = require('./managerAPI');
+const masterAPI = require('./masterAPI')
 
-router.use("/hosts", hostRoutes);
-router.use("/users", userRoutes );
-router.use("/shows", showRoutes);
-router.use("/episodes", epiRoutes);
-router.use("/kidfriendly", kfRoutes);
-router.use("/data", uploadRoutes);
+// logged out routes no token needed /api/opening
+router.use("/opening", logoutAPI);
+// user routes, simple is token route /api/req
+router.use("/req", baseAPI);
+// host routes /api/hreq
+router.use("/hreq", hostAPI);
+// management routes /api/mreq
+router.use('/mreq',managAPI);
+// master routes /api/master
+router.use('/mastreq', masterAPI);
 
 module.exports = router;

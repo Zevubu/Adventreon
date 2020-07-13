@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Link} from 'react-router-dom';
 // import {H2} from '../../styles/homeStyle';
 import {NavBody,H2, OptionBox,PullBox, LogoImage} from "../../styles/componentStyles";
@@ -40,6 +40,12 @@ function NavBar (props){
     const {userData, setUserData} = useUserInfo();
     const matches = useMediaQuery('(min-width:600px)');
     const small = useMediaQuery('(max-width:485px)')
+
+    // useEffect(()=>{
+    //     console.log(`Is host check:${isHost}`)
+    //     console.log(`Is Athenticated check:${isAuthenticated}`)
+
+    // },[])
 
     const BTN = styled(Button)({
         background: '#6dd3d6',
@@ -106,11 +112,18 @@ function NavBar (props){
                         <ManagerMenue/>
                     </div>
                 )}
-                 {isAuthenticated && isHost || isAuthenticated && isManager && (
+                {/* && isHost || isAuthenticated && isManager */}
+                 {isAuthenticated && isHost && (
                     <div>
-                        <Link style={{ textDecoration: 'none' }} to={"/profile/" + userData.id}><BTN variant="contained" >Profile</BTN></Link>
+                        <Link style={{ textDecoration: 'none' }} to={"/profile/" + userData.id}><BTN variant="contained">Profile</BTN></Link>
                     </div>
                 )} 
+                 {isAuthenticated && isManager && (
+                    <div>
+                        <Link style={{ textDecoration: 'none' }} to={"/profilem/" + userData.id}><BTN variant="contained">Profile</BTN></Link>
+                    </div>
+                )} 
+
                 {!isAuthenticated && (
                     <OptionBox>
                         <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><BTN style={small ? {fontSize:'6.45px'}: {}} variant="contained">Sign up</BTN></Link>

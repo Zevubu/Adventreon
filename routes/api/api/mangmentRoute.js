@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const connection = require('../../controllers/connection');
-const query = require('../../controllers/query');
-const dbConfig = require('../../dbConfig');
-const ManagQuery = require("../../query_builders/manag-query");
+const connection = require('../../../controllers/connection');
+const query = require('../../../controllers/query');
+const dbConfig = require('../../../dbConfig');
+const ManagQuery = require("../../../query_builders/manag-query");
 
 // router.get()
 //creating a provider profile needs to be restricted. May need to apply "AND userid = {currentuser} OR Management = true"
