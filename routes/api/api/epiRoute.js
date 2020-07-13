@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const connection = require('../../controllers/connection');
-const query = require('../../controllers/query');
-const dbConfig = require('../../dbConfig');
-const epiQuery = require("../../query_builders/epi-query");
+const connection = require('../../../controllers/connection');
+const query = require('../../../controllers/query');
+const dbConfig = require('../../../dbConfig');
+const epiQuery = require("../../../query_builders/epi-query");
 
 // router.get()
 //creating a provider profile needs to be restricted. May need to apply "AND userid = {currentuser} OR Management = true"
@@ -23,7 +23,7 @@ router.route("/all")
         [show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, catagory, sub_catagory, paid, price, epi_date, start_time, end_time, eighteen_plus, verified]
       )
       res.send[user]
-    });
+    }); // from .post to here must remove and reconect in host Routes
 
 
 // Matches with "/api/episodes/find/:id"
@@ -34,20 +34,6 @@ router.route('/find/:id')
       const user = await query(conn, epiQuery.findById(), [id])
       res.send(user)
   })   
-  // .put(async (req, res) => {
-  //   const { id } = req.params;
-  //   const vals = req.body;
-  //   const values = Object.keys(vals).map(k => `${k}=${vals[k]}`)
-  //   const conn = await connection(dbConfig).catch(e => {});
-  //   const status = await query(conn, epiQuery.updateById, [values,id])
-  //   res.send(status)
-  // })
-  // .delete(async (req, res) => {
-  //   const { id } = req.params;
-  //   const conn = await connection(dbConfig).catch(e => {});
-  //   const status = await query(conn, epiQuery.deleteById(), [id])
-  //   res.send(status)
-  // });
 
   // Matches with "/api/episodes/show/:id"
 router.route('/show/:id')
@@ -67,20 +53,7 @@ router.route('/show/:id')
       const user = await query(conn, epiQuery.findByHost(), [id])
       res.send(user)
   })
-//   .put(async (req, res) => {
-//     const { id } = req.params;
-//     const vals = req.body;
-//     const values = Object.keys(vals).map(k => `${k}=${vals[k]}`)
-//     const conn = await connection(dbConfig).catch(e => {});
-//     const status = await query(conn, epiQuery.updateById, [values,id])
-//     res.send(status)
-//   })
-//   .delete(async (req, res) => {
-//     const { id } = req.params;
-//     const conn = await connection(dbConfig).catch(e => {});
-//     const status = await query(conn, epiQuery.deleteById(), [id])
-//     res.send(status)
-//   });
+
 
 // Matches with "/api/episodes/kf"
 router.route('/kf/')

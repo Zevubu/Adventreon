@@ -10,25 +10,41 @@ import '../../../styles/Carousel.css';
 // import '@brainhubeu/react-carousel/lib/style.css';
 // import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
- 
 
 function Hosts (){ 
     const [Hosts, setHosts] = useState([]);
     // const [vis, setVis] = useState(1);
+    const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
     const scNum = matches ? 4 : 1
-    
     useEffect(() => {
-       const fetchHosts = async () =>{
-        const result = await API.getLifeHosts()
-            console.log(`life host data ${result.status}`)
+        const fetchHostCNT = async () =>{
+            const count = await API.getHostCatNumCheck('life')
+            console.log(`muse count:${JSON.stringify(count)}`)
+            if(count.data.total !== 0){
+                setPullSwitch(true)
+                console.log(`Life host confirm check`)
+            }
+            else{
+                console.log(`Life host fail check`)
+                return
+            }
+        }
+        fetchHostCNT() 
+    }, []);
+
+    if(pullSwith){
+        const fetchHosts = async () =>{
+            const result = await API.getLifeHosts()
+            // console.log(`Life pull switch check`)
             setHosts(result.data)
         };
-        fetchHosts(); 
-    }, []);
+        setPullSwitch(false)
+        fetchHosts();
+    }
 
     if(Click){
         return <Redirect to="/hosts" />

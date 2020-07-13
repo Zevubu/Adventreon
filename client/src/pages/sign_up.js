@@ -25,22 +25,9 @@ function SignUp (){
             "first_name": data.firstName,
             "last_name":data.lastName,
             "user_name": data.userName,
-            "user_type": "user",
-            'mhswitch':false,
             "dob": data.DOB,
             "email": data.email,
             "password": data.password,
-            "title": '',
-            "about": '', 
-            "p_img": '',
-            "b_img": '',
-            "catagory": '',
-            "payment": '',
-            'patreon': '',
-            'wp_title': '',
-            'webpage': '',
-            'rsvp_attend':'',
-            'rsvp_perform':'',
             "verified":false
             }).then(e.target.reset())
             .catch(err => setError(err))

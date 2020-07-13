@@ -6,14 +6,15 @@ import API from "../../../API/behindDaScenes";
 import {useForm} from 'react-hook-form';
 import {Redirect} from "react-router-dom";
 
+// still need to add email verification
 function SignUp (){
     const[catType, setCatType] = useState();
     let { id } = useParams();
     const [Complete, setComplete] = useState();
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = (data, e) =>{
+        const token = window.localStorage.getItem('tokens');
         // console.log(data)
-        // console.log(`entertain:${data.entertain} couns:${data.couns} relig:${data.relig}`)
         // const checkEmail = async () =>{
         //    const result = await API.getEmailCheck({
         //     "user_email": data.email
@@ -21,33 +22,36 @@ function SignUp (){
         //     console.log(result)
         // }
         // checkEmail()
+
         if(Complete){
             return <Redirect to='/' />
         }
 
-        API.createAccount({ 
-            "first_name": data.firstName,
-            "last_name":data.lastName,
-            "user_name": data.userName,
-            "user_type": "manager",
-            "mhswitch": true,
-            "dob": data.DOB,
-            "email": data.email,
-            "password": data.password,
-            "title": data.title,
-            "about": data.about, 
-            "p_img": data.pImg,
-            "b_img": data.bImg,
-            "catagory":"",
-            "payment": data.paypal,
-            'patreon': data.patreon,
-            'wp_title': data.wpTitle,
-            'webpage': data.webpage,
-            'rsvp_attend':'',
-            'rsvp_perform':'', 
-            "verified":true,
-            }).then(e.target.reset())
-            .catch(err => console.log(err))
+        API.createManagAccount({ 
+            "token": token,
+            "data": {
+                "first_name": data.firstName,
+                "last_name":data.lastName,
+                "user_name": data.userName,
+                "mhswitch": true,
+                "dob": data.DOB,
+                "email": data.email,
+                "password": data.password,
+                "title": data.title,
+                "about": data.about, 
+                "p_img": data.pImg,
+                "b_img": data.bImg,
+                "catagory":"",
+                "payment": data.paypal,
+                'patreon': data.patreon,
+                'wp_title': data.wpTitle,
+                'webpage': data.webpage,
+                'rsvp_attend':'',
+                'rsvp_perform':'', 
+                "verified":true
+            }
+        }).then(e.target.reset())
+        .catch(err => console.log(err))
     }
     // .then(function(){
     //     console.log(`Delete ID test: ${id}`)

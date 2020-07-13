@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const connection = require('../../controllers/connection');
-const query = require('../../controllers/query');
-const dbConfig = require('../../dbConfig');
-const epiQuery = require("../../query_builders/epi-query");
-const showQuery = require("../../query_builders/show-query")
+const connection = require('../../../controllers/connection');
+const query = require('../../../controllers/query');
+const dbConfig = require('../../../dbConfig');
+const epiQuery = require("../../../query_builders/epi-query");
+const showQuery = require("../../../query_builders/show-query")
 
 // Matches with "/api/kidfriendly/shows"
 router.route("/shows")

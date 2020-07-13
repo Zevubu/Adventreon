@@ -3,6 +3,7 @@ import {DivWBorder, MarronHeader, H2, PT, PS} from "../../styles/homeStyle"
 import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
 import API from "../../API/behindDaScenes";
 import {useForm} from 'react-hook-form';
+import {useAuth} from '../../context/heart'
 // user_name, 
 // user_type, 
 // mhswitch, 
@@ -24,11 +25,13 @@ import {useForm} from 'react-hook-form';
 
 function SignUp (){
     const[catType, setCatType] = useState();
-
+    // const{authTokens} = useAuth
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = (data, e) =>{
         console.log(data)
-        console.log(`entertain:${data.entertain} couns:${data.couns} relig:${data.relig}`)
+        // console.log(`Auth token test ${authTokens}`);
+        const token = window.localStorage.getItem('tokens');
+        console.log(`Auth token test ${token}`);
         // const checkEmail = async () =>{
         //    const result = await API.getEmailCheck({
         //     "user_email": data.email
@@ -37,29 +40,31 @@ function SignUp (){
         // }
         // checkEmail()
 
-        API.createAccount({ 
-            "first_name": data.firstName,
-            "last_name":data.lastName,
-            "user_name": data.userName,
-            "user_type": "host",
-            "mhswitch": false,
-            "dob": data.DOB,
-            "email": data.email,
-            "password": data.password,
-            "title": data.title,
-            "about": data.about, 
-            "p_img": data.pImg,
-            "b_img": data.bImg,
-            "catagory": catType,
-            "payment": data.paypal,
-            'patreon': data.patreon,
-            'wp_title': data.wpTitle,
-            'webpage': data.webpage,
-            'rsvp_attend':'',
-            'rsvp_perform':'', 
-            "verified":false
-            }).then(e.target.reset())
-            .catch(err => console.log(err))
+        API.createHostAccount({ 
+            "token": token,
+            "data":{
+                "first_name": data.firstName,
+                "last_name":data.lastName,
+                "user_name": data.userName,
+                "mhswitch": false,
+                "dob": data.DOB,
+                "email": data.email,
+                "password": data.password,
+                "title": data.title,
+                "about": data.about, 
+                "p_img": data.pImg,
+                "b_img": data.bImg,
+                "catagory": catType,
+                "payment": data.paypal,
+                'patreon': data.patreon,
+                'wp_title': data.wpTitle,
+                'webpage': data.webpage,
+                'rsvp_attend':'',
+                'rsvp_perform':'', 
+                "verified":false
+            }
+        }).then(e.target.reset())
+        .catch(err => console.log(err))
     }
     return(
         <DivWBorder> 

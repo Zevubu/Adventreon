@@ -16,6 +16,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 function Hosts (){ 
     const [hosts, setHosts] = useState([]);
     // const [vis, setVis] = useState(1);
+    const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -23,13 +24,30 @@ function Hosts (){
     const scNum = matches ? 4 : 1
     
     useEffect(() => {
+        const fetchHostCNT = async () =>{
+            const count = await API.getHostCatNumCheck('performance')
+            console.log(`muse count:${JSON.stringify(count)}`)
+            if(count.data.total !== 0){
+                setPullSwitch(true)
+                console.log(`Performance host confirm check`)
+            }
+            else{
+                console.log(`Performance host fail check`)
+                return
+            }
+        }
+        fetchHostCNT() 
+    }, []);
+
+    if(pullSwith){
         const fetchHosts = async () =>{
             const result = await API.getPerfHosts()
-            // console.log(`perf host data: ${result.status}`)
+            // console.log(`Performance pull switch check`)
             setHosts(result.data)
         };
-        fetchHosts(); 
-    }, []);
+        setPullSwitch(false)
+        fetchHosts();
+    }
 
     if(Click){
         return <Redirect to="/hosts" />

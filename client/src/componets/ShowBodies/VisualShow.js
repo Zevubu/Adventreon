@@ -34,6 +34,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 function Shows (){
     const [shows, setShows] = useState([]);
     // const [vis, setVis] = useState(1);
+    const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -42,13 +43,32 @@ function Shows (){
     const Icon = "button"
 
     useEffect(() => {
-       const fetchShows = async () =>{
-        const result = await API.getVisShows()
-            // console.log(`show data ${result.data}`)
-            setShows(result.data)
-        };
-        fetchShows(); 
+        const fetchShowsCNT = async () =>{
+            const count = await API.getShowCatNumCheck({
+                'catagory':'visual',
+            })
+            // console.log(`visual count:${JSON.stringify(count.data.total)}`)
+            if(count.data.total !== 0){
+                setPullSwitch(true)
+                // console.log(`visual confirm check`)
+            }
+            else{
+                // console.log(`visual fail check`)
+                return
+            }
+        }
+        fetchShowsCNT() 
     }, []);
+        
+    if(pullSwith){
+        const fetchShows = async () =>{
+            const result = await API.getVisShows()
+                // console.log(`visual show data ${result.data}`)
+                setShows(result.data)
+            };
+        setPullSwitch(false)
+        fetchShows();
+    }
 
     if(Click){
         return <Redirect to="/performance" />

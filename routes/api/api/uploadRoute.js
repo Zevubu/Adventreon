@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const connection = require('../../controllers/connection');
-const query = require('../../controllers/query');
-const dbConfig = require('../../dbConfig');
-const userQuery = require("../../query_builders/user-query");
+const connection = require('../../../controllers/connection');
+const query = require('../../../controllers/query');
+const dbConfig = require('../../../dbConfig');
+const userQuery = require("../../../query_builders/user-query");
 
 
 //this route uploads the actual image file

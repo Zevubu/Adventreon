@@ -36,6 +36,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 function Shows (){
     const [shows, setShows] = useState([]);
     // const [vis, setVis] = useState(1);
+    const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -43,13 +44,32 @@ function Shows (){
     const scNum = matches ? 4 : 1
 
     useEffect(() => {
-       const fetchShows = async () =>{
-        const result = await API.getSpritEduShows()
-            console.log(`edu sp show data ${result.data.length}`)
-            setShows(result.data)
-        };
-        fetchShows(); 
+        const fetchShowsCNT = async () =>{
+            const count = await API.getShowSubcatNumCheck({
+                'catagory':'spiritual',
+                'sub_catagory':'educate'
+            })
+            if(count.data.total !== 0){
+                setPullSwitch(true)
+                console.log(`Spiritual educate confirm check`)
+            }
+            else{
+                console.log(`Spiritual educate fail check`)
+                return
+            }
+        }
+        fetchShowsCNT()  
     }, []);
+
+    if(pullSwith){
+        const fetchShows = async () =>{
+            const result = await API.getSpritEduShows()
+                // console.log(`Spiritual educate show data ${result.data}`)
+                setShows(result.data)
+            };
+        setPullSwitch(false)
+        fetchShows();
+    }
 
     if(Click){
         return <Redirect to="/" />

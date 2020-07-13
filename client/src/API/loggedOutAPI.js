@@ -49,19 +49,27 @@ export default {
         return axios.get("/api/hosts/spirit").catch(err => console.log(`Get all spirit host error:${err}`));
     },
     createAccount: function(userData){
+        // stays in log out
         // console.log(`CREAT CHECK!`);
         // console.log(`userData: ${userData}`);
-        return axios.post("/auth/register", userData).catch(err => console.log(`Account creation error:${err}`));
+        return axios.post("/auth/opening/register", userData).catch(err => console.log(`Account creation error:${err}`));
     },
     postLogIn: function(userData){
-        return axios.post("/auth/login", userData).catch(err => console.log(`Login error:${err}`));
+        return axios.post("/auth/opening/login", userData).catch(err => console.log(`Login error:${err}`));
     },
     getEmailCheck: function(email){
+        // stays in log out
         console.log(`EmailData: ${email}`);
-        return axios.post("/api/opening/emailcheck", email).catch(err => console.log(`find email error:${err}`))
+        return axios.get("/auth/opening/emailcheck", email).catch(err => console.log(`find email error:${err}`))
+    },
+    getHostNumCheck:function(){
+        return axios.get("/api/hosts/numcnt").catch(err => console.log(`Host num check error:${err}`))
+    },
+    getHostCatNumCheck:function(catagory){
+        return axios.get("/api/hosts/catnumcnt/"+ catagory).catch(err => console.log(`Host Catagory num check error:${err}`))
     },
     deleteUserById: function(id){
-        return axios.delete("'/auth/deleteuser/" + id).catch(err => console.log(`Delete user by id error:${err}`));
+        return axios.delete("/auth/deleteuser/" + id).catch(err => console.log(`Delete user by id error:${err}`));
     },
     tokenValidate: function(token){
         console.log(`Token:${token}`)

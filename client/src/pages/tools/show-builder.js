@@ -226,7 +226,6 @@ function ShowBuild (){
                             <option value="acoustic">Acoustic</option>
                             <option value="edm">E.D.M</option>
                             <option value="dj">DJ</option>
-                            <option value="mixed">Mixed Media</option>
                             <option value="variety">Variety show</option>
                             <option value="educate">Educational</option>
                             <option value="blog">Personal Blog</option>

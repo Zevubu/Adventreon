@@ -72,11 +72,11 @@ function UpHost (){
 
 
     useEffect(() => {
-        console.log(`Profile Update page info: Id:${id}, UserData: ${userData}`)
+        console.log(`Profile Update page info: Id:${id}, UserData: ${JSON.stringify(userData)}`)
         // add a password check here. 
          const fetchHost = async () =>{
             const result = await API.getHostByID(`${id}`)
-            // console.log(`Profile update result ${JSON.stringify(result.data)}`)
+            console.log(`Profile to update result ${JSON.stringify(result.data)}`)
             setHost(result.data[0]);
             setIsPulled(true);
             // register(Host)
@@ -115,6 +115,8 @@ function UpHost (){
   
 
     const onSubmit = (data) =>{
+        const token = window.localStorage.getItem('tokens');
+        console.log(`Auth token test ${token}`);
         // console.log(data)
         // console.log(`entertain:${data.entertain} couns:${data.couns} relig:${data.relig}`)
         // const checkEmail = async () =>{
@@ -125,7 +127,7 @@ function UpHost (){
         // }
         // checkEmail()
 
-        API.updatedProfile(id,{ 
+        API.updatedProfile(id,token,{ 
             "user_name": data.userName,
             "email": data.email,
             "title": data.title,
@@ -147,7 +149,7 @@ function UpHost (){
             {/* <a id="signup"/> */}
             {/* Sign up form */}
             <MarronHeader>
-                <H2>Host Profile creation page!</H2>
+                <H2>Update your profile</H2>
             </MarronHeader>
         {isPulled &&(
             <FormBigBox onSubmit={handleSubmit(onSubmit)}>
@@ -168,7 +170,6 @@ function UpHost (){
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}
 
-                <PT>Update Profile.</PT>
                 {Host &&(
                     <div>
     
