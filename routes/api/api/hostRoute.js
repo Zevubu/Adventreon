@@ -41,13 +41,24 @@ router.route("/catnumcnt/:cat")
     const conn = await connection(dbConfig).catch(e => {});
     const catCount = await query(
       conn,
-      'SELECT COUNT(*) AS total FROM users WHERE catagory=?',
-      [cat]
+      'SELECT COUNT(*) AS total FROM users WHERE user_type="host" AND catagory=? OR user_type="manager" AND mhswitch=1 AND catagory=?',
+      [cat, cat]
     )
     const theCNT = catCount[0]
     // console.log(theCNT)
     res.send(theCNT)
   })
+  // Matches with "/api/hosts/category" 
+router.post("/category", async (req,res) => {
+  const {category} = req.body;
+  const conn = await connection(dbConfig).catch(e => {});
+  const shows = await query(
+    conn,
+    hostQuery.findAllByCat(),
+    [category, category]
+  )
+  res.send(shows)
+})
 
 // Matches with "/api/hosts/music"
 router.route("/music")
@@ -130,7 +141,7 @@ router.route('/all/:id')
         // console.log(`Perf count: ${user.length}`)
         res.status(204)
       }else{
-        console.log(`profile data${JSON.stringify(user)}`)
+        // console.log(`profile data${JSON.stringify(user)}`)
         res.send(user)
       }
   })

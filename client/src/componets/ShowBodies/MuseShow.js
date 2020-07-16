@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import {BigBlock, LookBox,LookBtn,LookTextBox, DivWBorder, SpHeaderA, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-import API from "../../API/showLogOut";
+import API from "../../API/loggedInAPI";
 
 import SliderFiller from "../ShowFiller/slide_filler";
 
@@ -46,7 +46,7 @@ function Shows (){
     useEffect(() => {
         const fetchShowsCNT = async () =>{
             const count = await API.getShowCatNumCheck({
-                'catagory':'music',
+                'category':'music',
             })
             // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
             if(count.data.total !== 0){
@@ -63,7 +63,9 @@ function Shows (){
     
     if(pullSwith){
         const fetchShows = async () =>{
-            const result = await API.getMuseShows()
+            const result = await API.getShowCateg({
+                'category':'music',
+            })
                 // console.log(`Music show data ${result.data}`)
                 setShows(result.data)
             };

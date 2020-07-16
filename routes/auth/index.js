@@ -32,7 +32,11 @@ router.use(
 ) //temph/ managment/ master have access
 
 // managment /auth/managment
-// router.use('/managment', managAuth) //managment/ master have access
+router.use(
+    '/managment', 
+    passport.authenticate('jwt', {session: false}),
+    checkIsInRole(ROLES.Manag), 
+    managAuth) //managment/ master have access
 
 // tempM /auth/tempm
 router.use(

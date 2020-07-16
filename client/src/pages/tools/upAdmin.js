@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from "react";
 import { useParams} from "react-router";
 import {DivWBorder, MarronHeader,BigMarronBtn, H2, PT, PS} from "../../styles/homeStyle"
 import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
-import API from "../../API/HostLogIn";
+import API from "../../API/managmentAPI";
 import { useForm } from 'react-hook-form';
 import {UserInfoContext} from "../../context/heart" 
 import {Link} from 'react-router-dom';
@@ -70,13 +70,15 @@ function UpHost (){
     const [Host, setHost] = useState();
     const[MHSwitch, setMHswitch] = useState()
     // console.log(`profile user data: ${JSON.stringify(Host)}`)
+    const token = window.localStorage.getItem('tokens');
+    console.log(`Auth token test ${token}`);
 
 
     useEffect(() => {
         console.log(`Profile Update page info: Id:${id}, UserData: ${userData}`)
         // add a password check here. 
          const fetchHost = async () =>{
-            const result = await API.getHostByID(`${id}`)
+            const result = await API.getManagByID(`${id}`, token)
             // console.log(`Profile update result ${JSON.stringify(result.data)}`)
             const user = result.data[0]
             setHost(user);
@@ -129,9 +131,6 @@ function UpHost (){
     const OnUpErr = (error) =>{
         console.log(`Upload call Error:${error}`)
     }
-    
-
-  
 
     const onSubmit = (data) =>{
         // console.log(data)
@@ -143,22 +142,22 @@ function UpHost (){
         //     console.log(result)
         // }
         // checkEmail()
-        const token = window.localStorage.getItem('tokens');
-        console.log(`Auth token test ${token}`);
-
-        API.updatedProfile(id,token,{ 
-            "user_name": data.userName,
-            "mhswitch": data.mhswitch,
-            "email": data.email,
-            "title": data.title,
-            "about": data.about, 
-            "p_img": data.pImg,
-            "b_img": data.bImg,
-            "catagory":catType,
-            "payment": data.payment,
-            'patreon': data.patreon,
-            'wp_title': data.wpTitle,
-            'webpage': data.webpage,
+        API.updatedProfile(
+            id,
+            token,
+            { 
+                "user_name": data.userName,
+                "mhswitch": data.mhswitch,
+                "email": data.email,
+                "title": data.title,
+                "about": data.about, 
+                "p_img": data.pImg,
+                "b_img": data.bImg,
+                "catagory":catType,
+                "payment": data.payment,
+                'patreon': data.patreon,
+                'wp_title': data.wpTitle,
+                'webpage': data.webpage,
             }).then(res => OnUpFin(res))
             .catch(err => OnUpErr(err))
     }

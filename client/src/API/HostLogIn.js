@@ -33,7 +33,7 @@ export default {
         return axios(options).catch(err => console.log(`Host update error:${err}`))
     },
     getHostByID: function(id){
-        console.log("/api/hosts/all/" + id)
+        // console.log("/api/hosts/all/" + id)
         return axios.get("/api/hosts/all/" + id).catch(err => console.log(`Find hosts by id error:${err}`));
     },
     videoUpload: function(videoData){

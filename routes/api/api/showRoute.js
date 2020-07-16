@@ -51,19 +51,18 @@ router.post("/subnumcnt", async (req,res) => {
   console.log(`subCatCount:${JSON.stringify(catCount[0])}`)
   res.send(catCount[0])
 })
-
-// Matches with "/api/shows/category/:def" 
-router.get("/category/:def", async (req,res) => {
-  const {def} = req.params;
+// Matches with "/api/shows/category" 
+router.post("/category", async (req,res) => {
+  const {category} = req.body;
   const conn = await connection(dbConfig).catch(e => {});
   const shows = await query(
     conn,
     'SELECT * FROM shows WHERE catagory=?',
-    [def]
+    [category]
   )
   res.send(shows)
 })
-// Matches with "/api/shows/category/:def" 
+// Matches with "/api/shows/subcat" 
 router.post("/subcat", async (req, res) =>{
   const {category, sub_category} = req.body;
   const conn = await connection(dbConfig).catch(e => {});
@@ -74,9 +73,8 @@ router.post("/subcat", async (req, res) =>{
   )
   res.send(shows)
 })
-
-  // Performance routes
-  // Matches with /api/shows/performance
+// Performance routes
+// Matches with /api/shows/performance
 router.route("/performance")
   .get(async (req, res) => {
     const conn = await connection(dbConfig).catch(e => {});

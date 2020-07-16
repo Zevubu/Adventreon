@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react";
 import {BigBlock,LookBtn,LookTextBox,LookBox,DivWBorder,SpHeaderA,H2,HeaderItem} from "../../styles/homeStyle";
 import {Redirect} from "react-router-dom";
-import API from "../../API/showLogOut";
+import API from "../../API/loggedInAPI";
 import SliderFiller from "../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
@@ -45,7 +45,7 @@ function Shows (){
     useEffect(() => {
         const fetchShowsCNT = async () =>{
             const count = await API.getShowCatNumCheck({
-                'catagory':'visual',
+                'category':'visual',
             })
             // console.log(`visual count:${JSON.stringify(count.data.total)}`)
             if(count.data.total !== 0){
@@ -54,19 +54,21 @@ function Shows (){
             }
             else{
                 // console.log(`visual fail check`)
-                return
+                return;
             }
         }
-        fetchShowsCNT() 
+        fetchShowsCNT();
     }, []);
         
     if(pullSwith){
         const fetchShows = async () =>{
-            const result = await API.getVisShows()
+            const result = await API.getShowCateg({
+                'category':'visual',
+            })
                 // console.log(`visual show data ${result.data}`)
                 setShows(result.data)
             };
-        setPullSwitch(false)
+        setPullSwitch(false);
         fetchShows();
     }
 
