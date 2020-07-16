@@ -1,5 +1,5 @@
 const epiQuery ={
-    createNew: () => `INSERT INTO episodes (show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, catagory, sub_catagory, paid, price, epi_date, start_time, end_time, eighteen_plus, verified) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+    createNew: () => `INSERT INTO episodes (show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, category, sub_category, paid, price, epi_date, start_time, end_time, eighteen_plus, verified) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
     findAll: () => `SELECT * FROM episodes`,
     findById: () => `SELECT * FROM episodes WHERE id = ?`,
     findByHost: () => `SELECT * FROM episodes WHERE host_id = ?`,

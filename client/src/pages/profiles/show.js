@@ -17,8 +17,8 @@ import Paper from '@material-ui/core/Paper';
 // about,x
 // img, x
 // img_b, 
-// catagory, 
-// sub_catagory, 
+// category, 
+// sub_category, 
 // host_id, 
 // host_name, x
 // host_img, 
@@ -172,8 +172,8 @@ function Show(){
             credits, 
             show_name, 
             host_name, 
-            catagory, 
-            sub_catagory, 
+            category, 
+            sub_category, 
             paid, 
             price, 
             epi_date, 

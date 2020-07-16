@@ -27,7 +27,7 @@ router.post('/register', async (req, res) => {
         const result = await create(
             conn,
             'users',
-            ['first_name, last_name, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified'],
+            ['first_name, last_name, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified'],
             [first_name, last_name, user_name, 'user', false, dob, email, cryptPass, '', '','', '', '', '', '', '', '', '', '', verified]  
         );
         const [user = {}] = result;

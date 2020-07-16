@@ -27,12 +27,12 @@ router.delete('/deleteuser/:id', async (req, res) => {
 router.route('/update/:id')
   .put(async (req, res) => {
     const { id } = req.params;
-    const {first_name, last_name, user_name, email, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage} = req.body;
+    const {first_name, last_name, user_name, email, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage} = req.body;
     const conn = await connection(dbConfig).catch(e => console.log(e));
     const status = await query(
       conn,
       userQuery.updateById(), 
-      [first_name, last_name, user_name, email, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, id])
+      [first_name, last_name, user_name, email, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, id])
     res.send(status)
   })
 //  Add update profile section here.

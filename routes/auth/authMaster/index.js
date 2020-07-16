@@ -14,7 +14,7 @@ const router = express.Router();
 // /auth/tempm
 router.post('/register', async (req, res) => {
     if (!req.body) return res.sendStatus(400);    
-    const {first_name, last_name, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified} = req.body;
+    const {first_name, last_name, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified} = req.body;
 
         const cryptPass = await cryption.stringEncryption(password);
         // console.log(`cryptPass: ${cryptPass}`) 
@@ -25,8 +25,8 @@ router.post('/register', async (req, res) => {
         const result = await create(
             conn,
             'users',
-            ['first_name, last_name, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified'],
-            [first_name, last_name, user_name, 'master', mhswitch, dob, email, cryptPass, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified]  
+            ['first_name, last_name, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified'],
+            [first_name, last_name, user_name, 'master', mhswitch, dob, email, cryptPass, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified]  
         );
         const [user = {}] = result;
         res.send({
@@ -40,12 +40,12 @@ router.post('/register', async (req, res) => {
 router.route('/update/:id')
   .put(async (req, res) => {
         const { id } = req.params;
-        const {first_name, last_name, user_name, email, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage} = req.body;
+        const {first_name, last_name, user_name, email, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage} = req.body;
         const conn = await connection(dbConfig).catch(e => console.log(e));
         const status = await query(
             conn,
             userQuery.updateById(), 
-            [first_name, last_name, user_name, email, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, id]
+            [first_name, last_name, user_name, email, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, id]
         )
         res.send(status)
   });

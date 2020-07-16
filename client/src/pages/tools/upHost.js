@@ -15,7 +15,7 @@ import {Link} from 'react-router-dom';
 // about, 
 // p_img, 
 // b_img, 
-// catagory, 
+// category, 
 // payment,
 // patreon, 
 // wp_title, 
@@ -134,7 +134,7 @@ function UpHost (){
             "about": data.about, 
             "p_img": data.pImg,
             "b_img": data.bImg,
-            "catagory":catType,
+            "category":catType,
             "payment": data.payment,
             'patreon': data.patreon,
             'wp_title': data.wpTitle,
@@ -206,11 +206,11 @@ function UpHost (){
                             </FormBoxWError> 
                             <FormBoxWError>
                                 <PT>category</PT>
-                                <PS>What catagory do you want you profile listed under</PS>
+                                <PS>What category do you want you profile listed under</PS>
                                 <select 
-                                    name="catagory" 
+                                    name="category" 
                                     onChange={e => setCatType(e.target.value)}
-                                    defaultValue={Host.catagory}
+                                    defaultValue={Host.category}
                                     >
                                     <option>choose one</option>
                                     <option value="music">Music</option>
@@ -219,7 +219,7 @@ function UpHost (){
                                     <option value="life">Life</option>
                                     <option value="spiritual">Spiritual Guidance</option>
                                 </select>
-                                {errors.catagory && errors.catagory.type === "required" &&(<PE>This is required!</PE>)} 
+                                {errors.category && errors.category.type === "required" &&(<PE>This is required!</PE>)} 
                             </FormBoxWError>
                             {/* bulk text area. opition to hide text? */}
                         </FormLittleBox>
