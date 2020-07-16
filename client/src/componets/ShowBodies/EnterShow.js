@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react";
 import {BigBlock,LookBtn,LookTextBox,LookBox,DivWBorder,SpHeaderA,H2,HeaderItem} from "../../styles/homeStyle";
 import {Redirect} from "react-router-dom";
-import API from "../../API/showLogOut";
+import API from "../../API/loggedInAPI";
 import SliderFiller from "../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
@@ -43,15 +43,15 @@ function Shows (){
     useEffect(() => {
         const fetchShowsCNT = async () =>{
             const count = await API.getShowCatNumCheck({
-                'catagory':'performance',
+                'category':'performance',
             })
-            // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
-            if(count.data.total !== 0){
+            console.log(`Performance shows:${JSON.stringify(count)}`)
+            if(count.data.total !== 0 || count.data.total !== undefined){
                 setPullSwitch(true)
-                // console.log(`Performance confirm check`)
+                console.log(`Performance confirm check`)
             }
             else{
-                // console.log(`Performance fail check`)
+                console.log(`Performance fail check`)
                 return
             }
         }
@@ -60,8 +60,10 @@ function Shows (){
         
     if(pullSwith){
         const fetchShows = async () =>{
-            const result = await API.getPrefShows()
-                // console.log(`Performance show data ${result.data}`)
+            const result = await API.getShowCateg({
+                'category':'performance',
+            })
+                console.log(`Performance show data ${result.data}`)
                 setShows(result.data)
             };
         setPullSwitch(false)
