@@ -15,8 +15,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 // about, x
 // img, x
 // img_b, x
-// catagory, x
-// sub_catagory, x
+// category, x
+// sub_category, x
 // host_id,x
 // host_name,x 
 // host_img, x
@@ -45,8 +45,8 @@ function Shows (){
     useEffect(() => {
         const fetchShowsCNT = async () =>{
             const count = await API.getShowSubcatNumCheck({
-                'catagory':'music',
-                'sub_catagory':'blog'
+                'category':'music',
+                'sub_category':'blog'
             })
             // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
             if(count.data.total !== 0){
@@ -115,7 +115,7 @@ function Shows (){
                 
                                     <SliderFiller
                                         key={key} id={show.id} showName={show.show_name} about={show.about}
-                                        imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
+                                        imgP={show.img} imgB={show.img_b} category={show.category} subCatagory={show.sub_category}
                                         hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
                                         patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
                                         booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 

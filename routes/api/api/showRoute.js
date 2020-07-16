@@ -14,12 +14,12 @@ router.route("/all")
     res.send(show)
   })
   .post(async (req, res) =>{
-    const {show_name, show_type, about, img, img_b, catagory, sub_catagory, video_type, v_link, host_id, host_name, host_img, credits, show_date, start_time, end_time, price, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, verified} = req.body;
+    const {show_name, show_type, about, img, img_b, category, sub_category, video_type, v_link, host_id, host_name, host_img, credits, show_date, start_time, end_time, price, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, verified} = req.body;
     const conn = await connection(dbConfig).catch(e => {});
     const show = await query(
       conn,
       showQuery.createNew(),
-      [show_name, show_type, about, img, img_b, catagory, sub_catagory, video_type, v_link, host_id, host_name, host_img, credits, show_date, start_time, end_time, price, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, verified]
+      [show_name, show_type, about, img, img_b, category, sub_category, video_type, v_link, host_id, host_name, host_img, credits, show_date, start_time, end_time, price, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, verified]
     )
     res.send[show]
   });
@@ -28,11 +28,11 @@ router.route("/all")
 router.route("/catnumcnt/:category")
   .post( async (req,res) => {
     const {category} = req.params;
-    console.log(`Show catagory:${category}`);
+    console.log(`Show category:${category}`);
     const conn = await connection(dbConfig).catch(e => {});
     const catCount = await query(
       conn,
-      'SELECT COUNT(*) AS total FROM shows WHERE catagory=?',
+      'SELECT COUNT(*) AS total FROM shows WHERE category=?',
       [category]
     )
     res.send(catCount)
@@ -41,11 +41,11 @@ router.route("/catnumcnt/:category")
 // Matches with "/api/shows/subnumcnt" 
 router.post("/subnumcnt", async (req,res) => {
   const {category, sub_category} = req.body;
-  console.log(`show req: ${JSON.stringify(req.body)} category:${catagory}, sub_category:${sub_catagory}`);
+  console.log(`show req: ${JSON.stringify(req.body)} category:${category}, sub_category:${sub_category}`);
   const conn = await connection(dbConfig).catch(e => {});
   const catCount = await query(
     conn,
-    'SELECT count(*) AS total FROM shows WHERE catagory=? and sub_catagory=?',
+    'SELECT count(*) AS total FROM shows WHERE category=? and sub_category=?',
     [category, sub_category]
   )
   console.log(`subCatCount:${JSON.stringify(catCount[0])}`)
@@ -57,7 +57,7 @@ router.post("/category", async (req,res) => {
   const conn = await connection(dbConfig).catch(e => {});
   const shows = await query(
     conn,
-    'SELECT * FROM shows WHERE catagory=?',
+    'SELECT * FROM shows WHERE category=?',
     [category]
   )
   res.send(shows)
@@ -68,7 +68,7 @@ router.post("/subcat", async (req, res) =>{
   const conn = await connection(dbConfig).catch(e => {});
   const shows = await query(
     conn,
-    'SELECT * FROM shows WHERE catagory=? and sub_catagory=?',
+    'SELECT * FROM shows WHERE category=? and sub_category=?',
     [category, sub_category]
   )
   res.send(shows)

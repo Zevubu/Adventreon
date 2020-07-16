@@ -15,12 +15,12 @@ router.route("/all")
       res.send(user)
     })
     .post(async (req, res) =>{
-      const {show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, catagory, sub_catagory, paid, price, epi_date, start_time, end_time, eighteen_plus, verified} = req.body;
+      const {show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, category, sub_category, paid, price, epi_date, start_time, end_time, eighteen_plus, verified} = req.body;
       const conn = await connection(dbConfig).catch(e => {});
       const user = await query(
         conn,
         epiQuery.createNew(),
-        [show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, catagory, sub_catagory, paid, price, epi_date, start_time, end_time, eighteen_plus, verified]
+        [show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, category, sub_category, paid, price, epi_date, start_time, end_time, eighteen_plus, verified]
       )
       res.send[user]
     }); // from .post to here must remove and reconect in host Routes

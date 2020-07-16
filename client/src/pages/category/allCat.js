@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react";
 import {DivWBorder, ProviderBox, BigBlock} from "../../styles/homeStyle"
 import API from "../../API/loggedOutAPI";
 import HostFiller from "../../componets/HostFiller/index"
-import ShowFiller from "../../componets/CatagoryFiller/show_filler"
+import ShowFiller from "../../componets/CategoryFiller/show_filler"
 import { Logo } from "../../styles/componentStyles";
 
 function AllPage (){
@@ -46,7 +46,7 @@ function AllPage (){
                 {Shows.map((show, key) => (
                     <ShowFiller
                     key={key} id={show.id} showName={show.show_name} about={show.about} pImg={show.img} bImg={show.b_img}
-                    catagory={show.catagory} subCatagory={show.sub_catagory} hostId={show.host_id} 
+                    category={show.category} subCatagory={show.sub_category} hostId={show.host_id} 
                     hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
                     patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage}
                     eighteenPlus={show.eighteen_plus} booked={show.booked} 

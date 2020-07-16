@@ -14,7 +14,7 @@ import {useAuth} from '../../context/heart'
 // about, 
 // p_img, 
 // b_img, 
-// catagory, 
+// category, 
 // payment,
 // patreon, 
 // wp_title, 
@@ -54,7 +54,7 @@ function SignUp (){
                 "about": data.about, 
                 "p_img": data.pImg,
                 "b_img": data.bImg,
-                "catagory": catType,
+                "category": catType,
                 "payment": data.paypal,
                 'patreon': data.patreon,
                 'wp_title': data.wpTitle,
@@ -162,8 +162,8 @@ function SignUp (){
                 <FormLittleBox>
                     <FormBoxWError>
                         <PT>category</PT>
-                        <PS>What catagory do you want you profile listed under</PS>
-                        <select name="catagory" onChange={e => setCatType(e.target.value)}>
+                        <PS>What category do you want you profile listed under</PS>
+                        <select name="category" onChange={e => setCatType(e.target.value)}>
                             <option>choose one</option>
                             <option value="music">Music</option>
                             <option value="performance">Performance Art</option>
@@ -171,7 +171,7 @@ function SignUp (){
                             <option value="life">Life</option>
                             <option value="spiritual">Spiritual Guidance</option>
                         </select>
-                        {errors.catagory && errors.catagory.type === "required" &&(<PE>This is required!</PE>)} 
+                        {errors.category && errors.category.type === "required" &&(<PE>This is required!</PE>)} 
                     </FormBoxWError>
                     <FormBoxWError>
                         <PT>Profile Image*</PT>

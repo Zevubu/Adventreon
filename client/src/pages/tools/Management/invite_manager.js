@@ -26,7 +26,7 @@ function Invite (){
             "about": '', 
             "p_img": '',
             "b_img": '',
-            "catagory":'',
+            "category":'',
             "payment": '',
             'patreon': '',
             'wp_title': '',

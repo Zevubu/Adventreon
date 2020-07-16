@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 // import Paper from '@material-ui/core/Paper';
 
 // key={key} id={show.id} showName={show.show_name} about={show.about} pImg={show.img} bImg={show.b_img}
-// catagory={show.catagory} subCatagory={show.sub_catagory} hostId={show.host_id} 
+// category={show.category} subCatagory={show.sub_category} hostId={show.host_id} 
 // hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
 // patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage}
 // eighteenPlus={show.eighteen_plus} booked={show.booked} 

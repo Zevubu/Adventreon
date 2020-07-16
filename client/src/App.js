@@ -31,7 +31,7 @@ import MusicPage from "./pages/home/music-home"
 import EnterPage from './pages/home/perf-home';
 import LifePage from './pages/home/life-home';
 import SpirtPage from './pages/home/sp-home';
-import AllCatPage from './pages/catagory/allCat';
+import AllCatPage from './pages/category/allCat';
 
 // tools
 import InviteHost from './pages/tools/Management/invite_host';

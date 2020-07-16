@@ -13,8 +13,8 @@ import {Link} from 'react-router-dom';
 // about, 
 // img, 
 // img_b, 
-// catagory, 
-// sub_catagory, 
+// category, 
+// sub_category, 
 // video_type, 
 // v_link, 
 // host_id, 
@@ -95,8 +95,8 @@ function ShowBuild (){
             "about": data.about,
             "img": data.pImg,
             "img_b": data.bImg,
-            "catagory": catType,
-            "sub_catagory": data.subcatagory,
+            "category": catType,
+            "sub_category": data.subcategory,
             "video_type":VideoType,
             "v_link":video||data.videoLink,
             "host_id": userData.id, 
@@ -186,7 +186,7 @@ function ShowBuild (){
             <PT>What WebPage this show belong in?</PT>
             <FormBoxWError>
                         <PT>category</PT>
-                        <select name="catagory" onChange={e => setCatType(e.target.value)}>
+                        <select name="category" onChange={e => setCatType(e.target.value)}>
                             <option>choose one</option>
                             <option value="music">Music</option>
                             <option value="performance">Performance Art</option>
@@ -221,7 +221,7 @@ function ShowBuild (){
                 {catType==="music" &&(
                     <FormBoxWError>
                         <PT>Sub-category</PT>
-                        <select name="subcatagory" ref ={register({required: true})}>
+                        <select name="subcategory" ref ={register({required: true})}>
                             <option>choose one</option>
                             <option value="acoustic">Acoustic</option>
                             <option value="edm">E.D.M</option>
@@ -237,7 +237,7 @@ function ShowBuild (){
                 {catType==="performance" &&(
                     <FormBoxWError>
                         <PT>Sub-category</PT>
-                        <select name="subcatagory"  ref ={register({required: true})}>
+                        <select name="subcategory"  ref ={register({required: true})}>
                             <option>choose one</option>
                             <option value="story">Story arched</option>
                             <option value="play">Play</option>
@@ -253,7 +253,7 @@ function ShowBuild (){
                 {catType==="visual" &&(
                     <FormBoxWError>
                         <PT>Sub-category</PT>
-                        <select name="subcatagory"  ref ={register({required: true})}>
+                        <select name="subcategory"  ref ={register({required: true})}>
                             <option>choose one</option>
                             <option value="analog">Analog</option>
                             <option value="digital">Digital</option>
@@ -269,7 +269,7 @@ function ShowBuild (){
                 {catType==="life" &&(
                     <FormBoxWError>
                         <PT>Sub-category</PT>
-                        <select name="subcatagory"  ref ={register({required: true})}>
+                        <select name="subcategory"  ref ={register({required: true})}>
                             <option>choose one</option>
                             <option value="counseling">Counseling</option>
                             <option value="cooking">Cooking</option>
@@ -285,7 +285,7 @@ function ShowBuild (){
                 {catType==="spiritual" &&(
                     <FormBoxWError>
                         <PT>Sub-category</PT>
-                        <select name="subcatagory"  ref ={register}>
+                        <select name="subcategory"  ref ={register}>
                             <option>choose one</option>
                             <option value="guide">Guidance/Sermon/Prayer</option>
                             <option value="spells">Spells</option>

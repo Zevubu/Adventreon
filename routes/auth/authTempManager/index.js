@@ -14,7 +14,7 @@ const router = express.Router();
 // /auth/tempm/register
 router.post('/register', async (req, res) => {
     if (!req.body) return res.sendStatus(400);    
-    const {first_name, last_name, user_name,mhswitch, dob, email, password, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified} = req.body;
+    const {first_name, last_name, user_name,mhswitch, dob, email, password, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified} = req.body;
 
         const cryptPass = await cryption.stringEncryption(password);
         // console.log(`cryptPass: ${cryptPass}`) 
@@ -25,8 +25,8 @@ router.post('/register', async (req, res) => {
         const result = await create(
             conn,
             'users',
-            ['first_name, last_name, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified'],
-            [first_name, last_name, user_name, 'manager', mhswitch, dob, email, cryptPass, title, about, p_img, b_img, catagory, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified]  
+            ['first_name, last_name, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified'],
+            [first_name, last_name, user_name, 'manager', mhswitch, dob, email, cryptPass, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified]  
         );
         const [user = {}] = result;
         res.send({

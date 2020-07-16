@@ -37,11 +37,11 @@ router.route("/numcnt")
 router.route("/catnumcnt/:cat")
   .get( async (req,res) => {
     const {cat} = req.params;
-    // console.log(`Host catagory:${cat}`);
+    // console.log(`Host category:${cat}`);
     const conn = await connection(dbConfig).catch(e => {});
     const catCount = await query(
       conn,
-      'SELECT COUNT(*) AS total FROM users WHERE user_type="host" AND catagory=? OR user_type="manager" AND mhswitch=1 AND catagory=?',
+      'SELECT COUNT(*) AS total FROM users WHERE user_type="host" AND category=? OR user_type="manager" AND mhswitch=1 AND category=?',
       [cat, cat]
     )
     const theCNT = catCount[0]

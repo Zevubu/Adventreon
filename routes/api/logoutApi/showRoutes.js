@@ -9,11 +9,11 @@ const showQuery = require("../../../query_builders/show-query");
 router.route("/catnumcnt/:category")
   .post( async (req,res) => {
     const {category} = req.params;
-    console.log(`Show catagory:${category}`);
+    console.log(`Show category:${category}`);
     const conn = await connection(dbConfig).catch(e => {});
     const catCount = await query(
       conn,
-      'SELECT COUNT(*) AS total FROM shows WHERE catagory=?',
+      'SELECT COUNT(*) AS total FROM shows WHERE category=?',
       [category]
     )
     res.send(catCount)
@@ -22,11 +22,11 @@ router.route("/catnumcnt/:category")
 // Matches with "/loapi/shows/subnumcnt" 
 router.post("/subnumcnt", async (req,res) => {
   const {category, sub_category} = req.body;
-  console.log(`show req: ${JSON.stringify(req.body)} category:${catagory}, sub_category:${sub_catagory}`);
+  console.log(`show req: ${JSON.stringify(req.body)} category:${category}, sub_category:${sub_category}`);
   const conn = await connection(dbConfig).catch(e => {});
   const catCount = await query(
     conn,
-    'SELECT count(*) AS total FROM shows WHERE catagory=? and sub_catagory=?',
+    'SELECT count(*) AS total FROM shows WHERE category=? and sub_category=?',
     [category, sub_category]
   )
   console.log(`subCatCount:${JSON.stringify(catCount[0])}`)

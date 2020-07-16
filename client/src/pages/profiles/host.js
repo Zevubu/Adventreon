@@ -124,7 +124,7 @@ function HostPage(){
     
                         <SliderFiller
                             key={key} id={show.id} showName={show.show_name} about={show.about}
-                            imgP={show.img} imgB={show.img_b} catagory={show.catagory} subCatagory={show.sub_catagory}
+                            imgP={show.img} imgB={show.img_b} category={show.category} subCatagory={show.sub_category}
                             hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
                             patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
                             booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
