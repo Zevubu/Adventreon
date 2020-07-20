@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react";
 import { BigBlock,LookBtn,LookTextBox,LookHostBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 // import {Logo} from "../../styles/componentStyles";
-import API from "../../../API/loggedOutAPI";
+import API from "../../../API/loggedInAPI";
 
 import SliderFiller from "../../HostFiller/slide_filler";
 
@@ -41,7 +41,9 @@ function Hosts (){
 
     if(pullSwith){
         const fetchHosts = async () =>{
-            const result = await API.getMuseHosts()
+            const result = await API.getHostByCat({
+                'category':'music',
+            })
             // console.log(`Muse pull switch check`)
             setHosts(result.data)
         };

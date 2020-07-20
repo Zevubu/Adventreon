@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock,LookBtn,LookTextBox,LookBox,LookHostBox, MarronHeader, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
+import { BigBlock,LookBtn,LookTextBox,LookHostBox, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 // import {Logo} from "../../styles/componentStyles";
 import API from "../../API/loggedOutAPI";

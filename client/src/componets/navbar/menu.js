@@ -43,7 +43,7 @@ export default function SimpleMenu() {
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/performance"><MenuItem onClick={handleClose}>Performance</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435' }} to="/life"><MenuItem onClick={handleClose}>Life</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/spirtualrespite"><MenuItem onClick={handleClose}>Spirtual Respite</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#353435' }} to="/allcat"><MenuItem onClick={handleClose}>All</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435' }} to="/allcat"><MenuItem onClick={handleClose}>Mix and Match</MenuItem></Link>
       </Menu>
     </div>
   );

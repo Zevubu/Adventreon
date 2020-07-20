@@ -4,7 +4,15 @@ const query = require('../../../controllers/query');
 const dbConfig = require('../../../dbConfig');
 const showQuery = require("../../../query_builders/show-query");
 
-// /api/hrequest/shows/new
+// Matches with /api/hreq/shows/host/:id
+router.route('/host/:id')
+  .get(async (req, res) => {
+      const { id } = req.params;
+      const conn = await connection(dbConfig).catch(e => {});
+      const show = await query(conn, showQuery.findByHostFull(), [id])
+      res.send(show)
+  })
+// /api/hreq/shows/new
 router.route("/new")
     .post(async (req, res) =>{
         const {show_name, show_type, about, img, img_b, category, sub_category, video_type, v_link, host_id, host_name, host_img, credits, show_date, start_time, end_time, price, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, verified} = req.body;
@@ -16,7 +24,7 @@ router.route("/new")
         )
         res.send[user]
     });
-// /api/hrequest/shows/update/:id
+// /api/hreq/shows/update/:id
 router.route('/update/:id')
     .put(async (req, res) => {
         const { id } = req.params;
@@ -26,7 +34,7 @@ router.route('/update/:id')
         const status = await query(conn, showQuery.updateById, [values,id])
         res.send(status)
     })
-// /api/hrequest/shows/delete/:id
+// /api/hreq/shows/delete/:id
 router.route('/delete/:id')  
     .delete(async (req, res) => {
         const { id } = req.params;

@@ -168,7 +168,7 @@ function UpHost (){
             {/* <a id="signup"/> */}
             {/* Sign up form */}
             <MarronHeader>
-                <H2>Host Profile creation page!</H2>
+                <H2>Update Your profile</H2>
             </MarronHeader>
         {isPulled &&(
             <FormBigBox onSubmit={handleSubmit(onSubmit)}>

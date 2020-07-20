@@ -30,7 +30,7 @@ export default {
         return axios(options).catch(err => console.log(`Account creation error:${err}`));
     },
     getUserByID: function(id){
-        return axios.get("/api/hosts/all/" + id).catch(err => console.log(`Find hosts by id error:${err}`));
+        return axios.get("/api/req/hosts/all/" + id).catch(err => console.log(`Find hosts by id error:${err}`));
     },
     deleteUserById: function(id){
         return axios.delete("'/auth/deleteuser/" + id).catch(err => console.log(`Delete user by id error:${err}`));

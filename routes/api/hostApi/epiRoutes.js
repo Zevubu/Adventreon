@@ -4,7 +4,7 @@ const query = require('../../../controllers/query');
 const dbConfig = require('../../../dbConfig');
 const epiQuery = require("../../../query_builders/epi-query");
 
-// /api/hrequest/episodes/new
+// /api/hreq/episodes/new
 router.route("/new")
     .post(async (req, res) =>{
       const {show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, category, sub_category, paid, price, epi_date, start_time, end_time, eighteen_plus, verified} = req.body;
@@ -17,7 +17,7 @@ router.route("/new")
       res.send[user]
     });
 
-// /api/hrequest/episodes/update/:id
+// /api/hreq/episodes/update/:id
 router.route('/update/:id')
   .put(async (req, res) => {
     const { id } = req.params;

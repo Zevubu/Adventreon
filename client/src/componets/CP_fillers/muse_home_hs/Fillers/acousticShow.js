@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { BigBlock,LookBtn,LookTextBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-import API from "../../../../API/showLogOut";
+import API from "../../../../API/loggedInAPI";
 
 import SliderFiller from "../../../ShowFiller/slide_filler";
 
@@ -62,7 +62,10 @@ function Shows (){
 
     if(pullSwith){
         const fetchShows = async () =>{
-            const result = await API.getMuseAcuShows()
+            const result = await API.getShowSubcat({
+                'category':'music',
+                'sub_category':'acoustic'
+            })
                 // console.log(`Music acoustic show data ${result.data}`)
                 setShows(result.data)
             };

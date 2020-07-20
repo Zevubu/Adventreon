@@ -41,12 +41,14 @@ import UpHost from './pages/tools/upHost';
 import UpAdmin from './pages/tools/upAdmin';
 import ShowBuilder from './pages/tools/show-builder';
 import AddEpisode from './pages/tools/add_episode';
-import ManegSignUp from './pages/tools/Management/maneg-sign-up' 
+import ShowUpdater from './pages/tools/upDshows';
+import EpiUpdater from './pages/tools/upDEpis';
+import ManegSignUp from './pages/tools/Management/maneg-sign-up';
 
 
-import HostProfile from './pages/profiles/host'
-import ShowProfile from './pages/profiles/show'
-import EpisodeProfile from './pages/profiles/episode'
+import HostProfile from './pages/profiles/host';
+import ShowProfile from './pages/profiles/show';
+import EpisodeProfile from './pages/profiles/episode';
 // import Show from './pages/profiles/show';
 
 function App() {
@@ -220,6 +222,10 @@ function App() {
                           <ManagmentRoute exact path="/pupm/:id" state={{value:userData}} component={UpAdmin} />
                           <ManagmentRoute exact path="/showbuilderm" state={{value:userData}} component={ShowBuilder}/>
                           <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
+                          <ManagmentRoute exact path="/updateshowm" state={{value:userData}} component={ShowUpdater}/>
+                          <ManagmentRoute exact path="/updateepisodem"  state={{value:userData}} component={EpiUpdater}/>
+                          <HostRoute exact path="/updateshow" state={{value:userData}} component={ShowUpdater}/>
+                          <HostRoute exact path="/updateepisode"  state={{value:userData}} component={EpiUpdater}/>
                           <HostRoute path="/puph/:id" state={{value:userData}}  component={UpHost}/>
                           <HostRoute path="/profile/:id" state={{value:userData}}  component={profile}/>
                           <HostRoute exact path="/showbuilder" component={ShowBuilder}/>

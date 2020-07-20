@@ -3,7 +3,7 @@ import { BigBlock} from "../../../styles/homeStyle";
 // import { Redirect } from "react-router-dom";
 // , { useState} 
 
-import LiveShows from './Fillers/LiveShow';
+import VarietyShows from './Fillers/VarietyShow';
 import AcouShows from './Fillers/acousticShow';
 import EdmShows from './Fillers/EdmShow';
 import EduShows from './Fillers/EduShow';
@@ -18,7 +18,7 @@ function Shows (){
     return(
         <BigBlock>
             <div>
-                <LiveShows/>
+                <VarietyShows/>
             </div>
             <div>
                 <AcouShows/>
