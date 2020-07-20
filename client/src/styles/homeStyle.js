@@ -80,7 +80,7 @@ const H3T = styled(H3)`
 color: rgb(115, 162, 175);
 `
 const PT = styled(P)`
-color: rgb(115, 162, 175);
+color: ${props => props.color || "rgb(115, 162, 175)"};
 `
 const PG = styled(P)`
 color: rgb(140, 140, 140);

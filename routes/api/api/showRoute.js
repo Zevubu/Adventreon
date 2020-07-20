@@ -6,7 +6,7 @@ const showQuery = require("../../../query_builders/show-query");
 
 // router.get()
 //creating a provider profile needs to be restricted. May need to apply "AND userid = {currentuser} OR Management = true"
-// Matches with "/api/shows/all
+// Matches with "/api/req/shows/all 
 router.route("/all")
   .get(async (req, res) => {
     const conn = await connection(dbConfig).catch(e => {});
@@ -24,7 +24,7 @@ router.route("/all")
     res.send[show]
   });
 
-// Matches with "/api/shows/catnumcnt/cat" 
+// Matches with "/api/req/shows/catnumcnt/cat" 
 router.route("/catnumcnt/:category")
   .post( async (req,res) => {
     const {category} = req.params;
@@ -38,7 +38,7 @@ router.route("/catnumcnt/:category")
     res.send(catCount)
   })
 
-// Matches with "/api/shows/subnumcnt" 
+// Matches with "/api/req/shows/subnumcnt" 
 router.post("/subnumcnt", async (req,res) => {
   const {category, sub_category} = req.body;
   console.log(`show req: ${JSON.stringify(req.body)} category:${category}, sub_category:${sub_category}`);
@@ -51,7 +51,7 @@ router.post("/subnumcnt", async (req,res) => {
   console.log(`subCatCount:${JSON.stringify(catCount[0])}`)
   res.send(catCount[0])
 })
-// Matches with "/api/shows/category" 
+// Matches with "/api/req/shows/category" 
 router.post("/category", async (req,res) => {
   const {category} = req.body;
   const conn = await connection(dbConfig).catch(e => {});
@@ -73,294 +73,9 @@ router.post("/subcat", async (req, res) =>{
   )
   res.send(shows)
 })
-// Performance routes
-// Matches with /api/shows/performance
-router.route("/performance")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllPref())
-    res.send(show)
-  }) 
-// Matches with /api/shows/performance/story
-router.route("/performance/story")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllPrefStor())
-    res.send(show)
-  }) 
-// Matches with /api/shows/performance/play
-router.route("/performance/play")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllPrefPlay())
-    res.send(show)
-  }) 
-// Matches with /api/shows/performance/play
-router.route("/performance/mixed")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllPrefMixed())
-    res.send(show)
-  }) 
-// Matches with /api/shows/performance/play
-router.route("/performance/variety")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllPrefVar())
-    res.send(show)
-  }) 
-// Matches with /api/shows/performance/educate
-router.route("/performance/educate")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllPrefEdu())
-    res.send(show)
-  })
-// Matches with /api/shows/performance/educate
-router.route("/performance/blog")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllPrefBlog())
-    res.send(show)
-  })  
-
-// Music Routes
-// Matches with /api/shows/music
-router.route("/music")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllMuse())
-    res.send(show)
-  }) 
-// Matches with /api/shows/music/acoustic
-router.route("/music/acoustic")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllMuseAcu())
-    res.send(show)
-  })
-// Matches with /api/shows/music/edm
-router.route("/music/edm")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllMuseEdm())
-    res.send(show)
-  })  
-// Matches with /api/shows/music/dj
-router.route("/music/dj")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllMuseDj())
-    res.send(show)
-  }) 
-// Matches with /api/shows/music/mixed
-router.route("/music/mixed")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllMuseMix())
-    res.send(show)
-  }) 
-// Matches with /api/shows/music/variety
-router.route("/music/variety")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllMuseVar())
-    res.send(show)
-  }) 
-// Matches with /api/shows/music/educate
-router.route("/music/educate")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllMuseEdu())
-    res.send(show)
-  }) 
-// Matches with /api/shows/music/blog
-router.route("/music/blog")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllMuseBlog())
-    res.send(show)
-  }) 
-
-// Visual routes
-// Matches with /api/shows/visual
-router.route("/visual")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllVis())
-    res.send(show)
-  })
-// Matches with /api/shows/visual/analog
-router.route("/visual/analog")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllVisAna())
-    res.send(show)
-  })
-// Matches with /api/shows/visual/digital
-router.route("/visual/digital")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllVisDig())
-    res.send(show)
-  })  
-// Matches with /api/shows/visual/mixed
-router.route("/visual/mixed")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllVisMix())
-    res.send(show)
-  })  
-// Matches with /api/shows/visual/variety
-router.route("/visual/variety")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllVisVar())
-    res.send(show)
-  })  
-// Matches with /api/shows/visual/educate
-router.route("/visual/educate")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllVisEdu())
-    res.send(show)
-  })  
-// Matches with /api/shows/visual/blog
-router.route("/visual/blog")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllVisBlog())
-    res.send(show)
-  })    
-// Life Routes
-// Matches with /api/shows/life
-router.route("/life")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllLife())
-    res.send(show)
-  }) 
-// Matches with /api/shows/life/counseling
-router.route("/life/counseling")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllLifeCouns())
-    res.send(show)
-  }) 
-// Matches with /api/shows/life/cooking
-router.route("/life/cooking")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllLifeCook())
-    res.send(show)
-  }) 
-// Matches with /api/shows/life/counseling
-router.route("/life/lifehack")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllLifeLH())
-    res.send(show)
-  }) 
-// Matches with /api/shows/life/variety
-router.route("/life/variety")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllLifeVar())
-    res.send(show)
-  }) 
-// Matches with /api/shows/life/educate
-router.route("/life/educate")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllLifeEdu())
-    res.send(show)
-  }) 
-// Matches with /api/shows/life/blog
-router.route("/life/blog")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllLifeBlog())
-    res.send(show)
-  }) 
-
-// Spiritual Routes
-// Matches with /api/shows/spiritual
-router.route("/spiritual")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllSpirt())
-    res.send(show)
-  }) 
-// Matches with /api/shows/spiritual/guide
-router.route("/spiritual/guide")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllSpirtGuid())
-    res.send(show)
-  }) 
-// Matches with /api/shows/spiritual/spells
-router.route("/spiritual/spells")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllSpirtSpell())
-    res.send(show)
-  }) 
-// Matches with /api/shows/spiritual/readings
-router.route("/spiritual/readings")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllSpirtRead())
-    res.send(show)
-  }) 
-// Matches with /api/shows/spiritual/variety
-router.route("/spiritual/variety")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllSpirtVar())
-    res.send(show)
-  }) 
-// Matches with /api/shows/spiritual/educate
-router.route("/spiritual/educate")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllSpirtEdu())
-    res.send(show)
-  }) 
-// Matches with /api/shows/spiritual/blog
-router.route("/spiritual/blog")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllSpirtBlog())
-    res.send(show)
-  }) 
 
 
-// Matches with "/api/shows/entertain
-router.route("/entertain")
-  .get(async (req, res) => {
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(conn, showQuery.findAllEnt())
-    res.send(show)
-  }) 
-
-
-
-// // Matches with "/api/shows/couns
-// router.route("/couns")
-//   .get(async (req, res) => {
-//     const conn = await connection(dbConfig).catch(e => {});
-//     const show = await query(conn, showQuery.findAllCouns())
-//     res.send(show)
-//   })
-// // Matches with "/api/shows/relig
-// router.route("/relig")
-//   .get(async (req, res) => {
-//     const conn = await connection(dbConfig).catch(e => {});
-//     const show = await query(conn, showQuery.findAllRelig())
-//     res.send(show)
-//   }) 
-
-// Matches with "/api/shows/host/:id"
+// Matches with /api/req/shows/host/:id
 router.route('/host/:id')
   .get(async (req, res) => {
       const { id } = req.params;
@@ -369,7 +84,7 @@ router.route('/host/:id')
       res.send(show)
   })
 
-// Matches with "/api/shows/find/:id"
+// Matches with "/api/req/shows/find/:id"
 router.route('/find/:id')
   .get(async (req, res) => {
       const { id } = req.params;
@@ -378,7 +93,7 @@ router.route('/find/:id')
       res.send(show)
   })
 
-  // Matches with "/api/shows/find/:id"
+  // Matches with "/api/req/shows/epis/:id"
   router.route('/epis/:id')
   .get(async (req, res) => {
       const { id } = req.params;

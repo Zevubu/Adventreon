@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from "react";
-import {DivWBorder, MarronHeader, MarronBtn, BigMarronBtn, H2, PT, PS} from "../../styles/homeStyle"
+import {DivWBorder, MarronHeader,BigMarronBtn, H2, PT, PS} from "../../styles/homeStyle"
 import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
 import API from "../../API/HostLogIn";
 import {useForm} from 'react-hook-form';
@@ -32,17 +32,20 @@ import VimeoUp from '../../vimeo-upload/index'
 function EpiAdd (){
     const { userData } = useContext(UserInfoContext);
     // console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
-    const[Show, setShow] = useState();;
+    const[Show, setShow] = useState();
     const[shows, setShows] = useState([]);
     const[VideoType, setVideoType] = useState();
     const[paid, setPaid] = useState(false);
     const[video, setVideo] = useState();
+    const[compSub, setCompSub]= useState(false)
     const { register, handleSubmit, watch, errors } = useForm();
     
     const EpiReset = (re)=>{
         setVideoType()
         setVideo();
         setPaid(false)
+        setCompSub(true)
+        setShow()
     }
     
     useEffect(() => {
@@ -58,6 +61,7 @@ function EpiAdd (){
     //     console.log(Show)
     //     console.log(shows[Show].id)
     // };
+    const token = window.localStorage.getItem('tokens');
     const PaidOnChange = (data, e) =>{
         console.log("Paid function call.")
         
@@ -75,36 +79,38 @@ function EpiAdd (){
         };
     };
     
+    const oneMore = ()=>{
+        setCompSub(false)
+    }
+
     const onShowSubmit = (data, e) =>{
         console.log(data);
         console.log(paid);
-        const EpiUploader = async ()=>{
-            const BuildEpi = await API.createEpisode({ 
-            "show_id":shows[Show].id,
-            "user_id":userData.id,
-            "epi_name": data.epiName,
-            "about": data.about,
-            "img": data.Img,
-            "video_type":VideoType,
-            'v_link':video,
-            "credits":data.credits,
-            "show_name":shows[Show].show_name,
-            "host_name":userData.user_name,
-            "category": shows[Show].category,
-            "sub_category":shows[Show].sub_category,
-            "paid": paid,
-            "price": data.price,
-            "epi_data":"2020-08-23",
-            "start_time":'00:30:00',
-            "end_time": '01:30:00',
-            "eighteen_plus":false, 
-            "verified":true,
+        const EpiUploader = ()=>{
+            API.createEpisode(token,{ 
+                "show_id":shows[Show].id,
+                "user_id":userData.id,
+                "epi_name": data.epiName,
+                "about": data.about,
+                "img": data.Img,
+                "video_type":VideoType,
+                'v_link':video,
+                "credits":data.credits,
+                "show_name":shows[Show].show_name,
+                "host_name":userData.user_name,
+                "category": shows[Show].category,
+                "sub_category":shows[Show].sub_category,
+                "paid": paid,
+                "price": data.price,
+                "epi_data":"2020-08-23",
+                "start_time":'00:30:00',
+                "end_time": '01:30:00',
+                "eighteen_plus":false, 
+                "verified":true,
             })
             .then(e.target.reset())
             .then(EpiReset())
             .catch(err => console.log(err));
-
-            BuildEpi();
         };
         if(VideoType === "vimeo"){
             let videoHold = data.videoLink;
@@ -154,8 +160,9 @@ function EpiAdd (){
             <H2>Episode creation page</H2>
         </MarronHeader>
         <FormBigBox>
-        
+            <PT color="red">Add episodes in order you would like them to show up.</PT>
          {/* DONT TOUCH VVV */}
+         <br></br>
             <PT>What show does this episode belong to?</PT>
             <FormBoxWError>
                 <PT>Select a show</PT>
@@ -171,9 +178,16 @@ function EpiAdd (){
             </FormBoxWError>
 
         </FormBigBox>
+        {compSub && (
+            <FormBoxWError>
+                <H2 color="red">EPISODE CREATED!</H2>
+                <H2 color="red">You can add more episodes if you like</H2>
+                <BigMarronBtn onClick={oneMore}>Add another Episode.</BigMarronBtn>
+            </FormBoxWError>
+        )}
         {/* form starts here */}
     
-        {Show && ( 
+        {Show && !compSub && ( 
             <FormBigBox onSubmit={handleSubmit(onShowSubmit)}>
                 {/* <p>{`show ID: ${JSON.stringify(Show)}`}</p> */}
                 {/* choose all that apply inluding "I'm not sure" */}
@@ -245,6 +259,7 @@ function EpiAdd (){
                             name="price"
                             min='0' 
                             max='500000'
+                            defaultValue = "0"
                             onChange = {e=> PaidOnChange(e.target.value)}
                             ref ={register({required: true})}
                         /> 
@@ -277,7 +292,7 @@ function EpiAdd (){
                     {/* contact info email... Name? DOB number */}
                     {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
-                        <PT>Double click to submit episode</PT>
+                        <PT color="red">Double click to submit episode</PT>
                         <Btn type="submit" value="Submit">Submit Episode</Btn>
                         {/* disabled={disable} */}
                     </FormBox>

@@ -43,7 +43,9 @@ export default function SimpleMenu() {
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/inviteh"><MenuItem onClick={handleClose}>Invite Host</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/hostsum/" + userData.id}><MenuItem onClick={handleClose}>Make a Host</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/showbuilderm"><MenuItem onClick={handleClose}>Make a Show</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/episodebuilderm"><MenuItem onClick={handleClose}>Make an episode</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/updateshowm"><MenuItem onClick={handleClose}>Update a Show</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/episodebuilderm"><MenuItem onClick={handleClose}>Add an episode</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/updateepisodem"><MenuItem onClick={handleClose}>Update an episode</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/invitem"><MenuItem onClick={handleClose}>Invite Manager</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/manegsu/" + userData.id}><MenuItem onClick={handleClose}>Make a Manager</MenuItem></Link>
         {/* <Link style={{ textDecoration: 'none' ,color: '#353435' }} to={"/profile/" + userData.id}><MenuItem onClick={handleClose}>Your Profile</MenuItem></Link> */}

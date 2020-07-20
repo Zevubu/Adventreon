@@ -117,7 +117,7 @@ function HostPage(){
                 offset={50}
                 slidesPerScroll={scNum}
                 arrows
-                infinite
+                // infinite
                 dots
             >
                 {shows.map((show, key) => (

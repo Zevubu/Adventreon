@@ -8,32 +8,7 @@ import {Link} from 'react-router-dom';
 // import Dropzone from 'react-dropzone';
 // import {VideoUploaderWrapper, DropSection, UplaodingMask, UplaodFailedMessage, ProgressBarWrapper, ProgressBar} from '../../styles/VimeoStyles'
 // import VimeoUp from '../../vimeo-upload/index'
-// show_name, 
-// show_type, 
-// about, 
-// img, 
-// img_b, 
-// category, 
-// sub_category, 
-// video_type, 
-// v_link, 
-// host_id, 
-// host_name, 
-// host_img, 
-// credits, 
-// show_date, 
-// start_time, 
-// end_time, 
-// price, 
-// payment, 
-// patreon, 
-// wp_title, 
-// webpage, 
-// eighteen_plus, 
-// booked, 
-// paid, 
-// canceled, 
-// verified
+
 function ShowBuild (){
     const { userData } = useContext(UserInfoContext);
     const {isManager} = useManagment();
@@ -46,15 +21,16 @@ function ShowBuild (){
     const[paid, setPaid] = useState(false)
     const[video, setVideo] = useState()
     const[VideoType, setVideoType] = useState()
+    const[compSub, setCompSub]= useState(false)
     const { register, handleSubmit, watch, errors } = useForm();
     
     // console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
     const ShowReset = (re)=>{
+        setCompSub(true)
         setShowType();
         setVideoType();
         setVideo();
         setPaid(false);
-
     }
     
     // function videoUploader (data , e){
@@ -64,6 +40,7 @@ function ShowBuild (){
     //     }).catch(err => console.log(err))
         
     // }
+    const token =  window.localStorage.getItem('tokens');
     const PaidOnChange = (data, e) =>{
         console.log("Paid function call.")
         
@@ -80,7 +57,11 @@ function ShowBuild (){
             console.log(paid)
         };
     };
-    
+        
+    const oneMore = ()=>{
+        setCompSub(false)
+    }
+
     const onShowSubmit = (data, e) =>{
         console.log(data)
         if(showType === "episodical"){
@@ -88,8 +69,8 @@ function ShowBuild (){
         }else if(showType === "one_off"){
             setOneOff(true)
         }
-        const ShowUploader =async () =>{
-            const BuildShow = await API.createShow({ 
+        const ShowUploader = () =>{
+            API.createShow(token,{ 
             "show_name": data.showName,
             "show_type": showType,
             "about": data.about,
@@ -118,10 +99,10 @@ function ShowBuild (){
             "verified":false
             }).then(e.target.reset())
             .then(ShowReset())
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
 
-            BuildShow()
         }
+        if(showType === "one_off"){
             if(VideoType === "vimeo"){
                 let videoHold = data.videoLink;
                 // videoHold = videoHold.replace(/\/vimeo.com/,"/player.vimeo.com/video");
@@ -139,7 +120,7 @@ function ShowBuild (){
                     setVideo(videoHold);
                 };
             }
-            else if(VideoType === "youtube"){
+            else if( showType === "one_off" && VideoType === "youtube"){
                 let videoHold = data.videoLink;
                 videoHold = videoHold.replace(/\/youtu.be/,"/www.youtube.com/embed");
                 console.log(`Video hold ${videoHold}`);
@@ -156,11 +137,17 @@ function ShowBuild (){
                 videoHold = videoHold.replace(/facebook\/videos\//,"plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F");
                 console.log(`Video hold ${videoHold}`);
                 setVideo(videoHold);
+            }
+            else{
+                // add error here
             };
-            if(video){
-                ShowUploader();
-            };
-    }
+        }else{
+            ShowUploader();
+        };
+        if(video){
+            ShowUploader();
+        }
+    };
 
     return(
         <DivWBorder> 
@@ -169,52 +156,66 @@ function ShowBuild (){
         <MarronHeader>
             <H2>Show creation page!</H2>
         </MarronHeader>
-        <FormBigBox>
-         
-            <PT>What kind of show would you like to make?</PT>
-            {/* <PS>If your show is a live stream please choose episodical.</PS> */}
+        {oneOff && compSub && ( 
             <FormBoxWError>
-                <PT>Show type</PT>
-                <select name="showType" onChange={e => setShowType(e.target.value)}>
-                    <option>choose one</option>
-                    <option value="one_off">One off</option>
-                    <option value="episodical">Episodical</option>
-                    {/* <option value="ls_one_off">Livestream one off</option>
-                    <option value="ls_episodical">Livestream episodical</option> */}
-                </select>
+                <H2 color="red">SHOW CREATED!</H2>
+                <BigMarronBtn onClick={oneMore}>Add Another show.</BigMarronBtn>
             </FormBoxWError>
-            <PT>What WebPage this show belong in?</PT>
+        )}
+        {episodical && compSub && isManager && ( 
             <FormBoxWError>
-                        <PT>category</PT>
-                        <select name="category" onChange={e => setCatType(e.target.value)}>
-                            <option>choose one</option>
-                            <option value="music">Music</option>
-                            <option value="performance">Performance Art</option>
-                            <option value="visual">Visual Art</option>
-                            <option value="life">Life</option>
-                            <option value="spiritual">Spiritual Guidance</option>
-                        </select>
-                        {errors.password && errors.password.type === "required" &&(<PE>This is required!</PE>)} 
-                        {errors.password && errors.password.type === "pattern" &&(<PE>Password must contain one uppercase letter, one lower case letter, and one number.</PE>)} 
-                        {errors.password && errors.password.type === "minLength" &&(<PE>Password must be 8 charecters or longer.</PE>)} 
-                        {errors.password && errors.password.type === "maxLength" &&(<PE>Password can not be longer then 25 charecters.</PE>)} 
-                </FormBoxWError>
-            {episodical && isHost && ( 
+                <H2 color="red">SHOW CREATED!</H2>
+                <Link style={{ textDecoration: 'none'}} to="/episodebuilderm">
+                    <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
+                </Link>
+                <PT color="red">OR</PT>
+                <BigMarronBtn onClick={oneMore}>Add Another show.</BigMarronBtn>
+            </FormBoxWError>
+        )}
+        {episodical && compSub && isHost &&( 
+            <FormBoxWError>
+                <H2 color="red">SHOW CREATED!</H2>
+                <Link style={{ textDecoration: 'none'}} to="/episodebuilder">
+                    <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
+                </Link>
+                <PT color="red">OR</PT>
+                <BigMarronBtn onClick={oneMore}>Add Another show.</BigMarronBtn>
+            </FormBoxWError>
+        )}
+        {!compSub &&(
+            <FormBigBox>
+            
+                <PT>What kind of show would you like to make?</PT>
+                {/* <PS>If your show is a live stream please choose episodical.</PS> */}
                 <FormBoxWError>
-                    <Link style={{ textDecoration: 'none'}} to="/episodebuilder">
-                        <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
-                    </Link>
+                    <PT>Show type</PT>
+                    <select name="showType" onChange={e => setShowType(e.target.value)}>
+                        <option>choose one</option>
+                        <option value="one_off">One off</option>
+                        <option value="episodical">Episodical</option>
+                        {/* <option value="ls_one_off">Livestream one off</option>
+                        <option value="ls_episodical">Livestream episodical</option> */}
+                    </select>
                 </FormBoxWError>
-            )}
-            {episodical && isManager && ( 
+                <PT>What WebPage this show belong in?</PT>
                 <FormBoxWError>
-                    <Link style={{ textDecoration: 'none'}} to="/episodebuilderm">
-                        <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
-                    </Link>
-                </FormBoxWError>
-            )}
-        </FormBigBox>
-        {showType && catType && ( 
+                            <PT>category</PT>
+                            <select name="category" onChange={e => setCatType(e.target.value)}>
+                                <option>choose one</option>
+                                <option value="music">Music</option>
+                                <option value="performance">Performance Art</option>
+                                <option value="visual">Visual Art</option>
+                                <option value="life">Life</option>
+                                <option value="spiritual">Spiritual Guidance</option>
+                            </select>
+                            {errors.password && errors.password.type === "required" &&(<PE>This is required!</PE>)} 
+                            {errors.password && errors.password.type === "pattern" &&(<PE>Password must contain one uppercase letter, one lower case letter, and one number.</PE>)} 
+                            {errors.password && errors.password.type === "minLength" &&(<PE>Password must be 8 charecters or longer.</PE>)} 
+                            {errors.password && errors.password.type === "maxLength" &&(<PE>Password can not be longer then 25 charecters.</PE>)} 
+                    </FormBoxWError>
+            </FormBigBox>
+        )}
+        {showType && catType && !compSub && ( 
             <FormBigBox onSubmit={handleSubmit(onShowSubmit)}>
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}   
@@ -319,7 +320,7 @@ function ShowBuild (){
                             </select>
                             {errors.videoSource && errors.videoSource.type === "required" &&(<PE>This is required!</PE>)}
                         
-                            {VideoType==="vimeo" &&(
+                            {VideoType &&(
                                 <div>
                                     <PT>Video link</PT>
                                     {/* <VimeoUp/> */}
@@ -373,6 +374,7 @@ function ShowBuild (){
                             name="price"
                             min='0' 
                             max='500000'
+                            defaultValue = "0"
                             onChange = {e=> PaidOnChange(e.target.value)}
                             ref ={register}
                         /> 
@@ -456,7 +458,7 @@ function ShowBuild (){
                     {/* contact info email... Name? DOB number */}
                     {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
-                        <PT>Double click to submit Show</PT>
+                        <PT color="red">Double click to submit Show</PT>
                         <Btn type="submit" value="Submit">Submit show</Btn>
                         {/* disabled={disable} */}
                     </FormBox>
@@ -464,20 +466,13 @@ function ShowBuild (){
                 </FormLittleBox>       
             </FormBigBox>
         )}      
-        {episodical && isHost && ( 
+        {/* {episodical && compSub && ( 
             <FormBoxWError>
                 <Link style={{ textDecoration: 'none'}} to="/episodebuilder">
                     <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
                 </Link>
             </FormBoxWError>
-        )}
-        {episodical && isManager && ( 
-            <FormBoxWError>
-                <Link style={{ textDecoration: 'none'}} to="/episodebuilderm">
-                    <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
-                </Link>
-            </FormBoxWError>
-        )}
+        )} */}
     </DivWBorder>
     )
 }

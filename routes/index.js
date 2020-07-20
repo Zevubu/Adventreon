@@ -2,7 +2,7 @@ const path = require("path");
 const Router = require("express").Router();
 const {ROLES ,passport, checkIsInRole, validate} = require("../passport");
 
-const apiRoutes = require("./api/api/index");
+const apiRoutes = require("./api/index");
 const authRoutes = require("./auth/index");
 const videoRoutes = require("./video/video-hub");
 const videoUpload = require('./video/upload');
