@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams} from "react-router";
+import {useParams} from "react-router";
 import {Link} from 'react-router-dom';
 import API from "../../API/loggedOutAPI";
 import eAPI from "../../API/epiLogOut"
@@ -46,6 +46,7 @@ function Show(){
     const frame = matches ? 560 : 375
 
     useEffect(() => {
+        console.log(`Show Id:${id}`)
         const fetchShow = async () =>{
          const result = await API.getShowByID(`${id}`)
              setShow(result.data[0])
@@ -71,117 +72,118 @@ function Show(){
     }
     return(
         <div>
+            {Show &&(
             <div>
-                <SpHeaderA id={Show.id}>
-                    <ProTextBox>
-                        <H1>{Show.show_name}</H1>
-                        <Link href={"/hosts/" + Show.host_id}><H3 id={Show.host_id}>{Show.host_name}</H3></Link>
-                    </ProTextBox>
-                </SpHeaderA>
-                <ProviderBox>
-                    <ProDuoServiceBlock>
-                        {oneOff &&(
-                             <iframe 
-                                src={Show.v_link}
-                                width="640" 
-                                height="360" 
-                                frameborder="0" 
-                                allow="autoplay; fullscreen" 
-                                allowfullscreen> 
-                             </iframe>
-                        )}
-                        {episodical && !playing && (
-                           
-                            <ProImage src={Show.img} alt={Show.show_name}/>
-                        )}
-                        {episodical && playing &&(
-                            <div>
-                                
-                        <H2>{playing.epi_name} #{playing.id}</H2>                
-                                
+                <div>
+                    <SpHeaderA id={Show.id}>
+                        <ProTextBox>
+                            <H1>{Show.show_name}</H1>
+                            <Link href={"/hosts/" + Show.host_id}><H3 id={Show.host_id}>{Show.host_name}</H3></Link>
+                        </ProTextBox>
+                    </SpHeaderA>
+                    <ProviderBox>
+                        <ProDuoServiceBlock>
+                            {oneOff &&(
                                 <iframe 
-                                    src={playing.v_link}
+                                    src={Show.v_link}
                                     width="640" 
                                     height="360" 
                                     frameborder="0" 
                                     allow="autoplay; fullscreen" 
                                     allowfullscreen> 
                                 </iframe>
-                            </div>
-                        )}
-                    </ProDuoServiceBlock>
-                        <ProDuoServiceBlockColumn>
-                            <Paper elevation={3} style={{padding: '10px', borderRadius: '0px',backgroundColor: 'rgba(180,180,180,0.2)', marginbottom: '20px'}}x>
-                                {/* <ProTextBoxN>
-                                    <H1NB>{Show.show_name}</H1NB>
-                                    <Link href={"/hosts/" + Show.host_id}><H3 id={Show.host_id}>By {Show.host_name}</H3></Link>
-                                </ProTextBoxN> */}
-                                {oneOff &&(
-                                    <ProTextBox>
-                                        <H3>About</H3>
-                                        <P>{Show.about}</P> 
-                                    </ProTextBox>
-                                )}
-                                {episodical && playing &&(
-                                    <div>
+                            )}
+                            {episodical && !playing && (
+                            
+                                <ProImage src={Show.img} alt={Show.show_name}/>
+                            )}
+                            {episodical && playing &&(
+                                <div>
+                                    
+                            <H2>{playing.epi_name} #{playing.id}</H2>                
+                                    
+                                    <iframe 
+                                        src={playing.v_link}
+                                        width="640" 
+                                        height="360" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen" 
+                                        allowfullscreen> 
+                                    </iframe>
+                                </div>
+                            )}
+                        </ProDuoServiceBlock>
+                            <ProDuoServiceBlockColumn>
+                                <Paper elevation={3} style={{padding: '10px', borderRadius: '0px',backgroundColor: 'rgba(180,180,180,0.2)', marginbottom: '20px'}}x>
+                                    {/* <ProTextBoxN>
+                                        <H1NB>{Show.show_name}</H1NB>
+                                        <Link href={"/hosts/" + Show.host_id}><H3 id={Show.host_id}>By {Show.host_name}</H3></Link>
+                                    </ProTextBoxN> */}
+                                    {oneOff &&(
                                         <ProTextBox>
-                                            <H3>Show details</H3>
+                                            <H3>About</H3>
                                             <P>{Show.about}</P> 
                                         </ProTextBox>
-                                        <ProTextBox>
-                                            <H3>Episode details</H3>
-                                            <P>{playing.about}</P>
-                                        </ProTextBox>
-                                        <ProTextBox>
-                                            <H3>Episode v_link</H3>
-                                            <P>{playing.v_link}</P>
-                                        </ProTextBox>
-                                    </div>
+                                    )}
+                                    {episodical && playing &&(
+                                        <div>
+                                            <ProTextBox>
+                                                <H3>Show details</H3>
+                                                <P>{Show.about}</P> 
+                                            </ProTextBox>
+                                            <ProTextBox>
+                                                <H3>Episode details</H3>
+                                                <P>{playing.about}</P>
+                                            </ProTextBox>
+                                            <ProTextBox>
+                                                <H3>Episode v_link</H3>
+                                                <P>{playing.v_link}</P>
+                                            </ProTextBox>
+                                        </div>
+                                        
+                                    )}
                                     
-                                )}
-                                 
-                                {/* <ProTextBox>
-                                    <H3>Tip Me Here.</H3>
-                                    <br/>
-                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                        <input type="hidden" name="cmd" value="_s-xclick"/>
-                                        <input type="hidden" name="hosted_button_id" value="92TZKHPM5****"/>
-                                        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."/>
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
-                                    </form>
-                                </ProTextBox> */}
-                                <ProTextBox>
-                                    <H3>My patreon.</H3>
-                                    <P>{Show.patreon}</P>
-                                </ProTextBox>
-                                <ProTextBox>
-                                    <H3>{Show.wp_title}</H3>
-                                    <a href={Show.webpage}><P>{Show.webpage}</P></a>
-                                </ProTextBox>
-                            </Paper>
-                        </ProDuoServiceBlockColumn>
-                </ProviderBox>
-            </div> 
-            {/* show_id,
-            user_id, 
-            epi_name, 
-            about, 
-            img, 
-            video_type, 
-            v_link, 
-            credits, 
-            show_name, 
-            host_name, 
-            category, 
-            sub_category, 
-            paid, 
-            price, 
-            epi_date, 
-            start_time, 
-            end_time, 
-            eighteen_plus, 
-            verified */}
-            
+                                    {/* <ProTextBox>
+                                        <H3>Tip Me Here.</H3>
+                                        <br/>
+                                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                            <input type="hidden" name="cmd" value="_s-xclick"/>
+                                            <input type="hidden" name="hosted_button_id" value="92TZKHPM5****"/>
+                                            <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."/>
+                                            <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
+                                        </form>
+                                    </ProTextBox> */}
+                                    <ProTextBox>
+                                        <H3>My patreon.</H3>
+                                        <P>{Show.patreon}</P>
+                                    </ProTextBox>
+                                    <ProTextBox>
+                                        <H3>{Show.wp_title}</H3>
+                                        <a href={Show.webpage}><P>{Show.webpage}</P></a>
+                                    </ProTextBox>
+                                </Paper>
+                            </ProDuoServiceBlockColumn>
+                    </ProviderBox>
+                </div> 
+                {/* show_id,
+                user_id, 
+                epi_name, 
+                about, 
+                img, 
+                video_type, 
+                v_link, 
+                credits, 
+                show_name, 
+                host_name, 
+                category, 
+                sub_category, 
+                paid, 
+                price, 
+                epi_date, 
+                start_time, 
+                end_time, 
+                eighteen_plus, 
+                verified */}
                 {episodical && ( 
                     <div>
                         {/* <SpHeaderA>
@@ -217,10 +219,9 @@ function Show(){
                         </Carousel>
                     </div>
                 )}
-            
-            
-           
-        </div>             
+            </div>   
+        )}  
+        </div>          
     )
 }
 

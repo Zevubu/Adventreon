@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import {BigBlock,LookBtn,LookTextBox,LookBox,DivWBorder,SpHeaderA,H2,HeaderItem} from "../../styles/homeStyle";
+import {BigBlock,LookBtn,LookTextBox,LookBox,DivWBorder,SpHeaderA,H2,H2Dark,HeaderItem} from "../../styles/homeStyle";
 import {Redirect} from "react-router-dom";
 import API from "../../API/loggedInAPI";
 import SliderFiller from "../ShowFiller/slide_filler";
@@ -45,7 +45,7 @@ function Shows (){
             const count = await API.getShowCatNumCheck({
                 'category':'performance',
             })
-            console.log(`Performance shows:${JSON.stringify(count)}`)
+            // console.log(`Performance shows:${JSON.stringify(count)}`)
             if(count.data.total !== 0 || count.data.total !== undefined){
                 setPullSwitch(true)
                 console.log(`Performance confirm check`)
@@ -63,7 +63,7 @@ function Shows (){
             const result = await API.getShowCateg({
                 'category':'performance',
             })
-                console.log(`Performance show data ${result.data}`)
+                // console.log(`Performance show data ${result.data}`)
                 setShows(result.data)
             };
         setPullSwitch(false)
@@ -80,12 +80,12 @@ function Shows (){
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             <DivWBorder>
-            <SpHeaderA BGcolor="linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)">
+            <SpHeaderA>
                 <HeaderItem>
                     <H2
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
-                        onMouseEnter={(e)=> setbgC('rgba(46, 46, 46, 0.777)')} 
+                        onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
                     >Performance Art</H2>
                 </HeaderItem>

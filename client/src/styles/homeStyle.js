@@ -20,7 +20,15 @@ margin:0;
 color:${props => props.color || "rgb(233, 233, 232)"};
 text-shadow: 1px 1px ${props => props.TSColor || "rgb(98, 98, 98)"};
 `
+// rgb(233, 233, 232)
+// rgb(66, 83, 94)
 
+const H2Dark = styled.p`
+font-size: 25px;
+margin:0;
+color:${props => props.color || "rgb(66, 83, 94)"};
+text-shadow: 0.5px 0.5px ${props => props.TSColor || "rgb(98, 98, 98)"};
+`
 const H2 = styled.p`
 font-size: 25px;
 margin:0;
@@ -128,11 +136,25 @@ margin:5px;
 // background-size:${props => props.BGPsize || "cover"};
 // background-position-x: ${props => props.BGPy || "center"};
 // background-position-y: ${props => props.BGPx || "center"};
-const SpHeaderA = styled(Header)`
-color: ${props => props.Color ||"rgba(238, 245, 244, 1)"};
-background: ${props => props.BGcolor || "linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)"};
+// rgba(236, 228, 195, 0.666)
+// "linear-gradient(to bottom, rgb(233,225,205) 0%, rgba(32, 142, 161, 0.577) 100%)"
+// rgb(66, 83, 94)
+// rgba(238, 245, 244, 1)
+
+// Dark
+let SpHeaderA = styled(Header)`
+color: ${props => props.Color ||"rgb(238, 245, 244)"};
+background:${props => props.BGcolor || "linear-gradient(to bottom, rgba(32, 142, 161, 0.999) 5%, rgba(46, 46, 46, 0.999) 100%)"};
 text-align: center;
 `
+
+// Light
+// let SpHeaderA = styled(Header)`
+// color: ${props => props.Color ||"rgba(238, 245, 244, 1)"};
+// background: ${props => props.BGcolor || "linear-gradient(to bottom, rgb(233,225,205) 0%, rgb(255,245,235) 100%)"};
+// text-align: center;
+// `
+
 const BlueHeader = styled(Header)`
 color: rgb(238, 245, 244);
 background-color: rgb(100, 126, 160, 0.6);
@@ -178,7 +200,7 @@ left: 0;
 z-index: 10;
 margin-left:93.59%;
 margin-right:41px;
-box-shadow:inset -46px 0px 23px 0px ${props => props.FdColor ||"rgba(43, 42, 42, 1)"};
+box-shadow:inset -46px 0px 23px 0px ${props => props.FdColor ||"rgb(227,218,226)"};
 @media only screen and (max-width: 1400px) {
     margin-left:93%;
     };
@@ -272,14 +294,36 @@ background: ${props => props.BGcolor ||"rgba(0, 0, 0, 0)"};
 width:100%;
 height:100%;
 `
+// Small Circus stage
+// Cyrus Crossan
+// https://unsplash.com/@cys_escapes
+// https://images.unsplash.com/photo-1576544403918-c47d52572a9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80
+
+// ART
+// https://unsplash.com/@ian_w
+// Ian Williams
+// https://images.unsplash.com/photo-1492037766660-2a56f9eb3fcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80
+// Lyric Theater.
+// The New York Public Library
+// https://unsplash.com/@nypl
+// https://images.unsplash.com/photo-1581067525896-1f9e86d43e22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=936&q=80
+// Another theater
+// The New York Public Library
+// https://unsplash.com/@nypl
+// https://images.unsplash.com/photo-1579256308261-8e455c47a0d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=931&q=80
+// Nurse paints shoe
+// The New York Public Library
+// https://unsplash.com/@nypl
+// https://images.unsplash.com/photo-1578318114739-2a90a43953d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=828&q=80
 // Intro Block styles
+
 const IntroBlock = styled.div`
-background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1505842465776-3b4953ca4f44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"});
+background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1502137840985-4ec07e8568bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80"});
 background-repeat: ${props => props.BGR || "no-repeat"};
 background-size:${props => props.BGPsize || "cover"};
 background-position-x: ${props => props.BGPy || "center"};
 background-position-y: ${props => props.BGPx || "center"};
-border-bottom: ${props => props.BDcolor || "rgb(180, 180, 180)"}  solid 2px;
+border-bottom: ${props => props.BDcolor || "rgb(115, 162, 175)"}  solid 2px;
 color: ${props => props.color || "rgb(238, 245, 244)"};
 font-size: 20px;
 height: 600px;
@@ -324,7 +368,7 @@ border: ${props => props.BDcolor ||"rgba(180, 180, 180, 0.6)"} solid 2px;
 // service and coach section styles.
 
 const DivWBorder = styled.div`
-border-top: ${props => props.BDcolor ||"rgb(115, 162, 175)"} solid 2px;
+border-top: ${props => props.BDcolor ||"rgb(115, 162, 175)"} solid 2.5px;
 margin: ${props => props.Margin ||"5.23px 0px"};
 @media only screen and (max-width: 600px) {
     width: 100%;
@@ -433,4 +477,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {ProTextBox,DivWPad, IntroBlock, VFrame, LookBtn,LookTextBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {ProTextBox,DivWPad, IntroBlock, VFrame, LookBtn,LookTextBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}

@@ -53,7 +53,7 @@ function Shows (){
                 // console.log(`visual confirm check`)
             }
             else{
-                // console.log(`visual fail check`)
+                console.log(`visual fail check`)
                 return;
             }
         }
@@ -83,12 +83,12 @@ function Shows (){
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             <DivWBorder>
-            <SpHeaderA BGcolor="linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)">
+            <SpHeaderA>
                 <HeaderItem>
                     <H2
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
-                        onMouseEnter={(e)=> setbgC('rgba(46, 46, 46, 0.777)')} 
+                        onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
                     >Visual art</H2>
                 </HeaderItem>

@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
 import {Link} from 'react-router-dom';
 // import {H2} from '../../styles/homeStyle';
-import {NavBody,H2, OptionBox,PullBox, LogoImage} from "../../styles/componentStyles";
+import {NavBody,H2, H6, SpeachBox, OptionBox,PullBox, LogoImage} from "../../styles/componentStyles";
 
 import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo } from "../../context/heart";
-import Logo from "../../img/masked-logo-Adventreon-blue.png"
+import Logo from "../../img/masked-logo-Adventreon-blue-Q-B.png"
 import SimpleMenu from './menu.js';
 import ResMenu from './resmenu';
 import HostMenue from './hostMenu';
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 function NavBar (props){
     const classes = useStyles();
     // const [userProps, setUserProps] = useState(props)
-    console.log(`navbar data 1: ${JSON.stringify(props)}`)
+    // console.log(`navbar data 1: ${JSON.stringify(props)}`)
     const { setAuthTokens, isAuthenticated, setIsAuthenticated} = useAuth();
     const {isUser, setIsUser} = useUser();
     const {isHost, setIsHost} = useHost();
@@ -55,7 +55,17 @@ function NavBar (props){
         color: 'black',
         height: matches ? 35 : 20,
         padding: '0 30px',
-      });
+    });
+
+    const ClearBTN = styled(Button)({
+        border: 0,
+        borderRadius: 3,
+        boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
+        color: '#6dd3d6',
+        height: 35,
+        padding: '0 30px',
+        variant:"outlined"
+    });
   
     function logOut() {
         localStorage.clear();
@@ -76,10 +86,21 @@ function NavBar (props){
                 <PullBox>
                     <PullBox>
                             <LogoImage src={Logo} alt="Logo" />
+                    <H2>ADVENTREON</H2>
                     </PullBox>
+                    {/* <ClearBTN variant="outlined">
                         <H2>ADVENTREON</H2>
+                    </ClearBTN> */}
+                    {/* <SpeachBox>
+                    <H6>This is how the world starts,</H6>
+                    <H6>This is how the world starts,</H6>
+                    <H6 color="rgb(23, 283, 232)">This is how the world starts,</H6>
+                    <H6> Not with a bang but with a whimsy...</H6>
+                </SpeachBox> */}
                 </PullBox>
+             
             </Link>
+             
             <OptionBox>
                 {matches ?
                 <OptionBox>

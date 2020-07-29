@@ -84,10 +84,10 @@ function Shows (){
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
-            <DivWBorder BDcolor="rgba(66, 83, 94, 0.777)">
-            <SpHeaderA BGcolor="rgba(146, 146, 146, 1)">
+            <DivWBorder>
+            <SpHeaderA>
                 <HeaderItem>
-                    <H2 color="rgb(46, 46, 46)" TSColor="rgb(223, 223, 223)"
+                    <H2
                             onClick={i=>setClick(true)}
                             style={{backgroundColor: bgC}} 
                             onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
@@ -111,7 +111,7 @@ function Shows (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            // infinite
                         >
                         
                     

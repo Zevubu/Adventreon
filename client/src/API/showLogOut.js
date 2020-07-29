@@ -23,15 +23,15 @@ export default {
         return axios.get("/api/req/hosts/all/" + id).catch(err => console.log(`Find hosts by id error:${err}`));
     },
     createAccount: function(userData){
-        console.log(`CREAT CHECK!`);
-        console.log(`userData: ${userData}`);
+        // console.log(`CREAT CHECK!`);
+        // console.log(`userData: ${userData}`);
         return axios.post("/api/users", userData).catch(err => console.log(`Account creation error:${err}`));
     },
     postLogIn: function(userData){
         return axios.post("/auth/login", userData).catch(err => console.log(`Login error:${err}`));
     },
     getEmailCheck: function(email){
-        console.log(`EmailData: ${email}`);
+        // console.log(`EmailData: ${email}`);
         return axios.post("/api/opening/emailcheck", email).catch(err => console.log(`find email error:${err}`))
     }
 

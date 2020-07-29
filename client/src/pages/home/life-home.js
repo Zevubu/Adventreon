@@ -13,9 +13,9 @@ function MusicHome (){
     // const { isManager } = useManagment();
 
     return(
-        <SpDiv BGcolor="linear-gradient(to bottom, rgba(226, 126, 168, 1) 5%, rgba(46, 46, 46, 0.877) 55%, rgba(32, 142, 161, 0.577) 100%)"> 
+        <SpDiv> 
             {/* Intro Block */}
-            <IntroBlock AlignI='flex_start' FlexD="column" JustifyC='space-evenly' BDcolor="rgba(10, 56, 54, 0.883)" bgImg="https://images.unsplash.com/photo-1439405326854-014607f694d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+            <IntroBlock AlignI='flex_start' FlexD="column" JustifyC='space-evenly' bgImg="https://images.unsplash.com/photo-1439405326854-014607f694d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
                 <FillerDiv/>
                     <IntroTxTDiv >
                         <CCCDiv>

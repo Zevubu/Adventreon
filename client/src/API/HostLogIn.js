@@ -13,6 +13,9 @@ export default {
     getShowsByHostID: function(id){
         return axios.get("/api/hreq/shows/host/" + id).catch(err => console.log(`Find show by host_id and episodical error:${err}`));
     },
+    getFullEpisBySId: function(id){
+        return axios.get("/api/hreq/episodes/show/" + id).catch(err => console.log(`Find show by id error:${err}`));
+    },
     getEpisodes: function(){
         return axios.get("/api/req/episodes/all").catch(err => console.log(`Get all shows error:${err}`));
     },
@@ -46,6 +49,9 @@ export default {
         return axios(showOptions).catch(err => console.log(`Show creation error:${err}`));
     },
     updateShow:function(id,token,showData){
+        console.log(`Show update api id:${id}`)
+        console.log(`Show update api token:${token}`)
+        console.log(`Show update api data:${showData}`)
         const sOptions = {
             method: 'PUT',
             headers: { 

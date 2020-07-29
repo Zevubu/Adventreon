@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock,LookBox,LookBtn,LookTextBox, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
+import { BigBlock,LookBox,LookBtn,LookTextBox, SpHeaderA, DivWBorder,H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../API/loggedInAPI";
 
@@ -85,14 +85,14 @@ function Shows (){
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
             <DivWBorder>
-                <SpHeaderA BGcolor="linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)">
+                <SpHeaderA>
                     <HeaderItem>
-                        <H2 
+                        <H2
                             onClick={i=>setClick(true)}
                             style={{backgroundColor: bgC}} 
-                            onMouseEnter={(e)=> setbgC('rgba(46, 46, 46, 0.777)')} 
+                            onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                             onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                        >Spirtual Respite</H2>
+                        >Spiritual Respite</H2>
                     </HeaderItem>
                     {/* <HeaderItem>
                         <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
