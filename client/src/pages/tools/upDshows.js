@@ -45,32 +45,74 @@ function ShowBuild (){
     const[episodical, setEpisodical] = useState();
     const[oneOff, setOneOff] = useState();
     const[catType, setCatType] = useState();
+    const[subCat, setSubCat] = useState();
     // const[videoUp, setVideoUp] = useState();
     const[paid, setPaid] = useState(false)
     const[video, setVideo] = useState()
     const[VideoType, setVideoType] = useState()
     const[compSub, setCompSub]= useState(false)
+    const token =  window.localStorage.getItem('tokens');
     const { register, handleSubmit, watch, errors } = useForm();
     
     // console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
+
+
     const ShowReset = (re)=>{
         setCompSub(true)
         setShowType();
         setVideoType();
         setVideo();
+        setShow();
         setPaid(false);
+        setSubCat();
+        setCatType();
+        setShows()
     }
+    const fetchShows = async () =>{
+        const result = await API.getShowsByHostID(`${userData.id}`)
+        //  console.log(`show by host id and epis data ${JSON.stringify(result.data)}`)
+        setShows(result.data)
+        setIsPulled(true);
+
+    };
 
     useEffect(() => {
-        const fetchShows = async () =>{
-         const result = await API.getShowsByHostID(`${userData.id}`)
-             console.log(`show by host id and epis data ${JSON.stringify(result.data)}`)
-             setShows(result.data)
-             setIsPulled(true);
-
-         };
-         fetchShows(); 
+         fetchShows();  
     }, []);
+
+
+    const showClear = () =>{
+            setShow();
+            setShowType();
+            setSubCat();
+            setCatType();
+            setEpisodical();
+            setVideoType();
+            setVideo();
+            setOneOff();
+    }
+
+    const showUpdate = (showData) =>{
+        setShowType(shows[showData].show_type)
+        setVideoType(shows[showData].video_type)
+        setVideo(shows[showData].v_link)
+        setShow(showData)
+        setSubCat(shows[showData].sub_category)
+        setCatType(shows[showData].category)
+        
+    }
+    const showOnChange = async (showData) =>{
+        console.log(`Show Data input: ${showData}`)
+        await showClear()
+        if(showData !== ""){
+            showUpdate(showData) 
+        }
+       
+    }
+
+    const vLinkOnchange = (input)=>{
+        setVideo();
+    }
     // function videoUploader (data , e){
 
     //     API.videoUpload({
@@ -78,70 +120,73 @@ function ShowBuild (){
     //     }).catch(err => console.log(err))
         
     // }
-    const token =  window.localStorage.getItem('tokens');
+    
     const PaidOnChange = (data, e) =>{
-        console.log("Paid function call.")
+        // console.log("Paid function call.")
         
         if(data === "0"|| data === undefined||  data === 0|| data === ''||  data === 'undefined'||  data === null){
-            console.log(data)
-            console.log(`Set paid check`)
+            // console.log(data)
+            console.log(`Set paid false check`)
             setPaid(false)
-            console.log(paid)
+            // console.log(paid)
         }
         else{
-            console.log(data)
+            // console.log(data)
             console.log(`Set paid check`)
             setPaid(true)
-            console.log(paid)
+            // console.log(paid)
         };
     };
         
-    const oneMore = ()=>{
-        setCompSub(false)
-    }
+    const oneMore = async()=>{
+        await fetchShows();
+        setCompSub(false);
+    };
 
     const onShowSubmit = (data, e) =>{
-        console.log(data)
+        // console.log(data)
         if(showType === "episodical"){
             setEpisodical(true)
         }else if(showType === "one_off"){
             setOneOff(true)
         }
         const ShowUploader = () =>{
-            API.createShow(token,{ 
-            "show_name": data.showName,
-            "show_type": shows[Show].show_type,
-            "about": data.about,
-            "img": data.pImg,
-            "img_b": data.bImg,
-            "category": shows[Show].category,
-            "sub_category": shows[Show].sub_category,
-            "video_type":VideoType,
-            "v_link":video||data.videoLink,
-            "host_id": userData.id, 
-            "host_name": userData.user_name,
-            "host_img": userData.p_img,
-            "credits":data.credits,
-            "show_date":'2020-08-23',
-            "start_time":'11:27:00',
-            "end_time":'12:27:00',
-            "price":data.price,
-            "payment": data.paypal,
-            'patreon':data.patreon,
-            'wp_title': data.wpTitle,
-            'webpage': data.webpage,
-            'eighteen_plus':true,
-            'booked':true,
-            "paid":paid,
-            "canceled":false, 
-            "verified":false
-            }).then(e.target.reset())
-            .then(ShowReset())
-            .catch(err => console.log(err));
+            console.log(`Show update show Id:${shows[Show].id}`)
+            console.log(`Show update token: ${token}`)
+            API.updateShow(
+                shows[Show].id,
+                token,
+                { 
+                    "show_name": data.showName,
+                    "show_type": shows[Show].show_type,
+                    "about": data.about,
+                    "img": data.pImg,
+                    "img_b": data.bImg,
+                    "category": catType,
+                    "sub_category": data.subcategory,
+                    "video_type":VideoType,
+                    "v_link":video||data.videoLink,
+                    "host_id": userData.id, 
+                    "credits":data.credits,
+                    "price":data.price,
+                    "payment": data.payment,
+                    'patreon':data.patreon,
+                    'wp_title': data.wpTitle,
+                    'webpage': data.webpage,
+                    'eighteen_plus':shows[Show].eighteen_plus,
+                    'booked':shows[Show].booked,
+                    "paid":shows[Show].paid,
+                    "canceled":shows[Show].canceled, 
+                }).then(e.target.reset())
+                .then(ShowReset())
+                .catch(err => console.log(err));
 
         }
         if(showType === "one_off"){
-            if(VideoType === "vimeo"){
+            if(video){
+                ShowUploader();
+            }
+            else if(VideoType === "vimeo"){
                 let videoHold = data.videoLink;
                 // videoHold = videoHold.replace(/\/vimeo.com/,"/player.vimeo.com/video");
                 videoHold = videoHold.replace(/https:\/\/vimeo.com\//,"/");
@@ -182,9 +227,6 @@ function ShowBuild (){
         }else{
             ShowUploader();
         };
-        if(video){
-            ShowUploader();
-        }
     };
 
     return(
@@ -193,13 +235,12 @@ function ShowBuild (){
         {/* Sign up form */}
         <MarronHeader>
             <H2>Show Update page!</H2>
-        </MarronHeader>        
-        {isPulled &&(
-            <div>
+        </MarronHeader> 
+        <div>
             {oneOff && compSub &&  ( 
                 <FormBoxWError>
                     <H2 color="red">SHOW CREATED!</H2>
-                    <BigMarronBtn onClick={oneMore}>Add Another show.</BigMarronBtn>
+                    <BigMarronBtn onClick={oneMore}>Update Another Show.</BigMarronBtn>
                 </FormBoxWError>
             )}
             {episodical && compSub && isManager && ( 
@@ -209,7 +250,7 @@ function ShowBuild (){
                         <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
                     </Link>
                     <PT color="red">OR</PT>
-                    <BigMarronBtn onClick={oneMore}>Add Another show.</BigMarronBtn>
+                    <BigMarronBtn onClick={oneMore}>Update Another Show.</BigMarronBtn>
                 </FormBoxWError>
             )}
             {episodical && compSub && isHost &&( 
@@ -219,15 +260,17 @@ function ShowBuild (){
                         <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
                     </Link>
                     <PT color="red">OR</PT>
-                    <BigMarronBtn onClick={oneMore}>Add Another show.</BigMarronBtn>
+                    <BigMarronBtn onClick={oneMore}>Update Another Show.</BigMarronBtn>
                 </FormBoxWError>
             )}
-
+        </div>        
+        {isPulled && !compSub &&(
+            <div>
             <FormBigBox>
                 <FormBoxWError>
                     <PT>Select a show</PT>
-                    <select name="ShowChoice" onChange={e => setShow(e.target.value)} ref={register({required: true})}>
-                        <option>Choose one</option>
+                    <select name="ShowChoice" onChange={e => showOnChange(e.target.value)} ref={register({required: true})}>
+                        <option value="">Choose one</option>
                         {shows.map((show, key) => (
                             <option 
                             value={key}
@@ -238,8 +281,7 @@ function ShowBuild (){
                 </FormBoxWError>
                 {!compSub && Show &&(
                     <div>
-                    <PT>What kind of show would you like to make?</PT>
-                    {/* <PS>If your show is a live stream please choose episodical.</PS> */}
+                    {/* <PT>Changing from One off to episodicle will </PT>
                     <FormBoxWError>
                         <PT>Show type</PT>
                         <PS>{shows[Show].show_type}!</PS>
@@ -247,14 +289,13 @@ function ShowBuild (){
                             <option>choose one</option>
                             <option value="one_off">One off</option>
                             <option value="episodical">Episodical</option>
-                            {/* <option value="ls_one_off">Livestream one off</option>
-                            <option value="ls_episodical">Livestream episodical</option> */}
+                            <option value="ls_one_off">Livestream one off</option>
+                            <option value="ls_episodical">Livestream episodical</option>
                         </select>
-                    </FormBoxWError>
-                    <PT>What WebPage this show belong in?</PT>
+                    </FormBoxWError> */}
                     <FormBoxWError>
                             <PT>category</PT>
-                            <select name="category" defaultValue={shows[Show].category} onChange={e => setCatType(e.target.value)}>
+                            <select name="category" defaultValue={shows[Show].category} onChange={e => setCatType(e.target.value)} ref ={register({required: true})}>
                                 <option>choose one</option>
                                 <option value="music">Music</option>
                                 <option value="performance">Performance Art</option>
@@ -262,10 +303,7 @@ function ShowBuild (){
                                 <option value="life">Life</option>
                                 <option value="spiritual">Spiritual Guidance</option>
                             </select>
-                            {errors.password && errors.password.type === "required" &&(<PE>This is required!</PE>)} 
-                            {errors.password && errors.password.type === "pattern" &&(<PE>Password must contain one uppercase letter, one lower case letter, and one number.</PE>)} 
-                            {errors.password && errors.password.type === "minLength" &&(<PE>Password must be 8 charecters or longer.</PE>)} 
-                            {errors.password && errors.password.type === "maxLength" &&(<PE>Password can not be longer then 25 charecters.</PE>)} 
+                            {errors.category && errors.category.type === "required" &&(<PE>This is required!</PE>)} 
                         </FormBoxWError>
                     </div>
                 )}            
@@ -274,11 +312,13 @@ function ShowBuild (){
                 {!compSub && Show &&( 
                     <FormBigBox onSubmit={handleSubmit(onShowSubmit)}>
                         {/* choose all that apply inluding "I'm not sure" */}
-                        {/* Might work better if it a select all that apply */}   
-                        {catType==="music" || shows[Show].category === "music" &&(
+                        {/* Might work better if it a select all that apply */}  
+                        <PT>Show type: {shows[Show].show_type}</PT> 
+                        {catType==="music" && subCat &&(
                             <FormBoxWError>
                                 <PT>Sub-category</PT>
-                                <select name="subcategory" defaultValue={shows[Show].sub_category} ref ={register({required: true})}>
+                                <PS>Original: {subCat}</PS>
+                                <select name="subcategory" defaultValue={subCat} ref ={register({required: true})}>
                                     <option>choose one</option>
                                     <option value="acoustic">Acoustic</option>
                                     <option value="edm">E.D.M</option>
@@ -287,14 +327,15 @@ function ShowBuild (){
                                     <option value="educate">Educational</option>
                                     <option value="blog">Personal Blog</option>
                                 </select>
-                                {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                                {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
+                                {errors.subcategory && errors.subcategory.type === "required" &&(<PE>This is required!</PE>)} 
+                                {/* {errors.subcategory && errors.subcategory.type === "validate" &&(<PE>Passwords must match</PE>)}  */}
                             </FormBoxWError>
                         )}
-                        {catType==="performance" || shows[Show].category === "performance" &&(
+                        {catType==="performance" && subCat &&(
                             <FormBoxWError>
                                 <PT>Sub-category</PT>
-                                <select name="subcategory" defaultValue={shows[Show].sub_category} ref ={register({required: true})}>
+                                <PS>Original: {subCat}</PS>
+                                <select name="subcategory" defaultValue={subCat} ref ={register({required: true})}>
                                     <option>choose one</option>
                                     <option value="story">Story arched</option>
                                     <option value="play">Play</option>
@@ -303,13 +344,14 @@ function ShowBuild (){
                                     <option value="educate">Educational</option>
                                     <option value="blog">Personal Blog</option>  
                                 </select>
-                                {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                                {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
+                                {errors.subcategory && errors.subcategory.type === "required" &&(<PE>This is required!</PE>)} 
+                                {/* {errors.subcategory && errors.subcategory.type === "validate" &&(<PE>Passwords must match</PE>)}  */}
                             </FormBoxWError>
                         )}
-                        {catType==="visual" || shows[Show].category === "visual" &&(
+                        {catType==="visual" &&subCat &&(
                             <FormBoxWError>
                                 <PT>Sub-category</PT>
+                                <PS>Original: {subCat}</PS>
                                 <select name="subcategory" defaultValue={shows[Show].sub_category} ref ={register({required: true})}>
                                     <option>choose one</option>
                                     <option value="analog">Analog</option>
@@ -319,14 +361,15 @@ function ShowBuild (){
                                     <option value="educate">Educational</option>
                                     <option value="blog">Personal Blog</option>   
                                 </select>
-                                {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                                {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
+                                {errors.subcategory && errors.subcategory.type === "required" &&(<PE>This is required!</PE>)} 
+                                {/* {errors.subcategory && errors.subcategory.type === "validate" &&(<PE>Passwords must match</PE>)}  */}
                             </FormBoxWError>
                         )}           
-                        {catType==="life" || shows[Show].category === "life" &&(
+                        {catType==="life" && subCat &&(
                             <FormBoxWError>
                                 <PT>Sub-category</PT>
-                                <select name="subcategory" defaultValue={shows[Show].sub_category} ref ={register({required: true})}>
+                                <PS>Original: {subCat}</PS>
+                                <select name="subcategory" defaultValue={shows[Show].sub_category} ref={register({required: true})}>
                                     <option>choose one</option>
                                     <option value="counseling">Counseling</option>
                                     <option value="cooking">Cooking</option>
@@ -335,14 +378,15 @@ function ShowBuild (){
                                     <option value="educate">Educational</option>
                                     <option value="blog">Personal Blog</option>   
                                 </select>
-                                {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                                {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
+                                {errors.subcategory && errors.subcategory.type === "required" &&(<PE>This is required!</PE>)} 
+                                {/* {errors.subcategory && errors.subcategory.type === "validate" &&(<PE>Passwords must match</PE>)}  */}
                             </FormBoxWError>
                         )}
-                        {catType==="spiritual" || shows[Show].category === "spiritual" &&(
+                        {catType==="spiritual" && subCat &&(
                             <FormBoxWError>
                                 <PT>Sub-category</PT>
-                                <select name="subcategory" defaultValue={shows[Show].sub_category} ref ={register}>
+                                <PS>Original: {subCat}</PS>
+                                <select name="subcategory" defaultValue={shows[Show].sub_category} ref ={register({required: true})}>
                                     <option>choose one</option>
                                     <option value="guide">Guidance/Sermon/Prayer</option>
                                     <option value="spells">Spells</option>
@@ -351,8 +395,8 @@ function ShowBuild (){
                                     <option value="educate">Educational</option>
                                     <option value="blog">Personal Blog</option>
                                 </select>
-                                {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
-                                {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
+                                {errors.subcategory && errors.subcategory.type === "required" &&(<PE>This is required!</PE>)} 
+                                {/* {errors.subcategory && errors.subcategory.type === "validate" &&(<PE>Passwords must match</PE>)}  */}
                             </FormBoxWError>
                         )}
                         <FormLittleBox>
@@ -366,11 +410,10 @@ function ShowBuild (){
                                     {errors.showName && errors.showName.type === "required" &&(<PE>This is required!</PE>)}
                                     {errors.showName && errors.showName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)}
                             </FormBoxWError>
-                            {showType === "one_off" || shows[Show].show_type === "one_off" &&(
+                            {showType === "one_off" &&(
                                 <FormBoxWError>
                                     <PT>Video source</PT>
-                                    <select name="videoSource" defaultValue={shows[Show].video_type} onChange={e => setVideoType(e.target.value)}  ref={register({required: true})}>
-                                        <option>choose one</option>
+                                    <select name="videoSource" defaultValue={shows[Show].video_type} onChange={e => setVideoType(e.target.value)}  ref={register()}>
                                         <option value="vimeo">Vimeo</option>
                                         <option value="youtube">YouTube</option>
                                         {/* <option value="twitch">Twitch</option> */}
@@ -391,6 +434,8 @@ function ShowBuild (){
                                             <Input
                                                 name="videoLink"
                                                 defaultValue={shows[Show].v_link}
+                                                onChange={e => vLinkOnchange(e.target.value)}
+                                                
                                                 ref={register({required: true})}
                                             /> 
                                             {errors.videoLink && errors.videoLink.type === "required" &&(<PE>This is required!</PE>)}
@@ -414,7 +459,7 @@ function ShowBuild (){
                                 {/* Will inclued an example of exactly what you need to do. */}
                                 <Input
                                     name="patreon"
-                                    defaultValue={Show.patreon}
+                                    defaultValue={shows[Show].patreon}
                                     ref ={register}
                                 /> 
                                 {errors.patreon && errors.patreon.type === "required" &&(<PE>This is required!</PE>)}
@@ -523,7 +568,9 @@ function ShowBuild (){
                             {/* contact info email... Name? DOB number */}
                             {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                             <FormBox>
-                                <PT color="red">Double click to submit Show</PT>
+                                {showType === "one_off" &&(
+                                    <PT color="red">Double click to submit Show</PT>
+                                )}
                                 <Btn type="submit" value="Submit">Submit show</Btn>
                                 {/* disabled={disable} */}
                             </FormBox>

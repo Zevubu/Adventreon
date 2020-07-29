@@ -82,8 +82,8 @@ function Shows (){
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
-            <DivWBorder BDcolor="rgba(10, 56, 54, 0.883)">
-                <SpHeaderA BGcolor="rgba(230, 122, 167, 1)">
+            <DivWBorder>
+                <SpHeaderA>
                     <HeaderItem>
                         <H2
                             onClick={i=>setClick(true)}
@@ -100,7 +100,7 @@ function Shows (){
             <br/>
             
             <LookBox>
-                <LookTextBox FdColor="rgba(226, 126, 168, 1)"></LookTextBox>
+                <LookTextBox></LookTextBox>
                 <LookBtn>
                     <div>
                         <Carousel

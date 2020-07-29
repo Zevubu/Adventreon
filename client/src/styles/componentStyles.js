@@ -2,11 +2,21 @@ import styled from "styled-components";
 
 const H2 = styled.h2`
 font-family:'glacial indiffrence';
+color:${props => props.color || "rgb(23, 283, 232)"};
+text-shadow: 2px 1px ${props => props.TSColor || "rgb(0,0,0)"};
+`
+const H6 = styled.p`
+font-size: 13px;
+font-weight: bold;
+font-family:'glacial indiffrence';
+margin:0 0;
+color: rgb(23, 283, 232);
+text-shadow: 1px 1px rgb(26, 24, 24);
 `
 
 // Nac Bar styles
 const NavBody = styled.div`
-    background: linear-gradient(to bottom, rgba(32, 142, 161, 0.577) 5%, rgba(46, 46, 46, 0.877) 100%);
+    background: linear-gradient(to bottom, rgba(32, 142, 161, 0.999) 5%, rgba(46, 46, 46, 0.999) 100%);
     border-bottom: rgb(115, 162, 175) solid 2px;
     border-top: rgb(115, 162, 175) solid 2px;
     height: 65px;
@@ -62,6 +72,11 @@ align-items: center;
 margin:0 auto;
 `
 
+const SpeachBox = styled.div`
+
+margin:0 5px;
+`
+
 // footer Styles
 const FooterBody = styled.div`
     background-color: rgb(115, 162, 175);
@@ -86,4 +101,4 @@ font-size: 40px;
     }
 `
 
-export {H2 ,NavBody, NavBtn, NavBtnB, NavBtnM, NavBtnT, FooterBody, OptionBox,PullBox, Logo, LogoImage}
+export {H2, H6,NavBody, NavBtn, NavBtnB, NavBtnM, NavBtnT, FooterBody, OptionBox, PullBox, SpeachBox, Logo, LogoImage}

@@ -63,10 +63,11 @@ function Hosts (){
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
             {/* <DivWBorder style={{marginBottom: '100px'}}> */}
-            <DivWBorder BDcolor="rgba(66, 83, 94, 0.777)" Margin ="0px 0px 23px 0px">
-            <SpHeaderA BGcolor="rgba(169, 169, 169, 1)">
+            <DivWBorder Margin ="0px 0px 23px 0px">
+            <SpHeaderA>
                 <HeaderItem>
-                    <H2 color="rgb(46, 46, 46)" TSColor="rgb(223, 223, 223)"                        
+                    <H2
+                        color="rgb(46, 46, 46)" TSColor="rgb(223, 223, 223)"                        
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
@@ -92,7 +93,7 @@ function Hosts (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            // infinite
                         >
                             {hosts.map((host, key) => (
                                 <SliderFiller

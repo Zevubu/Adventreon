@@ -41,7 +41,7 @@ function Hosts (){
 
     if(pullSwith){
         const fetchHosts = async () =>{
-            const result = await API.getSpritHosts({
+            const result = await API.getHostByCat({
                 'category':'spiritual'
             })
             // console.log(`Spirit pull switch check`)
@@ -63,10 +63,10 @@ function Hosts (){
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
             {/* <DivWBorder style={{marginBottom: '100px'}}> */}
-            <DivWBorder BDcolor="rgba(66, 83, 94, 0.777)">
-                <SpHeaderA BGcolor="rgba(213, 148, 238, 0.877)">
+            <DivWBorder>
+                <SpHeaderA>
                     <HeaderItem>
-                    <H2 color="rgb(66, 83, 94)"                            
+                    <H2                           
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
@@ -91,7 +91,6 @@ function Hosts (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
                         >
                             {Hosts.map((host, key) => (
                                 <SliderFiller

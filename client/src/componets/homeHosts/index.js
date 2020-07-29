@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock,LookBtn,LookTextBox,LookHostBox, SpHeaderA, DivWBorder, H2, HeaderItem} from "../../styles/homeStyle";
+import { BigBlock,LookBtn,LookTextBox,LookHostBox, SpHeaderA, DivWBorder, H2,H2Dark, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 // import {Logo} from "../../styles/componentStyles";
 import API from "../../API/loggedOutAPI";
@@ -26,13 +26,13 @@ function Hosts (){
     useEffect(() => {
         const fetchHostCNT = async () =>{
             const count = await API.getHostNumCheck()
-            console.log(`Host count:${JSON.stringify(count)}`)
+            // console.log(`Host count:${JSON.stringify(count)}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
-                console.log(`All Host confirm check`)
+                // console.log(`All Host confirm check`)
             }
             else{
-                console.log(`All host fail check`)
+                // console.log(`All host fail check`)
                 return
             }
         }
@@ -61,8 +61,8 @@ function Hosts (){
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
             {/* <DivWBorder style={{marginBottom: '100px'}}> */}
-            <DivWBorder Margin ="0px 0px 23px 0px">
-                <SpHeaderA BGcolor="linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)">
+            <DivWBorder>
+                <SpHeaderA>
                     <HeaderItem>
                     <H2                          
                     onClick={i=>setClick(true)}
@@ -89,7 +89,6 @@ function Hosts (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
                         >
                             {Hosts.map((host, key) => (
                                 <SliderFiller

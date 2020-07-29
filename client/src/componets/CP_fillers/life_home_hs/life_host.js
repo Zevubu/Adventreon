@@ -23,13 +23,13 @@ function Hosts (){
     useEffect(() => {
         const fetchHostCNT = async () =>{
             const count = await API.getHostCatNumCheck('life')
-            console.log(`muse count:${JSON.stringify(count)}`)
+            // console.log(`muse count:${JSON.stringify(count)}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
-                console.log(`Life host confirm check`)
+                // console.log(`Life host confirm check`)
             }
             else{
-                console.log(`Life host fail check`)
+                // console.log(`Life host fail check`)
                 return
             }
         }
@@ -60,10 +60,10 @@ function Hosts (){
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
             {/* <DivWBorder style={{marginBottom: '100px'}}> */}
-            <DivWBorder BDcolor="rgba(24, 129, 50, 0.938)">
-                <SpHeaderA BGcolor="rgba(22, 18, 83, 0.477)">
+            <DivWBorder>
+                <SpHeaderA>
                     <HeaderItem>
-                    <H2                            
+                    <H2                       
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
@@ -78,7 +78,7 @@ function Hosts (){
             </DivWBorder>
             <br/>
             <LookHostBox>
-                <LookTextBox FdColor="rgba(226, 126, 168, 1)"></LookTextBox>
+                <LookTextBox></LookTextBox>
                 <LookBtn>
                     <div>
                         <Carousel

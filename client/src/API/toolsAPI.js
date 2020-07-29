@@ -12,7 +12,7 @@ export default {
         return axios.get("/api/hosts/catnumcnt/"+ category).catch(err => console.log(`Host Catagory num check error:${err}`))
     },
     tokenValidate: function(token){
-        console.log(`Token:${token}`)
+        // console.log(`Token:${token}`)
         const options = {
             method: 'GET',
             headers: { 
@@ -22,7 +22,7 @@ export default {
             },
             url:'/validate'
         };
-        console.log(options)
+        // console.log(options)
         return axios(options).catch(err => console.log(`Validate user by id error:${err}`));
     }
 }

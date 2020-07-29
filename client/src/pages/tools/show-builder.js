@@ -88,7 +88,7 @@ function ShowBuild (){
             "start_time":'11:27:00',
             "end_time":'12:27:00',
             "price":data.price,
-            "payment": data.paypal,
+            "payment": data.payment,
             'patreon':data.patreon,
             'wp_title': data.wpTitle,
             'webpage': data.webpage,

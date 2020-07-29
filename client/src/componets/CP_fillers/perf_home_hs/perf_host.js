@@ -41,7 +41,7 @@ function Hosts (){
 
     if(pullSwith){
         const fetchHosts = async () =>{
-            const result = await API.getPerfHosts({
+            const result = await API.getHostByCat({
                 'category':'performance'
             })
             // console.log(`Performance pull switch check`)
@@ -66,7 +66,7 @@ function Hosts (){
             <DivWBorder >
                 <SpHeaderA >
                     <HeaderItem>
-                    <H2                           
+                    <H2                         
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 

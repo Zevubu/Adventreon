@@ -4,10 +4,11 @@ const epiQuery ={
     findById: () => `SELECT * FROM episodes WHERE id = ?`,
     findByHost: () => `SELECT * FROM episodes WHERE host_id = ?`,
     findByShow: () => `SELECT * FROM episodes WHERE show_id = ?`,
+    findFullByShow: () => `SELECT * FROM episodes WHERE show_id = ?`,
     findAllKF: () =>`SELECT * FROM episodes WHERE eighteen_plus = 0`,
     findAllKFFree: () =>`SELECT * FROM episodes WHERE eighteen_plus = 0 and paid = 0 `,
     findKFById: () =>`SELECT * FROM episodes WHERE eighteen_plus = 0 and id=?`,
-    updateById: () => `UPDATE episodes SET ? WHERE ? AND host_id = ?`,
+    updateById: () => `UPDATE episodes SET show_id=?, epi_name=?, about=?, img=?, video_type=?, v_link=?, credits=?, show_name=?, category=?, sub_category=?, paid=?, price=?, epi_date=?, start_time=?, end_time=?, eighteen_plus=? WHERE id=? AND user_id = ?`,
     deleteById: () => `DELETE FROM episodes WHERE id=? AND host_id = ?`
 };
 // May need to apply "AND userid = {currentuser} OR Management = true"

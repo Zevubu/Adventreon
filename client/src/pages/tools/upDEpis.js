@@ -34,6 +34,9 @@ function EpiAdd (){
     // console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
     const[Show, setShow] = useState();
     const[shows, setShows] = useState([]);
+    const[shSelect, setShSelect] = useState(false)
+    const[Epi, setEpi] = useState();
+    const[epis, setEpis] = useState([])
     const[VideoType, setVideoType] = useState();
     const[paid, setPaid] = useState(false);
     const[video, setVideo] = useState();
@@ -57,10 +60,60 @@ function EpiAdd (){
         fetchShows(); 
     }, []);
 
-    // if(Show){
-    //     console.log(Show)
-    //     console.log(shows[Show].id)
-    // };
+
+    const showClear = () =>{
+        setEpi();
+        setEpis();
+        setShow();
+        setVideoType();
+        setVideo();
+    }
+
+    const showUpdate = (showData) =>{
+        setShow(showData);
+        setShSelect(true); 
+
+    }
+    const showOnChange = async (showData)=>{
+       await showClear();
+       if(showData !== ""){
+           showUpdate(showData)
+       }
+    }
+
+    const epiClear = () =>{
+        setEpi();
+        setVideoType();
+        setVideo();
+    }
+
+    const epiUpdate =(epiData)=>{
+        setVideoType(epis[epiData].video_type)
+        setVideo(epis[epiData].v_link)
+        setEpi(epiData);
+    }
+
+    const episOnChange = async (epiData) =>{
+        await epiClear()
+        if(epiData !== ""){
+            epiUpdate(epiData)
+        }
+
+    }
+    const vLinkOnchange = (input)=>{
+        setVideo();
+    }
+
+    if (Show && shSelect === true){
+        const fetchEpis = async () =>{
+            const result = await API.getFullEpisBySId(`${shows[Show].id}`)
+            console.log(`Epis by show ${JSON.stringify(result.data)}`)
+            setEpis(result.data);
+            setShSelect(false)
+        };
+        fetchEpis(); 
+    }
+
     const token = window.localStorage.getItem('tokens');
     const PaidOnChange = (data, e) =>{
         console.log("Paid function call.")
@@ -87,7 +140,9 @@ function EpiAdd (){
         console.log(data);
         console.log(paid);
         const EpiUploader = ()=>{
-            API.createEpisode(token,{ 
+            API.updateEpi(
+                epis[Epi].id,
+                token,{ 
                 "show_id":shows[Show].id,
                 "user_id":userData.id,
                 "epi_name": data.epiName,
@@ -106,13 +161,15 @@ function EpiAdd (){
                 "start_time":'00:30:00',
                 "end_time": '01:30:00',
                 "eighteen_plus":false, 
-                "verified":true,
             })
             .then(e.target.reset())
             .then(EpiReset())
             .catch(err => console.log(err));
         };
-        if(VideoType === "vimeo"){
+        if(video){
+            EpiUploader();
+        }
+        else if(VideoType === "vimeo"){
             let videoHold = data.videoLink;
             // videoHold = videoHold.replace(/\/vimeo.com/,"/player.vimeo.com/video");
             videoHold = videoHold.replace(/https:\/\/vimeo.com\//,"/");
@@ -147,9 +204,7 @@ function EpiAdd (){
             console.log(`Video hold ${videoHold}`);
             setVideo(videoHold);
         };
-        if(video){
-            EpiUploader();
-        };
+      
     };
 
     return(
@@ -160,13 +215,12 @@ function EpiAdd (){
             <H2>Episode Update page</H2>
         </MarronHeader>
         <FormBigBox>
-            <PT color="red">Add episodes in order you would like them to show up.</PT>
          {/* DONT TOUCH VVV */}
          <br></br>
             <PT>What show does this episode belong to?</PT>
             <FormBoxWError>
                 <PT>Select a show</PT>
-                <select name="ShowChoice" onChange={e => setShow(e.target.value)} ref={register({required: true})}>
+                <select name="ShowChoice" onChange={e => showOnChange(e.target.value)} ref={register({required: true})}>
                     <option>Choose one</option>
                 {shows.map((show, key) => (
                     <option 
@@ -176,7 +230,21 @@ function EpiAdd (){
                 </select>
                 {errors.ShowChoice && errors.ShowChoice.type === "required" &&(<PE>This is required!</PE>)}
             </FormBoxWError>
-
+        {Show && epis && !shSelect && (
+            <FormBoxWError>
+                <PT>Select an Episode</PT>
+                <select name="epiChoice" onChange={e => episOnChange(e.target.value)} ref={register({required: true})}>
+                    <option>Choose one</option>
+                {epis.map((epi, key) => (
+                    <option 
+                    value={key}
+                    >{epi.epi_name}</option>
+                ))}
+                </select>
+                {errors.ShowChoice && errors.ShowChoice.type === "required" &&(<PE>This is required!</PE>)}
+            </FormBoxWError>
+            )}
+          
         </FormBigBox>
         {compSub && (
             <FormBoxWError>
@@ -187,7 +255,7 @@ function EpiAdd (){
         )}
         {/* form starts here */}
     
-        {Show && !compSub && ( 
+        {Show && Epi && !compSub && ( 
             <FormBigBox onSubmit={handleSubmit(onShowSubmit)}>
                 {/* <p>{`show ID: ${JSON.stringify(Show)}`}</p> */}
                 {/* choose all that apply inluding "I'm not sure" */}
@@ -198,6 +266,7 @@ function EpiAdd (){
                             <PT>Episode Name</PT>
                             <Input
                                 name="epiName"
+                                defaultValue={epis[Epi].epi_name}
                                 ref ={register({required: true})}
                             /> 
                             {errors.epiName && errors.epiName.type === "required" &&(<PE>This is required!</PE>)}
@@ -207,7 +276,7 @@ function EpiAdd (){
                     <FormBoxWError>
                         <div>
                             <PT>Video source</PT>
-                            <select name="videoSource" onChange={e => setVideoType(e.target.value)}  ref={register({required: true})}>
+                            <select name="videoSource" defaultValue={epis[Epi].video_type} onChange={e => setVideoType(e.target.value)}  ref={register({required: true})}>
                                 <option>choose one</option>
                                 <option value="vimeo">Vimeo</option>
                                 <option value="youtube">YouTube</option>
@@ -226,6 +295,8 @@ function EpiAdd (){
                                 {/* Will inclued an example of exactly what you need to do. */}
                                 <Input
                                     name="videoLink"
+                                    defaultValue={epis[Epi].v_link}
+                                    onChange={e=> vLinkOnchange(e.target.value) }
                                     ref ={register}
                                 /> 
                                 {errors.videoLink && errors.videoLink.type === "required" &&(<PE>This is required!</PE>)}
@@ -236,6 +307,7 @@ function EpiAdd (){
                         <PT>Episode Image</PT>
                         <Input
                             name="Img"
+                            defaultValue={epis[Epi].img}
                             ref ={register({required: true})}
                         /> 
                         {/* <Input
@@ -259,7 +331,7 @@ function EpiAdd (){
                             name="price"
                             min='0' 
                             max='500000'
-                            defaultValue = "0"
+                            defaultValue={epis[Epi].price}
                             onChange = {e=> PaidOnChange(e.target.value)}
                             ref ={register({required: true})}
                         /> 
@@ -273,6 +345,7 @@ function EpiAdd (){
                             rows="10"
                             cols="40"
                             placeholder="Tell us about your show"
+                            defaultValue={epis[Epi].about}
                             name="about" 
                             ref ={register}   
                         /> 
@@ -283,6 +356,7 @@ function EpiAdd (){
                             rows="10"
                             cols="40"
                             placeholder=""
+                            defaultValue={epis[Epi].credits}
                             name="credits" 
                             ref ={register}   
                         /> 

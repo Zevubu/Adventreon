@@ -85,9 +85,9 @@ function Shows (){
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
             <DivWBorder Margin ="0px 0px 23px 0px" >
-            <SpHeaderA BGcolor="rgba(236, 228, 195, 0.666)">
+            <SpHeaderA>
                 <HeaderItem>
-                    <H2 color="rgb(66, 83, 94)"
+                    <H2
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
@@ -111,7 +111,7 @@ function Shows (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            // infinite
                         >
                         
                     
