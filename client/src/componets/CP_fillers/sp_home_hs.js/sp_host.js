@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock,LookBtn,LookTextBox,LookHostBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../styles/homeStyle";
+import { BigBlock,LookBtn,SlideShadowBox,LookHostBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 // import {Logo} from "../../styles/componentStyles";
 import API from "../../../API/loggedInAPI";
@@ -81,7 +81,7 @@ function Hosts (){
             </DivWBorder>
             <br/>
             <LookHostBox>
-                <LookTextBox></LookTextBox>
+                <SlideShadowBox></SlideShadowBox>
                 <LookBtn>
                     <div>
                         <Carousel

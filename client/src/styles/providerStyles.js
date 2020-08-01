@@ -151,7 +151,7 @@ margin: 20px 20px 20px 0px;
 backgound-color:238, 245, 2440.767);
 display: flex;
 flex-direction: row;
-justify-content: space-evently;
+justify-content: space-evenly;
 align-items: center;
 @media only screen and (max-width: 600px) {
     width: 75%;

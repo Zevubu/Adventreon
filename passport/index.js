@@ -49,7 +49,7 @@ const checkIsInRole = (...roles) => (req, res, next) => {
     if (!req.user) {
       return res.send("No user supplied")
     }
-    const hasRole = roles.find(role => req.user.user_type === role || req.user.user_type === "admin")
+    const hasRole = roles.find(role => req.user.user_type === role || req.user.user_type === "admin"|| req.user.user_type === "manager" || req.user.user_type === "master")
     if (!hasRole) {
       return res.send('You do not have permission to access this route')
     }

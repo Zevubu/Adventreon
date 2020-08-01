@@ -2,7 +2,7 @@ import axios from "axios";
 // /api/episodes/show/:id
 export default {
     createHostAccount: function(userData){
-        console.log(`CREAT CHECK!`);
+        // console.log(`CREAT CHECK!`);
         console.log(`userData token: ${JSON.stringify(userData)}`);
         const options = {
             method: 'POST',
@@ -34,5 +34,11 @@ export default {
     },
     deleteUserById: function(id){
         return axios.delete("'/auth/deleteuser/" + id).catch(err => console.log(`Delete user by id error:${err}`));
-    }
+    },
+    getUserNameCheck: function(name){
+        return axios.post("/auth/tools/nametest", name).catch(err => console.log(`find email error:${err}`))
+    },
+    getEmailCheck: function(email){
+        return axios.post("/auth/tools/emailtest", email).catch(err => console.log(`find email error:${err}`))
+    },
 } 

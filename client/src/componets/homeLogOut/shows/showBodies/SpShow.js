@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock,LookBtn,SlideShadowBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
+import { BigBlock,LookBox,LookBtn,SlideShadowBox, SpHeaderA, DivWBorder,H2, HeaderItem} from "../../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../../../API/loggedInAPI";
 
@@ -8,6 +8,8 @@ import SliderFiller from "../../../ShowFiller/slide_filler";
 import Carousel from '@brainhubeu/react-carousel';
 import '../../../../styles/Carousel.css';
 // import '@brainhubeu/react-carousel/lib/style.css';
+// import Button from '@material-ui/core/Button';
+// import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // show_name,x 
@@ -43,30 +45,28 @@ function Shows (){
 
     useEffect(() => {
         const fetchShowsCNT = async () =>{
-            const count = await API.getShowSubcatNumCheck({
-                'category':'performance',
-                'sub_category':'variety'
+            const count = await API.getShowCatNumCheck({
+                'category':'spiritual',
             })
             // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
-                // console.log(`Performance variety confirm check`)
+                // console.log(`Spiritual confirm check`)
             }
             else{
-                // console.log(`Performance variety fail check`)
-                return
+                // console.log(`Spiritual fail check`)
+                return;
             }
         }
-        fetchShowsCNT()  
+        fetchShowsCNT() 
     }, []);
     
     if(pullSwith){
         const fetchShows = async () =>{
-            const result = await API.getShowSubcat({
-                'category':'performance',
-                'sub_category':'variety'
+            const result = await API.getShowCateg({
+                'category':'spiritual',
             })
-                // console.log(`Performance variety show data ${result.data}`)
+                // console.log(`Spiritual show data ${result.data}`)
                 setShows(result.data)
             };
         setPullSwitch(false)
@@ -74,11 +74,13 @@ function Shows (){
     }
 
     if(Click){
-        return <Redirect to="/" />
+        return <Redirect to="/spirtualrespite" />
     }
     // opacity: vis ,  
     return(
-        <div>{shows.length !== 0 &&(
+        <div>
+        {shows.length !== 0 &&(
+        
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
             {/* <a id="Shows"/> */}
@@ -90,7 +92,7 @@ function Shows (){
                             style={{backgroundColor: bgC}} 
                             onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                             onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                        >Variety</H2>
+                        >Spiritual Respite</H2>
                     </HeaderItem>
                     {/* <HeaderItem>
                         <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
@@ -128,7 +130,8 @@ function Shows (){
                     </div>
                 </LookBtn>   
             </LookBox>
-        </BigBlock>)}</div>
+        </BigBlock>)}
+        </div>
     )
 }
 

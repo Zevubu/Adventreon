@@ -28,11 +28,21 @@ router.post('/register', async (req, res) => {
             ['first_name, last_name, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified'],
             [first_name, last_name, user_name, 'manager', mhswitch, dob, email, cryptPass, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified]  
         );
-        const [user = {}] = result;
-        res.send({
-            id: user.id || null,
-            user_name: user.user_name || null
-        });
+        const user = result;
+        console.log(`register user:${JSON.stringify(user)}`)
+        if(user.insertId){
+            res.send({
+                id: user.insertId || null,
+                user_name: user_name || null,
+                worked:true
+            });
+        }else{
+            res.send({
+                id: user.insertId || null,
+                user_name: user_name || null,
+                worked:false
+            })
+        }
     
 
 }); 
