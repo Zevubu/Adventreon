@@ -20,6 +20,7 @@ import { AuthContext, UserContext, HostContext, ManagmentContext, TempContext,Te
 import NavBar from "./componets/navbar";
 import Footer from './componets/footer';
 
+
 import HomePage from "./pages/home/index";
 import Login from "./pages/login";
 import SignUp from './pages/sign_up';

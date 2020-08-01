@@ -27,10 +27,15 @@ export default {
     postLogIn: function(userData){
         return axios.post("/auth/opening/login", userData).catch(err => console.log(`Login error:${err}`));
     },
+    getUserNameCheck: function(name){
+        // stays in log out
+        // console.log(`EmailData: ${email}`);
+        return axios.post("/auth/opening/nametest", name).catch(err => console.log(`find email error:${err}`))
+    },
     getEmailCheck: function(email){
         // stays in log out
         // console.log(`EmailData: ${email}`);
-        return axios.get("/auth/opening/emailcheck", email).catch(err => console.log(`find email error:${err}`))
+        return axios.post("/auth/opening/emailtest", email).catch(err => console.log(`find email error:${err}`))
     },
     getHostNumCheck:function(){
         return axios.get("/api/req/hosts/numcnt").catch(err => console.log(`Host num check error:${err}`))

@@ -17,31 +17,29 @@ router.use("/opening", LogoutAuth);
 // router.use('/user', userAuth); //user,managment/ master have access
 
 // host /auth/host
-router.use(
-    '/hosts',
+router.use('/hosts',
     passport.authenticate('jwt', {session: false}),
     checkIsInRole(ROLES.Host),
     hostAuth
 ); //host/ managment/ master have access
 
 // tempH /auth/temph
-router.use(
-    '/temph',
+router.use('/temph',
     passport.authenticate('jwt', {session: false}),
+    checkIsInRole(ROLES.TempH),
     tempHAuth
 ) //temph/ managment/ master have access
 
 // managment /auth/managment
-router.use(
-    '/managment', 
+router.use('/managment', 
     passport.authenticate('jwt', {session: false}),
     checkIsInRole(ROLES.Manag), 
     managAuth) //managment/ master have access
 
 // tempM /auth/tempm
-router.use(
-    '/tempm',
+router.use('/tempm',
     passport.authenticate('jwt', {session: false}), 
+    checkIsInRole(ROLES.TempM), 
     tempMAuth
 )
     // tempm, master

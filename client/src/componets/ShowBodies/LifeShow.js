@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock,LookBox,LookBtn,LookTextBox, SpHeaderA, DivWBorder,H2, HeaderItem} from "../../styles/homeStyle";
+import { BigBlock,LookBox,LookBtn,SlideShadowBox, SpHeaderA, DivWBorder,H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../API/loggedInAPI";
 import SliderFiller from "../ShowFiller/slide_filler";
@@ -45,7 +45,7 @@ function Shows (){
             const count = await API.getShowCatNumCheck({
                 'category':'life',
             })
-            // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
+            console.log(`life cooking count:${JSON.stringify(count)}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
                 // console.log(`Life confirm check`)
@@ -97,7 +97,7 @@ function Shows (){
             </DivWBorder>
             <br/>
             <LookBox>
-                <LookTextBox></LookTextBox>
+                <SlideShadowBox></SlideShadowBox>
                 <LookBtn>
                     <div>
                 {/* <SlideShows value={shows}></SlideShows> */}

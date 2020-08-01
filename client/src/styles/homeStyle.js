@@ -191,7 +191,7 @@ top: 0;
 left: 0;
 z-index: 1;
 `
-const LookTextBox = styled.div`
+const SlideShadowBox = styled.div`
 width: 56px;
 height: 100%;
 position: absolute;
@@ -384,7 +384,6 @@ background-color: ${props => props.BGcolor || "rgba(23, 23, 23, 0.5)"};
 padding:16px;
 text-align: center;
 `
-
 const ServiceBlock = styled.div`
 color: rgb(0, 0, 0);
 height: 300px;
@@ -426,7 +425,7 @@ text-align: center;
 `
 // ${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"}
 const DuoServiceBlock = styled.div`
-background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
+background-image: url(${props => props.bgImg || ""});
 background-repeat: no-repeat;
 background-size: Cover;
 background-position-x: center;
@@ -434,7 +433,7 @@ background-position-y: 20%;
 height: auto;
 display: flex;
 flex-direction: row;
-justify-content: space-around;
+justify-content: space-evenly;
 align-items: center;
 margin:0 auto;
 @media only screen and (max-width: 600px) {
@@ -477,4 +476,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {ProTextBox,DivWPad, IntroBlock, VFrame, LookBtn,LookTextBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {ProTextBox,DivWPad, IntroBlock, VFrame, LookBtn,SlideShadowBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}

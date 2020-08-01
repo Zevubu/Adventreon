@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import {BigBlock,LookBtn,LookTextBox,LookBox,DivWBorder,SpHeaderA,H2,HeaderItem} from "../../styles/homeStyle";
+import {BigBlock,LookBtn,SlideShadowBox,LookBox,DivWBorder,SpHeaderA,H2,HeaderItem} from "../../styles/homeStyle";
 import {Redirect} from "react-router-dom";
 import API from "../../API/loggedInAPI";
 import SliderFiller from "../ShowFiller/slide_filler";
@@ -47,7 +47,7 @@ function Shows (){
             const count = await API.getShowCatNumCheck({
                 'category':'visual',
             })
-            // console.log(`visual count:${JSON.stringify(count.data.total)}`)
+            console.log(`visual count:${JSON.stringify(count)}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
                 // console.log(`visual confirm check`)
@@ -96,7 +96,7 @@ function Shows (){
             </DivWBorder>
             <br/>
             <LookBox>
-                <LookTextBox></LookTextBox>
+                <SlideShadowBox></SlideShadowBox>
                 <LookBtn>
                     <div>
                         <Carousel

@@ -1,10 +1,9 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock,LookBtn,SlideShadowBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
+import { BigBlock,LookBox,LookBtn,SlideShadowBox, SpHeaderA, DivWBorder,H2, HeaderItem} from "../../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../../../API/loggedInAPI";
-
 import SliderFiller from "../../../ShowFiller/slide_filler";
-
+// import SlideShows from "../slide_box/slideShows";
 import Carousel from '@brainhubeu/react-carousel';
 import '../../../../styles/Carousel.css';
 // import '@brainhubeu/react-carousel/lib/style.css';
@@ -43,30 +42,28 @@ function Shows (){
 
     useEffect(() => {
         const fetchShowsCNT = async () =>{
-            const count = await API.getShowSubcatNumCheck({
-                'category':'performance',
-                'sub_category':'variety'
+            const count = await API.getShowCatNumCheck({
+                'category':'life',
             })
             // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
-                // console.log(`Performance variety confirm check`)
+                // console.log(`Life confirm check`)
             }
             else{
-                // console.log(`Performance variety fail check`)
+                // console.log(`Life fail check`)
                 return
             }
         }
-        fetchShowsCNT()  
+        fetchShowsCNT() 
     }, []);
-    
+
     if(pullSwith){
         const fetchShows = async () =>{
-            const result = await API.getShowSubcat({
-                'category':'performance',
-                'sub_category':'variety'
+            const result = await API.getShowCateg({
+                'category':'life',
             })
-                // console.log(`Performance variety show data ${result.data}`)
+                // console.log(`life show data ${result.data}`)
                 setShows(result.data)
             };
         setPullSwitch(false)
@@ -74,14 +71,15 @@ function Shows (){
     }
 
     if(Click){
-        return <Redirect to="/" />
+        return <Redirect to="/life" />
     }
-    // opacity: vis ,  
+    // opacity: vis ,
     return(
-        <div>{shows.length !== 0 &&(
+        <div>
+        {shows.length !== 0 &&(
+        
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
-            {/* <a id="Shows"/> */}
             <DivWBorder>
                 <SpHeaderA>
                     <HeaderItem>
@@ -89,8 +87,8 @@ function Shows (){
                             onClick={i=>setClick(true)}
                             style={{backgroundColor: bgC}} 
                             onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
-                            onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                        >Variety</H2>
+                            onMouseLeave={(e)=> setbgC('rgba(0, 0, 0, 0)')}
+                        >Life</H2>
                     </HeaderItem>
                     {/* <HeaderItem>
                         <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
@@ -102,6 +100,7 @@ function Shows (){
                 <SlideShadowBox></SlideShadowBox>
                 <LookBtn>
                     <div>
+                {/* <SlideShows value={shows}></SlideShows> */}
                         <Carousel
                             // autoPlay={5000}
                             animationSpeed={1500}
@@ -128,7 +127,8 @@ function Shows (){
                     </div>
                 </LookBtn>   
             </LookBox>
-        </BigBlock>)}</div>
+        </BigBlock>)}
+        </div>
     )
 }
 
