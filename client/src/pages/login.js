@@ -113,7 +113,7 @@ function Login (){
           onChange={e => {
             setUserName(e.target.value);
           }}
-          placeholder="UserName" 
+          placeholder="User name or email" 
           />
           <Input 
             type="password"
@@ -121,7 +121,7 @@ function Login (){
             onChange={e => {
               setPassword(e.target.value);
             }}
-            placeholder="password"
+            placeholder="Password"
           />
           <Button onClick={postLogin}>Sign In</Button>
         </Form>

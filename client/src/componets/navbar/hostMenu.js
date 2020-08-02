@@ -38,13 +38,13 @@ export default function SimpleMenu() {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
-      >
+      > 
+        <Link style={{ textDecoration: 'none' ,color: '#353435' }} to={"/profile/"+ userData.id}><MenuItem onClick={handleClose}>Your Profile</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435' }} to={"/puph/"+ userData.id}><MenuItem onClick={handleClose}>Update Profile</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/showbuilder"><MenuItem onClick={handleClose}>Make a Show</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/updateshow"><MenuItem onClick={handleClose}>Update a Show</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/episodebuilder"><MenuItem onClick={handleClose}>Add an episode</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/updateepisode"><MenuItem onClick={handleClose}>Update an episode</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#353435' }} to={"/profile/"+ userData.id}><MenuItem onClick={handleClose}>Your Profile</MenuItem></Link>
-        <Link style={{ textDecoration: 'none' ,color: '#353435' }} to={"/puph/"+ userData.id}><MenuItem onClick={handleClose}>Update Profile</MenuItem></Link>
       </Menu>
     </div>
   );

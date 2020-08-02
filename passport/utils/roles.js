@@ -3,7 +3,7 @@ const ROLES = {
     Manag: 'manager',
     Host: 'host',
     User: 'user',
-    Temp: 'temp',
+    TempH: 'tempH',
     TempM: 'tempm'
 }
   

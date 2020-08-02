@@ -1,8 +1,7 @@
-import React, { useState, useEffect} from "react";
-import { BigBlock,LookBtn,SlideShadowBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
-import { Redirect } from "react-router-dom";
+import React, {useState,useEffect} from "react";
+import {BigBlock,LookBtn,SlideShadowBox,LookBox,DivWBorder,SpHeaderA,H2,HeaderItem} from "../../../../styles/homeStyle";
+import {Redirect} from "react-router-dom";
 import API from "../../../../API/loggedInAPI";
-
 import SliderFiller from "../../../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
@@ -39,34 +38,32 @@ function Shows (){
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
-    const scNum = matches ? 4 : 1
+    const scNum = matches ? 5 : 1
 
     useEffect(() => {
         const fetchShowsCNT = async () =>{
-            const count = await API.getShowSubcatNumCheck({
+            const count = await API.getShowCatNumCheck({
                 'category':'performance',
-                'sub_category':'variety'
             })
-            // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
-            if(count.data.total !== 0){
+            // console.log(`Performance shows:${JSON.stringify(count)}`)
+            if(count.data.total !== 0 || count.data.total !== undefined){
                 setPullSwitch(true)
-                // console.log(`Performance variety confirm check`)
+                console.log(`Performance confirm check`)
             }
             else{
-                // console.log(`Performance variety fail check`)
+                console.log(`Performance fail check`)
                 return
             }
         }
-        fetchShowsCNT()  
-    }, []);
-    
+        fetchShowsCNT()   
+    }, []); 
+        
     if(pullSwith){
         const fetchShows = async () =>{
-            const result = await API.getShowSubcat({
+            const result = await API.getShowCateg({
                 'category':'performance',
-                'sub_category':'variety'
             })
-                // console.log(`Performance variety show data ${result.data}`)
+                // console.log(`Performance show data ${result.data}`)
                 setShows(result.data)
             };
         setPullSwitch(false)
@@ -74,28 +71,25 @@ function Shows (){
     }
 
     if(Click){
-        return <Redirect to="/" />
+        return <Redirect to="/performance" />
     }
-    // opacity: vis ,  
+    // opacity: vis , 
     return(
-        <div>{shows.length !== 0 &&(
+        <div>
+            {shows.length !== 0 &&(
         <BigBlock>
             {/* Shows will be auto populated from database, Items put in as filler*/}
-            {/* <a id="Shows"/> */}
             <DivWBorder>
-                <SpHeaderA>
-                    <HeaderItem>
-                        <H2
-                            onClick={i=>setClick(true)}
-                            style={{backgroundColor: bgC}} 
-                            onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
-                            onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                        >Variety</H2>
-                    </HeaderItem>
-                    {/* <HeaderItem>
-                        <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
-                    </HeaderItem> */}
-                </SpHeaderA>
+            <SpHeaderA>
+                <HeaderItem>
+                    <H2
+                        onClick={i=>setClick(true)}
+                        style={{backgroundColor: bgC}} 
+                        onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
+                        onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
+                    >Performance Art</H2>
+                </HeaderItem>
+            </SpHeaderA>
             </DivWBorder>
             <br/>
             <LookBox>
@@ -111,8 +105,6 @@ function Shows (){
                             arrows
                             // infinite
                         >
-                        
-                    
                             {shows.map((show, key) => (
                 
                                     <SliderFiller
@@ -128,7 +120,9 @@ function Shows (){
                     </div>
                 </LookBtn>   
             </LookBox>
-        </BigBlock>)}</div>
+        </BigBlock>   
+        )}
+        </div>
     )
 }
 

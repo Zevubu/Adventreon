@@ -1,12 +1,12 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Link} from 'react-router-dom';
 // import {H2} from '../../styles/homeStyle';
-import {NavBody,H2, H6, SpeachBox, OptionBox,PullBox, LogoImage} from "../../styles/componentStyles";
+import {NavBody,H2, OptionBox,PullBox, LogoImage} from "../../styles/componentStyles";
 
 import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo } from "../../context/heart";
-import Logo from "../../img/masked-logo-Adventreon-blue-Q-B.png"
+import Logo from "../../img/masked-logo-Adventreon-blue.png"
 import SimpleMenu from './menu.js';
-import ResMenu from './resmenu';
+// import ResMenu from './resmenu';
 import HostMenue from './hostMenu';
 import ManagerMenue from './manegMenue';
 
@@ -27,12 +27,10 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function NavBar (props){
+function NavBar (){
     const classes = useStyles();
-    // const [userProps, setUserProps] = useState(props)
-    // console.log(`navbar data 1: ${JSON.stringify(props)}`)
-    const { setAuthTokens, isAuthenticated, setIsAuthenticated} = useAuth();
-    const {isUser, setIsUser} = useUser();
+    const {setAuthTokens, isAuthenticated, setIsAuthenticated} = useAuth();
+    const {setIsUser} = useUser();
     const {isHost, setIsHost} = useHost();
     const {isTempP, setIsTempP} = useTemp();
     const {isTempM, setIsTempM} = useTempM();
@@ -57,15 +55,15 @@ function NavBar (props){
         padding: '0 30px',
     });
 
-    const ClearBTN = styled(Button)({
-        border: 0,
-        borderRadius: 3,
-        boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
-        color: '#6dd3d6',
-        height: 35,
-        padding: '0 30px',
-        variant:"outlined"
-    });
+    // const ClearBTN = styled(Button)({
+    //     border: 0,
+    //     borderRadius: 3,
+    //     boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
+    //     color: '#6dd3d6',
+    //     height: 35,
+    //     padding: '0 30px',
+    //     variant:"outlined"
+    // });
   
     function logOut() {
         localStorage.clear();
@@ -109,19 +107,26 @@ function NavBar (props){
                             <Link style={{ textDecoration: 'none' }} to={"/tempsu/" + userData.id}><Button variant="contained" color="secondary">MAKE YOUR HOST PROFILE HERE!</Button></Link>
                         </div>
                     )} 
-                       {isAuthenticated && isTempM &&(
+                    {isAuthenticated && isTempM &&(
                         <div>
                             <Link style={{ textDecoration: 'none' }} to={"/tempsum/" + userData.id}><Button variant="contained" color="secondary">MAKE YOUR MANAGEMENT PROFILE HERE!</Button></Link>
                         </div>
                     )} 
                     {/* <Link style={{ textDecoration: 'none' }} to="/"><Button variant="outlined" color="secondary">Home</Button></Link> */}
                     <br></br>
-                    <SimpleMenu></SimpleMenu>
+                    {isAuthenticated &&(
+                        <SimpleMenu></SimpleMenu>
+                    )}
+                    
                     <br></br>
                     {/* <Link style={{ textDecoration: 'none' }} to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link> */}
                 </OptionBox>
                 :
-                <ResMenu></ResMenu>           
+                <div>
+                    {isAuthenticated &&(
+                        <SimpleMenu></SimpleMenu>
+                    )}
+                </div>
                 }      
                 { isAuthenticated && isHost &&(
                     <div>

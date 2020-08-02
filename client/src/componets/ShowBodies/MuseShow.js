@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import {BigBlock, LookBox,LookBtn,LookTextBox, DivWBorder, SpHeaderA,H2, HeaderItem} from "../../styles/homeStyle";
+import {BigBlock, LookBox,LookBtn,SlideShadowBox, DivWBorder, SpHeaderA,H2, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../API/loggedInAPI";
 
@@ -48,7 +48,7 @@ function Shows (){
             const count = await API.getShowCatNumCheck({
                 'category':'music',
             })
-            // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
+            console.log(`life cooking count:${JSON.stringify(count)}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
                 // console.log(`Music confirm check`)
@@ -101,7 +101,7 @@ function Shows (){
             </DivWBorder>
             <br/>
             <LookBox>
-                <LookTextBox></LookTextBox>
+                <SlideShadowBox></SlideShadowBox>
                 <LookBtn>
                     <div>
                         <Carousel

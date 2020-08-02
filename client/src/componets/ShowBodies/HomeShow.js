@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import {DivWBorder,LookBox,LookBtn,LookTextBox, SpHeaderA, BigBlock, H2, H2Dark, HeaderItem} from "../../styles/homeStyle";
+import {DivWBorder,LookBox,LookBtn,SlideShadowBox, SpHeaderA, BigBlock, H2, H2Dark, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 import API from "../../API/loggedOutAPI";
 
@@ -78,7 +78,7 @@ function Shows (){
             </DivWBorder>
             <br/>
             <LookBox>
-                <LookTextBox></LookTextBox>
+                <SlideShadowBox></SlideShadowBox>
                 <LookBtn>
                     <div>
                         <Carousel
