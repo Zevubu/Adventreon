@@ -1,19 +1,18 @@
 
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useAuth} from "../context/heart";
-//, useUser
+import { useAuth, useUser} from "../context/heart";
 
 function UserRoute({ component: Component, ...rest }) {
   const {authTokens} = useAuth();
-  // const {isUser} = useUser();
+  const {isUser} = useUser();
    
 
   return (
     <Route
       {...rest}
       render={props =>
-        authTokens? (
+        authTokens && isUser? (
           <Component {...props} />
         ) : (
           <Redirect

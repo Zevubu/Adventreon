@@ -13,16 +13,6 @@ router.route("/all")
     const show = await query(conn, showQuery.findAll())
     res.send(show)
   })
-  .post(async (req, res) =>{
-    const {show_name, show_type, about, img, img_b, category, sub_category, video_type, v_link, host_id, host_name, host_img, credits, show_date, start_time, end_time, price, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, verified} = req.body;
-    const conn = await connection(dbConfig).catch(e => {});
-    const show = await query(
-      conn,
-      showQuery.createNew(),
-      [show_name, show_type, about, img, img_b, category, sub_category, video_type, v_link, host_id, host_name, host_img, credits, show_date, start_time, end_time, price, payment, patreon, wp_title, webpage, eighteen_plus, booked, paid, canceled, verified]
-    )
-    res.send[show]
-  });
 
 // Matches with "/api/req/shows/catnumcnt/cat" 
 router.route("/catnumcnt/:category")
@@ -75,7 +65,7 @@ router.post("/subcat", async (req, res) =>{
 })
 
 
-// Matches with /api/req/shows/host/:id
+// Matches with /opening/shows/host/:id
 router.route('/host/:id')
   .get(async (req, res) => {
       const { id } = req.params;
@@ -84,7 +74,7 @@ router.route('/host/:id')
       res.send(show)
   })
 
-// Matches with "/api/req/shows/find/:id"
+// Matches with "/opening/shows/find/:id"
 router.route('/find/:id')
   .get(async (req, res) => {
       const { id } = req.params;

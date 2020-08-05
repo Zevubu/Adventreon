@@ -1,6 +1,6 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,P,ProTextBox} from "../../styles/homeStyle";
+import {IntroBox, IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,H3,P,ProTextBox} from "../../styles/homeStyle";
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/CP_fillers/sp_home_hs.js/sp_host";
 import ShowsBlock from "../../componets/CP_fillers/sp_home_hs.js/sp_shows";
@@ -15,8 +15,9 @@ function SpirtHome (){
     return(
         <SpDiv>
             {/* Intro Block */}
-            <IntroBlock bgImg="https://images.unsplash.com/photo-1494783435443-c15feee0a80a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
-                <FillerDiv/>
+            <IntroBox bgImg="https://images.unsplash.com/photo-1494783435443-c15feee0a80a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
+                <IntroBlock>
+                    <FillerDiv/>
                     <IntroTxTDiv>
                         <CCCDiv>
                             <ProTextBox>
@@ -31,24 +32,10 @@ function SpirtHome (){
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen/> */}
                         </CCCDiv>
-                        
-                        {/* {!isAuthenticated && (
-                            <Link to="/signup"><MarronBtn>Sign-up here.</MarronBtn></Link>
-                        )}
-                        {isAuthenticated && isUser &&(
-                            <Link to="/shows"><MarronBtn>Watch now
-                                .</MarronBtn></Link>
-                        )}
-                        {isAuthenticated && isHost &&(
-                            <Link to="/"><MarronBtn>View Your shows.</MarronBtn></Link>
-                        )}
-                        {isAuthenticated && isManager &&(
-                            <Link to="/"><MarronBtn>View Your shows.</MarronBtn></Link>
-                        )} */}
-                        
-                        
                     </IntroTxTDiv>
-            </IntroBlock>
+                </IntroBlock>
+                <a href="https://unsplash.com/@diegojimenez"><H3>Image by Diego Jimenez</H3></a>
+            </IntroBox>
             {/* Hosts area start */}
             <ShowsBlock/>
 
