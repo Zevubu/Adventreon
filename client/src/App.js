@@ -4,8 +4,11 @@ import GlobalFonts from "./fonts/fonts";
 import {GlobalStyle} from "./styles/universal-styles";
 import API from "./API/loggedOutAPI"
 // private routes
-import UserRoute from './PrivateRoutes/UserRoutes';
+
+
 import LogOutRoute from './PrivateRoutes/LogOutRoute';
+import LoggedInRoute from './PrivateRoutes/loggedInRoute';
+// import UserRoute from './PrivateRoutes/UserRoutes';
 import TempRoute from './PrivateRoutes/TempRoute';
 import TempMRoute from './PrivateRoutes/TempMRoute';
 import ManagmentRoute from './PrivateRoutes/ManagmentRoute';
@@ -201,18 +204,18 @@ function App() {
                           <LogOutRoute exact path="/login" component={Login} />
                           <LogOutRoute exact path="/signup" component={SignUp} />
                           {/* <UserRoute path="/profile/:id" state={{value:userData}}  component={profile}/> */}
-                          <Route exact path="/hosts" component={HostsPage} />
-                          <Route exact path="/hosts/:id" component={HostProfile} />
-                          <Route exact path="/shows" component={ShowPage} />
-                          <Route exact path="/shows/:id" component={ShowProfile} />
-                          <Route exact path="/episodes/:id" component={EpisodeProfile} />
-                          <Route exact path="/episodes" component={HostsPage} />
-                          <Route exact path="/performance" component={EnterPage} />
-                          <Route exact path="/life" component={LifePage} />
-                          <Route exact path="/spirtualrespite" component={SpirtPage} />
-                          <Route exact path="/music" component={MusicPage} />
-                          <Route exact path="/allcat" component={AllCatPage} />
-                          <Route exact path="/uploads" component={Uploader} />
+                          <LoggedInRoute exact path="/hosts" component={HostsPage} />
+                          <LoggedInRoute exact path="/hosts/:id" component={HostProfile} />
+                          <LoggedInRoute exact path="/shows" component={ShowPage} />
+                          <LoggedInRoute exact path="/shows/:id" component={ShowProfile} />
+                          <LoggedInRoute exact path="/episodes/:id" component={EpisodeProfile} />
+                          <LoggedInRoute exact path="/episodes" component={HostsPage} />
+                          <LoggedInRoute exact path="/performance" component={EnterPage} />
+                          <LoggedInRoute exact path="/life" component={LifePage} />
+                          <LoggedInRoute exact path="/spirtualrespite" component={SpirtPage} />
+                          <LoggedInRoute exact path="/music" component={MusicPage} />
+                          <LoggedInRoute exact path="/allcat" component={AllCatPage} />
+                          <LoggedInRoute exact path="/uploads" component={Uploader} />
                           <TempMRoute exact path="/tempsum/:id" component={ManegSignUp} />
                           <TempRoute exact path="/tempsu/:id" component={HostSignUp} />
                           <ManagmentRoute path="/profilem/:id" state={{value:userData}}  component={profile}/>

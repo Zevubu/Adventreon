@@ -1,6 +1,6 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBlock,SpDiv,VFrame, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,ProTextBox} from "../../styles/homeStyle";
+import {IntroBox, IntroBlock,SpDiv,VFrame, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,H3,ProTextBox} from "../../styles/homeStyle";
 // import SignUp from "./signUp";
 import HostsBlock from "../../componets/CP_fillers/perf_home_hs/perf_host";
 import ShowsBlock from "../../componets/CP_fillers/perf_home_hs/perf_shows";
@@ -15,8 +15,9 @@ function MusicHome (){
     return(
         <SpDiv> 
             {/* Intro Block */}
-            <IntroBlock AlignI='flex_start' FlexD="column" JustifyC='center' bgImg=" https://images.unsplash.com/photo-1542675454-b3fbb8b41c18?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80">
-                <FillerDiv/>
+            <IntroBox bgImg=" https://images.unsplash.com/photo-1542675454-b3fbb8b41c18?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80">
+                <IntroBlock AlignI='flex_start' FlexD="column" JustifyC='center'>
+                    <FillerDiv/>
                     <IntroTxTDiv>
                         <CCCDiv>
                             <ProTextBox>
@@ -30,24 +31,10 @@ function MusicHome (){
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen/>
                         </CCCDiv>
-                        
-                        {/* {!isAuthenticated && (
-                            <Link to="/signup"><MarronBtn>Sign-up here.</MarronBtn></Link>
-                        )}
-                        {isAuthenticated && isUser &&(
-                            <Link to="/shows"><MarronBtn>Watch now
-                                .</MarronBtn></Link>
-                        )}
-                        {isAuthenticated && isHost &&(
-                            <Link to="/"><MarronBtn>View Your shows.</MarronBtn></Link>
-                        )}
-                        {isAuthenticated && isManager &&(
-                            <Link to="/"><MarronBtn>View Your shows.</MarronBtn></Link>
-                        )} */}
-                        
-                        
                     </IntroTxTDiv>
-            </IntroBlock>
+                </IntroBlock>
+                <a href="https://unsplash.com/@fergomez"><H3>Image by Fer Gomez</H3></a>
+            </IntroBox>
             {/* Hosts area start */}
             <ShowsBlock/>
 

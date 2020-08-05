@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const H2 = styled.h2`
+font-size: 25px;
 font-family:'glacial indiffrence';
 color:${props => props.color || "rgb(23, 283, 232)"};
 text-shadow: 2px 1px ${props => props.TSColor || "rgb(0,0,0)"};
@@ -27,8 +28,10 @@ const NavBody = styled.div`
     justify-content: space-between;
     align-items: center;
     position:relative;
-    @media only screen and (max-width: 600px) {
-        height: 120px;
+    @media only screen and (max-width: 850px) {
+        height: 158px;
+        flex-direction: column;
+        justify-content: center;
         }
 `
 const NavBtn = styled.button`
@@ -60,10 +63,11 @@ display: flex;
 flex-direction: row;
 justify-content: space-evenly;
 align-items: center;
-margin: 10px;@media only screen and (max-width: 600px) {
-    flex-direction: column;
-    }
+
 `
+// margin: 10px;@media only screen and (max-width: 600px) {
+//     flex-direction: column;
+//     }
 const PullBox = styled.div`
 display: flex;
 flex-direction: row;

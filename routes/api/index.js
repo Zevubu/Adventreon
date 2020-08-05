@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-// const logoutAPI = require('./logoutAPI');
+const logoutAPI = require('./logoutAPI');
 const baseAPI = require('./api/index');
 const hostAPI = require('./hostAPI');
 // const managAPI = require('./managerAPI');
@@ -8,7 +8,7 @@ const hostAPI = require('./hostAPI');
 
 // logged out routes no token needed 
 // /api/opening
-// router.use("/opening", logoutAPI);
+router.use("/opening", logoutAPI);
 // user routes, simple is token route 
 // /api/req
 router.use("/req", baseAPI);

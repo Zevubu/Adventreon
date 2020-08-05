@@ -88,7 +88,7 @@ function Hosts (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            infinite
+                            // infinite
                         >
                             {Hosts.map((host, key) => (
                                 <SliderFiller
