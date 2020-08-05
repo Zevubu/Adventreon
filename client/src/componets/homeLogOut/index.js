@@ -1,5 +1,5 @@
 import React from "react";
-import { IntroBlock, VFrame, ProTextBox, BigBlock,BigBlockR,SpHeaderA,DuoServiceBlock, HeaderItem, H3, H2, H1} from "../../styles/homeStyle";
+import {IntroBox, IntroBlock, VFrame, ProTextBox, BigBlock,BigBlockR,SpHeaderA,DuoServiceBlock, HeaderItem, H3, H2, H1} from "../../styles/homeStyle";
 // import { Redirect } from "react-router-dom";
 // , { useState} 
 
@@ -12,17 +12,22 @@ function LogoutBody (){
     // }
     return(
         <div>
-            <IntroBlock>
+            <IntroBox>
+                <IntroBlock bgImg=""> 
                     {/* <IntroTxTDiv> */}
-                    <VFrame src="https://player.vimeo.com/video/412924050" frameborder="0px" allow="autoplay; fullscreen" allowfullscreen></VFrame>
-                    <ProTextBox>
-                        <H3>Logged out</H3>
-                        <H3>This is how the world starts,</H3>
-                        <H2>This is how the world starts,</H2>
-                        <H1 color="rgb(23, 283, 232)">This is how the world starts,</H1>
-                        <H2> Not with a bang but with a whimsy...</H2>
-                    </ProTextBox>    
-            </IntroBlock>
+                    {/* <VFrame src="https://player.vimeo.com/video/412924050" frameborder="0px" allow="autoplay; fullscreen" allowfullscreen></VFrame> */}
+                    <div>
+                        <ProTextBox>
+                            <H3>Logged out</H3>
+                            <H3>This is how the world starts,</H3>
+                            <H2>This is how the world starts,</H2>
+                            <H1 color="rgb(23, 283, 232)">This is how the world starts,</H1>
+                            <H2> Not with a bang but with a whimsy...</H2>
+                        </ProTextBox>
+                    </div>  
+                </IntroBlock>
+                <a href="https://unsplash.com/@ethanchoover"><H3>Image by Ethan Hoovers</H3></a>    
+            </IntroBox>
             <BigBlock>
                 <SpHeaderA>
                     <HeaderItem>
@@ -39,7 +44,7 @@ function LogoutBody (){
                 </DuoServiceBlock>
             </BigBlock>
 
-            <Shows/>
+            {/* <Shows/> */}
             
         </div>
     )

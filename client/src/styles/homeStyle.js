@@ -3,13 +3,37 @@ import styled from "styled-components";
 
 // Font sizes, types and styles;
 const H1 = styled.p`
-font-size: 45px;
-margin:0;
-color:${props => props.color || "rgb(233, 233, 232)"};
-text-shadow: 2px 2px ${props => props.TSColor || "rgb(98, 98, 98)"};
+    font-size: 45px;
+    margin:0;
+    color:${props => props.color || "rgb(233, 233, 232)"};
+    text-shadow: 2px 2px ${props => props.TSColor || "rgb(98, 98, 98)"};
+    @media only screen and (max-width: 850px) {
+        font-size: 40px;
+    };
+    @media only screen and (max-width: 700px) {
+        font-size: 35px;
+    };
 
 `
-const H1NB = styled.p`
+const H2 = styled.p`
+font-size: 25px;
+margin:0;
+color:${props => props.color || "rgb(233, 233, 232)"};
+text-shadow: 0.5px 0.5px ${props => props.TSColor || "rgb(98, 98, 98)"};
+@media only screen and (max-width: 850px) {
+    font-size: 20px;
+};
+`
+const H3 = styled.p`
+font-size: 17px;
+margin:0;
+color:${props => props.color || "rgb(233, 233, 232)"};
+text-shadow: 0.8px 0.8px ${props => props.TSColor || "rgb(98, 98, 98)"};
+@media only screen and (max-width: 850px) {
+    font-size: 15px;
+};
+`
+const H1NB = styled(H1)`
 font-size: 24px;
 color:${props => props.color || "rgb(233, 233, 232)"};
 text-shadow: 1.5px 1.5px rgb(98, 98, 98);
@@ -29,18 +53,7 @@ margin:0;
 color:${props => props.color || "rgb(66, 83, 94)"};
 text-shadow: 0.5px 0.5px ${props => props.TSColor || "rgb(98, 98, 98)"};
 `
-const H2 = styled.p`
-font-size: 25px;
-margin:0;
-color:${props => props.color || "rgb(233, 233, 232)"};
-text-shadow: 0.5px 0.5px ${props => props.TSColor || "rgb(98, 98, 98)"};
-`
-const H3 = styled.p`
-font-size: 17px;
-margin:0;
-color:${props => props.color || "rgb(233, 233, 232)"};
-text-shadow: 0.8px 0.8px ${props => props.TSColor || "rgb(98, 98, 98)"};
-`
+
 const P = styled.p`
 font-size: 18px;
 margin:0;
@@ -317,13 +330,21 @@ height:100%;
 // https://images.unsplash.com/photo-1578318114739-2a90a43953d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=828&q=80
 // Intro Block styles
 
-const IntroBlock = styled.div`
+const IntroBox = styled.div`
 background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1502137840985-4ec07e8568bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80"});
 background-repeat: ${props => props.BGR || "no-repeat"};
 background-size:${props => props.BGPsize || "cover"};
 background-position-x: ${props => props.BGPy || "center"};
 background-position-y: ${props => props.BGPx || "center"};
 border-bottom: ${props => props.BDcolor || "rgb(115, 162, 175)"}  solid 2px;
+` 
+// border-bottom: ${props => props.BDcolor || "rgb(115, 162, 175)"}  solid 2px;
+// background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1502137840985-4ec07e8568bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80"});
+// background-repeat: ${props => props.BGR || "no-repeat"};
+// background-size:${props => props.BGPsize || "cover"};
+// background-position-x: ${props => props.BGPy || "center"};
+// background-position-y: ${props => props.BGPx || "center"};
+const IntroBlock = styled.div`
 color: ${props => props.color || "rgb(238, 245, 244)"};
 font-size: 20px;
 height: 600px;
@@ -331,6 +352,9 @@ display: flex;
 flex-direction: ${props => props.FlexD || "row"};
 justify-content: ${props => props.JustifyC || "space-evenly"};
 align-items: ${props => props.AlignI || "center"};
+@media only screen and (max-width: 780px) {
+    flex-direction: ${props => props.FlexD || "column"};
+};
 `
 
 const IntroTxTDiv = styled.div`
@@ -476,4 +500,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {ProTextBox,DivWPad, IntroBlock, VFrame, LookBtn,SlideShadowBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {ProTextBox, DivWPad, IntroBox, IntroBlock, VFrame, LookBtn, SlideShadowBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
