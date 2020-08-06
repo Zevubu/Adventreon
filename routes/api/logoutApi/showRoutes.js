@@ -16,7 +16,7 @@ router.route("/all")
 router.route("/catnumcnt/:category")
   .post( async (req,res) => {
     const {category} = req.params;
-    console.log(`Show category:${category}`);
+    // console.log(`Show category:${category}`);
     const conn = await connection(dbConfig).catch(e => {});
     const catCount = await query(
       conn,
@@ -29,7 +29,7 @@ router.route("/catnumcnt/:category")
 // Matches with "/api/opening/shows/subnumcnt" 
 router.post("/subnumcnt", async (req,res) => {
   const {category, sub_category} = req.body;
-  console.log(`show req: ${JSON.stringify(req.body)} category:${category}, sub_category:${sub_category}`);
+  // console.log(`show req: ${JSON.stringify(req.body)} category:${category}, sub_category:${sub_category}`);
   const conn = await connection(dbConfig).catch(e => {});
   const catCount = await query(
     conn,

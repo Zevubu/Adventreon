@@ -41,10 +41,11 @@ function Shows (){
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
     const scNum = matches ? 4 : 1
+    const token = window.localStorage.getItem('tokens');
 
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getShows()
+        const result = await API.getShows(token)
             // console.log(`show data ${result.data}`)
             setShows(result.data)
         };

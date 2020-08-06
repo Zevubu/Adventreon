@@ -39,14 +39,15 @@ function Shows (){
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
     const scNum = matches ? 5 : 1
-
+    const token = window.localStorage.getItem('tokens');
+    
     useEffect(() => {
         const fetchShowsCNT = async () =>{
-            const count = await API.getShowCatNumCheck({
+            const count = await API.getShowCatNumCheck(token,{
                 'category':'performance',
             })
-            console.log(`Performance shows:${JSON.stringify(count)}`)
-            if(count.data.total !== 0 || count.data.total !== undefined){
+            console.log(`Performance shows #${count.data[0].total} true false check:${count.data[0].total !== 0}`)
+            if(count.data[0].total !== 0 || count.data[0].total !== undefined){
                 setPullSwitch(true)
                 console.log(`Performance confirm check`)
             }
@@ -60,7 +61,7 @@ function Shows (){
         
     if(pullSwith){
         const fetchShows = async () =>{
-            const result = await API.getShowCateg({
+            const result = await API.getShowCateg(token,{
                 'category':'performance',
             })
                 // console.log(`Performance show data ${result.data}`)

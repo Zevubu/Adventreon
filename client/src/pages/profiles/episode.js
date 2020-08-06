@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams} from "react-router";
 // import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import API from "../../API/epiLogOut";
+import API from "../../API/loggedInAPI";
 import {P, H1NB, H1, H3, BlueHeader, H2, HEp} from "../../styles/homeStyle"
 import{ ProDuoServiceBlockColumnB, ProviderBox, ProTextBoxN, ProDuoServiceBlockB, ProDuoServiceBlockColumn, ProTextBox} from '../../styles/providerStyles'
 // import EpisFiller from "../../componets/CatagoryFiller/epi_filler"
@@ -54,10 +54,12 @@ function Episode(){
     // const [services, setServices] = useState([])
     const matches = useMediaQuery('(min-width:600px)');
     const frame = matches ? 560 : 375
+    const token = window.localStorage.getItem('tokens');
+
 
     useEffect(() => {
         const fetchEpis = async () =>{
-         const result = await API.getEpisodesByID(`${id}`)
+         const result = await API.getEpisodesByID(token,`${id}`)
              setEpi(result.data[0])
            
          };

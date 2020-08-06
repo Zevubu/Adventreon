@@ -20,19 +20,20 @@ function Hosts (){
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
-    const num = matches ? 5 : 1
-    const scNum = matches ? 4 : 1
+    const num = matches ? 5 : 1;
+    const scNum = matches ? 4 : 1;
+    const token = window.localStorage.getItem('tokens');
     
     useEffect(() => {
         const fetchHostCNT = async () =>{
-            const count = await API.getHostCatNumCheck('music')
-            console.log(`muse count:${JSON.stringify(count)}`)
+            const count = await API.getHostCatNumCheck(token,'music')
+            // console.log(Music Host count #${JSON.stringify(count.data.total)} true false check:${count.data.total !== 0}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
-                console.log(`Muse host confirm check`)
+                // console.log(`Music host confirm check`)
             }
             else{
-                console.log(`Muse host fail check`)
+                // console.log(`Music host fail check`)
                 return
             }
         }
@@ -41,7 +42,7 @@ function Hosts (){
 
     if(pullSwith){
         const fetchHosts = async () =>{
-            const result = await API.getHostByCat({
+            const result = await API.getHostByCat(token,{
                 'category':'music',
             })
             // console.log(`Muse pull switch check`)

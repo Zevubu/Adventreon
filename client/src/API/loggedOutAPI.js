@@ -1,23 +1,5 @@
 import axios from "axios";
 export default {
-    getShowByID: function(id){
-        return axios.get("/api/req/shows/find/" + id).catch(err => console.log(`Find show by id error:${err}`));
-    },
-    getEpisByShowID: function(id){
-        return axios.get("/api/req/episodes/show/" + id).catch(err => console.log(`Find Epis by show id error:${err}`));
-    },
-    getShows: function(){
-        return axios.get("/api/req/shows/all").catch(err => console.log(`Get all shows error:${err}`));
-    },
-    getShowByHost:function(id){
-        return axios.get("/api/req/shows/host/" + id).catch(err => console.log(`Find hosts shows by id error:${err}`));
-    },
-    getHosts: function(){
-        return axios.get("/api/req/hosts/all").catch(err => console.log(`Get all hosts error:${err}`));
-    },
-    getHostByID: function(id){
-        return axios.get("/api/req/hosts/all/" + id).catch(err => console.log(`Find hosts by id error:${err}`));
-    },
     createAccount: function(userData){
         // stays in log out
         // console.log(`CREAT CHECK!`);

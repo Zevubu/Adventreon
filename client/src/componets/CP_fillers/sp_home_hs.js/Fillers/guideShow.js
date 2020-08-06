@@ -42,20 +42,21 @@ function Shows (){
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
     const scNum = matches ? 4 : 1
+    const token = window.localStorage.getItem('tokens');
 
     useEffect(() => {
         const fetchShowsCNT = async () =>{
-            const count = await API.getShowSubcatNumCheck({
+            const count = await API.getShowSubcatNumCheck(token,{
                 'category':'spiritual',
                 'sub_category':'guide'
             })
-            // console.log(`life cooking count:${JSON.stringify(count.data.total)}`)
-            if(count.data.total !== 0){
+            // console.log(`Spiritual guide count #${count.data[0].total} true false check:${count.data[0].total !== 0}`)
+            if(count.data[0].total !== 0){
                 setPullSwitch(true)
-                console.log(`Spiritual guide confirm check`)
+                // console.log(`Spiritual guide confirm check`)
             }
             else{
-                console.log(`Spiritual guide fail check`)
+                // console.log(`Spiritual guide fail check`)
                 return
             }
         }
@@ -64,7 +65,7 @@ function Shows (){
     
     if(pullSwith){
         const fetchShows = async () =>{
-            const result = await API.getShowSubcat({
+            const result = await API.getShowSubcat(token,{
                 'category':'spiritual',
                 'sub_category':'guide'
             })
