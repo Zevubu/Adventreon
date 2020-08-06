@@ -14,27 +14,34 @@ const authTools = require('./tools')
 router.use("/opening", LogoutAuth);
 
 // user /auth/user
-// router.use('/user', userAuth); //user,managment/ master have access
+// router.use('/user',
+    // passport.authenticate('jwt', {session: false}),
+    // userAuth
+// );
+//user,managment/ master have access
 
 // host /auth/host
 router.use('/hosts',
     passport.authenticate('jwt', {session: false}),
     checkIsInRole(ROLES.Host),
     hostAuth
-); //host/ managment/ master have access
+); 
+//host/ managment/ master have access
 
 // tempH /auth/temph
 router.use('/temph',
     passport.authenticate('jwt', {session: false}),
     checkIsInRole(ROLES.TempH),
     tempHAuth
-) //temph/ managment/ master have access
+) 
+//temph/ managment/ master have access
 
 // managment /auth/managment
 router.use('/managment', 
     passport.authenticate('jwt', {session: false}),
     checkIsInRole(ROLES.Manag), 
-    managAuth) //managment/ master have access
+    managAuth) 
+//managment/ master have access
 
 // tempM /auth/tempm
 router.use('/tempm',

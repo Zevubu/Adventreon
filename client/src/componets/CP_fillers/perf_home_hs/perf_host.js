@@ -22,17 +22,18 @@ function Hosts (){
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
     const scNum = matches ? 4 : 1
+    const token = window.localStorage.getItem('tokens');
     
     useEffect(() => {
         const fetchHostCNT = async () =>{
-            const count = await API.getHostCatNumCheck('performance')
-            console.log(`muse count:${JSON.stringify(count)}`)
+            const count = await API.getHostCatNumCheck(token,'performance')
+            // console.log(`Performance Host count #${JSON.stringify(count.data.total)} true false check:${count.data.total !== 0}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
-                console.log(`Performance host confirm check`)
+                // console.log(`Performance host confirm check`)
             }
             else{
-                console.log(`Performance host fail check`)
+                // console.log(`Performance host fail check`)
                 return
             }
         }
@@ -41,7 +42,7 @@ function Hosts (){
 
     if(pullSwith){
         const fetchHosts = async () =>{
-            const result = await API.getHostByCat({
+            const result = await API.getHostByCat(token,{
                 'category':'performance'
             })
             // console.log(`Performance pull switch check`)

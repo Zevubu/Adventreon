@@ -1,7 +1,7 @@
 //  @param  {[String]} values Array of values for those column names
 
 const valueForQuery = (_values) => {
-    console.log(`_values: ${_values}`)
+    // console.log(`_values: ${_values}`)
     const values = _values.map(item => {
         let val;
         switch (typeof item) {
