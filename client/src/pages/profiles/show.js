@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {useParams} from "react-router";
 import {Link} from 'react-router-dom';
-import API from "../../API/loggedOutAPI";
-import eAPI from "../../API/epiLogOut"
+import API from "../../API/loggedInAPI";
+// import eAPI from "../../API/epiLogOut"
 import {P,H2, H1, H3, SpHeaderA} from "../../styles/homeStyle"
 import{ ProviderBox, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisodeFiller from "../../componets/EpiFiller/slide_filler"
@@ -41,18 +41,19 @@ function Show(){
     const [episodical, setEpisodical] = useState();
     const [playing, setPlaying] = useState()
     const matches = useMediaQuery('(min-width:600px)');
-    const num = matches ? 5 : 1
-    const scNum = matches ? 4 : 1
-    const frame = matches ? 560 : 375
+    const num = matches ? 5 : 1;
+    const scNum = matches ? 4 : 1;
+    const frame = matches ? 560 : 375;
+    const token = window.localStorage.getItem('tokens');
 
     useEffect(() => {
         console.log(`Show Id:${id}`)
         const fetchShow = async () =>{
-         const result = await API.getShowByID(`${id}`)
-             setShow(result.data[0])
-           
-         };
-            fetchShow();  
+            const result = await API.getShowByID(token,`${id}`)
+            setShow(result.data[0])
+        
+        };
+        fetchShow();  
     }, []);
 
     if(Show && !episodical && !oneOff){
@@ -61,7 +62,7 @@ function Show(){
 
         }else if(Show.show_type === "episodical"){
             const fetchEpis = async () =>{
-                        const result = await eAPI.getEpisByShowID(`${id}`)
+                        const result = await API.getEpisByShowID(token,`${id}`)
                             // console.log(result.data)
                             setEpisodes(result.data)
                             setEpisodical(true)

@@ -8,7 +8,7 @@ const userQuery = require("../../../query_builders/user-query");
 //this route uploads the actual image file
 router.route('/upload')
 .post(async (req, res) => {
-        console.log(req.files, 'This should happen First')
+        // console.log(req.files, 'This should happen First')
         upload = (req.files.myFile)
         upload.mv(`./uploads/${upload.name}`)
         res.send("Post Recieved")

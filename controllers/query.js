@@ -8,6 +8,6 @@ module.exports = async (conn, q, params) => new Promise(
             }
             resolve(result);
         }
-        console.log(`Query tester: ${conn}, ${q}, ${params}`)
+        // console.log(`Query tester: ${conn}, ${q}, ${params}`)
         conn.query(q, params, handler);
     }).catch(e => console.log(e));

@@ -20,7 +20,7 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = `${CONFIG.jwt_encryption}`;
 
 const strategy =  new JwtStrategy(opts,(jwt_payload, next)=>{
-    console.log('Payload received', jwt_payload);
+    // console.log('Payload received', jwt_payload);
     // usually this would be a database call:
     const userCall = async () =>{
       const conn = await connection(dbConfig).catch(e => {});

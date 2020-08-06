@@ -15,31 +15,41 @@ router.route("/all")
   })
 
 // Matches with "/api/req/shows/catnumcnt/cat" 
-router.route("/catnumcnt/:category")
+router.route("/catnumcnt")
   .post( async (req,res) => {
-    const {category} = req.params;
-    console.log(`Show category:${category}`);
-    const conn = await connection(dbConfig).catch(e => {});
+    const {category} = req.body;
+    console.log(`Show category:${JSON.stringify(category)}`);
+    const conn = await connection(dbConfig).catch(e => {
+      console.log(`Catagory count Error:${e}`),
+      res.send({"total":0, "error":e})
+    });
     const catCount = await query(
       conn,
       'SELECT COUNT(*) AS total FROM shows WHERE category=?',
       [category]
     )
-    res.send(catCount)
+      console.log(`CatCount:${JSON.stringify(catCount[0].total)}`)
+      res.send(catCount)
+ 
+    
   })
 
 // Matches with "/api/req/shows/subnumcnt" 
 router.post("/subnumcnt", async (req,res) => {
   const {category, sub_category} = req.body;
-  console.log(`show req: ${JSON.stringify(req.body)} category:${category}, sub_category:${sub_category}`);
-  const conn = await connection(dbConfig).catch(e => {});
+  // console.log(`show req: ${JSON.stringify(req.body)} category:${category}, sub_category:${sub_category}`);
+  const conn = await connection(dbConfig).catch(e => {
+    console.log(`Subcatagory count Error:${e}`),
+    res.send({"total":0, "error":e})
+  });
   const catCount = await query(
     conn,
     'SELECT count(*) AS total FROM shows WHERE category=? and sub_category=?',
     [category, sub_category]
   )
-  console.log(`subCatCount:${JSON.stringify(catCount[0])}`)
-  res.send(catCount[0])
+    console.log(`SubcatCount:${JSON.stringify(catCount[0].total)}`)
+    res.send(catCount)
+
 })
 // Matches with "/api/req/shows/category" 
 router.post("/category", async (req,res) => {
@@ -50,6 +60,7 @@ router.post("/category", async (req,res) => {
     'SELECT * FROM shows WHERE category=?',
     [category]
   )
+  
   res.send(shows)
 })
 // Matches with "/api/shows/subcat" 

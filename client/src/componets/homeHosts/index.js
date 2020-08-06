@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react";
 import { BigBlock,LookBtn,SlideShadowBox,LookHostBox, SpHeaderA, DivWBorder, H2,H2Dark, HeaderItem} from "../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
 // import {Logo} from "../../styles/componentStyles";
-import API from "../../API/loggedOutAPI";
+import API from "../../API/loggedInAPI";
 
 import SliderFiller from "../HostFiller/slide_filler";
 
@@ -20,12 +20,13 @@ function Hosts (){
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
-    const num = matches ? 5 : 1
-    const scNum = matches ? 4 : 1
+    const num = matches ? 5 : 1;
+    const scNum = matches ? 4 : 1;
+    const token = window.localStorage.getItem('tokens');
     
     useEffect(() => {
         const fetchHostCNT = async () =>{
-            const count = await API.getHostNumCheck()
+            const count = await API.getHostNumCheck(token)
             // console.log(`Host count:${JSON.stringify(count)}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
@@ -41,7 +42,7 @@ function Hosts (){
 
     if(pullSwith){
         const fetchHosts = async () =>{
-            const result = await API.getHosts()
+            const result = await API.getHosts(token)
             // console.log(`Life pull switch check`)
             setHosts(result.data)
         };
