@@ -1,6 +1,6 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBox, IntroBlock,SpDiv, VFrame,H3,H2, H1, ProTextBox} from "../../styles/homeStyle";
+import {IntroBox, IntroBlock,SpDiv, VFrame, A,H3,H2, H1, ProTextBox} from "../../styles/homeStyle";
 // import useMediaQuery from '@material-ui/core/useMediaQuery';
 // import SignUp from "./signUp";
 import {useAuth} from "../../context/heart"
@@ -41,7 +41,9 @@ function Home (){
                             </div>  
                             {/* <IntroTxTDiv> */}
                         </IntroBlock>
-                        <a href="https://unsplash.com/@ethanchoover"><H3>Image by Ethan Hoovers</H3></a>    
+                        <div>
+                            <H3>Image by <A href="https://unsplash.com/@ethanchoover">Ethan Hoovers</A></H3>   
+                        </div>
                     </IntroBox>
                     {/* Shows area */}
                     <ShowsBlock/>

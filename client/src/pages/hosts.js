@@ -1,15 +1,16 @@
 import React, { useState, useEffect} from "react";
 import {DivWBorder, ProviderBox, BigBlock, BlueHeader, H2} from "../styles/homeStyle"
-import API from "../API/loggedOutAPI";
+import API from "../API/loggedInAPI";
 import HostFiller from "../componets/HostFiller/index"
 
 function Hosts (){
     const [Hosts, setHosts] = useState([]);
     // const [DSBcount, setDSBcount] = useState(0)
+    const token = window.localStorage.getItem('tokens');
 
     useEffect(() => {
        const fetchHosts = async () =>{
-            const result = await API.getHosts()
+            const result = await API.getHosts(token)
             // console.log(result.data)
             setHosts(result.data)
         };

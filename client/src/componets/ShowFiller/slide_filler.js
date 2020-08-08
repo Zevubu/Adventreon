@@ -22,8 +22,8 @@ function SlideFiller(props){
     }   
     // opacity: vis ,
     return(
-        <ShowSlide id={props.id} onClick={i=>setClick(true)} bgImg={props.bImg}>
-            <SlideBuffer bgImg={props.imgB} style={{backgroundColor: bgC}} onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}>
+        <ShowSlide id={props.id} onClick={i=>setClick(true)} bgImg={props.imgB}>
+            <SlideBuffer style={{backgroundColor: bgC}} onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}>
                 {/* <DuoServiceBlockColumn>
                     <Image src={props.imgP} alt={props.showName}/>
                 </DuoServiceBlockColumn> */}

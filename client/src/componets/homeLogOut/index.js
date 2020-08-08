@@ -1,5 +1,5 @@
 import React from "react";
-import {IntroBox, IntroBlock, VFrame, ProTextBox, BigBlock,BigBlockR,SpHeaderA,DuoServiceBlock, HeaderItem, H3, H2, H1} from "../../styles/homeStyle";
+import {IntroBox, IntroBlock, ProTextBox, BigBlock,SpHeaderA,DuoServiceBlock, HeaderItem,A, H3, H2, H1} from "../../styles/homeStyle";
 // import { Redirect } from "react-router-dom";
 // , { useState} 
 
@@ -26,7 +26,9 @@ function LogoutBody (){
                         </ProTextBox>
                     </div>  
                 </IntroBlock>
-                <a href="https://unsplash.com/@ethanchoover"><H3>Image by Ethan Hoovers</H3></a>    
+                <div>
+                    <H3>Image by <A href="https://unsplash.com/@ethanchoover">Ethan Hoovers</A></H3>  
+                </div>
             </IntroBox>
             <BigBlock>
                 <SpHeaderA>

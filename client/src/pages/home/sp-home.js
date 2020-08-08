@@ -1,8 +1,8 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBox, IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,H3,P,ProTextBox} from "../../styles/homeStyle";
+import {IntroBox, IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,A,H1,H2,H3,P,ProTextBox} from "../../styles/homeStyle";
 // import SignUp from "./signUp";
-import HostsBlock from "../../componets/CP_fillers/sp_home_hs.js/sp_host";
+import HostsBlock from "../../componets/CP_fillers/base_filler/host_cat"
 import ShowsBlock from "../../componets/CP_fillers/sp_home_hs.js/sp_shows";
 // import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
@@ -34,12 +34,14 @@ function SpirtHome (){
                         </CCCDiv>
                     </IntroTxTDiv>
                 </IntroBlock>
-                <a href="https://unsplash.com/@diegojimenez"><H3>Image by Diego Jimenez</H3></a>
+                <div>
+                    <H3>Image by <a href="https://unsplash.com/@diegojimenez">Diego Jimenez</a></H3>
+                </div>
             </IntroBox>
             {/* Hosts area start */}
             <ShowsBlock/>
 
-            <HostsBlock/>
+            <HostsBlock Cat="spiritual"/>
             {/* Shows area */}
         
         </SpDiv>

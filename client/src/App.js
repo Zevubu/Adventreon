@@ -212,7 +212,7 @@ function App() {
                           <LoggedInRoute exact path="/episodes" component={HostsPage} />
                           <LoggedInRoute exact path="/performance" component={EnterPage} />
                           <LoggedInRoute exact path="/life" component={LifePage} />
-                          <LoggedInRoute exact path="/spirtualrespite" component={SpirtPage} />
+                          <LoggedInRoute exact path="/spiritual" component={SpirtPage} />
                           <LoggedInRoute exact path="/music" component={MusicPage} />
                           <LoggedInRoute exact path="/allcat" component={AllCatPage} />
                           <LoggedInRoute exact path="/uploads" component={Uploader} />

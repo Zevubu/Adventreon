@@ -1,6 +1,11 @@
 import styled from "styled-components";
 // import InfoBlockImg from '..\images\homepagebackground.jpg'
 
+const A = styled.a`
+ color:${props => props.color || "rgb(233, 233, 232)"};
+ text-shadow: 0.8px 0.8px ${props => props.TSColor || "rgb(98, 98, 98)"};
+`
+
 // Font sizes, types and styles;
 const H1 = styled.p`
     font-size: 45px;
@@ -500,4 +505,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {ProTextBox, DivWPad, IntroBox, IntroBlock, VFrame, LookBtn, SlideShadowBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {ProTextBox, DivWPad, IntroBox, IntroBlock, VFrame, LookBtn, SlideShadowBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader,A, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}

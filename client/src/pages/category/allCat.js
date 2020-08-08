@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import {DivWBorder, ProviderBox, BigBlock} from "../../styles/homeStyle"
-import API from "../../API/loggedOutAPI";
+import API from "../../API/loggedInAPI";
 import HostFiller from "../../componets/HostFiller/index"
 import ShowFiller from "../../componets/CategoryFiller/show_filler"
 import { Logo } from "../../styles/componentStyles";
@@ -9,15 +9,16 @@ function AllPage (){
     const [Hosts, setHosts] = useState([]);
     const [Shows, setShows] = useState([]);
     // const [DSBcount, setDSBcount] = useState(0)
+    const token = window.localStorage.getItem('tokens');
 
     useEffect(() => {
        const fetchAllH = async () =>{
-            const result = await API.getHosts()
+            const result = await API.getHosts(token)
             console.log(result.data)
             setHosts(result.data)
         };
         const fetchAllS = async () =>{
-            const result = await API.getShows()
+            const result = await API.getShows(token)
             console.log(result.data)
             setShows(result.data)
         };

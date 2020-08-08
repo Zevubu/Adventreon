@@ -20,12 +20,12 @@ router.route("/catnumcnt")
     const {category} = req.body;
     console.log(`Show category:${JSON.stringify(category)}`);
     const conn = await connection(dbConfig).catch(e => {
-      console.log(`Catagory count Error:${e}`),
-      res.send({"total":0, "error":e})
+      console.log(`Catagory count Error:${e}`);
+      res.send({"total":0, "error":e});
     });
     const catCount = await query(
       conn,
-      'SELECT COUNT(*) AS total FROM shows WHERE category=?',
+      showQuery.findNumOfCat(),
       [category]
     )
       console.log(`CatCount:${JSON.stringify(catCount[0].total)}`)
@@ -39,12 +39,12 @@ router.post("/subnumcnt", async (req,res) => {
   const {category, sub_category} = req.body;
   // console.log(`show req: ${JSON.stringify(req.body)} category:${category}, sub_category:${sub_category}`);
   const conn = await connection(dbConfig).catch(e => {
-    console.log(`Subcatagory count Error:${e}`),
-    res.send({"total":0, "error":e})
+    console.log(`Subcatagory count Error:${e}`);
+    res.send({"total":0, "error":e});
   });
   const catCount = await query(
     conn,
-    'SELECT count(*) AS total FROM shows WHERE category=? and sub_category=?',
+    showQuery.findNumOfSubCat(),
     [category, sub_category]
   )
     console.log(`SubcatCount:${JSON.stringify(catCount[0].total)}`)
