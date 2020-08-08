@@ -3,12 +3,7 @@ import { BigBlock} from "../../../styles/homeStyle";
 // import { Redirect } from "react-router-dom";
 // , { useState} 
 
-import VarietyShows from './Fillers/VarietyShow';
-import AcouShows from './Fillers/acousticShow';
-import EdmShows from './Fillers/EdmShow';
-import EduShows from './Fillers/EduShow';
-import VlogShows from './Fillers/VlogShow';
-import DjShows from './Fillers/DjShow'
+import ShowSubCatBox from '../base_filler/shows_subcat'
 
 function Shows (){
     // const [Click, setClick] = useState(false);
@@ -18,22 +13,22 @@ function Shows (){
     return(
         <BigBlock>
             <div>
-                <VarietyShows/>
+                <ShowSubCatBox Cat="music" SubCat="variety" Name="Variety"/>
             </div>
             <div>
-                <AcouShows/>
+                <ShowSubCatBox Cat="music" SubCat="acoustic" Name="Acoustic"/>
             </div>
             <div>
-                <EdmShows /> 
+                <ShowSubCatBox Cat="music" SubCat="edm" Name="EDM"/> 
             </div>
             <div>
-                <DjShows />
+                <ShowSubCatBox Cat="music" SubCat="dj" Name="Dj Sets"/>
             </div>
             <div>
-                <EduShows /> 
+                <ShowSubCatBox Cat="music" SubCat="educate" Name="Educational"/> 
             </div>
             <div>
-                <VlogShows /> 
+                <ShowSubCatBox Cat="music" SubCat="blog" Name="Personal Vlogs"/> 
             </div>
         </BigBlock>
     )

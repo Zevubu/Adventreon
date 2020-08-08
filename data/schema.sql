@@ -97,6 +97,7 @@ SELECT * FROM users;
 SELECT * FROM users WHERE user_type='host' AND entertain=1 OR mhswitch=1 AND user_type='mod' AND entertain=1;
 SELECT * FROM shows;
 SELECT * FROM shows ORDER BY RAND() LIMIT 12;
+SELECT * FROM shows ORDER BY RAND() LIMIT 12;
 SELECT * FROM shows WHERE show_type="episodical" ORDER BY id DESC LIMIT 12;
 SELECT * FROM shows WHERE show_type="one_off" ORDER BY id DESC LIMIT 12;
 SELECT * FROM shows ORDER BY id DESC LIMIT 12;

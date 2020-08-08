@@ -3,11 +3,7 @@ import { BigBlock} from "../../styles/homeStyle";
 // import { Redirect } from "react-router-dom";
 // , { useState} 
 
-import MuseShows from '../ShowBodies/MuseShow'
-import PerfShows from '../ShowBodies/EnterShow'
-import VisShows from '../ShowBodies/VisualShow'
-import LifeShows from '../ShowBodies/LifeShow'
-import ReligShows from '../ShowBodies/SpShow'
+import ShowCatBox from '../CP_fillers/base_filler/shows_cat'
 
 function Shows (){
       // const [Click, setClick] = useState(false);
@@ -17,19 +13,19 @@ function Shows (){
     return(
         <BigBlock>
             <div>
-                <MuseShows />
+                <ShowCatBox Cat="music" Name="Music"/>
             </div>
             <div>
-                <PerfShows />
+                <ShowCatBox Cat="performance" Name="Performance Art"/>
             </div>
             <div>
-                <VisShows />
+                <ShowCatBox Cat="visual" Name="Visual Art"/>
             </div>
             <div>
-                <LifeShows />
+                <ShowCatBox Cat="life" Name="Life"/>
             </div>
             <div>
-                <ReligShows /> 
+                <ShowCatBox Cat="spiritual" Name="Spiritual Respite"/> 
             </div>
         </BigBlock>
     )

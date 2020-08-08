@@ -1,8 +1,8 @@
 import React from "react";
 // import {Link} from 'react-router-dom'
-import {IntroBox, IntroBlock,SpDiv,VFrame, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,H3, ProTextBox} from "../../styles/homeStyle";
+import {IntroBox, IntroBlock,SpDiv,VFrame, CCCDiv, FillerDiv, IntroTxTDiv,A,H1,H2,H3, ProTextBox} from "../../styles/homeStyle";
 // import SignUp from "./signUp";
-import HostsBlock from "../../componets/CP_fillers/life_home_hs/life_host";
+import HostsBlock from "../../componets/CP_fillers/base_filler/host_cat"
 import ShowsBlock from "../../componets/CP_fillers/life_home_hs/life_shows";
 // import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
@@ -33,12 +33,14 @@ function MusicHome (){
                             </CCCDiv>
                         </IntroTxTDiv>
                 </IntroBlock>
-                <a href="https://unsplash.com/@jbcreate_"><H3>Image by Joseph Barrientos</H3></a>
+                <div>
+                    <H3>Image by <A href="https://unsplash.com/@jbcreate_">Joseph Barrientos</A></H3>
+                </div>
             </IntroBox>
             {/* Hosts area start */}
             <ShowsBlock/>
 
-            <HostsBlock/>
+            <HostsBlock Cat="life"/>
             {/* Shows area */}
         
         </SpDiv>

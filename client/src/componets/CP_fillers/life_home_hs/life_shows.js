@@ -4,40 +4,30 @@ import { BigBlock} from "../../../styles/homeStyle";
 // , { useState}
 
 
+import ShowSubCatBox from '../base_filler/shows_subcat'
 
-import CounsShows from './Fillers/counsShow';
-import CookShows from './Fillers/CookShow';
-import LifeHackShows from './Fillers/LifeHackShow';
-import VarietyShows from './Fillers/VarShow'
-import EduShows from './Fillers/EduShow';
-import VlogShows from './Fillers/VlogShow';
 
 
 function Shows (){
-    // const [Click, setClick] = useState(false);
-    // if(Click){
-    //     return <Redirect to="/shows" />
-    // }
- 
     return(
         <BigBlock>
             <div>
-                <CounsShows />
+                <ShowSubCatBox Cat="life" SubCat="counseling" Name="Counseling"/>
             </div>
             <div>
-                <CookShows />
+                <ShowSubCatBox Cat="life" SubCat="cooking" Name="Cooking"/>
             </div>
             <div>
-                <LifeHackShows/> 
+                <ShowSubCatBox Cat="life" SubCat="lifehack" Name="Life Hacks"/> 
             </div>
             <div>
-                <VarietyShows/> 
+                <ShowSubCatBox Cat="life" SubCat="variety" Name="Variety"/> 
             </div>
             <div>
-                <EduShows /> 
+                <ShowSubCatBox Cat="life" SubCat="educate" Name="Educational"/> 
             </div>
             <div>
-                <VlogShows /> 
+                <ShowSubCatBox Cat="life" SubCat="blog" Name="Personal Vlogs"/> 
             </div>
         </BigBlock>
     )

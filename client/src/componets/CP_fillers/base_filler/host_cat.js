@@ -13,8 +13,8 @@ import '../../../styles/Carousel.css';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
  
 
-function Hosts (){ 
-    const [hosts, setHosts] = useState([]);
+function Hosts (props){ 
+    const [Hosts, setHosts] = useState([]);
     // const [vis, setVis] = useState(1);
     const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
@@ -26,26 +26,27 @@ function Hosts (){
     
     useEffect(() => {
         const fetchHostCNT = async () =>{
-            const count = await API.getHostCatNumCheck(token,'performance')
-            // console.log(`Performance Host count #${JSON.stringify(count.data.total)} true false check:${count.data.total !== 0}`)
+            console.log(`Props host category test:${props.Cat}`)
+            const count = await API.getHostCatNumCheck(token,props.Cat)
+             // console.log(`Spirit Host count #${JSON.stringify(count.data.total)} true false check:${count.data.total !== 0}`)
             if(count.data.total !== 0){
                 setPullSwitch(true)
-                // console.log(`Performance host confirm check`)
+                // console.log(`Spirit host confirm check`)
             }
             else{
-                // console.log(`Performance host fail check`)
+                // console.log(`Spirit host fail check`)
                 return
             }
         }
-        fetchHostCNT() 
+        fetchHostCNT()  
     }, []);
 
     if(pullSwith){
         const fetchHosts = async () =>{
             const result = await API.getHostByCat(token,{
-                'category':'performance'
+                'category':props.Cat
             })
-            // console.log(`Performance pull switch check`)
+            // console.log(`Spirit pull switch check`)
             setHosts(result.data)
         };
         setPullSwitch(false)
@@ -59,21 +60,21 @@ function Hosts (){
 // opacity: vis ,
     return(
         <div>
-        {hosts.length !== 0 &&(
+        {Hosts.length !== 0 &&( 
         <BigBlock>
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             {/* <a id="Hosts"/> */}
             {/* <DivWBorder style={{marginBottom: '100px'}}> */}
-            <DivWBorder >
-                <SpHeaderA >
+            <DivWBorder>
+                <SpHeaderA>
                     <HeaderItem>
-                    <H2                         
+                    <H2                           
                         onClick={i=>setClick(true)}
                         style={{backgroundColor: bgC}} 
                         onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                         onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
                     >
-                    Hosts</H2>
+                    Host's</H2>
                     </HeaderItem>
                     {/* <HeaderItem>
                         <a className="nav-link" href="/Hosts" style={{textDecoration: 'none'}}><Button variant="contained" color='secondary'>See all</Button></a>
@@ -92,9 +93,8 @@ function Hosts (){
                             offset={50}
                             slidesPerScroll={scNum}
                             arrows
-                            // infinite
                         >
-                            {hosts.map((host, key) => (
+                            {Hosts.map((host, key) => (
                                 <SliderFiller
                                     key={key} id={host.id} userName={host.user_name}
                                     title={host.title} pImg={host.p_img} bImg={host.b_img}

@@ -1,13 +1,15 @@
 import React, { useState, useEffect} from "react";
-import { BigBlock,LookBtn,SlideShadowBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../../styles/homeStyle";
+import {BigBlock,LookBtn,SlideShadowBox,LookBox, SpHeaderA, H2, HeaderItem, DivWBorder} from "../../../styles/homeStyle";
 import { Redirect } from "react-router-dom";
-import API from "../../../../API/loggedInAPI";
+import API from "../../../API/loggedInAPI";
 
-import SliderFiller from "../../../ShowFiller/slide_filler";
+import SliderFiller from "../../ShowFiller/slide_filler";
 
 import Carousel from '@brainhubeu/react-carousel';
-import '../../../../styles/Carousel.css';
+import '../../../styles/Carousel.css';
 // import '@brainhubeu/react-carousel/lib/style.css';
+// import Button from '@material-ui/core/Button';
+// import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // show_name,x 
@@ -31,53 +33,52 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 // couns, 
 // relig
 
-function Shows (){
+function Shows (props){
     const [shows, setShows] = useState([]);
     // const [vis, setVis] = useState(1);
     const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
-    const num = matches ? 5 : 1;
-    const scNum = matches ? 4 : 1;
+    const num = matches ? 5 : 1
+    const scNum = matches ? 4 : 1
     const token = window.localStorage.getItem('tokens');
 
     useEffect(() => {
         const fetchShowsCNT = async () =>{
+            console.log(`Props Cat:${props.Cat},SubCat:${props.SubCat}, Name:${props.Name}`)
             const count = await API.getShowSubcatNumCheck(token,{
-                'category':'performance',
-                'sub_category':'variety'
+                'category':props.Cat,
+                'sub_category': props.SubCat
             })
-            // console.log(`Performance variety count #${count.data[0].total} true false check:${count.data[0].total !== 0}`)
-            if(count.data[0].total !== 0){
+            //  console.log(`Spiritual blog count #${count.data[0].total} true false check:${count.data[0].total !== 0}`)
+             if(count.data[0].total !== 0){
                 setPullSwitch(true)
-                // console.log(`Performance variety confirm check`)
+                // console.log(`Spiritual blog confirm check`)
             }
             else{
-                // console.log(`Performance variety fail check`)
+                // console.log(`Spiritual blog fail check`)
                 return
             }
         }
         fetchShowsCNT()  
     }, []);
-    
     if(pullSwith){
         const fetchShows = async () =>{
             const result = await API.getShowSubcat(token,{
-                'category':'performance',
-                'sub_category':'variety'
+                'category':props.Cat,
+                'sub_category': props.SubCat
             })
-                // console.log(`Performance variety show data ${result.data}`)
+                // console.log(`Spiritual blog show data ${result.data}`)
                 setShows(result.data)
             };
         setPullSwitch(false)
         fetchShows();
     }
-
     if(Click){
         return <Redirect to="/" />
     }
-    // opacity: vis ,  
+    // opacity: vis , 
     return(
         <div>{shows.length !== 0 &&(
         <BigBlock>
@@ -91,7 +92,7 @@ function Shows (){
                             style={{backgroundColor: bgC}} 
                             onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
                             onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}
-                        >Variety</H2>
+                        >{props.Name}</H2>
                     </HeaderItem>
                     {/* <HeaderItem>
                         <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
@@ -112,17 +113,12 @@ function Shows (){
                             arrows
                             // infinite
                         >
-                        
-                    
                             {shows.map((show, key) => (
-                
                                     <SliderFiller
-                                        key={key} id={show.id} showName={show.show_name} about={show.about}
-                                        imgP={show.img} imgB={show.img_b} category={show.category} subCatagory={show.sub_category}
-                                        hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
-                                        patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
-                                        booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
-                                        relig={show.relig} timeStamp={show.time_stamp}
+                                        key={key} id={show.id} showName={show.show_name}
+                                        imgP={show.img} imgB={show.img_b} hostName={show.host_name}
+                                        price={show.price} ETPlus={show.eighteen_plus} 
+                                        paid={show.paid}
                                     />
                             ))}
                         </Carousel> 
@@ -132,5 +128,4 @@ function Shows (){
         </BigBlock>)}</div>
     )
 }
-
 export default Shows;
