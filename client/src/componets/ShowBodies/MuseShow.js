@@ -119,12 +119,10 @@ function Shows (){
                             {shows.map((show, key) => (
                 
                                     <SliderFiller
-                                        key={key} id={show.id} showName={show.show_name} about={show.about}
-                                        imgP={show.img} imgB={show.img_b} category={show.category} subCatagory={show.sub_category}
-                                        hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
-                                        patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
-                                        booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
-                                        relig={show.relig} timeStamp={show.time_stamp}
+                                        key={key} id={show.id} showName={show.show_name}
+                                        imgP={show.img} imgB={show.img_b} hostName={show.host_name}
+                                        price={show.price} ETPlus={show.eighteen_plus} 
+                                        paid={show.paid} timeStamp={show.time_stamp}
                                     />
                             ))}
                         </Carousel> 

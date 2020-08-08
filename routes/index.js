@@ -6,26 +6,24 @@ const apiRoutes = require("./api/index");
 const authRoutes = require("./auth/index");
 const videoRoutes = require("./video/video-hub");
 const videoUpload = require('./video/upload');
-const router = require("./api/api/hostRoute");
+// const EmailRoutes = require('./email/index')
+// const router = require("./api/api/hostRoute");
 
-// logged out may
+// Autherization
 Router.use('/auth', authRoutes);
-// Router.use("/api_l", apiRoutes); 
-//api_l routes exactly match basic '/api' only with limitted pull and usablility.
-// or they only pull one small list of shows that are free, under 18, and verifide.
+
 Router.use('/validate', validate);
 
-// Logged in 
-// user
+// Base api
 Router.use("/api", apiRoutes);
-// Router.use('authu')
 
-// host 
-// Router.use('/auth_h')
-// Router.use("/api_h") //update/ delete shows episodes.
+// video handeling
 Router.use("/video", videoRoutes.tester);
 Router.use("/upload", videoUpload.vimeoUpload);
 Router.use("/patch", videoUpload.tusPatcher);
+
+// email handeling
+// Router.use("/email", EmailRoutes);
 
 // manager
 // Router.use('/auth_m') //update/ delete profile/ mhswitch
