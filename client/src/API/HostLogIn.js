@@ -1,23 +1,71 @@
 import axios from "axios";
 // /api/episodes/show/:id
 export default {
-    getEpisodesByID: function(id){
-        return axios.get("/api/req/episodes/find/" + id).catch(err => console.log(`Find by id error:${err}`));
+    getEpisodesByID: function(token, id){
+        const options = {
+            method: 'GET',
+            headers: { 
+                'content-Type': 'application/json',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:"/api/req/episodes/find/"+id,
+        };
+        return axios(options).catch(err => console.log(`Find by id error:${err}`));
     },
-    getEpisByShowID: function(id){
-        return axios.get("/api/req/episodes/show/" + id).catch(err => console.log(`Find show by id error:${err}`));
+    getEpisByShowID: function(token, id){
+        const options = {
+            method: 'GET',
+            headers: { 
+                'content-Type': 'application/json',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:"/api/req/episodes/show/"+id,
+        };
+        return axios(options).catch(err => console.log(`Find show by id error:${err}`));
     },
-    getShowsByEpisHID: function(id){
-        return axios.get("/api/req/shows/epis/" + id).catch(err => console.log(`Find show by host_id and episodical error:${err}`));
+    getShowsByEpisHID: function(token, id){
+        const options = {
+            method: 'GET',
+            headers: { 
+                'content-Type': 'application/json',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:"/api/req/shows/epis/" + id,
+        };
+        return axios(options).catch(err => console.log(`Find show by host_id and episodical error:${err}`));
     },
-    getShowsByHostID: function(id){
-        return axios.get("/api/hreq/shows/host/" + id).catch(err => console.log(`Find show by host_id and episodical error:${err}`));
+    getShowsByHostID: function(token, id){
+        const options = {
+            method: 'GET',
+            headers: { 
+                'content-Type': 'application/json',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:"/api/hreq/shows/host/" + id,
+        };
+        return axios(options).catch(err => console.log(`Find show by host_id and episodical error:${err}`));
     },
-    getFullEpisBySId: function(id){
-        return axios.get("/api/hreq/episodes/show/" + id).catch(err => console.log(`Find show by id error:${err}`));
+    getFullEpisBySId: function(token, id){
+        const options = {
+            method: 'GET',
+            headers: { 
+                'content-Type': 'application/json',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:"/api/hreq/episodes/show/" + id,
+        };
+        return axios(options).catch(err => console.log(`Find show by id error:${err}`));
     },
-    getEpisodes: function(){
-        return axios.get("/api/req/episodes/all").catch(err => console.log(`Get all shows error:${err}`));
+    getEpisodes: function(token){
+        const options = {
+            method: 'GET',
+            headers: { 
+                'content-Type': 'application/json',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:"/api/req/episodes/all",
+        };
+        return axios(options).catch(err => console.log(`Get all shows error:${err}`));
     },
     createEpisode: function(token,epiData){
         // console.log(`CREAT CHECK!`);
@@ -99,6 +147,11 @@ export default {
     videoPatcher: function(videoData){
         console.log(`video patcher axios call : ${JSON.stringify(videoData)}`);
         return axios.post("/patch", videoData).catch(err => console.log(`Video patch error: ${err}`) );
+    },
+    imgUploader:function(imgData){
+        console.log('Img upload router ping')
+        return axios.post("/img/uploader",imgData).catch(err => console.log('Img upload router error'))
     }
+
 
 }

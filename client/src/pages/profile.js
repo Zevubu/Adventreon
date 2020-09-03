@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams} from "react-router";
 // import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import API from "../API/loggedOutAPI";
+import API from "../API/loggedInAPI";
 import {P, H1, H3, SpHeaderA, H2} from "../styles/homeStyle"
 import{ProBigBox, ProviderBox, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../styles/providerStyles'
 import SliderFiller from "../componets/ShowFiller/slide_filler"
@@ -39,15 +39,16 @@ function HostPage(){
     const num = matches ? 5 : 1
     const scNum = matches ? 4 : 1
     // const [services, setServices] = useState([])
+    const token = window.localStorage.getItem('tokens');
 
     useEffect(() => {
         const fetchHost = async () =>{
-         const result = await API.getHostByID(`${id}`)
+         const result = await API.getHostByID(token,`${id}`)
              setHosts(result.data[0])
            
          };
          const fetchShows = async () =>{
-            const result = await API.getShowByHost(`${id}`)
+            const result = await API.getShowByHost(token,`${id}`)
                 console.log(result.data)
                 setShows(result.data)
               
@@ -123,12 +124,10 @@ function HostPage(){
                 {shows.map((show, key) => (
     
                         <SliderFiller
-                            key={key} id={show.id} showName={show.show_name} about={show.about}
-                            imgP={show.img} imgB={show.img_b} category={show.category} subCatagory={show.sub_category}
-                            hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
-                            patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
-                            booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
-                            relig={show.relig} timeStamp={show.time_stamp}
+                            key={key} id={show.id} showName={show.show_name}
+                            imgP={show.img} imgB={show.img_b} hostName={show.host_name}
+                            price={show.price} ETPlus={show.eighteen_plus} 
+                            paid={show.paid} timeStamp={show.time_stamp}
                         />
                 ))}
                 </Carousel>

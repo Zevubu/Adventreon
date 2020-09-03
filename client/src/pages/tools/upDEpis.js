@@ -42,7 +42,8 @@ function EpiAdd (){
     const[video, setVideo] = useState();
     const[compSub, setCompSub]= useState(false)
     const { register, handleSubmit, watch, errors } = useForm();
-    
+    const token = window.localStorage.getItem('tokens');
+
     const EpiReset = (re)=>{
         setVideoType()
         setVideo();
@@ -53,7 +54,7 @@ function EpiAdd (){
     
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getShowsByEpisHID(`${userData.id}`)
+        const result = await API.getShowsByEpisHID(token,`${userData.id}`)
             console.log(`show by host id and epis data ${JSON.stringify(result.data)}`)
             setShows(result.data)
         };
@@ -106,7 +107,7 @@ function EpiAdd (){
 
     if (Show && shSelect === true){
         const fetchEpis = async () =>{
-            const result = await API.getFullEpisBySId(`${shows[Show].id}`)
+            const result = await API.getFullEpisBySId(token,`${shows[Show].id}`)
             console.log(`Epis by show ${JSON.stringify(result.data)}`)
             setEpis(result.data);
             setShSelect(false)
@@ -114,7 +115,7 @@ function EpiAdd (){
         fetchEpis(); 
     }
 
-    const token = window.localStorage.getItem('tokens');
+
     const PaidOnChange = (data, e) =>{
         console.log("Paid function call.")
         

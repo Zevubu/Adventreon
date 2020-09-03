@@ -1,7 +1,17 @@
 # Shtiker_iso
 
+
+Things to address when launching:
+    *AWS s3 bucket cors permission. Must alow for my website, and headers.
+        *https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html
+        *https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
+    *Google cloud sql must alow for my website. 
+    *Vimeo Must allow for my website.
+
 Tip your artist first... but then... yes please tip us we worked our ass off on this website. 
-Spiritual 
+
+
+
 
 action plan:
     Get crud working.
