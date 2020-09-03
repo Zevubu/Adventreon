@@ -6,6 +6,7 @@ const apiRoutes = require("./api/index");
 const authRoutes = require("./auth/index");
 const videoRoutes = require("./video/video-hub");
 const videoUpload = require('./video/upload');
+const imgUpload = require("./pictures/awsS3")
 // const EmailRoutes = require('./email/index')
 // const router = require("./api/api/hostRoute");
 
@@ -16,6 +17,9 @@ Router.use('/validate', validate);
 
 // Base api
 Router.use("/api", apiRoutes);
+
+// img uploader
+Router.use("/img", imgUpload);
 
 // video handeling
 Router.use("/video", videoRoutes.tester);

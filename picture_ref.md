@@ -47,6 +47,26 @@ Ethan Hoover
 https://unsplash.com/@ethanchoover
 https://images.unsplash.com/photo-1502137840985-4ec07e8568bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80
 
+carnival trumpet player
+Ferran Feixas
+https://unsplash.com/@ferranfeixas
+https://images.unsplash.com/photo-1588172322752-e13df881e89e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80
+
+carnival masks
+Llanydd Lloyd
+https://unsplash.com/@llanydd
+https://images.unsplash.com/photo-1533022586528-2e09bde0959b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1042&q=80
+
+
+fabulous queens at trans rally.
+Karl Bewick
+https://unsplash.com/@karlbewick
+https://images.unsplash.com/photo-1561496306-3a94e96e7a09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
+
+drummer on dancestage
+Olivia Connell
+https://unsplash.com/@intense_sunshine
+https://images.unsplash.com/photo-1577660097552-ef733c1399c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80
 
 pictures use info:
     Spiritual Guidance Background

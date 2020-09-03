@@ -30,7 +30,7 @@ router.route("/catnumcnt")
     )
       console.log(`CatCount:${JSON.stringify(catCount[0].total)}`)
       res.send(catCount)
- 
+
     
   })
 
@@ -57,7 +57,7 @@ router.post("/category", async (req,res) => {
   const conn = await connection(dbConfig).catch(e => {});
   const shows = await query(
     conn,
-    'SELECT * FROM shows WHERE category=?',
+    'SELECT id,show_name,host_name,img,img_b,eighteen_plus,paid,price,time_stamp FROM shows WHERE category=?',
     [category]
   )
   
@@ -69,7 +69,7 @@ router.post("/subcat", async (req, res) =>{
   const conn = await connection(dbConfig).catch(e => {});
   const shows = await query(
     conn,
-    'SELECT * FROM shows WHERE category=? and sub_category=?',
+    'SELECT id,show_name,host_name,img,img_b,eighteen_plus,paid,price,time_stamp FROM shows WHERE category=? and sub_category=?',
     [category, sub_category]
   )
   res.send(shows)
@@ -98,6 +98,7 @@ router.route('/find/:id')
   router.route('/epis/:id')
   .get(async (req, res) => {
       const { id } = req.params;
+      console.log(`Epi ID ping:${id}`)
       const conn = await connection(dbConfig).catch(e => {});
       const show = await query(conn, showQuery.findByEpis(), [id])
       res.send(show)

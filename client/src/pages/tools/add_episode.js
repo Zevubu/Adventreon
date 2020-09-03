@@ -4,8 +4,8 @@ import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, P
 import API from "../../API/HostLogIn";
 import {useForm} from 'react-hook-form';
 import {UserInfoContext, useHost, useManagment} from "../../context/heart"
-import {Link} from 'react-router-dom';
-import VimeoUp from '../../vimeo-upload/index'
+// import {Link} from 'react-router-dom';
+// import VimeoUp from '../../vimeo-upload/index'
 
 // H = userData, Y= form ie data, S = showData, N doesn't need to be implimnted
 // X = already built, B= Boolean
@@ -39,7 +39,8 @@ function EpiAdd (){
     const[video, setVideo] = useState();
     const[compSub, setCompSub]= useState(false)
     const { register, handleSubmit, watch, errors } = useForm();
-    
+    const token = window.localStorage.getItem('tokens');
+
     const EpiReset = (re)=>{
         setVideoType()
         setVideo();
@@ -50,8 +51,8 @@ function EpiAdd (){
     
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getShowsByEpisHID(`${userData.id}`)
-            console.log(`show by host id and epis data ${JSON.stringify(result.data)}`)
+        const result = await API.getShowsByEpisHID(token,`${userData.id}`)
+            console.log(`show by host id and epis data: ${JSON.stringify(result)}`)
             setShows(result.data)
         };
         fetchShows(); 
@@ -61,7 +62,6 @@ function EpiAdd (){
     //     console.log(Show)
     //     console.log(shows[Show].id)
     // };
-    const token = window.localStorage.getItem('tokens');
     const PaidOnChange = (data, e) =>{
         console.log("Paid function call.")
         

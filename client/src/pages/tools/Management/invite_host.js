@@ -62,13 +62,15 @@ function Invite (){
             {/* <a id="signup"/> */}
             {/* Sign up form */}
             <MarronHeader>
-                <H2>Start making positive changes today.</H2>
+                <H2>Invite a host</H2>
             </MarronHeader>
 
             <FormBigBox onSubmit={handleSubmit(onSubmit)}>
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}
-                <PT>Please share you contact info</PT>
+                <PT>For the time being You will have to send this invite personaly.</PT> 
+                <PT>Write out a random name and password, then send it to them.</PT> 
+                <PT>This will give them access to the host profile creation page</PT>
                 <FormLittleBox>
                     
                     <FormBoxWError>

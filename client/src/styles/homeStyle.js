@@ -372,6 +372,19 @@ height: 100%;
 margin-left: 50px;
 margin-bottum: 200px;
 `
+const ProImgBox = styled.div`
+background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1502137840985-4ec07e8568bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80"});
+background-repeat: ${props => props.BGR || "no-repeat"};
+background-size:${props => props.BGPsize || "cover"};
+background-position-x: ${props => props.BGPy || "center"};
+background-position-y: ${props => props.BGPx || "center"};
+border-radius: ${props => props.BorderRadius || "0px"};
+border: ${props => props.BDcolor ||"rgba(180, 180, 180, 0.6)"} solid 2px;
+width:100%;
+height:50%;
+margin:10px;
+padding:0px;
+`
 
 const VFrame = styled.iframe`
     width:640px;
@@ -505,4 +518,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {ProTextBox, DivWPad, IntroBox, IntroBlock, VFrame, LookBtn, SlideShadowBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader,A, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {ProImgBox, ProTextBox, DivWPad, IntroBox, IntroBlock, VFrame, LookBtn, SlideShadowBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader,A, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
