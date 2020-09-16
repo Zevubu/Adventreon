@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
 const ProBigBox = styled.div`
-background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1505842465776-3b4953ca4f44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"});
+
+background-image: url(${props => props.bgImg || ""});
 background-repeat: ${props => props.BGR || "no-repeat"};
 background-size:${props => props.BGPsize || "cover"};
 background-position-x: ${props => props.BGPy || "center"};
 background-position-y: ${props => props.BGPx || "center"};
 `
+const ProBGColor = styled.div`
+background:${props => props.BGcolor || "linear-gradient(to bottom, rgba(23, 23, 23) 0%, rgba(23, 23, 23) 50%, rgba(46, 46, 46, 0) 100%)"};
+`
+
 
 
 const Slider = styled.div`
@@ -16,6 +21,11 @@ width: 100vw;
 margin: 0 auto;
 overflow: hidden;
 `
+const SliderFiller = styled.div`
+    height: 100%;
+    width: 100%;
+
+`
 
 const SliderContent = styled.div`
 transform: translateX(-${props => props.translate}px);
@@ -24,28 +34,44 @@ height: 100%;
 width: ${props => props.width}px;
 display: flex;
 `
-
+// background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
+// background-size: cover;
+// background-repeat: no-repeat;
+// background-position: center;
 const Slide = styled.div`
-    height: 100%;
+    height: 300px;
     width: 258.3px;
-    background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background:${props => props.BGcolor || "linear-gradient(to bottom, rgba(23, 23, 23) 0%, rgba(23, 23, 23) 50%, rgba(46, 46, 46, 0) 100%)"};
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 5%;
 `
-
-const ShowSlide = styled.div`
-    height: 169.5px;
-    width: 258.3px;
+const SlideImg = styled.div`
+    height: 250px;
+    width: 100%;
     background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    margin:0 auto;
+`
+const SlideShowImg = styled.div`
+    height: 150px;
+    width: 100%;
+    background-image: url(${props => props.bgImg || "https://images.unsplash.com/photo-1583542224916-15a3809d7f0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin:0 auto;
+`
+
+
+const ShowSlide = styled.div`
+    height: 100%;
+    width: 258.3px;
+    background:${props => props.BGcolor || "linear-gradient(to bottom, rgba(23, 23, 23, 0) 0%, rgba(23, 23, 23) 30%, rgba(46, 46, 46, 0) 100%)"};
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,10 +86,14 @@ const ShowSlide = styled.div`
 const SlideBuffer = styled.div`
 height: 100%;
 width: 100%;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
+display: grid;
+grid-template-rows: 86% 14%;
+`
+const SlideShowBuffer = styled.div`
+height: auto;
+width: 100%;
+display: grid;
+grid-template-rows: 68% 32%;
 `
 
 // backgound-color:238, 245, 244;
@@ -246,4 +276,4 @@ margin: 5px;
     };
 `
 
-export { ProBigBox, ProviderBox,ProDuoServiceBlockB, ProDuoServiceBlockColumnB, ShowBox,AppBox, Slider, SliderContent, Slide,ShowSlide, SlideBuffer, ProDuoServiceBlock, DuoServiceBlockRow, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}
+export {SlideImg, ProBigBox,ProBGColor, ProviderBox,ProDuoServiceBlockB, ProDuoServiceBlockColumnB, ShowBox,AppBox,SlideShowBuffer,SlideShowImg, Slider,SliderFiller, SliderContent, Slide,ShowSlide, SlideBuffer, ProDuoServiceBlock, DuoServiceBlockRow, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}

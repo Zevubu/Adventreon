@@ -219,6 +219,7 @@ function App() {
                           <LoggedInRoute exact path="/uploads" component={Uploader} />
                           <TempMRoute exact path="/tempsum/:id" component={ManegSignUp} />
                           <TempRoute exact path="/tempsu/:id" component={HostSignUp} />
+                          <ManagmentRoute path="/imgupload" component={ImgUpload}/>
                           <ManagmentRoute path="/profilem/:id" state={{value:userData}}  component={profile}/>
                           <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
                           <ManagmentRoute exact path="/hostsum/:id" component={HostSignUp} />
@@ -229,7 +230,6 @@ function App() {
                           <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
                           <ManagmentRoute exact path="/updateshowm" state={{value:userData}} component={ShowUpdater}/>
                           <ManagmentRoute exact path="/updateepisodem"  state={{value:userData}} component={EpiUpdater}/>
-                          <ManagmentRoute exact path="/imgupload" component={ImgUpload}/>
                           <HostRoute exact path="/updateshow" state={{value:userData}} component={ShowUpdater}/>
                           <HostRoute exact path="/updateepisode"  state={{value:userData}} component={EpiUpdater}/>
                           <HostRoute path="/puph/:id" state={{value:userData}}  component={UpHost}/>
