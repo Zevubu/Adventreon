@@ -77,7 +77,6 @@ margin:0 auto;
 `
 
 const SpeachBox = styled.div`
-
 margin:0 5px;
 `
 

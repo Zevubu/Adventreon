@@ -3,8 +3,9 @@ import {useParams} from "react-router";
 import {Link} from 'react-router-dom';
 import API from "../../API/loggedInAPI";
 // import eAPI from "../../API/epiLogOut"
-import {P,H2, H1, H3, SpHeaderA} from "../../styles/homeStyle"
-import{ ProviderBox, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
+import { Redirect } from "react-router-dom";
+import {P,H2, H1, H3, SpHeaderA, FillerBar} from "../../styles/homeStyle"
+import{ ProviderBox,ProBGColor,ProBigBox, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisodeFiller from "../../componets/EpiFiller/slide_filler"
 import Carousel from '@brainhubeu/react-carousel';
 import '../../styles/Carousel.css';
@@ -40,6 +41,7 @@ function Show(){
     const [oneOff, setOneOff] = useState();
     const [episodical, setEpisodical] = useState();
     const [playing, setPlaying] = useState()
+    const [hClick, setHClick] = useState(false)
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1;
     const scNum = matches ? 4 : 1;
@@ -71,18 +73,25 @@ function Show(){
                     fetchEpis();
         } 
     }
+    if(hClick){
+        return <Redirect to={"/hosts/" + Show.host_id} />
+    }
+
     return(
-        <div>
+        <ProBGColor>
             {Show &&(
+               <ProBigBox bgImg={Show.img_b}>
             <div>
-                <div>
-                    <SpHeaderA id={Show.id}>
-                        <ProTextBox>
-                            <H1>{Show.show_name}</H1>
-                            <Link href={"/hosts/" + Show.host_id}><H3 id={Show.host_id}>{Show.host_name}</H3></Link>
-                        </ProTextBox>
+                
+                <SpHeaderA id={Show.id} BGcolor="rgba(0,0,0,0)">
+                        <Paper elevation={3} style={{padding: '0px', borderRadius: '0px',backgroundColor: 'rgba(180,180,180,0.2)', marginbottom: '20px'}}>
+                            <ProTextBox>
+                                <H1>{Show.show_name}</H1>
+                                <Link onClick={i=>setHClick(true)}><H3 id={Show.host_id}>{Show.host_name}</H3></Link>
+                            </ProTextBox>
+                        </Paper>
                     </SpHeaderA>
-                    <ProviderBox>
+                    <ProviderBox id={Show.id}>
                         <ProDuoServiceBlock>
                             {oneOff &&(
                                 <iframe 
@@ -144,7 +153,7 @@ function Show(){
                                         
                                     )}
                                     
-                                    {/* <ProTextBox>
+                                    <ProTextBox>
                                         <H3>Tip Me Here.</H3>
                                         <br/>
                                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -153,7 +162,7 @@ function Show(){
                                             <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."/>
                                             <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
                                         </form>
-                                    </ProTextBox> */}
+                                    </ProTextBox>
                                     <ProTextBox>
                                         <H3>My patreon.</H3>
                                         <P>{Show.patreon}</P>
@@ -165,26 +174,11 @@ function Show(){
                                 </Paper>
                             </ProDuoServiceBlockColumn>
                     </ProviderBox>
-                </div> 
-                {/* show_id,
-                user_id, 
-                epi_name, 
-                about, 
-                img, 
-                video_type, 
-                v_link, 
-                credits, 
-                show_name, 
-                host_name, 
-                category, 
-                sub_category, 
-                paid, 
-                price, 
-                epi_date, 
-                start_time, 
-                end_time, 
-                eighteen_plus, 
-                verified */}
+                       {oneOff && (
+                    <FillerBar/>
+                )}
+                
+             
                 {episodical && ( 
                     <div>
                         {/* <SpHeaderA>
@@ -220,9 +214,10 @@ function Show(){
                         </Carousel>
                     </div>
                 )}
-            </div>   
-        )}  
-        </div>          
+            </div>
+            </ProBigBox> 
+            )}  
+        </ProBGColor>          
     )
 }
 

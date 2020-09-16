@@ -1,5 +1,5 @@
 import React from "react";
-import {IntroBox, IntroBlock, ProTextBox, ProImgBox, BigBlock,SpHeaderA,DuoServiceBlock, HeaderItem,A, H3, H2, H1} from "../../styles/homeStyle";
+import {IntroBox,VFrame, IntroBlock, ProTextBox, ProImgBox, BigBlock,SpHeaderA,DuoServiceBlock, HeaderItem,A, H3, H2, H1} from "../../styles/homeStyle";
 // import { Redirect } from "react-router-dom";
 // , { useState} 
 
@@ -16,12 +16,18 @@ function LogoutBody (){
                 <IntroBlock bgImg=""> 
                     {/* <IntroTxTDiv> */}
                     {/* <VFrame src="https://player.vimeo.com/video/412924050" frameborder="0px" allow="autoplay; fullscreen" allowfullscreen></VFrame> */}
+                    <VFrame src="https://player.vimeo.com/video/457351669" frameborder="0px" allow="autoplay; fullscreen" allowfullscreen></VFrame>
                     <div>
                         <ProTextBox>
-                        <H1 color="rgb(23, 283, 232)">Adventreon is a place for the creators of whimsy and those who love them.</H1>
+                        <H1 color="rgb(23, 283, 232)">A space for...</H1>
+                            <H1 color="rgb(23, 283, 232)">the weird, the whimsical, and the wonderful.</H1>
+                            <H2>The haphazard healers of this world.</H2>
+                            <H2>You circus folk, musicians, painters, puppeteers, clowns, carnies, and those who love them.</H2>
+                            <H2>Welcome.</H2>
+                            
                             {/* <H2>A place for immersive experience makers, circus folk, musicians, puppeteers, clowns, carnies, and healers, to name a few.</H2> */}
-                            <H2>To entertain, share their skills, and tell their stories.</H2>
-                            <H2>All while selling their own content. </H2>
+                            {/* <H2>To entertain, share their skills, and tell their stories.</H2>
+                            <H2>All while selling their own content. </H2> */}
                             {/* <H3>Logged out</H3>
                             <H3>This is how the world starts,</H3>
                             <H2>This is how the world starts,</H2>

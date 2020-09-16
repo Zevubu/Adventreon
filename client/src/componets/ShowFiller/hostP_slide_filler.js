@@ -28,8 +28,8 @@ function SlideFiller(props){
                         <SlideShowImg bgImg={props.imgP} alt={props.showName}/>
                     </div>
                     <TextBox>
-                        <H2 color="rgba(23,23,23)" TSColor="rgba(232,232,232)">{props.showName}</H2>
-                        <PB color="rgba(23,23,23)" TSColor="rgba(232,232,232)">{props.hostName}</PB>
+                        <H2>{props.showName}</H2>
+                        <PB>{props.hostName}</PB>
                     </TextBox>
             </SlideShowBuffer>       
         </ShowSlide>   

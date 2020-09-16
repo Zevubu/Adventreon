@@ -11,7 +11,7 @@ import '../../../styles/Carousel.css';
 // import '@brainhubeu/react-carousel/lib/style.css';
 // import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
- 
+
 
 function Hosts (props){ 
     const [Hosts, setHosts] = useState([]);

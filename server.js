@@ -11,9 +11,9 @@ const fileUpload = require('express-fileupload');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-const VcId = process.env.VIMEO_CLIENT_ID;
-const VsKey = process.env.VIMEO_SECRET_KEY;
-const VAT = process.env.VIMEO_ACCESS_TOKEN;
+// const VcId = process.env.VIMEO_CLIENT_ID;
+// const VsKey = process.env.VIMEO_SECRET_KEY;
+// const VAT = process.env.VIMEO_ACCESS_TOKEN;
 
 // let Vimeo = require('vimeo').Vimeo;
 // console.log(`Vimeo ${JSON.stringify(Vimeo) }`)

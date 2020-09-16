@@ -15,7 +15,7 @@ function Home (){
     // const {isAuthenticated} = useAuth();
     // const {isUser} = useUser();
     // const { isHost } = useHost();
-    // const { isManager } = useManagment();
+    // const { isManager } = useManagment();465t
     // const matches = useMediaQuery('(min-width:600px)');
     return(
         <SpDiv> 
@@ -30,7 +30,7 @@ function Home (){
                     <IntroBox>
                         <IntroBlock>
                             {/* <IntroTxTDiv> */}
-                            <VFrame src="https://player.vimeo.com/video/412924050" frameborder="0px" allow="autoplay; fullscreen" allowfullscreen></VFrame>
+                            <VFrame src="https://player.vimeo.com/video/457351669" frameborder="0px" allow="autoplay; fullscreen" allowfullscreen></VFrame>
                             <div>
                                 <ProTextBox>
                                     <H3>This is how the world starts,</H3>

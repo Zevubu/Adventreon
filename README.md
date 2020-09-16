@@ -10,8 +10,7 @@ Things to address when launching:
 
 Tip your artist first... but then... yes please tip us we worked our ass off on this website. 
 
-
-
+standard img math 1024 X 768 \ .252
 
 action plan:
     Get crud working.

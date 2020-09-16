@@ -82,7 +82,7 @@ const H3B = styled(H3)`
 color: rgb(100, 126, 160);
 `
 const PB = styled(P)`
-color: rgb(215, 218, 224);
+color:${props => props.color || "rgb(215, 218, 224)"};
 `
 const H1M = styled(H1)`
 color: rgb(182, 104, 130);
@@ -147,6 +147,10 @@ flex-direction: column;
 `
 const HeaderItem = styled.div`
 margin:5px;
+`
+const FillerBar = styled(Header)`
+color: rgb(0,0,0,0);
+height:85px;
 `
 // background: ${props => props.BGcolor || "linear-gradient(to bottom, rgba(46, 46, 46, 0.877) 0%, rgba(32, 142, 161, 0.577) 100%)"};
 // background-image: url(${props => props.bgImg || "https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/37112608_10155733091650745_697307413887320064_o.jpg?_nc_cat=102&_nc_sid=e3f864&_nc_ohc=ZfvxFhns5cMAX8ab9Iz&_nc_ht=scontent-sjc3-1.xx&oh=a3081d4cacabdcec3b8e882243f64a61&oe=5EF28758"});
@@ -216,9 +220,12 @@ position: absolute;
 top: 0;
 left: 0;
 z-index: 10;
-margin-left:93.59%;
+margin-left:95%;
 margin-right:41px;
 box-shadow:inset -46px 0px 23px 0px ${props => props.FdColor ||"rgb(227,218,226)"};
+@media only screen and (max-width: 1600px) {
+    margin-left:93.59%;
+    };
 @media only screen and (max-width: 1400px) {
     margin-left:93%;
     };
@@ -266,13 +273,13 @@ box-shadow:inset -46px 0px 23px 0px ${props => props.FdColor ||"rgb(227,218,226)
 `
 const LookBox = styled.div`
 width: 100%;
-height: 196.7px;
+height: 279px;
 position: relative;
 margin-bottom:23px;
 `
 const LookHostBox = styled.div`
 width: 100%;
-height: 223.98px;
+height: 305px;
 position: relative;
 margin-bottom:23px;
 `
@@ -411,7 +418,7 @@ border: ${props => props.BDcolor ||"rgba(180, 180, 180, 0.6)"} solid 2px;
 
 const DivWBorder = styled.div`
 border-top: ${props => props.BDcolor ||"rgb(115, 162, 175)"} solid 2.5px;
-margin: ${props => props.Margin ||"5.23px 0px"};
+margin: ${props => props.Margin ||"0px"};
 @media only screen and (max-width: 600px) {
     width: 100%;
     }
@@ -518,4 +525,4 @@ text-align:center;
 margin-bottom:10px;
 `
 
-export {ProImgBox, ProTextBox, DivWPad, IntroBox, IntroBlock, VFrame, LookBtn, SlideShadowBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader,A, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}
+export {ProImgBox, ProTextBox, DivWPad,FillerBar, IntroBox, IntroBlock, VFrame, LookBtn, SlideShadowBox, LookBox,LookHostBox, Btn, MarronBtn, BigMarronBtn, BlueBtn, TealBtn, CCCDiv, FillerDiv, HoldDiv, IntroTxTDiv, SpDiv, DivWBorder, TriServiceBlock, ServiceBlock, ProviderBox, DuoServiceBlock, DuoServiceBlockColumn,TextBox, Image, BigBlock, BigBlockR, HeaderItem, HeaderC, SpHeaderA, BlueHeader, BlueHeaderC, MarronHeader,TealHeader,A, H1, H1NB, H2, H2Dark, P, PS, H3, H3B, H3M, H3T, H1B, H2B, PB, H1M, H2M, PM, H1T, H2T, PT, PG, HEp}

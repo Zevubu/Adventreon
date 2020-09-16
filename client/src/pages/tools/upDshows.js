@@ -69,7 +69,7 @@ function ShowBuild (){
         setShows()
     }
     const fetchShows = async () =>{
-        const result = await API.getShowsByHostID(`${userData.id}`)
+        const result = await API.getShowsByHostID(token,`${userData.id}`)
         //  console.log(`show by host id and epis data ${JSON.stringify(result.data)}`)
         setShows(result.data)
         setIsPulled(true);
