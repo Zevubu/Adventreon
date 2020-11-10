@@ -49,6 +49,9 @@ import ShowUpdater from './pages/tools/upDshows';
 import EpiUpdater from './pages/tools/upDEpis';
 import ManegSignUp from './pages/tools/Management/maneg-sign-up';
 import ImgUpload from './pages/tools/Management/PictureUpload';
+import DeleteUserM from './pages/tools/Management/delete-user';
+import DeleteShowM from './pages/tools/Management/delete-show';
+import DeleteEpiM from './pages/tools/Management/delete-episode';
 
 
 import HostProfile from './pages/profiles/host';
@@ -230,6 +233,9 @@ function App() {
                           <ManagmentRoute exact path="/episodebuilderm" state={{value:userData}} component={AddEpisode}/>
                           <ManagmentRoute exact path="/updateshowm" state={{value:userData}} component={ShowUpdater}/>
                           <ManagmentRoute exact path="/updateepisodem"  state={{value:userData}} component={EpiUpdater}/>
+                          <ManagmentRoute exact path="/delusm" component={DeleteUserM}/>
+                          <ManagmentRoute exact path="/delshm" component={DeleteShowM}/>
+                          <ManagmentRoute exact path="/delepm" component={DeleteEpiM}/>
                           <HostRoute exact path="/updateshow" state={{value:userData}} component={ShowUpdater}/>
                           <HostRoute exact path="/updateepisode"  state={{value:userData}} component={EpiUpdater}/>
                           <HostRoute path="/puph/:id" state={{value:userData}}  component={UpHost}/>

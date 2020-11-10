@@ -1,7 +1,8 @@
 import React from "react";
-import {Link} from 'react-router-dom';
-// import {H2} from '../../styles/homeStyle';
-import {NavBody,H2, OptionBox,PullBox, LogoImage} from "../../styles/componentStyles";
+import {Link, useHistory} from 'react-router-dom';
+// import {Btn} from '../../styles/homeStyle';
+import {NavBody,H2, OptionBox,PullBox, LogoImage, BackBtn} from "../../styles/componentStyles";
+
 
 import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo } from "../../context/heart";
 import Logo from "../../img/masked-logo-Adventreon-blue.png"
@@ -28,6 +29,7 @@ const useStyles = makeStyles(theme => ({
 
 
 function NavBar (){
+    let history = useHistory();
     const classes = useStyles();
     const {setAuthTokens, isAuthenticated, setIsAuthenticated} = useAuth();
     const {setIsUser} = useUser();
@@ -55,6 +57,16 @@ function NavBar (){
         padding: '0 30px',
         fontSize:'15px',
     });
+    const BTNS = styled(Button)({
+        border: 0,
+        borderRadius: 3,
+        boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
+        color: '#000000',
+        height: 35,
+        padding: '0px 0px',
+        variant:"outlined",
+        fontSize:'35px',
+    });
 
     // const ClearBTN = styled(Button)({
     //     border: 0,
@@ -81,14 +93,18 @@ function NavBar (){
     // && isTempP
     return(
         <NavBody  className={classes.root}>
-            <Link style={{ textDecoration: 'none', color:'black' }} to="/">
-                <PullBox>
+           <OptionBox>
+                <BackBtn onClick={() => history.goBack()}>{"\<"}</BackBtn>
+                <Link style={{ textDecoration: 'none', color:'black' }} to="/">
                     <PullBox>
-                        <LogoImage src={Logo} alt="Logo" />
-                        <H2>ADVENTREON</H2>
+                        <PullBox>
+                            <LogoImage src={Logo} alt="Logo" />
+                            <H2>ADVENTREON</H2>
+                        </PullBox>
                     </PullBox>
-                </PullBox>
-            </Link>
+                </Link>
+            </OptionBox>
+            
              {isAuthenticated &&(
                 <OptionBox>
                     {isAuthenticated && isTempP &&(

@@ -202,4 +202,16 @@ export default {
         };
         return axios(optionsE).catch(err => console.log(`Get all shows error:${err}`));
     },
+    deleteProfile:function(id,token,userData){
+        const pOptions ={
+            method: 'DELETE',
+            headers: { 
+                'content-Type': 'application/json',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:"/auth/user/deleteuser/"+id,
+            data:userData
+        };
+        return axios(pOptions).catch(err => console.log(`User delete error:${err}`))
+    },
 } 

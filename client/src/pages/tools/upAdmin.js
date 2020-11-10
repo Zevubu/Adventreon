@@ -6,6 +6,7 @@ import API from "../../API/managmentAPI";
 import { useForm } from 'react-hook-form';
 import {UserInfoContext} from "../../context/heart" 
 import {Link} from 'react-router-dom';
+
 // import { host } from "../../../../dbConfig";
 // import Hosts from "../../componets/CP_fillers/life_home_hs/life_host";
 // user_name
@@ -72,8 +73,6 @@ function UpHost (){
     // console.log(`profile user data: ${JSON.stringify(Host)}`)
     const token = window.localStorage.getItem('tokens');
     console.log(`Auth token test ${token}`);
-
-
     useEffect(() => {
         console.log(`Profile Update page info: Id:${id}, UserData: ${userData}`)
         // add a password check here. 
@@ -90,12 +89,9 @@ function UpHost (){
                 setMHswitch(false)
                 console.log(`MHSwitch false! ${user.mhswitch}`)
             }
-
         }
         fetchHost();
-    
     },[])
-
     // if(isPulled && Host && !MHSwitch){
     //     if(Host.mhswitch === 1){
     //         setMHswitch(true)
@@ -106,8 +102,8 @@ function UpHost (){
     //     }
     // }
 
-    const { register, handleSubmit, watch, errors } = useForm({})
-    
+    const { register, handleSubmit, watch, errors } = useForm({});
+
     const OnUpFin = (data, err) =>{
         console.log(`Upload data:${JSON.stringify(data)}`)
         if(err){
@@ -142,6 +138,7 @@ function UpHost (){
         //     console.log(result)
         // }
         // checkEmail()
+
         API.updatedProfile(
             id,
             token,
@@ -186,6 +183,7 @@ function UpHost (){
                         </Link>
                     </FormBoxWError>
                 )}
+
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}
 

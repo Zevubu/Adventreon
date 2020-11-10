@@ -63,6 +63,12 @@ export default function SimpleMenu() {
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to="/invitem"><MenuItem onClick={handleClose}>Invite Manager</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/hostsum/" + userData.id}><MenuItem onClick={handleClose}>Make a Host</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/manegsu/" + userData.id}><MenuItem onClick={handleClose}>Make a Manager</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/delusm"}><MenuItem onClick={handleClose}>Delete a users Profile</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/delshm"}><MenuItem onClick={handleClose}>Delete any show</MenuItem></Link>
+        <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/delepm"}><MenuItem onClick={handleClose}>Delete any episode</MenuItem></Link>
+        
+        
+        
       </Menu>
     </div>
   );
