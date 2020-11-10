@@ -136,6 +136,42 @@ export default {
         };
         return axios(pOptions).catch(err => console.log(`Host update error:${err}`))
     },
+    deleteEpi:function(id,token,epiData){
+        const eOptions ={
+            method: 'DELETE',
+            headers: { 
+                'content-Type': 'application/json',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:"/api/hrequest/episodes/delete",
+            data:epiData
+        };
+        return axios(eOptions).catch(err => console.log(`Episode delete error:${err}`))
+    },
+    deleteShow:function(id,token,showData){
+        const sOptions ={
+            method: 'DELETE',
+            headers: { 
+                'content-Type': 'application/json',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:"/api/hreq/shows/delete",
+            data:showData
+        };
+        return axios(sOptions).catch(err => console.log(`Show delete error:${err}`))
+    },
+    deleteHProfile:function(id,token,userData){
+        const pOptions ={
+            method: 'DELETE',
+            headers: { 
+                'content-Type': 'application/json',
+                'authorization': `bearer ${token.replace(/\"/g, '')}` 
+            },
+            url:"/auth/hosts/deleteuser/"+id,
+            data:userData
+        };
+        return axios(pOptions).catch(err => console.log(`Host delete error:${err}`))
+    },
     getHostByID: function(id){
         // console.log("/api/hosts/all/" + id)
         return axios.get("/api/req/hosts/all/" + id).catch(err => console.log(`Find hosts by id error:${err}`));

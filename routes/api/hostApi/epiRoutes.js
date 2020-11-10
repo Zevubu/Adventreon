@@ -42,12 +42,12 @@ router.route('/update/:id')
     )
     res.send(status)
   })
-// /api/hrequest/episodes/delete/:id
-router.route('/delete/:id')
+// /api/hrequest/episodes/delete
+router.route('/delete')
   .delete(async (req, res) => {
-    const { id } = req.params;
+    const { id, user_id } = req.body;
     const conn = await connection(dbConfig).catch(e => {});
-    const status = await query(conn, epiQuery.deleteById(), [id])
+    const status = await query(conn, epiQuery.deleteById(), [id, user_id])
     res.send(status)
   });
 

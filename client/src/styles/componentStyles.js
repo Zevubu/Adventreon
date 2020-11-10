@@ -34,6 +34,16 @@ const NavBody = styled.div`
         justify-content: center;
         }
 `
+const BackBtn = styled.button`
+background-color: rgba(238, 245, 244, 0);
+border-color: rgba(238, 245, 244, 0);
+border-radius: 4px;
+box-shadow: 0 3px 5px 2px rgba(0, 0, 0, .3);
+color: rgb(0,0,0);
+height:45px;
+font-size: 20px;
+`
+
 const NavBtn = styled.button`
 background-color: rgb(238, 245, 244);
 border-color: #9bacb3;
@@ -104,4 +114,4 @@ font-size: 40px;
     }
 `
 
-export {H2, H6,NavBody, NavBtn, NavBtnB, NavBtnM, NavBtnT, FooterBody, OptionBox, PullBox, SpeachBox, Logo, LogoImage}
+export {H2, H6,NavBody,BackBtn, NavBtn, NavBtnB, NavBtnM, NavBtnT, FooterBody, OptionBox, PullBox, SpeachBox, Logo, LogoImage}

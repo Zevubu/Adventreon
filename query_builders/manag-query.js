@@ -9,7 +9,8 @@ const managQuery ={
     findAllSprit:  () => `SELECT id, user_name, mhswitch, email, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified, time_stamp FROM users WHERE user_type='host' AND category='spiritual' OR user_type='manager' AND mhswitch=1 AND category='spiritual' `,
     findById: () => `SELECT id, user_name, mhswitch, email, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified, time_stamp FROM users WHERE id = ?`,
     updateById: () => `UPDATE users SET user_name=?, mhswitch=?, email=?, title=?, about=?, p_img=?, b_img=?, category=?, payment=?, patreon=?, wp_title=?, webpage=? WHERE id=?`,
-    deleteById: () => `DELETE FROM users WHERE id=?`
+    deleteById: () => `DELETE FROM users WHERE id=?`,
+    delShowById: () => ``
 };
 // May need to apply "AND userid = {currentuser} OR Management = true"
 

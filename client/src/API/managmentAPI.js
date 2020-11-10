@@ -24,5 +24,43 @@ getManagByID: function(id, token){
     };
     // console.log("/api/hosts/all/" + id)
     return axios(options).catch(err => console.log(`Find hosts by id error:${err}`));
-}
+},
+deleteUser:function(id,token,userData){
+    const pOptions ={
+        method: 'DELETE',
+        headers: { 
+            'content-Type': 'application/json',
+            'authorization': `bearer ${token.replace(/\"/g, '')}` 
+        },
+        url:"/auth/managment/delete/"+id,
+        data:userData
+    };
+    return axios(pOptions).catch(err => console.log(`Host delete error:${err}`))
+},
+deleteShow:function(id,token,userData){
+    const pOptions ={
+        method: 'DELETE',
+        headers: { 
+            'content-Type': 'application/json',
+            'authorization': `bearer ${token.replace(/\"/g, '')}` 
+        },
+        url:"/auth/managment/delete/"+id,
+        data:userData
+    };
+    return axios(pOptions).catch(err => console.log(`Host delete error:${err}`))
+},
+deleteEpi:function(id,token,userData){
+    const pOptions ={
+        method: 'DELETE',
+        headers: { 
+            'content-Type': 'application/json',
+            'authorization': `bearer ${token.replace(/\"/g, '')}` 
+        },
+        url:"/auth/managment/delete/"+id,
+        data:userData
+    };
+    return axios(pOptions).catch(err => console.log(`Host delete error:${err}`))
+},
+
+
 }

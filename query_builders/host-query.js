@@ -10,7 +10,7 @@ const hostQuery ={
     findAllSprit:  () => `SELECT id, user_name, title, about, p_img, b_img FROM users WHERE user_type='host' AND category='spiritual' OR user_type='manager' AND mhswitch=1 AND category='spiritual' `,
     findById: () => `SELECT id, user_name, email, title, about, p_img, b_img, category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform, verified, time_stamp FROM users WHERE id = ? AND user_type='host' OR id = ? AND user_type='manager' AND mhswitch=1`,
     updateById: () => `UPDATE users SET user_name=?, email=?, title=?, about=?, p_img=?, b_img=?, category=?, payment=?, patreon=?, wp_title=?, webpage=? WHERE id=?`,
-    deleteById: () => `DELETE FROM users WHERE id=?`
+    deleteById: () => `DELETE FROM users WHERE id=? and user_type='host'`
 };
 // May need to apply "AND userid = {currentuser} OR Management = true"
 
