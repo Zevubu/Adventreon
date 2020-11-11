@@ -36,7 +36,7 @@ const NavBody = styled.div`
 `
 const BackBtn = styled.button`
 background-color: rgba(238, 245, 244, 0);
-border-color: rgba(238, 245, 244, 0);
+border-color: rgba(0, 0, 0, 0);
 border-radius: 4px;
 box-shadow: 0 3px 5px 2px rgba(0, 0, 0, .3);
 color: rgb(0,0,0);

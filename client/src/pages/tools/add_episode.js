@@ -3,7 +3,7 @@ import {DivWBorder, MarronHeader,BigMarronBtn, H2, PT, PS} from "../../styles/ho
 import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
 import API from "../../API/HostLogIn";
 import {useForm} from 'react-hook-form';
-import {UserInfoContext, useHost, useManagment} from "../../context/heart"
+import {UserInfoContext} from "../../context/heart"
 // import {Link} from 'react-router-dom';
 // import VimeoUp from '../../vimeo-upload/index'
 
@@ -51,8 +51,8 @@ function EpiAdd (){
     
     useEffect(() => {
        const fetchShows = async () =>{
-        const result = await API.getShowsByEpisHID(token,`${userData.id}`)
-            console.log(`show by host id and epis data: ${JSON.stringify(result)}`)
+            const result = await API.getShowsByEpisHID(token,`${userData.id}`)
+            // console.log(`show by host id and epis data: ${JSON.stringify(result)}`)
             setShows(result.data)
         };
         fetchShows(); 

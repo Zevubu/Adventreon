@@ -3,7 +3,7 @@ const {ROLES ,passport, checkIsInRole, validate, ageValidate} = require("../../p
 const logoutAPI = require('./logoutAPI');
 const baseAPI = require('./api/index');
 const hostAPI = require('./hostAPI');
-// const managAPI = require('./managerAPI');
+const managAPI = require('./managerAPI');
 // const masterAPI = require('./masterAPI')
 
 // logged out routes no token needed 
@@ -27,11 +27,11 @@ router.use("/hreq",
 );
 
 // management routes /api/mreq
-// router.use('/mreq',
-//     passport.authenticate('jwt', {session: false}),
-//     checkIsInRole(ROLES.Manag),    
-//     managAPI
-// );
+router.use('/mreq',
+    passport.authenticate('jwt', {session: false}),
+    checkIsInRole(ROLES.Manag),    
+    managAPI
+);
 // master routes /api/master
 // router.use('/mastreq',
 //     passport.authenticate('jwt', {session: false}),

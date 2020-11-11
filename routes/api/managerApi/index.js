@@ -1,13 +1,16 @@
 const router = require("express").Router();
 
-const userRoutes = require("./userRoute")
+const profileRoutes = require("./profileRoute");
 const showRoutes = require("./showRoute");
-const epiRoutes = require("./epiRoute")
+// const epiRoutes = require("./epiRoute");
 
 // can veiw edit and verify shows, episodes and hosts. 
 
-router.use("/users", userRoutes);
+// /api/mreq/profiles
+router.use("/profiles", profileRoutes);
+// /api/mreq/shows
 router.use("/shows", showRoutes);
-router.use("/episodes", epiRoutes);
+// /api/mreq/episodes
+// router.use("/episodes", epiRoutes);
 
 module.exports = router;

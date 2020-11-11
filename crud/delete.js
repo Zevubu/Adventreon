@@ -1,5 +1,4 @@
 const query = require('../controllers/query');
-const {valuesForQuery} = require('../controllers/values-for-insert');
 
 /**
  * @param  {} conn MySQL Connection reference
@@ -9,9 +8,11 @@ const {valuesForQuery} = require('../controllers/values-for-insert');
  */
 module.exports = async (conn, table, id) => {
   try {
-    const deleter = await query(conn, `DELETE FROM ${table} WHERE id=?`,[id] );
-    if (deleter.insertId = 0) {
+    console.log(`Id check: ${id}`)
+    const deleter = await query(conn, `DELETE FROM ${table} WHERE id=?`,[id]);
+    if (deleter.affectedRows === 0) {
         console.log(deleter)
+        // const delFail = {}
     }
     return deleter;
   } catch(e) { console.log(e)}
