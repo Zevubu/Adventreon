@@ -7,7 +7,6 @@ import {NavBody,H2, OptionBox,PullBox, LogoImage, BackBtn} from "../../styles/co
 import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo } from "../../context/heart";
 import Logo from "../../img/masked-logo-Adventreon-blue.png"
 import SimpleMenu from './menu.js';
-// import ResMenu from './resmenu';
 import HostMenue from './hostMenu';
 import ManagerMenue from './manegMenue';
 
@@ -57,16 +56,16 @@ function NavBar (){
         padding: '0 30px',
         fontSize:'15px',
     });
-    const BTNS = styled(Button)({
-        border: 0,
-        borderRadius: 3,
-        boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
-        color: '#000000',
-        height: 35,
-        padding: '0px 0px',
-        variant:"outlined",
-        fontSize:'35px',
-    });
+    // const BTNS = styled(Button)({
+    //     border: 0,
+    //     borderRadius: 3,
+    //     boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
+    //     color: '#000000',
+    //     height: 35,
+    //     padding: '0px 0px',
+    //     variant:"outlined",
+    //     fontSize:'35px',
+    // });
 
     // const ClearBTN = styled(Button)({
     //     border: 0,
@@ -94,7 +93,7 @@ function NavBar (){
     return(
         <NavBody  className={classes.root}>
            <OptionBox>
-                <BackBtn onClick={() => history.goBack()}>{"\<"}</BackBtn>
+                <BackBtn onClick={() => history.goBack()}>{"<"}</BackBtn>
                 <Link style={{ textDecoration: 'none', color:'black' }} to="/">
                     <PullBox>
                         <PullBox>
