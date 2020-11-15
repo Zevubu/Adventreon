@@ -81,7 +81,7 @@ function DelUser (){
         console.log(err);
         console.log(errors)
         setError(true);  
-    } ;
+    };
 
     const OnDeleteSubmit = (e) =>{
         const UserDel = () =>{
@@ -92,8 +92,7 @@ function DelUser (){
             .catch(err => ErrHandling(err));
         }
         UserDel()
-       
-    }
+    };
 
     return(
         <DivWBorder>

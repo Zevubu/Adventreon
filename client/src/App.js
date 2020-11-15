@@ -95,7 +95,7 @@ function App() {
   }
 
   const setHost =(data) => {
-    console.log(`Is Host opening data: ${data}`)
+    // console.log(`Is Host opening data: ${data}`)
     setIsHost(data)
   }
 
