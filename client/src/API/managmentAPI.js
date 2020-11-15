@@ -94,9 +94,9 @@ deleteShow:function(token,userData){
         url:"/api/mreq/shows/delete",
         data:userData
     };
-    return axios(pOptions).catch(err => console.log(`Host delete error:${err}`))
+    return axios(pOptions)
 },
-deleteEpi:function(id,token,userData){
+deleteEpi:function(token,userData){
     const pOptions ={
         method: 'DELETE',
         headers: { 
