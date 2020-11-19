@@ -70,6 +70,28 @@ getAllShowsByUId: function(id,token){
     };
     return axios(options).catch(err => console.log(`Find all shows by user id error:${err}`));
 },
+getShowsXEpiUId: function(id,token){
+    const options = {
+        method: 'GET',
+        headers: { 
+            'content-Type': 'application/json',
+            'authorization': `bearer ${token.replace(/\"/g, '')}` 
+        },
+        url:"/api/mreq/shows/byepiuidsm/"+ id,
+    };
+    return axios(options).catch(err => console.log(`Find all shows by epi and user id error:${err}`));
+},
+getAllEpiXSId: function(id,token){
+    const options = {
+        method: 'GET',
+        headers: { 
+            'content-Type': 'application/json',
+            'authorization': `bearer ${token.replace(/\"/g, '')}` 
+        },
+        url:"/api/mreq/episodes/bysid/"+ id,
+    };
+    return axios(options).catch(err => console.log(`Find all episodes by show id error:${err}`));
+},
 deleteUser:function(token,userData){
     console.log(`User data check${JSON.stringify(userData)}`)
     const options ={
@@ -97,16 +119,16 @@ deleteShow:function(token,userData){
     return axios(pOptions)
 },
 deleteEpi:function(token,userData){
-    const pOptions ={
+    const options ={
         method: 'DELETE',
         headers: { 
             'content-Type': 'application/json',
             'authorization': `bearer ${token.replace(/\"/g, '')}` 
         },
-        url:"",
+        url:"/api/mreq/episodes/delete",
         data:userData
     };
-    return axios(pOptions).catch(err => console.log(`Host delete error:${err}`))
+    return axios(options).catch(err => console.log(`Episode delete error:${err}`))
 },
 
 

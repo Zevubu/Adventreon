@@ -15,6 +15,7 @@ Router.route("/all")
         )
         res.send(users)
     })
+
 // /api/mreq/shows/byuid/:id
 Router.route("/byuid/:id")
     .get(async (req,res)=>{
@@ -26,7 +27,19 @@ Router.route("/byuid/:id")
             "SELECT * FROM shows WHERE host_id=?",
             [id]
         )
-        res.send(shows)
+        res.send(shows) 
+    })
+// /api/mreq/shows/byepiuidsm/:id
+Router.route("/byepiuidsm/:id")
+    .get(async (req,res)=>{
+        const {id} = req.params;
+        const conn = await connection(dbConfig).catch(e=>{})
+        const users = await query(
+            conn,
+            "SELECT id, show_name, show_type, img, host_id, host_name, canceled, verified FROM shows WHERE host_id=? AND show_type='episodical'",
+            [id]
+        )
+        res.send(users)
     })
 // /api/mreq/shows/delete
 Router.route("/delete")
