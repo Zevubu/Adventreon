@@ -2,8 +2,8 @@ import React, {useContext, useState, useEffect} from "react";
 import {useForm} from 'react-hook-form';
 import API from "../../../API/managmentAPI";
 
-import {DivWBorder, MarronHeader,BigMarronBtn,ProTextBox, H1,H2, PT, PS} from "../../../styles/homeStyle";
-import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../../styles/signUpOutStyles";
+import {DivWBorder, MarronHeader,ProTextBox, H1,H2, PT} from "../../../styles/homeStyle";
+import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, PE} from "../../../styles/signUpOutStyles";
 
 
 
@@ -12,7 +12,6 @@ import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, P
 
 
 function DelShow (){
-
     const[user, setUser] = useState();
     const[users, setUsers] = useState([]);
     const[show, setShow] = useState();
@@ -21,7 +20,7 @@ function DelShow (){
     const[ToMany, setToMany] = useState();
     const[Success, setSuccess] = useState();
     const[usSelect, setUsSelect] = useState(false)
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const token = window.localStorage.getItem('tokens');
     
     const ShowReset = () =>{
@@ -62,7 +61,6 @@ function DelShow (){
         }
 
     if(user && usSelect){
-        
         fetchShows();
     };
 
@@ -119,10 +117,10 @@ function DelShow (){
                 <H1 color="red">Show Deletion page.</H1>
             </MarronHeader>
             <FormBigBox>
-            <H2 color="red">WARNING!!!</H2>
-                <H2 color="red">You are about to delete someone's account!</H2>
+                <H2 color="red">WARNING!!!</H2>
+                <H2 color="red">You are about to delete a show!</H2>
                {/* List of all host and managers */}
-                         {Error && (
+                {Error && (
                     <FormBox>
                         <MarronHeader>
                             <H1 color="black">Something went wrong</H1>
@@ -156,8 +154,8 @@ function DelShow (){
                         {/* Or view all shows with out hosts. button */}
                         {shows && user && !usSelect && (
                             <FormBoxWError>
-                            {/* List of said H/M shows */}
-                            <PT>Select a show</PT>
+                                {/* List of said H/M shows */}
+                                <PT>Select a show</PT>
                                 <select name="ShowChoice" onChange={e => setShow(e.target.value)} ref={register({required: true})}>
                                     <option>Choose one</option>
                                     {shows.map((show, key) => (
