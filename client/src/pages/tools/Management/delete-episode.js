@@ -1,9 +1,9 @@
-import React, {useContext, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {useForm} from 'react-hook-form';
 import API from "../../../API/managmentAPI";
 
-import {DivWBorder, MarronHeader,BigMarronBtn, ProTextBox, H1, H2, PT, PS} from "../../../styles/homeStyle";
-import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../../styles/signUpOutStyles";
+import {DivWBorder, MarronHeader, ProTextBox, H1, H2, PT} from "../../../styles/homeStyle";
+import { FormBigBox,FormBox,FormBoxWError, Btn, PE} from "../../../styles/signUpOutStyles";
 
 function DelEpi (){
     const[user, setUser] = useState();
@@ -17,7 +17,7 @@ function DelEpi (){
     const[Success, setSuccess] = useState();
     const[usSelect, setUsSelect] = useState(false);
     const[shSelect, setShSelect] = useState(false);
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const token = window.localStorage.getItem('tokens');
     
     const ShowReset = () =>{
@@ -263,17 +263,6 @@ function DelEpi (){
                         )}
                     </div>
                 )} 
-                {/* autogenorate form with user picked info */}
-                {/* userName */}
-                {/* firstName */}
-                {/* lastName */}
-                {/* DOB */}
-                {/* about  */}
-                {/* doesn't include email and password. */}
-
-
-
-
             </FormBigBox>
 
         </DivWBorder>

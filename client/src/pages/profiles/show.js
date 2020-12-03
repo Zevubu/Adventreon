@@ -5,7 +5,7 @@ import API from "../../API/loggedInAPI";
 // import eAPI from "../../API/epiLogOut"
 import { Redirect } from "react-router-dom";
 import {P,H2, H1, H3, SpHeaderA, FillerBar} from "../../styles/homeStyle"
-import{ ProviderBox,ProBGColor,ProBigBox, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
+import{ ProviderBox,ProBGColor,ProBigBox, ProDuoServiceBlock, ProDuoServiceBlockColumn,LikeBox, ProImage, ProTextBox} from '../../styles/providerStyles'
 import EpisodeFiller from "../../componets/EpiFiller/slide_filler"
 import Carousel from '@brainhubeu/react-carousel';
 import '../../styles/Carousel.css';
@@ -94,14 +94,17 @@ function Show(){
                     <ProviderBox id={Show.id}>
                         <ProDuoServiceBlock>
                             {oneOff &&(
-                                <iframe 
-                                    src={Show.v_link}
-                                    width="640" 
-                                    height="360" 
-                                    frameborder="0" 
-                                    allow="autoplay; fullscreen" 
-                                    allowfullscreen> 
-                                </iframe>
+                                <div>
+                                    <iframe 
+                                        src={Show.v_link}
+                                        width="640" 
+                                        height="360" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen" 
+                                        allowfullscreen> 
+                                    </iframe>
+                                    <LikeBox>like</LikeBox>
+                                </div>
                             )}
                             {episodical && !playing && (
                             
@@ -110,7 +113,7 @@ function Show(){
                             {episodical && playing &&(
                                 <div>
                                     
-                            <H2>{playing.epi_name} #{playing.id}</H2>                
+                                    <H2>{playing.epi_name} #{playing.id}</H2>                
                                     
                                     <iframe 
                                         src={playing.v_link}

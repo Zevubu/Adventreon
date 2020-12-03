@@ -6,6 +6,8 @@ USE Shtiker_iso;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS shows;
 DROP TABLE IF EXISTS episodes;
+DROP TABLE IF EXISTS liked;
+
 -- users need live booleen
 CREATE TABLE users(
 	id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -49,6 +51,7 @@ INSERT INTO users(first_name, last_name, user_name, user_type, mhswitch, dob, em
 INSERT INTO users(first_name, last_name, user_name, user_type, mhswitch, dob, email, password, title, about, p_img, b_img, category, sub_category, payment, patreon, wp_title, webpage, rsvp_attend, rsvp_perform,verified) VALUES('Blob', 'Filler', 'Mondo!', "user",false,"1988-08-23", 'zevu67bu@gmail.com', '3dca3a56d395808ac914e892231e0a3ae7e4c7fe',"Master of this tiny kingdom",'Founder of Adventreon',"https://scontent-sjc3-1.xx.fbcdn.net/v/t31.0-8/p960x960/23674750_10155167262830745_3099595753383379238_o.jpg?_nc_cat=104&_nc_sid=dd7718&_nc_ohc=2xtTMNjaCA4AX-T8543&_nc_ht=scontent-sjc3-1.xx&_nc_tp=6&oh=b7a86cbe64adc036a9ce114079c1be40&oe=5EE7B279","https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/p960x960/37112608_10155733091650745_697307413887320064_o.jpg?_nc_cat=102&_nc_sid=dd9801&_nc_ohc=6wXJLNCh5LMAX-pGVN8&_nc_ht=scontent-sjc3-1.xx&_nc_tp=6&oh=bad4dfd9a0574a82b3b4d6dc34fcee5d&oe=5EE5FB61","life","variety",'paymentlink','Patreon link','Visit my web page ', 'www.zevubu.com', '1.Mondo! blaa.4-23-20.12:23pm.2:23pm','1.Mondo! blaa.4-23-20.12:23pm.2:23pm', true);
 
 -- shows need live and epinum defaualt 0
+-- make category sub_category null
 CREATE TABLE shows(
 	id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	show_name varchar(50) NOT NULL,
@@ -180,6 +183,18 @@ INSERT INTO episodes(show_id, user_id, epi_name, about, img, video_type, v_link,
 INSERT INTO episodes(show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, category, sub_category, paid, price, epi_date, start_time, end_time, eighteen_plus, verified) VALUES('4','4',"Circusy circus show.","THis is the about section and it says stuff about this episode and stuff tell it stuff","https://images.unsplash.com/photo-1584463973015-ed1aa6701c6e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80","vimeo", "https://player.vimeo.com/video/417439888","made by boppy, music by tom.", 'Circus clips', 'The Circus', "performance", "play", true, "15", '2020-09-01', '11:27:00', '12:27:00', false, true);
 INSERT INTO episodes(show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, category, sub_category, paid, price, epi_date, start_time, end_time, eighteen_plus, verified) VALUES('5','4',"Circusy circus show.","THis is the about section and it says stuff about this episode and stuff tell it stuff","https://images.unsplash.com/photo-1584463973015-ed1aa6701c6e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80","vimeo", "https://player.vimeo.com/video/417439888","made by boppy, music by tom.", 'Circus clips', 'The Circus', "performance", "play", true, "15", '2020-09-01', '11:27:00', '12:27:00', false, true);
 INSERT INTO episodes(show_id, user_id, epi_name, about, img, video_type, v_link, credits, show_name, host_name, category, sub_category, paid, price, epi_date, start_time, end_time, eighteen_plus, verified) VALUES('6','4',"Circusy circus show.","THis is the about section and it says stuff about this episode and stuff tell it stuff","https://images.unsplash.com/photo-1584463973015-ed1aa6701c6e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80","vimeo", "https://player.vimeo.com/video/417439888","made by boppy, music by tom.", 'Circus clips', 'The Circus', "performance", "play", true, "15", '2020-09-01', '11:27:00', '12:27:00', false, true);
+
+CREATE TABLE liked(
+    id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    item_table varchar(20) NOT NULL,
+    item_id varchar(100) NOT NULL,
+    user_id varchar(100) NOT NULL,
+    INDEX idx_events_likedId (id)
+);
+
+INSERT INTO liked(item_table,item_id,user_id) VALUES("shows","1","3");
+
+SELECT * from liked;
 
 SELECT * FROM episodes;
 SELECT * FROM users;

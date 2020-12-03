@@ -151,7 +151,6 @@ function EpiAdd (){
             EpiUploader();
         };
     };
-
     return(
         <DivWBorder> 
         {/* <a id="signup"/> */}
@@ -176,7 +175,6 @@ function EpiAdd (){
                 </select>
                 {errors.ShowChoice && errors.ShowChoice.type === "required" &&(<PE>This is required!</PE>)}
             </FormBoxWError>
-
         </FormBigBox>
         {compSub && (
             <FormBoxWError>
@@ -186,13 +184,11 @@ function EpiAdd (){
             </FormBoxWError>
         )}
         {/* form starts here */}
-    
         {Show && !compSub && ( 
             <FormBigBox onSubmit={handleSubmit(onShowSubmit)}>
                 {/* <p>{`show ID: ${JSON.stringify(Show)}`}</p> */}
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}   
-               
                 <FormLittleBox>
                     <FormBoxWError>
                             <PT>Episode Name</PT>
@@ -203,7 +199,6 @@ function EpiAdd (){
                             {errors.epiName && errors.epiName.type === "required" &&(<PE>This is required!</PE>)}
                             {/* {errors.epiName && errors.epiName.type === "pattern" &&(<PE>Name can only have letters and numbers</PE>)} */}
                     </FormBoxWError>
-                    
                     <FormBoxWError>
                         <div>
                             <PT>Video source</PT>
@@ -215,7 +210,6 @@ function EpiAdd (){
                             </select>
                             {errors.videoSource && errors.videoSource.type === "required" &&(<PE>This is required!</PE>)}
                         </div>
-                        
                         {VideoType &&(
                             <div>
                                 <PT>Video link</PT>
@@ -252,7 +246,6 @@ function EpiAdd (){
                         <PT>Price</PT>
                         <PS>If free input 0.</PS>
                         <PS>Pay wall isn't implimented yet.</PS>
-
                         {/* Will inclued an example of exactly what you need to do. */}
                         <Input
                             type="number"
@@ -296,7 +289,6 @@ function EpiAdd (){
                         <Btn type="submit" value="Submit">Submit Episode</Btn>
                         {/* disabled={disable} */}
                     </FormBox>
-                
                 </FormLittleBox>       
             </FormBigBox>
         )}      
