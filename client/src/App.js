@@ -23,12 +23,13 @@ import { AuthContext, UserContext, HostContext, ManagmentContext, TempContext,Te
 import NavBar from "./componets/navbar";
 import Footer from './componets/footer';
 
-
+// base pages
 import HomePage from "./pages/home/index";
 import Login from "./pages/login";
 import SignUp from './pages/sign_up';
 import profile from './pages/profile';
 
+// catagory pages
 import HostsPage from './pages/hosts';
 import ShowPage from "./pages/shows"
 import MusicPage from "./pages/home/music-home"
@@ -36,6 +37,15 @@ import EnterPage from './pages/home/perf-home';
 import LifePage from './pages/home/life-home';
 import SpirtPage from './pages/home/sp-home';
 import AllCatPage from './pages/category/allCat';
+
+// settings/ tools pages
+import ControlP from './componets/navPage/ControlPanel';
+import UserSettings from './componets/navPage/userSettings';
+import HostSettings from './componets/navPage/hostSettings';
+import ManagSettings from './componets/navPage/managSettings';
+import UserTools from './componets/navPage/userTools';
+import HostTools from './componets/navPage/hostTools';
+import ManagTools from './componets/navPage/managTools';
 
 // tools
 import InviteHost from './pages/tools/Management/invite_host';
@@ -220,6 +230,8 @@ function App() {
                           <LoggedInRoute exact path="/music" component={MusicPage} />
                           <LoggedInRoute exact path="/allcat" component={AllCatPage} />
                           <LoggedInRoute exact path="/uploads" component={Uploader} />
+                          <LoggedInRoute exact path="/settings" component={UserSettings} />
+                          <LoggedInRoute exact path="/tools" component={ControlP} />
                           <TempMRoute exact path="/tempsum/:id" component={ManegSignUp} />
                           <TempRoute exact path="/tempsu/:id" component={HostSignUp} />
                           <ManagmentRoute path="/imgupload" component={ImgUpload}/>
@@ -236,12 +248,16 @@ function App() {
                           <ManagmentRoute exact path="/delusm" component={DeleteUserM}/>
                           <ManagmentRoute exact path="/delshm" component={DeleteShowM}/>
                           <ManagmentRoute exact path="/delepm" component={DeleteEpiM}/>
+                          <ManagmentRoute exact path="/msettings" component={ManagSettings}/>
+                          <ManagmentRoute exact path="/mtools" component={ControlP}/>
                           <HostRoute exact path="/updateshow" state={{value:userData}} component={ShowUpdater}/>
                           <HostRoute exact path="/updateepisode"  state={{value:userData}} component={EpiUpdater}/>
                           <HostRoute path="/puph/:id" state={{value:userData}}  component={UpHost}/>
                           <HostRoute path="/profile/:id" state={{value:userData}}  component={profile}/>
                           <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
                           <HostRoute exact path="/episodebuilder" component={AddEpisode}/>
+                          <HostRoute exact path="/hsettings" component={HostSettings}/>
+                          <HostRoute exact path="/htools" component={ControlP}/>
                         </Switch>
                         <Footer/>
                       </div>

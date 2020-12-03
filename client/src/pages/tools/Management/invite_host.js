@@ -45,6 +45,7 @@ function Invite (){
             "p_img": '',
             "b_img": '',
             "category":'',
+            "sub-category":'',
             "payment": '',
             'patreon': '',
             'wp_title': '',

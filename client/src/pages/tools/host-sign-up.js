@@ -110,6 +110,7 @@ function SignUp (){
                     "p_img": data.pImg,
                     "b_img": data.bImg,
                     "category": catType,
+                    "sub_category": "mixed",
                     "payment": data.paypal,
                     'patreon': data.patreon,
                     'wp_title': data.wpTitle,

@@ -19,20 +19,14 @@ function LogoutBody (){
                     <VFrame src="https://player.vimeo.com/video/457351669" frameborder="0px" allow="autoplay; fullscreen" allowfullscreen></VFrame>
                     <div>
                         <ProTextBox>
-                        <H1 color="rgb(23, 283, 232)">A space for...</H1>
-                            <H1 color="rgb(23, 283, 232)">the weird, the whimsical, and the wonderful.</H1>
-                            <H2>The haphazard healers of this world.</H2>
-                            <H2>You circus folk, musicians, painters, puppeteers, clowns, carnies, and those who love them.</H2>
-                            <H2>Welcome.</H2>
+                        <H1> The Weird, The Whimsical, {"&"} The Wonderful</H1>
                             
-                            {/* <H2>A place for immersive experience makers, circus folk, musicians, puppeteers, clowns, carnies, and healers, to name a few.</H2> */}
-                            {/* <H2>To entertain, share their skills, and tell their stories.</H2>
-                            <H2>All while selling their own content. </H2> */}
-                            {/* <H3>Logged out</H3>
-                            <H3>This is how the world starts,</H3>
-                            <H2>This is how the world starts,</H2>
-                            <H1 color="rgb(23, 283, 232)">This is how the world starts,</H1>
-                            <H2> Not with a bang but with a whimsy...</H2> */}
+                            {/* <H1 color="rgb(23, 283, 232)">The Whimsical</H1>
+                            <H1 color="rgb(23, 283, 232)">The Wonderful</H1>
+                            <H1 color="rgb(23, 283, 232)">{"&"} The Weird</H1> */}
+                        </ProTextBox>
+                        <ProTextBox>
+                        <H1 color="rgb(23, 283, 232)">ADVENTREON</H1>
                         </ProTextBox>
                     </div>  
                 </IntroBlock>

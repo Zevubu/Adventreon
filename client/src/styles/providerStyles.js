@@ -144,6 +144,13 @@ width:100%;
 height:100%;
 text-align:center;
 `
+const LikeBox = styled.div`
+color: white;
+background-color: rgba(23, 23, 23, 0.767);
+width:100%;
+margin:0 auto;
+padding:5px;
+`
 // profile styles background-color: rgba(209, 202, 179, 0.767);
 
 const ProviderBox = styled.div`
@@ -276,4 +283,4 @@ margin: 5px;
     };
 `
 
-export {SlideImg, ProBigBox,ProBGColor, ProviderBox,ProDuoServiceBlockB, ProDuoServiceBlockColumnB, ShowBox,AppBox,SlideShowBuffer,SlideShowImg, Slider,SliderFiller, SliderContent, Slide,ShowSlide, SlideBuffer, ProDuoServiceBlock, DuoServiceBlockRow, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage, TextBox, ProTextBox, ProTextBoxN}
+export {SlideImg, ProBigBox,ProBGColor, ProviderBox,ProDuoServiceBlockB, ProDuoServiceBlockColumnB, ShowBox,AppBox,SlideShowBuffer,SlideShowImg, Slider,SliderFiller, SliderContent, Slide,ShowSlide, SlideBuffer, ProDuoServiceBlock, DuoServiceBlockRow, ProDuoServiceBlockColumn, DuoServiceBlock, DuoServiceBlockColumn, Image, ProImage,LikeBox, TextBox, ProTextBox, ProTextBoxN}

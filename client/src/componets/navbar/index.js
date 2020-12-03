@@ -3,7 +3,6 @@ import {Link, useHistory} from 'react-router-dom';
 // import {Btn} from '../../styles/homeStyle';
 import {NavBody,H2, OptionBox,PullBox, LogoImage, BackBtn} from "../../styles/componentStyles";
 
-
 import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo } from "../../context/heart";
 import Logo from "../../img/masked-logo-Adventreon-blue.png"
 import SimpleMenu from './menu.js';
@@ -120,12 +119,12 @@ function NavBar (){
             )}
             <OptionBox>
                 {/* {matches ? <div></div>:<div></div> }  */}
-                    <OptionBox>
-                        {isAuthenticated &&(
-                            <SimpleMenu></SimpleMenu>
-                        )}
-                        {/* <Link style={{ textDecoration: 'none' }} to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link> */}
-                    </OptionBox>
+                <OptionBox>
+                    {isAuthenticated &&(
+                        <SimpleMenu></SimpleMenu>
+                    )}
+                    {/* <Link style={{ textDecoration: 'none' }} to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link> */}
+                </OptionBox>
                 { isAuthenticated && isHost &&(
                     <div>
                         <HostMenue/>

@@ -239,13 +239,13 @@ function ShowBuild (){
         <div>
             {oneOff && compSub &&  ( 
                 <FormBoxWError>
-                    <H2 color="red">SHOW CREATED!</H2>
+                    <H2 color="red">Show Updated!</H2>
                     <BigMarronBtn onClick={oneMore}>Update Another Show.</BigMarronBtn>
                 </FormBoxWError>
             )}
             {episodical && compSub && isManager && ( 
                 <FormBoxWError>
-                    <H2 color="red">SHOW CREATED!</H2>
+                    <H2 color="red">Show Updated!</H2>
                     <Link style={{ textDecoration: 'none'}} to="/episodebuilderm">
                         <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
                     </Link>
@@ -255,7 +255,7 @@ function ShowBuild (){
             )}
             {episodical && compSub && isHost &&( 
                 <FormBoxWError>
-                    <H2 color="red">SHOW CREATED!</H2>
+                    <H2 color="red">Show Updated!</H2>
                     <Link style={{ textDecoration: 'none'}} to="/episodebuilder">
                         <BigMarronBtn>Add episodes to your show here!</BigMarronBtn>
                     </Link>

@@ -66,9 +66,6 @@ export default function SimpleMenu() {
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/delusm"}><MenuItem onClick={handleClose}>Delete a users Profile</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/delshm"}><MenuItem onClick={handleClose}>Delete any show</MenuItem></Link>
         <Link style={{ textDecoration: 'none' ,color: '#353435'}} to={"/delepm"}><MenuItem onClick={handleClose}>Delete any episode</MenuItem></Link>
-        
-        
-        
       </Menu>
     </div>
   );
