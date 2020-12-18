@@ -1,16 +1,9 @@
 import React from "react";
-// import {Link} from 'react-router-dom'
 import {IntroBox, IntroBlock,SpDiv,VFrame, CCCDiv, FillerDiv, IntroTxTDiv,A,H1,H2,H3,ProTextBox} from "../../styles/homeStyle";
-// import SignUp from "./signUp";
 import HostsBlock from "../../componets/CP_fillers/base_filler/host_cat"
 import ShowsBlock from "../../componets/CP_fillers/perf_home_hs/perf_shows";
-// import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
 function MusicHome (){
-    // const {isAuthenticated} = useAuth();
-    // const {isUser} = useUser();
-    // const { isHost } = useHost();
-    // const { isManager } = useManagment();
     // linear-gradient(to bottom, rgba(155, 51, 74, 0.938) 25%, rgba(23, 23, 23, 0.777) 56%, rgba(223, 223, 223, 0.777) 100%)
     return(
         <SpDiv> 
@@ -37,11 +30,10 @@ function MusicHome (){
                     <H3>Image by <A href="https://unsplash.com/@fergomez">Fer Gomez</A></H3>
                 </div>
             </IntroBox>
-            {/* Hosts area start */}
             <ShowsBlock/>
-
-            <HostsBlock Cat="performance"/>
             {/* Shows area */}
+            <HostsBlock Cat="performance"/>
+            {/* Hosts area start */}
         
         </SpDiv>
     )

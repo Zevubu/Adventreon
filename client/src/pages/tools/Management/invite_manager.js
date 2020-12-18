@@ -3,13 +3,10 @@ import {DivWBorder, MarronHeader, H2, PT} from "../../../styles/homeStyle"
 import {FormBigBox, FormLittleBox, FormBox, FormBoxWError, Btn, Input, PE} from "../../../styles/signUpOutStyles"
 import API from "../../../API/behindDaScenes";
 import {useForm} from 'react-hook-form';
-// import { ShowBox } from "../../../styles/providerStyles";
-
 
 function Invite (){
     const [isBox, setIsBox] = useState();
     const [temp, setTemp] = useState();
-
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = (data, e) =>{
         setTemp(data)
@@ -41,18 +38,15 @@ function Invite (){
 
     return(
         <DivWBorder> 
-            {/* <a id="signup"/> */}
             {/* Sign up form */}
             <MarronHeader>
                 <H2>Start making positive changes today.</H2>
             </MarronHeader>
-
             <FormBigBox onSubmit={handleSubmit(onSubmit)}>
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}
                 <PT>Please share you contact info</PT>
                 <FormLittleBox>
-                    
                     <FormBoxWError>
                             <PT>Name*</PT>
                             <Input
@@ -95,35 +89,11 @@ function Invite (){
                     {/* bulk text area. opition to hide text? */}
                     
                 </FormLittleBox>
-                {/* <FormLittleBox>
-                    <FormBox>
-                        <PT>About</PT>
-                        <TextArea 
-                            rows="10"
-                            cols="50"
-                            placeholder="Anything you share is confidential"
-                            name="about" 
-                            ref ={register}   
-                        />                    
-                    </FormBox>                    
-                </FormLittleBox>
-                <FormLittleBox>
-                    <FormBox>
-                        <PT>Profile Img</PT>
-                        <Input
-                        type
-                        />
-                                           
-                    </FormBox>                    
-                </FormLittleBox> */}
                 <FormLittleBox>
                     {/* contact info email... Name? DOB number */}
                     {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
                         <Btn type="submit" value="Submit">Create Temp account</Btn>
-
-
-                        {/* disabled={disable} */}
                     </FormBox>
                 </FormLittleBox> 
             {isBox && (

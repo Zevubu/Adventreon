@@ -1,15 +1,8 @@
-import React, {useContext, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {useForm} from 'react-hook-form';
 import API from "../../../API/managmentAPI";
-
 import {DivWBorder, MarronHeader,ProTextBox, H1,H2, PT} from "../../../styles/homeStyle";
 import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, PE} from "../../../styles/signUpOutStyles";
-
-
-
-
-
-
 
 function DelShow (){
     const[user, setUser] = useState();
@@ -204,6 +197,7 @@ function DelShow (){
                                 </FormLittleBox>
                                 <iframe 
                                     src={shows[show].v_link}
+                                    title={shows[show].show_name}
                                     width="640" 
                                     height="360" 
                                     frameborder="0" 

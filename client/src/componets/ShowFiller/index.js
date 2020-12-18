@@ -1,12 +1,8 @@
 import React from 'react';
 import {DuoServiceBlock, DuoServiceBlockColumn,Image, TextBox, PS,H2B,PG} from "../../styles/homeStyle"
 import Button from '@material-ui/core/Button';
-// import Paper from '@material-ui/core/Paper';
-
 
 function ShowFiller(props){
-   
-
     return(
         <DuoServiceBlock bgImg={props.imgB}>
             <DuoServiceBlockColumn>

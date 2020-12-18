@@ -7,7 +7,7 @@ function LogOutRoute({ component: Component, ...rest }) {
   const {authTokens, isAuthenticated} = useAuth();
 
    
-  console.log(`What is Auth token: ${authTokens}`)
+  // console.log(`What is Auth token: ${authTokens}`)
 
   return (
     <Route

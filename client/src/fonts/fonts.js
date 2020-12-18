@@ -1,10 +1,10 @@
 import {createGlobalStyle} from 'styled-components';
 
-import GlacialIndiffrenceE from './GlacialIndifference-Regular.eot';
+// import GlacialIndiffrenceE from './GlacialIndifference-Regular.eot';
 import GlacialIndiffrence from './GlacialIndifference-Regular.woff';
 import GlacialIndiffrence2 from './GlacialIndifference-Regular.woff2';
 
-import GlacialIndiffrenceBoldE from './GlacialIndifference-Bold.eot';
+// import GlacialIndiffrenceBoldE from './GlacialIndifference-Bold.eot';
 import GlacialIndiffrenceBold from './GlacialIndifference-Bold.woff';
 import GlacialIndiffrenceBold2 from './GlacialIndifference-Bold.woff2';
 

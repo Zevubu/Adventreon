@@ -1,16 +1,7 @@
 import React from 'react';
 import {Btn, PS, PB, H2} from "../../styles/homeStyle"
 import{ Slide, DuoServiceBlockColumn, Image, TextBox} from '../../styles/providerStyles'
-// function holdingBox (props){
-//     return(
-//         <ServiceBlock>
-            
-//         </ServiceBlock>
-//     )
-// }
 import Button from '@material-ui/core/Button';
-// import Paper from '@material-ui/core/Paper';
-
 function SlideFiller(props){
     return(
         <Slide id={props.id}>

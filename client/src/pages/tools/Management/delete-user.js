@@ -1,28 +1,9 @@
 import React, {useState, useEffect} from "react";
 import API from "../../../API/managmentAPI";
-
 import {DivWBorder, MarronHeader,H1, H2, PT,} from "../../../styles/homeStyle";
 import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, } from "../../../styles/signUpOutStyles";
 import {useForm} from 'react-hook-form';
 // May need to add a compare your id and the options id to exclude you. 
-
-// id,
-//  first_name, 
-//  last_name, 
-//  user_name, 
-//  user_type, 
-//  mhswitch, 
-//  dob, 
-//  email, 
-//  title, 
-//  about, 
-//  p_img, 
-//  b_img, 
-//  category, 
-//  sub_category, 
-//  wp_title, 
-//  webpage, 
-//  verified
 
 function DelUser (){
     const[users, setUsers] = useState([]);
@@ -97,7 +78,7 @@ function DelUser (){
     return(
         <DivWBorder>
             <MarronHeader>
-            <H1 color="red">User Deletion Page</H1>
+                <H1 color="red">User Deletion Page</H1>
             </MarronHeader>
             <FormBigBox>
                 <H2 color="red">WARNING!!!</H2>

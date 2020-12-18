@@ -3,17 +3,17 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Link} from 'react-router-dom';
-import {makeStyles,styled } from '@material-ui/core/styles';
+import {styled } from '@material-ui/core/styles';
 import { useAuth, useUser, useHost, useManagment, useUserInfo } from "../../context/heart";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-      },
-    },
-}));
+// const useStyles = makeStyles(theme => ({
+//     root: {
+//       '& > *': {
+//         margin: theme.spacing(1),
+//       },
+//     },
+// }));
 
 const BTN = styled(Button)({
   border: 0,
@@ -28,11 +28,10 @@ const BTN = styled(Button)({
 
 
 export default function SimpleMenu() {
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
-  const {setAuthTokens, isAuthenticated, setIsAuthenticated} = useAuth();
+  const {setAuthTokens, setIsAuthenticated} = useAuth();
   const {setIsUser} = useUser();
-  const {userData, setUserData} = useUserInfo();
+  const { setUserData} = useUserInfo();
   const {isHost, setIsHost} = useHost();
   const {isManager, setIsManager} = useManagment();
   const matches = useMediaQuery('(max-width:750px)');

@@ -3,23 +3,23 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import GlobalFonts from "./fonts/fonts";
 import {GlobalStyle} from "./styles/universal-styles";
 import API from "./API/loggedOutAPI"
+import { AuthContext, UserContext, HostContext, ManagmentContext, TempContext,TempMContext, UserInfoContext} from "./context/heart";
+
 // private routes
-
-
 import LogOutRoute from './PrivateRoutes/LogOutRoute';
 import LoggedInRoute from './PrivateRoutes/loggedInRoute';
 // import UserRoute from './PrivateRoutes/UserRoutes';
 import TempRoute from './PrivateRoutes/TempRoute';
 import TempMRoute from './PrivateRoutes/TempMRoute';
-import ManagmentRoute from './PrivateRoutes/ManagmentRoute';
 import HostRoute from './PrivateRoutes/HostRoute';
+import ManagmentRoute from './PrivateRoutes/ManagmentRoute';
 
 ///temp component for uploads
 import Uploader from './componets/upload'
-////
+import ImgUpload from './pages/tools/Management/PictureUpload';
+import VUpload from './pages/tools/Management/vimeo_uploader'
 
-import { AuthContext, UserContext, HostContext, ManagmentContext, TempContext,TempMContext, UserInfoContext} from "./context/heart";
-
+// Base componets
 import NavBar from "./componets/navbar";
 import Footer from './componets/footer';
 
@@ -58,16 +58,20 @@ import AddEpisode from './pages/tools/add_episode';
 import ShowUpdater from './pages/tools/upDshows';
 import EpiUpdater from './pages/tools/upDEpis';
 import ManegSignUp from './pages/tools/Management/maneg-sign-up';
-import ImgUpload from './pages/tools/Management/PictureUpload';
+
+// Managment tools
 import DeleteUserM from './pages/tools/Management/delete-user';
 import DeleteShowM from './pages/tools/Management/delete-show';
 import DeleteEpiM from './pages/tools/Management/delete-episode';
+import UpUAllM from './pages/tools/Management/update-a-user';
+import UpEAllM from './pages/tools/Management/update-a-epi';
+import upSAllM from './pages/tools/Management/update-a-show'
 
 
+// profiles
 import HostProfile from './pages/profiles/host';
 import ShowProfile from './pages/profiles/show';
 import EpisodeProfile from './pages/profiles/episode';
-// import Show from './pages/profiles/show';
 
 function App() {
   const [authTokens, setAuthTokens] = useState();
@@ -197,7 +201,6 @@ function App() {
     checkLS();  
 
   },[]);
-
 // I need to build and impliment an 18 and up context.
 
   return (
@@ -215,9 +218,10 @@ function App() {
                         <NavBar value={userData}/>
                         <Switch>
                           <Route exact path="/" component={HomePage} />
+                          {/* Logged out Routes */}
                           <LogOutRoute exact path="/login" component={Login} />
                           <LogOutRoute exact path="/signup" component={SignUp} />
-                          {/* <UserRoute path="/profile/:id" state={{value:userData}}  component={profile}/> */}
+                          {/* Logged In Routes */}
                           <LoggedInRoute exact path="/hosts" component={HostsPage} />
                           <LoggedInRoute exact path="/hosts/:id" component={HostProfile} />
                           <LoggedInRoute exact path="/shows" component={ShowPage} />
@@ -229,12 +233,27 @@ function App() {
                           <LoggedInRoute exact path="/spiritual" component={SpirtPage} />
                           <LoggedInRoute exact path="/music" component={MusicPage} />
                           <LoggedInRoute exact path="/allcat" component={AllCatPage} />
-                          <LoggedInRoute exact path="/uploads" component={Uploader} />
                           <LoggedInRoute exact path="/settings" component={UserSettings} />
-                          <LoggedInRoute exact path="/tools" component={ControlP} />
+                          <LoggedInRoute exact path="/controlp" component={ControlP} />
+                          <LoggedInRoute exact path="/tools" component={UserTools} />
+                          {/* <UserRoute path="/profile/:id" state={{value:userData}}  component={profile}/> */}
+                          {/* Host routes */}
+                          <HostRoute exact path="/updateshow" state={{value:userData}} component={ShowUpdater}/>
+                          <HostRoute exact path="/updateepisode"  state={{value:userData}} component={EpiUpdater}/>
+                          <HostRoute path="/puph/:id" state={{value:userData}}  component={UpHost}/>
+                          <HostRoute path="/profile/:id" state={{value:userData}}  component={profile}/>
+                          <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
+                          <HostRoute exact path="/episodebuilder" component={AddEpisode}/>
+                          <HostRoute exact path="/hsettings" component={HostSettings}/>
+                          <HostRoute exact path="/hcontrolp" component={ControlP}/>
+                          <HostRoute exact path="/htools" component={HostTools}/>
+                          {/*Temp routes  */}
                           <TempMRoute exact path="/tempsum/:id" component={ManegSignUp} />
-                          <TempRoute exact path="/tempsu/:id" component={HostSignUp} />
+                          <TempRoute exact path="/tempsu/:id" component={HostSignUp}/>
+                          {/* Managment routes */}
                           <ManagmentRoute path="/imgupload" component={ImgUpload}/>
+                          <ManagmentRoute exact path="/uploads" component={Uploader}/>
+                          <ManagmentRoute path="/vupload" component={VUpload}/>
                           <ManagmentRoute path="/profilem/:id" state={{value:userData}}  component={profile}/>
                           <ManagmentRoute exact path="/inviteh" component={InviteHost}/>
                           <ManagmentRoute exact path="/hostsum/:id" component={HostSignUp} />
@@ -249,15 +268,11 @@ function App() {
                           <ManagmentRoute exact path="/delshm" component={DeleteShowM}/>
                           <ManagmentRoute exact path="/delepm" component={DeleteEpiM}/>
                           <ManagmentRoute exact path="/msettings" component={ManagSettings}/>
-                          <ManagmentRoute exact path="/mtools" component={ControlP}/>
-                          <HostRoute exact path="/updateshow" state={{value:userData}} component={ShowUpdater}/>
-                          <HostRoute exact path="/updateepisode"  state={{value:userData}} component={EpiUpdater}/>
-                          <HostRoute path="/puph/:id" state={{value:userData}}  component={UpHost}/>
-                          <HostRoute path="/profile/:id" state={{value:userData}}  component={profile}/>
-                          <HostRoute exact path="/showbuilder" component={ShowBuilder}/>
-                          <HostRoute exact path="/episodebuilder" component={AddEpisode}/>
-                          <HostRoute exact path="/hsettings" component={HostSettings}/>
-                          <HostRoute exact path="/htools" component={ControlP}/>
+                          <ManagmentRoute exact path="/mcontrolp" component={ControlP}/>
+                          <ManagmentRoute exact path="/mtools" component={ManagTools}/>
+                          <ManagmentRoute exact path="/upduallm" component={UpUAllM}/>
+                          <ManagmentRoute exact path="/updsallm" component={upSAllM}/>
+                          <ManagmentRoute exact path="/updeallm" component={UpEAllM}/>
                         </Switch>
                         <Footer/>
                       </div>

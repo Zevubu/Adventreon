@@ -1,17 +1,9 @@
 import React from "react";
-// import {Link} from 'react-router-dom'
-import {IntroBox, IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,A,H1,H2,H3,P,ProTextBox} from "../../styles/homeStyle";
-// import SignUp from "./signUp";
+import {IntroBox, IntroBlock,SpDiv, CCCDiv, FillerDiv, IntroTxTDiv,H1,H2,H3,P,ProTextBox} from "../../styles/homeStyle";
 import HostsBlock from "../../componets/CP_fillers/base_filler/host_cat"
 import ShowsBlock from "../../componets/CP_fillers/sp_home_hs.js/sp_shows";
-// import { useAuth, useUser, useHost, useManagment } from "../../context/heart"
 
 function SpirtHome (){
-    // const {isAuthenticated} = useAuth();
-    // const {isUser} = useUser();
-    // const { isHost } = useHost();
-    // const { isManager } = useManagment();
-
     return(
         <SpDiv>
             {/* Intro Block */}
@@ -38,11 +30,10 @@ function SpirtHome (){
                     <H3>Image by <a href="https://unsplash.com/@diegojimenez">Diego Jimenez</a></H3>
                 </div>
             </IntroBox>
-            {/* Hosts area start */}
             <ShowsBlock/>
-
+             {/* Shows area */}
             <HostsBlock Cat="spiritual"/>
-            {/* Shows area */}
+            {/* Hosts area start */}
         
         </SpDiv>
     )

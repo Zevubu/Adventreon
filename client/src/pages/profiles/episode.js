@@ -1,61 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams} from "react-router";
-// import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import API from "../../API/loggedInAPI";
-import {P, H1NB, H1, H3, BlueHeader, H2, HEp} from "../../styles/homeStyle"
-import{ ProDuoServiceBlockColumnB, ProviderBox, ProTextBoxN, ProDuoServiceBlockB, ProDuoServiceBlockColumn, ProTextBox} from '../../styles/providerStyles'
-// import EpisFiller from "../../componets/CatagoryFiller/epi_filler"
-// import EpisodeFiller from "../../componets/CatagoryFiller/epi_filler";
-// import Button from '@material-ui/core/Button';
+import {P, H1NB, H3, BlueHeader, H2, HEp} from "../../styles/homeStyle"
+import{ ProDuoServiceBlockColumnB, ProviderBox, ProTextBoxN, ProDuoServiceBlockB, ProTextBox} from '../../styles/providerStyles'
 import Paper from '@material-ui/core/Paper';
-import Messenger from '../../Services/messanger';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
-// key={key} id={episode.id} epiName={episode.epi_name} about={episode.about} pImg={episode.img} bImg={Show.b_img}
-// showId={episode.show_id} showName={episode.show_name} category={episode.category} subCatagory={episode.sub_category}
-// hostId={episode.host_id} hostName={episode.host_name} hostImg={episode.host_img} credits={episode.credits}
-// price={episode.price} payment={episode.payment} patreon={episode.patreon} wpTitle={episode.wp_title} webpage={episode.webpage}
-// Videolink={episode.v_link} showDate={episode.show_date} startTime={episode.start_time} endTime={episode.end_time}
-// eighteenPlus={episode.eighteen_plus} booked={episode.booked} 
-// paid={episode.paid} canceled={episode.canceled} entertain={episode.entertain}
-// couns={episode.couns} relig={episode.relig} timeStamp={episode.time_stamp}
-
-// epi_name,x
-// about,x
-// show_id,x
-// show_name, x
-// img, x+
-// category, 
-// sub_category, 
-// host_id, x
-// host_name, x
-// host_img, 
-// credits, 
-// price, 
-// payment, 
-// patreon, 
-// wp_title, 
-// webpage, 
-// v_link, 
-// show_date, 
-// start_time, 
-// end_time, 
-// eighteen_plus, 
-// booked, 
-// paid, 
-// canceled, 
-// entertain, 
-// couns, 
-// relig
 
 function Episode(){
     let { id } = useParams();
     const [epi, setEpi] = useState({});
-    // const [services, setServices] = useState([])
     const matches = useMediaQuery('(min-width:600px)');
-    const frame = matches ? 560 : 375
     const token = window.localStorage.getItem('tokens');
-
 
     useEffect(() => {
         const fetchEpis = async () =>{
@@ -68,63 +23,56 @@ function Episode(){
 
     return(
         <div>
-        {/* {epis.map((epi, key) => (
-            <div key={key}> */}
-                <BlueHeader id={epi.id}>
-                    <H2>{epi.epi_name}</H2>
-                </BlueHeader>
-                <ProviderBox>
-                    <ProDuoServiceBlockB>
-                        <iframe 
-                        src={epi.v_link}
-                        width="640" 
-                        height="360" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen" 
-                        allowfullscreen>
-                            
-                        </iframe>
-                    <Messenger child={false} isMod={false} room={id}/>
-                    </ProDuoServiceBlockB>
-
-                    { matches ?
+            <BlueHeader id={epi.id}>
+                <H2>{epi.epi_name}</H2>
+            </BlueHeader>
+            <ProviderBox>
+                <ProDuoServiceBlockB>
+                    <iframe 
+                    src={epi.v_link}
+                    title={epi.epi_name}
+                    width="640" 
+                    height="360" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen" 
+                    allowfullscreen/>
+                </ProDuoServiceBlockB>
+                { matches ?
                     <ProDuoServiceBlockColumnB>
-                    <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey', marginbottom: '20px'}}x>
-                        <ProTextBoxN>
-                            <H1NB id={epi.show_id}>{epi.show_name}</H1NB>
-                            <HEp>{epi.epi_name}</HEp>
-                            <H3 id={epi.host_id}>By {epi.host_name}</H3>
-                        </ProTextBoxN>
-                        <ProTextBox>
-                            <H3>About</H3>
-                            <P>{epi.about}</P> 
-                        </ProTextBox> 
-                        <ProTextBox>
-                            <H3>Tip Me Here.</H3>
-                            <br/>
-                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                <input type="hidden" name="cmd" value="_s-xclick"/>
-                                <input type="hidden" name="hosted_button_id" value="92TZKHPM5****"/>
-                                <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."/>
-                                <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
-                            </form>
-                        </ProTextBox>
-                        <ProTextBox>
-                            <H3>My patreon.</H3>
-                            <P>{epi.patreon}</P>
-                        </ProTextBox>
-                        <ProTextBox>
-                            <H3>{epi.wp_title}</H3>
-                            <a href={epi.webpage}><P>{epi.webpage}</P></a>
-                        </ProTextBox>
+                        <Paper elevation={3} style={{padding: '10px', borderRadius: '50px',backgroundColor: 'grey', marginbottom: '20px'}}x>
+                            <ProTextBoxN>
+                                <H1NB id={epi.show_id}>{epi.show_name}</H1NB>
+                                <HEp>{epi.epi_name}</HEp>
+                                <H3 id={epi.host_id}>By {epi.host_name}</H3>
+                            </ProTextBoxN>
+                            <ProTextBox>
+                                <H3>About</H3>
+                                <P>{epi.about}</P> 
+                            </ProTextBox> 
+                            {/* <ProTextBox>
+                                <H3>Tip Me Here.</H3>
+                                <br/>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick"/>
+                                    <input type="hidden" name="hosted_button_id" value="92TZKHPM5****"/>
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."/>
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
+                                </form>
+                            </ProTextBox> */}
+                            <ProTextBox>
+                                <H3>My patreon.</H3>
+                                <P>{epi.patreon}</P>
+                            </ProTextBox>
+                            <ProTextBox>
+                                <H3>{epi.wp_title}</H3>
+                                <a href={epi.webpage}><P>{epi.webpage}</P></a>
+                            </ProTextBox>
                         </Paper>
                     </ProDuoServiceBlockColumnB>
-                    :
-                    ""
-                    }
-                </ProviderBox>
-            {/* </div>
-        ))} */}
+                :
+                ""
+                }
+            </ProviderBox>
         </div>             
     )
 }

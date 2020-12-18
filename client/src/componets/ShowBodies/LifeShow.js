@@ -3,36 +3,12 @@ import { BigBlock,LookBox,LookBtn,SlideShadowBox, SpHeaderA, DivWBorder,H2, Head
 import { Redirect } from "react-router-dom";
 import API from "../../API/loggedInAPI";
 import SliderFiller from "../ShowFiller/slide_filler";
-// import SlideShows from "../slide_box/slideShows";
 import Carousel from '@brainhubeu/react-carousel';
 import '../../styles/Carousel.css';
-// import '@brainhubeu/react-carousel/lib/style.css';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
-// show_name,x 
-// about, x
-// img, x
-// img_b, x
-// category, x
-// sub_category, x
-// host_id,x
-// host_name,x 
-// host_img, x
-// payment, x
-// patreon, x
-// wp_title, x
-// webpage,x 
-// eighteen_plus, x
-// booked, x 
-// paid, x
-// canceled, x
-// entertain,
-// couns, 
-// relig
 
 function Shows (){
     const [shows, setShows] = useState([]);
-    // const [vis, setVis] = useState(1);
     const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
@@ -46,8 +22,7 @@ function Shows (){
             const count = await API.getShowCatNumCheck(token,{
                 'category':'life',
             })
-            console.log(`life shows #${count.data[0].total} true false check:${count.data[0].total !== 0}`)
-           
+            // console.log(`life shows #${count.data[0].total} true false check:${count.data[0].total !== 0}`)
             if(count.data[0].total !== 0 || count.data[0].total !== undefined){
                 setPullSwitch(true)
                 // console.log(`Life confirm check`)
@@ -75,59 +50,51 @@ function Shows (){
     if(Click){
         return <Redirect to="/life" />
     }
-    // opacity: vis ,
+
     return(
         <div>
-        {shows.length !== 0 &&(
-        
-        <BigBlock>
-            {/* Shows will be auto populated from database, Items put in as filler*/}
-            <DivWBorder>
-                <SpHeaderA>
-                    <HeaderItem>
-                        <H2
-                            onClick={i=>setClick(true)}
-                            style={{backgroundColor: bgC}} 
-                            onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
-                            onMouseLeave={(e)=> setbgC('rgba(0, 0, 0, 0)')}
-                        >Life</H2>
-                    </HeaderItem>
-                    {/* <HeaderItem>
-                        <a className="nav-link" href="/shows"><MarronBtn>See all</MarronBtn></a>
-                    </HeaderItem> */}
-                </SpHeaderA>
-            </DivWBorder>
-            <br/>
-            <LookBox>
-                <SlideShadowBox></SlideShadowBox>
-                <LookBtn>
-                    <div>
-                {/* <SlideShows value={shows}></SlideShows> */}
-                        <Carousel
-                            // autoPlay={5000}
-                            animationSpeed={1500}
-                            slidesPerPage={num}
-                            offset={50}
-                            slidesPerScroll={scNum}
-                            arrows
-                            // infinite
-                        >
-                        
-                    
-                            {shows.map((show, key) => (
-                
-                                    <SliderFiller
-                                        key={key} id={show.id} showName={show.show_name}
-                                        imgP={show.img} imgB={show.img_b} hostName={show.host_name}
-                                        price={show.price} ETPlus={show.eighteen_plus} 
-                                        paid={show.paid} timeStamp={show.time_stamp}
-                                    />
-                            ))}
-                        </Carousel> 
-                    </div>
-                </LookBtn>   
-            </LookBox>
-        </BigBlock>)}
+            {shows.length !== 0 &&( 
+                <BigBlock>
+                    {/* Shows will be auto populated from database, Items put in as filler*/}
+                    <DivWBorder>
+                        <SpHeaderA>
+                            <HeaderItem>
+                                <H2
+                                    onClick={i=>setClick(true)}
+                                    style={{backgroundColor: bgC}} 
+                                    onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} 
+                                    onMouseLeave={(e)=> setbgC('rgba(0, 0, 0, 0)')}
+                                >Life</H2>
+                            </HeaderItem>
+                        </SpHeaderA>
+                    </DivWBorder>
+                    <br/>
+                    <LookBox>
+                        <SlideShadowBox></SlideShadowBox>
+                        <LookBtn>
+                            <div>
+                                <Carousel
+                                    animationSpeed={1500}
+                                    slidesPerPage={num}
+                                    offset={50}
+                                    slidesPerScroll={scNum}
+                                    arrows
+                                    // infinite
+                                >
+                                    {shows.map((show, key) => (
+                                        <SliderFiller
+                                            key={key} id={show.id} showName={show.show_name}
+                                            imgP={show.img} imgB={show.img_b} hostName={show.host_name}
+                                            price={show.price} ETPlus={show.eighteen_plus} 
+                                            paid={show.paid} timeStamp={show.time_stamp}
+                                        />
+                                    ))}
+                                </Carousel> 
+                            </div>
+                        </LookBtn>   
+                    </LookBox>
+                </BigBlock>
+            )}
         </div>
     )
 }

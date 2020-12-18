@@ -3,9 +3,9 @@ import {DivWBorder, MarronHeader,BigMarronBtn, H2, PT, PS} from "../../styles/ho
 import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
 import API from "../../API/HostLogIn";
 import {useForm} from 'react-hook-form';
-import {UserInfoContext, useHost, useManagment} from "../../context/heart"
-import {Link} from 'react-router-dom';
-import VimeoUp from '../../vimeo-upload/index'
+import {UserInfoContext} from "../../context/heart"
+// import {Link} from 'react-router-dom';
+// import VimeoUp from '../../vimeo-upload/index'
 
 // H = userData, Y= form ie data, S = showData, N doesn't need to be implimnted
 // X = already built, B= Boolean
@@ -41,7 +41,7 @@ function EpiAdd (){
     const[paid, setPaid] = useState(false);
     const[video, setVideo] = useState();
     const[compSub, setCompSub]= useState(false)
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const token = window.localStorage.getItem('tokens');
 
     const EpiReset = (re)=>{

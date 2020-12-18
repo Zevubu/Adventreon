@@ -102,7 +102,7 @@ function UpHost (){
     //     }
     // }
 
-    const { register, handleSubmit, watch, errors } = useForm({});
+    const { register, handleSubmit, errors } = useForm({});
 
     const OnUpFin = (data, err) =>{
         console.log(`Upload data:${JSON.stringify(data)}`)

@@ -1,4 +1,4 @@
-import React, {useContext,useState, useEffect} from "react";
+import React from "react";
 
 
 const HostSettings =()=>{
@@ -7,7 +7,6 @@ const HostSettings =()=>{
             <h2>Host Settings page</h2>
         </div>
     )
-
 }
 
 export default HostSettings;

@@ -8,32 +8,6 @@ import {Link} from 'react-router-dom';
 // import Dropzone from 'react-dropzone';
 // import {VideoUploaderWrapper, DropSection, UplaodingMask, UplaodFailedMessage, ProgressBarWrapper, ProgressBar} from '../../styles/VimeoStyles'
 // import VimeoUp from '../../vimeo-upload/index'
-// show_name, 
-// show_type, 
-// about, 
-// img, 
-// img_b, 
-// category, 
-// sub_category, 
-// video_type, 
-// v_link, 
-// host_id, 
-// host_name, 
-// host_img, 
-// credits, 
-// show_date, 
-// start_time, 
-// end_time, 
-// price, 
-// payment, 
-// patreon, 
-// wp_title, 
-// webpage, 
-// eighteen_plus, 
-// booked, 
-// paid, 
-// canceled, 
-// verified
 function ShowBuild (){
     const { userData } = useContext(UserInfoContext);
     const [isPulled, setIsPulled] = useState();
@@ -52,10 +26,8 @@ function ShowBuild (){
     const[VideoType, setVideoType] = useState()
     const[compSub, setCompSub]= useState(false)
     const token =  window.localStorage.getItem('tokens');
-    const { register, handleSubmit, watch, errors } = useForm();
-    
+    const { register, handleSubmit, errors } = useForm();
     // console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
-
 
     const ShowReset = (re)=>{
         setCompSub(true)
@@ -73,7 +45,6 @@ function ShowBuild (){
         //  console.log(`show by host id and epis data ${JSON.stringify(result.data)}`)
         setShows(result.data)
         setIsPulled(true);
-
     };
 
     useEffect(() => {
@@ -82,14 +53,14 @@ function ShowBuild (){
 
 
     const showClear = () =>{
-            setShow();
-            setShowType();
-            setSubCat();
-            setCatType();
-            setEpisodical();
-            setVideoType();
-            setVideo();
-            setOneOff();
+        setShow();
+        setShowType();
+        setSubCat();
+        setCatType();
+        setEpisodical();
+        setVideoType();
+        setVideo();
+        setOneOff();
     }
 
     const showUpdate = (showData) =>{
@@ -114,16 +85,13 @@ function ShowBuild (){
         setVideo();
     }
     // function videoUploader (data , e){
-
     //     API.videoUpload({
     //         "videoData":data.videoLink
     //     }).catch(err => console.log(err))
-        
     // }
     
     const PaidOnChange = (data, e) =>{
         // console.log("Paid function call.")
-        
         if(data === "0"|| data === undefined||  data === 0|| data === ''||  data === 'undefined'||  data === null){
             // console.log(data)
             console.log(`Set paid false check`)
@@ -175,12 +143,11 @@ function ShowBuild (){
                     'webpage': data.webpage,
                     'eighteen_plus':shows[Show].eighteen_plus,
                     'booked':shows[Show].booked,
-                    "paid":shows[Show].paid,
+                    "paid":paid,
                     "canceled":shows[Show].canceled, 
                 }).then(e.target.reset())
                 .then(ShowReset())
                 .catch(err => console.log(err));
-
         }
         if(showType === "one_off"){
             if(video){

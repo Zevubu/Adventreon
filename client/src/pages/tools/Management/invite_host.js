@@ -3,26 +3,6 @@ import {DivWBorder, MarronHeader, H2, PT} from "../../../styles/homeStyle"
 import {FormBigBox, FormLittleBox, FormBox, FormBoxWError, Btn, Input, PE} from "../../../styles/signUpOutStyles"
 import API from "../../../API/loggedOutAPI";
 import {useForm} from 'react-hook-form';
-// import { ShowBox } from "../../../styles/providerStyles";
-
-// user_name,
-// user_type,
-// mhswitch, 
-// dob, 
-// email, 
-// password, 
-// title, 
-// about, 
-// p_img, 
-// b_img, 
-// category, 
-// payment, 
-// patreon, 
-// wp_title, 
-// webpage, 
-// rsvp_attend, 
-// rsvp_perform, 
-// verified
 
 function Invite (){
     const [isBox, setIsBox] = useState();
@@ -60,12 +40,10 @@ function Invite (){
 
     return(
         <DivWBorder> 
-            {/* <a id="signup"/> */}
             {/* Sign up form */}
             <MarronHeader>
                 <H2>Invite a host</H2>
             </MarronHeader>
-
             <FormBigBox onSubmit={handleSubmit(onSubmit)}>
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}
@@ -73,7 +51,6 @@ function Invite (){
                 <PT>Write out a random name and password, then send it to them.</PT> 
                 <PT>This will give them access to the host profile creation page</PT>
                 <FormLittleBox>
-                    
                     <FormBoxWError>
                             <PT>Name*</PT>
                             <Input
@@ -113,37 +90,10 @@ function Invite (){
                             {errors.password2 && errors.password2.type === "required" &&(<PE>This is required!</PE>)} 
                             {errors.password2 && errors.password2.type === "validate" &&(<PE>Passwords must match</PE>)} 
                     </FormBoxWError>  
-                    {/* bulk text area. opition to hide text? */}
-                    
-                </FormLittleBox>
-                {/* <FormLittleBox>
-                    <FormBox>
-                        <PT>About</PT>
-                        <TextArea 
-                            rows="10"
-                            cols="50"
-                            placeholder="Anything you share is confidential"
-                            name="about" 
-                            ref ={register}   
-                        />                    
-                    </FormBox>                    
                 </FormLittleBox>
                 <FormLittleBox>
-                    <FormBox>
-                        <PT>Profile Img</PT>
-                        <Input
-                        type
-                        />
-                                           
-                    </FormBox>                    
-                </FormLittleBox> */}
-                <FormLittleBox>
-                    {/* contact info email... Name? DOB number */}
-                    {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
                         <Btn type="submit" value="Submit">Create Temp account</Btn>
-
-
                         {/* disabled={disable} */}
                     </FormBox>
                 </FormLittleBox> 
