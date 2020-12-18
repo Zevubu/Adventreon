@@ -1,8 +1,8 @@
 const router = require("express").Router();
 
-const hostRoutes = require("./hostRoutes");
+// const hostRoutes = require("./hostRoutes");
 const showRoutes = require("./showRoutes");
-const epiRoutes = require("./epiRoutes");
+// const epiRoutes = require("./epiRoutes");
 // minturized version of api
 
 // router.use("/hosts", hostRoutes);
