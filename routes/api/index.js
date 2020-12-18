@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const {ROLES ,passport, checkIsInRole, validate, ageValidate} = require("../../passport");
-const logoutAPI = require('./logoutAPI');
+const logoutAPI = require('./logoutAPI/index');
 const baseAPI = require('./api/index');
 const hostAPI = require('./hostAPI');
 const managAPI = require('./managerAPI');
