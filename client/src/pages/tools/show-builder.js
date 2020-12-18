@@ -22,7 +22,7 @@ function ShowBuild (){
     const[video, setVideo] = useState()
     const[VideoType, setVideoType] = useState()
     const[compSub, setCompSub]= useState(false)
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     
     // console.log(`showbuild user data: ${JSON.stringify(userData.user_name)}`)
     const ShowReset = (re)=>{
@@ -34,11 +34,9 @@ function ShowBuild (){
     }
     
     // function videoUploader (data , e){
-
     //     API.videoUpload({
     //         "videoData":data.videoLink
     //     }).catch(err => console.log(err))
-        
     // }
     const token =  window.localStorage.getItem('tokens');
     const PaidOnChange = (data, e) =>{

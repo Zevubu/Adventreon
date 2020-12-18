@@ -3,25 +3,6 @@ import {DivWBorder, MarronHeader, H2,H1, PT, PS} from "../../styles/homeStyle"
 import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../styles/signUpOutStyles"
 import API from "../../API/behindDaScenes";
 import {useForm} from 'react-hook-form';
-import {useAuth} from '../../context/heart'
-// user_name, 
-// user_type, 
-// mhswitch, 
-// dob, 
-// email, 
-// password, 
-// title, 
-// about, 
-// p_img, 
-// b_img, 
-// category, 
-// payment,
-// patreon, 
-// wp_title, 
-// webpage, 
-// rsvp_attend, 
-// rsvp_perform, 
-// verified
 
 function SignUp (){
     const[catType, setCatType] = useState();
@@ -137,7 +118,6 @@ function SignUp (){
     }
     return(
         <DivWBorder> 
-            {/* <a id="signup"/> */}
             {/* Sign up form */}
             <MarronHeader>
                 <H2>Host Profile creation page!</H2>

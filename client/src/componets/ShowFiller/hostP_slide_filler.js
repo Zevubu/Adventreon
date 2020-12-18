@@ -1,26 +1,16 @@
 import React, {useState} from 'react';
-import { Redirect } from "react-router-dom";
-import { PB, H2} from "../../styles/homeStyle"
-import{ Slide, ShowSlide,SlideShowImg, SlideBuffer,SlideShowBuffer, DuoServiceBlockColumn, Image, TextBox} from '../../styles/providerStyles'
-// import Button from '@material-ui/core/Button';
-// import Paper from '@material-ui/core/Paper';
-
-// key={key} id={show.id} showName={show.show_name} about={show.about}
-// imgP={show.img} imgB={show.img_b} category={show.category} subCatagory={show.sub_category}
-// hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
-// patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
-// booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
-// relig={show.relig} timeStamp={show.time_stamp}
+import {Redirect} from "react-router-dom";
+import {PB,H2} from "../../styles/homeStyle"
+import{ShowSlide,SlideShowImg,SlideShowBuffer,TextBox} from '../../styles/providerStyles'
 
 function SlideFiller(props){
-    // const [vis, setVis] = useState(1);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
 
     if(Click){
         return <Redirect to={"/shows/" + props.id} />
     }   
-    // opacity: vis ,
+
     return(
         <ShowSlide id={props.id} onClick={i=>setClick(true)} bgImg="x">
             <SlideShowBuffer style={{backgroundColor: bgC}} onMouseEnter={(e)=> setbgC('rgba(175, 193, 202, 0.356)')} onMouseLeave={(e)=> setbgC('rgba(175, 193, 202, 0)')}>
@@ -35,6 +25,7 @@ function SlideFiller(props){
         </ShowSlide>   
     )
 }
+
 export default SlideFiller
 
 

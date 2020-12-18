@@ -1,14 +1,14 @@
-import React, {useContext, useState, useEffect} from "react";
-import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo } from "../../context/heart";
+import React from "react";
+import { useUser, useHost, useManagment} from "../../context/heart";
 import {BoxWBorder,MenuHeader,MenuHeaderSM,MenuBigBox, MenuBox} from "../../styles/menuStyles"
 
 const ManagerTools =()=>{
     const {isUser} = useUser();
     const {isHost} = useHost();
-    const {isTempP} = useTemp();
-    const {isTempM} = useTempM();
+    // const {isTempP} = useTemp();
+    // const {isTempM} = useTempM();
     const {isManager} = useManagment();
-    const {userData} = useUserInfo();
+    // const {userData} = useUserInfo();
 
     return(
         <div>    

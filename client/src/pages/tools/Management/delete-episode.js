@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useForm} from 'react-hook-form';
 import API from "../../../API/managmentAPI";
-
 import {DivWBorder, MarronHeader, ProTextBox, H1, H2, PT} from "../../../styles/homeStyle";
 import { FormBigBox,FormBox,FormBoxWError, Btn, PE} from "../../../styles/signUpOutStyles";
 
@@ -101,13 +100,6 @@ function DelEpi (){
 
     if(show && shSelect){
         fetchEpis()
-    }
-
-    const PageReseter = () =>{
-        ShowReset();
-        fetchShows();
-        setSuccess();
-        setError()
     }
 
     const EpiReseter = ()=>{
@@ -239,6 +231,7 @@ function DelEpi (){
                                 </FormBox>
                                 <iframe 
                                     src={epis[epi].v_link}
+                                    title={epis[epi].epi_name}
                                     width="640" 
                                     height="360" 
                                     frameborder="0" 
@@ -246,7 +239,8 @@ function DelEpi (){
                                     allowfullscreen> 
                                 </iframe>
                                 {!ToMany && (
-                                    <FormBox>{/* delete show button */}
+                                    <FormBox>
+                                        {/* delete button */}
                                         <Btn type="submit" value="Submit">Delete Chosen Show</Btn>
                                     </FormBox>
                                 )}

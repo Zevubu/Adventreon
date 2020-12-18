@@ -3,17 +3,12 @@ import {DivWBorder, MarronHeader, H2, H1, PT} from "../styles/homeStyle"
 import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, PE} from "../styles/signUpOutStyles"
 import API from "../API/loggedOutAPI";
 import {useForm} from 'react-hook-form';
-import { result } from "lodash";
-// import OktaAuth from '@okta/okta-auth-js';
-// import { withAuth } from '@okta/okta-react';
-
 
 function SignUp (){
     const[Created, setCreated] = useState(false);
     const[error, setError] = useState();
     const[emailError, setEmailError] = useState(false);
     const[userNameError, setUserNameError] = useState(false);
-
 
     if(error){
         console.log(error)
@@ -23,7 +18,7 @@ function SignUp (){
         const stringNameCheck = new RegExp(/^[a-z0-9_-]{3,20}$/i)
         console.log(`User Name:${User}`)
         if(User.match(stringNameCheck)){
-            console.log(`Regex confirm check:${User.match(stringNameCheck)}`)
+            // console.log(`Regex confirm check:${User.match(stringNameCheck)}`)
             API.getUserNameCheck({
                 "user_name":User
             }).then(res =>{
@@ -31,12 +26,12 @@ function SignUp (){
                     setUserNameError(true)
                     console.log(`Name used check: ${JSON.stringify(res.data[0].total)}`)
                 }else if (res.data[0].total === 0){
-                    console.log(`Name free check:${res.data.total}`)
+                    // console.log(`Name free check:${res.data.total}`)
                     setUserNameError(false)
                 }
                 else{
                     setUserNameError(true)
-                    console.log(`Name fail check: ${res.data.total}`)
+                    // console.log(`Name fail check: ${res.data.total}`)
                 }
             })
         }else{
@@ -49,7 +44,7 @@ function SignUp (){
         const stringCheck = new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i)
         console.log(`email:${Email}`)
         if(Email.match(stringCheck)){
-            console.log(`Regex confirm check:${Email.match(stringCheck)}`)
+            // console.log(`Regex confirm check:${Email.match(stringCheck)}`)
             API.getEmailCheck({
                 "email":Email
             }).then(res =>{
@@ -57,12 +52,12 @@ function SignUp (){
                     setEmailError(true)
                     console.log(`Email used check: ${JSON.stringify(res.data[0].total)}`)
                 }else if (res.data[0].total === 0){
-                    console.log(`Email free check:${res.data.total}`)
+                    // console.log(`Email free check:${res.data.total}`)
                     setEmailError(false)
                 }
                 else{
                     setEmailError(true)
-                    console.log(`Email fail check: ${res.data.total}`)
+                    // console.log(`Email fail check: ${res.data.total}`)
                 }
                 
             })
@@ -88,7 +83,7 @@ function SignUp (){
             }).then(result =>{
                 if(result.status === 200){
                     if(result.data.id !== null){
-                        console.log(`result: ${JSON.stringify(result.data.id)}`)  
+                        // console.log(`result: ${JSON.stringify(result.data.id)}`)  
                         setCreated(true) 
                     }else{
                         setError(true)
@@ -106,12 +101,10 @@ function SignUp (){
 
     return(
         <DivWBorder> 
-            {/* <a id="signup"/> */}
             {/* Sign up form */}
             <MarronHeader>
                 <H2>Start making positive changes today.</H2>
             </MarronHeader>
-          
             <FormBigBox onSubmit={handleSubmit(onSubmit)}>
                 {error && (
                     <div>
@@ -132,7 +125,6 @@ function SignUp (){
                         <FormLittleBox>
                             <FormBoxWError>
                                     <PT>Screen name*</PT>
-
                                     <Input
                                         name="userName"
                                         onChange={e => UserChecker(e.target.value)}

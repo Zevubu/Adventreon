@@ -1,7 +1,7 @@
 import React, {useState,useRef} from 'react';
 import axios from 'axios';
-import Messenger from '../Services/messanger'
-import { auth } from '../Services/firebase';
+// import Messenger from '../Services/messanger'
+// import { auth } from '../Services/firebase';
 
 function Uploader(){
   const myRef = useRef({selectedFile: null});
@@ -35,12 +35,18 @@ function Uploader(){
     } 
   }
 return(
-<div style={{marginLeft: 20}}>Home <p>Please Upload your files here</p>
-      <input type="file" ref={myRef}/>
-      <p style={{opacity: 0.9}}>&nbsp;User&nbsp;<input id="uName" type="text"/>&nbsp; 
-    <button onClick={() => {uploadHandler()}}>Upload!</button></p>
+  <div style={{marginLeft: 20}}>
+    Home 
+    <p>Please Upload your files here</p>
+    <input type="file" ref={myRef}/>
+    <p style={{opacity: 0.9}}>
+      &nbsp;User&nbsp;
+      <input id="uName" type="text"/>
+      &nbsp; 
+      <button onClick={() => {uploadHandler()}}>Upload!</button>
+    </p>
    
-<Messenger room={'tofu'} isMod={false} child={true} />
+{/* <Messenger room={'tofu'} isMod={false} child={true} /> */}
     </div>
 )
 

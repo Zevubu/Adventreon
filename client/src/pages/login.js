@@ -49,7 +49,7 @@ function Login (){
                 setIsError(true);
                 console.log("loggin error")
               }else if(JSON.stringify(result.data.admin) === 'true'){
-                console.log(`Admin check!`)
+                // console.log(`Admin check!`)
                 localStorage.setItem("user_type","80CDswONc34RI8");
                 setIsManager(true);
                 setThisTemp(false);
@@ -90,13 +90,13 @@ function Login (){
     if (isLoggedIn) {
       if(thisTemp){
         if(isTempM){
-          console.log("THIS TEMP CONFIRM!")
+          // console.log("THIS TEMP CONFIRM!")
           return <Redirect to={"/tempsu/" + userData.id}/>
         }else if(isTempP){
-          console.log("THIS TEMP CONFIRM!")
+          // console.log("THIS TEMP CONFIRM!")
           return <Redirect to={"/tempsum/" + userData.id}/>
         }else{
-          console.log("THIS TEMP FAIL!")
+          // console.log("THIS TEMP FAIL!")
          return <Redirect to='/' />
         }
       }else{

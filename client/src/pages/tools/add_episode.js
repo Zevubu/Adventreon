@@ -4,30 +4,7 @@ import { FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, P
 import API from "../../API/HostLogIn";
 import {useForm} from 'react-hook-form';
 import {UserInfoContext} from "../../context/heart"
-// import {Link} from 'react-router-dom';
 // import VimeoUp from '../../vimeo-upload/index'
-
-// H = userData, Y= form ie data, S = showData, N doesn't need to be implimnted
-// X = already built, B= Boolean
-// show_id, 
-// user_id, 
-// epi_name, 
-// about, 
-// img, 
-// video_type, 
-// v_link, 
-// credits, 
-// show_name, 
-// host_name, 
-// category, 
-// sub_category, 
-// paid, 
-// price, 
-// epi_date, 
-// start_time, 
-// end_time, 
-// eighteen_plus, 
-// verified
 
 function EpiAdd (){
     const { userData } = useContext(UserInfoContext);
@@ -38,7 +15,7 @@ function EpiAdd (){
     const[paid, setPaid] = useState(false);
     const[video, setVideo] = useState();
     const[compSub, setCompSub]= useState(false)
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const token = window.localStorage.getItem('tokens');
 
     const EpiReset = (re)=>{
@@ -62,6 +39,7 @@ function EpiAdd (){
     //     console.log(Show)
     //     console.log(shows[Show].id)
     // };
+
     const PaidOnChange = (data, e) =>{
         console.log("Paid function call.")
         
@@ -153,7 +131,6 @@ function EpiAdd (){
     };
     return(
         <DivWBorder> 
-        {/* <a id="signup"/> */}
         {/* Sign up form */}
         <MarronHeader>
             <H2>Episode creation page</H2>
@@ -186,9 +163,6 @@ function EpiAdd (){
         {/* form starts here */}
         {Show && !compSub && ( 
             <FormBigBox onSubmit={handleSubmit(onShowSubmit)}>
-                {/* <p>{`show ID: ${JSON.stringify(Show)}`}</p> */}
-                {/* choose all that apply inluding "I'm not sure" */}
-                {/* Might work better if it a select all that apply */}   
                 <FormLittleBox>
                     <FormBoxWError>
                             <PT>Episode Name</PT>
@@ -282,12 +256,10 @@ function EpiAdd (){
                     </FormBoxWError>
                 </FormLittleBox>
                 <FormLittleBox>
-                    {/* contact info email... Name? DOB number */}
                     {/* submit button changes to teal when information is complete. pop up informs more info needed. */}
                     <FormBox>
                         <PT color="red">Double click to submit episode</PT>
                         <Btn type="submit" value="Submit">Submit Episode</Btn>
-                        {/* disabled={disable} */}
                     </FormBox>
                 </FormLittleBox>       
             </FormBigBox>

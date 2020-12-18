@@ -1,15 +1,8 @@
 import React from "react";
-import { BigBlock, BlueHeader, H2, HeaderItem} from "../../../styles/homeStyle";
-// import { Redirect } from "react-router-dom";
-// , { useState}
-
+import { BigBlock} from "../../../styles/homeStyle";
 import ShowSubCatBox from '../base_filler/shows_subcat'
 
 function Shows (){
-    // const [Click, setClick] = useState(false);
-    // if(Click){
-    //     return <Redirect to="/shows" />
-    // }
     return(
         <BigBlock> 
             <div>

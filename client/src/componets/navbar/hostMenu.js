@@ -5,16 +5,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import {Link} from 'react-router-dom';
 import {useUserInfo } from "../../context/heart";
-import {makeStyles,styled } from '@material-ui/core/styles';
+import {styled} from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
-// const useStyles = makeStyles(theme => ({
-//     root: {
-//       '& > *': {
-//         margin: theme.spacing(1),
-//       },
-//     },
-// }));
 
 const BTN = styled(Button)({
   border: 0,
@@ -26,7 +18,6 @@ const BTN = styled(Button)({
   variant:"outlined"
 });
 export default function SimpleMenu() {
-  // const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const {userData} = useUserInfo();
   const matches = useMediaQuery('(max-width:750px)');

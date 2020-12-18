@@ -6,8 +6,6 @@ import API from "../../API/HostLogIn";
 import { useForm } from 'react-hook-form';
 import {UserInfoContext} from "../../context/heart" 
 import {Link} from 'react-router-dom';
-// import { host } from "../../../../dbConfig";
-// import Hosts from "../../componets/CP_fillers/life_home_hs/life_host";
 // user_name
 // dob, 
 // email, 
@@ -21,44 +19,6 @@ import {Link} from 'react-router-dom';
 // wp_title, 
 // webpage, 
 
-// Upload Status:{
-//     "data":{
-//         "fieldCount":0,
-//         "affectedRows":1,
-//         "insertId":0,
-//         "serverStatus":2,
-//         "warningCount":0,
-//         "message":"(Rows matched: 1  Changed: 1  Warnings: 0",
-//         "protocol41":true,
-//         "changedRows":1
-//     },
-//     "status":200,
-//     "statusText":"OK",
-//     "headers":{
-//     "access-control-allow-origin":"*",
-//     "connection":"close","content-length":"168",
-//     "content-type":"application/json; charset=utf-8",
-//     "date":"Fri, 22 May 2020 23:06:43 GMT",
-//     "etag":"W/\"a8-A6aUB2OZrEICcuz3kHgDb+GNysg\"",
-//     "vary":"Accept-Encoding","x-powered-by":"Express"},
-//     "config":{
-//         "url":"/api/hosts/all/1",
-//         "method":"put",
-//         "data":"{\"user_name\":\"ZevUbu\",\"email\":\"zevubu@gmail.com\",\"title\":\"Master of this tiny kingdom\",\"about\":\"Founder of Adventreon\",\"p_img\":\"https://scontent-sjc3-1.xx.fbcdn.net/v/t31.0-8/p960x960/23674750_10155167262830745_3099595753383379238_o.jpg?_nc_cat=104&_nc_sid=dd7718&_nc_ohc=2xtTMNjaCA4AX-T8543&_nc_ht=scontent-sjc3-1.xx&_nc_tp=6&oh=b7a86cbe64adc036a9ce114079c1be40&oe=5EE7B279\",\"b_img\":\"https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/p960x960/37112608_10155733091650745_697307413887320064_o.jpg?_nc_cat=102&_nc_sid=dd9801&_nc_ohc=6wXJLNCh5LMAX-pGVN8&_nc_ht=scontent-sjc3-1.xx&_nc_tp=6&oh=bad4dfd9a0574a82b3b4d6dc34fcee5d&oe=5EE5FB61\",\"payment\":\"paymentlink\",\"patreon\":\"Patreon link\",\"wp_title\":\"Visit my web page \",\"webpage\":\"www.zevubu.com\"}",
-//         "headers":{
-//             "Accept":"application/json, text/plain, */*",
-//             "Content-Type":"application/json;charset=utf-8"
-//         },
-//         "transformRequest":[null],
-//         "transformResponse":[null],
-//         "timeout":0,
-//         "xsrfCookieName":"XSRF-TOKEN",
-//         "xsrfHeaderName":"X-XSRF-TOKEN",\
-//         "maxContentLength":-1
-//     },
-//     "request":{}
-// }
-
 function UpHost (){
     const { userData } = useContext(UserInfoContext)
     const [isPulled, setIsPulled] = useState();
@@ -70,7 +30,6 @@ function UpHost (){
     const [Host, setHost] = useState();
     // console.log(`profile user data: ${JSON.stringify(Host)}`)
 
-
     useEffect(() => {
         console.log(`Profile Update page info: Id:${id}, UserData: ${JSON.stringify(userData)}`)
         // add a password check here. 
@@ -79,13 +38,12 @@ function UpHost (){
             console.log(`Profile to update result ${JSON.stringify(result.data)}`)
             setHost(result.data[0]);
             setIsPulled(true);
-            // register(Host)
         }
         fetchHost();
     
     },[])
 
-    const { register, handleSubmit, watch, errors } = useForm({})
+    const { register, handleSubmit,errors } = useForm({})
     
     const OnUpFin = (data, err) =>{
         console.log(`Upload data:${JSON.stringify(data)}`)
@@ -104,29 +62,16 @@ function UpHost (){
         else{
             setUpfail(true)
             console.log(`Upload data error:${JSON.stringify(data)}`)
-        }
-        
+        }  
     }
     const OnUpErr = (error) =>{
         console.log(`Upload call Error:${error}`)
     }
-    
-
-  
 
     const onSubmit = (data) =>{
         const token = window.localStorage.getItem('tokens');
         console.log(`Auth token test ${token}`);
         // console.log(data)
-        // console.log(`entertain:${data.entertain} couns:${data.couns} relig:${data.relig}`)
-        // const checkEmail = async () =>{
-        //    const result = await API.getEmailCheck({
-        //     "user_email": data.email
-        //     })
-        //     console.log(result)
-        // }
-        // checkEmail()
-
         API.updatedProfile(id,token,{ 
             "user_name": data.userName,
             "email": data.email,
@@ -144,7 +89,6 @@ function UpHost (){
     }
 
     return(
-     
         <DivWBorder> 
             {/* <a id="signup"/> */}
             {/* Sign up form */}
@@ -169,7 +113,6 @@ function UpHost (){
                 )}
                 {/* choose all that apply inluding "I'm not sure" */}
                 {/* Might work better if it a select all that apply */}
-
                 {Host &&(
                     <div>
     
@@ -224,8 +167,6 @@ function UpHost (){
                             {/* bulk text area. opition to hide text? */}
                         </FormLittleBox>
                         <FormLittleBox>
-                            
-                        
                             <FormBoxWError>
                                     <PT>Profile Image*</PT>
                                     <Input

@@ -3,12 +3,10 @@ import {DivWBorder, ProviderBox, BigBlock} from "../../styles/homeStyle"
 import API from "../../API/loggedInAPI";
 import HostFiller from "../../componets/HostFiller/index"
 import ShowFiller from "../../componets/CategoryFiller/show_filler"
-import { Logo } from "../../styles/componentStyles";
 
 function AllPage (){
     const [Hosts, setHosts] = useState([]);
     const [Shows, setShows] = useState([]);
-    // const [DSBcount, setDSBcount] = useState(0)
     const token = window.localStorage.getItem('tokens');
 
     useEffect(() => {
@@ -29,7 +27,6 @@ function AllPage (){
 
     return(
         <BigBlock>
-            {/* <a id="Hosts"/> */}
             {/* Hosts will be auto populated from database, Items put in as filler*/}
             <DivWBorder>
                 <ProviderBox>

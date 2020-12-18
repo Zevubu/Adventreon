@@ -4,12 +4,11 @@ import {DivWBorder, MarronHeader, H2,H1, PT, PS} from "../../../styles/homeStyle
 import {FormBigBox,FormLittleBox,FormBox,FormBoxWError, Btn, Input, TextArea, PE} from "../../../styles/signUpOutStyles"
 import API from "../../../API/behindDaScenes";
 import {useForm} from 'react-hook-form';
-import {Redirect} from "react-router-dom";
 
 // still need to add email verification
 function SignUp (){
     const[catType, setCatType] = useState();
-    let { id } = useParams();
+    // let { id } = useParams();
     const[Created, setCreated] = useState(false);
     const[error, setError] = useState();
     const[emailError, setEmailError] = useState(false);
@@ -74,18 +73,6 @@ function SignUp (){
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = (data, e) =>{
         const token = window.localStorage.getItem('tokens');
-        // console.log(data)
-        // const checkEmail = async () =>{
-        //    const result = await API.getEmailCheck({
-        //     "user_email": data.email
-        //     })
-        //     console.log(result)
-        // }
-        // checkEmail()
-
-        // if(Created){
-        //     return <Redirect to='/' />
-        // }
         if(!emailError && !userNameError){
             API.createManagAccount({ 
                 "token": token,
@@ -135,15 +122,13 @@ function SignUp (){
     // })
     return(
         <DivWBorder> 
-            {/* <a id="signup"/> */}
             {/* Sign up form */}
             <MarronHeader>
                 <H2>Managment creation page!</H2>
             </MarronHeader>
 
             <FormBigBox onSubmit={handleSubmit(onSubmit)}>
-            {error && (
-                    
+                {error && (
                     <div>
                         <H1>Form submit error</H1>
                         <H2>{error}</H2>

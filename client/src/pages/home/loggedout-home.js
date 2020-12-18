@@ -1,29 +1,15 @@
 import React from "react";
 import {IntroBox,VFrame, IntroBlock, ProTextBox, ProImgBox, BigBlock,SpHeaderA,DuoServiceBlock, HeaderItem,A, H3, H2, H1} from "../../styles/homeStyle";
-// import { Redirect } from "react-router-dom";
-// , { useState} 
-
-import Shows from "./shows/index"
 
 function LogoutBody (){
-      // const [Click, setClick] = useState(false);
-    // if(Click){
-    //     return <Redirect to="/shows" />
-    // }
     return(
         <div>
             <IntroBox>
                 <IntroBlock bgImg=""> 
-                    {/* <IntroTxTDiv> */}
-                    {/* <VFrame src="https://player.vimeo.com/video/412924050" frameborder="0px" allow="autoplay; fullscreen" allowfullscreen></VFrame> */}
                     <VFrame src="https://player.vimeo.com/video/457351669" frameborder="0px" allow="autoplay; fullscreen" allowfullscreen></VFrame>
                     <div>
                         <ProTextBox>
                         <H1> The Weird, The Whimsical, {"&"} The Wonderful</H1>
-                            
-                            {/* <H1 color="rgb(23, 283, 232)">The Whimsical</H1>
-                            <H1 color="rgb(23, 283, 232)">The Wonderful</H1>
-                            <H1 color="rgb(23, 283, 232)">{"&"} The Weird</H1> */}
                         </ProTextBox>
                         <ProTextBox>
                         <H1 color="rgb(23, 283, 232)">ADVENTREON</H1>
@@ -72,9 +58,6 @@ function LogoutBody (){
                     </ProImgBox>
                 </DuoServiceBlock>
             </BigBlock>
-
-            {/* <Shows/> */}
-            
         </div>
     )
 }

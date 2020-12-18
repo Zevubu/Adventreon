@@ -1,34 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams} from "react-router";
-// import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import API from "../../API/loggedInAPI";
 import {P, H1, H3, SpHeaderA, H2} from "../../styles/homeStyle"
 import{ProBigBox,ProBGColor, ProviderBox, ProDuoServiceBlock, ProDuoServiceBlockColumn, ProImage, ProTextBox} from '../../styles/providerStyles'
 import SliderFiller from "../../componets/ShowFiller/hostP_slide_filler"
 import Carousel from '@brainhubeu/react-carousel';
 import '../../styles/Carousel.css';
-// import '@brainhubeu/react-carousel/lib/style.css';
 import Paper from '@material-ui/core/Paper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
-//  user_name,x
-//  user_type, 
-//  dob,  
-//  title,x 
-//  about,x 
-//  p_img, x
-//  b_img, 
-//  shows, 
-//  payment, x
-//  patreon, x
-//  wp_title, x
-//  webpage, x
-//  video_channel, 
-//  rsvp_attend, 
-//  rsvp_perform, 
-//  entertain, 
-//  couns, 
-//  relig
 
 function HostPage(){
     let { id } = useParams();
@@ -38,15 +17,12 @@ function HostPage(){
     const matches = useMediaQuery('(min-width:600px)');
     const num = matches ? 5 : 1
     const scNum = matches ? 4 : 1
-    // const [services, setServices] = useState([])
     const token = window.localStorage.getItem('tokens');
-
 
     useEffect(() => {
         const fetchHost = async () =>{
          const result = await API.getHostByID(token,`${id}`)
              setHosts(result.data[0])
-           
          };
          const fetchShows = async () =>{
             const result = await API.getShowByHost(token,`${id}`)
@@ -73,10 +49,6 @@ function HostPage(){
                     <ProviderBox>
                             <ProDuoServiceBlockColumn>
                                 <Paper elevation={3} style={{padding: '0px', borderRadius: '0px',backgroundColor: 'rgba(180,180,180,0.2)', marginbottom: '20px'}}>
-                                    {/* <ProTextBox>
-                                        <H1>{Host.user_name}</H1>
-                                        <H3 style={{fontWeight: 'bold'}}>{Host.title}</H3>
-                                    </ProTextBox> */}
                                     <ProTextBox>
                                         <H2>About</H2>
                                         <P>{Host.about}</P> 
@@ -109,12 +81,8 @@ function HostPage(){
                                 </Paper>
                             </ProDuoServiceBlockColumn>
                     </ProviderBox>
-                    {/* <SpHeaderA>
-                        <H2>{Host.user_name}'s shows. </H2>
-                    </SpHeaderA> */}
                 </div>
                 <Carousel
-                    // autoPlay={5000}
                     animationSpeed={1500}
                     slidesPerPage={num}
                     offset={50}
@@ -124,15 +92,14 @@ function HostPage(){
                     dots
                 >
                     {shows.map((show, key) => (
-        
-                            <SliderFiller
-                                key={key} id={show.id} showName={show.show_name} about={show.about}
-                                imgP={show.img} imgB={show.img_b} category={show.category} subCatagory={show.sub_category}
-                                hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
-                                patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
-                                booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
-                                relig={show.relig} timeStamp={show.time_stamp}
-                            />
+                        <SliderFiller
+                            key={key} id={show.id} showName={show.show_name} about={show.about}
+                            imgP={show.img} imgB={show.img_b} category={show.category} subCatagory={show.sub_category}
+                            hostId={show.host_id} hostName={show.host_name} hostImg={show.host_img} payment={show.payment}
+                            patreon={show.patreon} wpTitle={show.wp_title} webpage={show.webpage} ETPlus={show.eighteen_plus}
+                            booked={show.booked} paid={show.paid} canceled={show.canceled} entertain={show.entertain} couns={show.couns} 
+                            relig={show.relig} timeStamp={show.time_stamp}
+                        />
                     ))}
                     </Carousel>
             </ProBigBox>

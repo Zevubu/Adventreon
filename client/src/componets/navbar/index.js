@@ -1,20 +1,14 @@
 import React from "react";
 import {Link, useHistory} from 'react-router-dom';
-// import {Btn} from '../../styles/homeStyle';
 import {NavBody,H2, OptionBox,PullBox, LogoImage, BackBtn} from "../../styles/componentStyles";
-
 import { useAuth, useUser, useHost, useManagment, useTemp, useTempM, useUserInfo } from "../../context/heart";
 import Logo from "../../img/masked-logo-Adventreon-blue.png"
 import SimpleMenu from './menu.js';
 import HostMenue from './hostMenu';
 import ManagerMenue from './manegMenue';
-
 import Button from '@material-ui/core/Button';
 import { makeStyles, styled } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
-// import { UserInfoContext } from "../../App"
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-// import { isStyledComponent } from "styled-components";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -23,8 +17,6 @@ const useStyles = makeStyles(theme => ({
       },
     },
 }));
-
-
 
 function NavBar (){
     let history = useHistory();
@@ -38,12 +30,6 @@ function NavBar (){
     const {userData, setUserData} = useUserInfo();
     const matches = useMediaQuery('(max-width:750px)');
     const small = useMediaQuery('(max-width:485px)')
-
-    // useEffect(()=>{
-    //     console.log(`Is host check:${isHost}`)
-    //     console.log(`Is Athenticated check:${isAuthenticated}`)
-
-    // },[])
 
     const BTN = styled(Button)({
         background: '#6dd3d6',
@@ -88,7 +74,6 @@ function NavBar (){
         setIsTempP();
         setIsTempM();
     }
-    // && isTempP
     return(
         <NavBody  className={classes.root}>
            <OptionBox>
@@ -102,8 +87,7 @@ function NavBar (){
                     </PullBox>
                 </Link>
             </OptionBox>
-            
-             {isAuthenticated &&(
+            {isAuthenticated &&(
                 <OptionBox>
                     {isAuthenticated && isTempP &&(
                         <div>
@@ -146,7 +130,6 @@ function NavBar (){
                         <Link style={{ textDecoration: 'none' }} to={"/profilem/" + userData.id}><BTN style={matches ? {fontSize:'12px', padding:'0 20px'}: {}} variant="contained">Profile</BTN></Link>
                     </div>
                 )} 
-
                 {!isAuthenticated && (
                     <OptionBox>
                         <Link  style={{ textDecoration: 'none' }} className="nav-link" to="/signup"><BTN style={matches ? {fontSize:'12px', padding:'0 20px'}: {}} variant="contained">Sign up</BTN></Link>

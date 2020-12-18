@@ -1,19 +1,8 @@
 import React from 'react';
-import {DuoServiceBlock, DuoServiceBlockColumn,Image, TextBox, PS,H2B,PG} from "../../styles/homeStyle"
+import {DuoServiceBlock, DuoServiceBlockColumn,Image, TextBox,H2B,PG} from "../../styles/homeStyle"
 import Button from '@material-ui/core/Button';
-// import Paper from '@material-ui/core/Paper';
-
-// function holdingBox (props){
-//     return(
-//         <ServiceBlock>
-            
-//         </ServiceBlock>
-//     )
-// }
 
 function HostFiller(props){
-   
- 
     return(
         <DuoServiceBlock bgImg={props.bImg}>
             <DuoServiceBlockColumn>

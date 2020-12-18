@@ -5,7 +5,7 @@ import {IntroBox, IntroBlock,SpDiv, VFrame, A,H3,H2, H1, ProTextBox} from "../..
 // import SignUp from "./signUp";
 import {useAuth} from "../../context/heart"
 
-import LogoutHome from "../../componets/homeLogOut/index"
+import LogoutHome from "./loggedout-home"
 import HostsBlock from "../../componets/homeHosts";
 import ShowsBlock from "../../componets/homeShows";
 // import { useAuth, useUser, useHost, useManagment } from "../../context/heart"

@@ -2,13 +2,12 @@ import React from "react";
 import {DivWBorder, BigBlock} from "../styles/homeStyle";
 import EnterShows from '../componets/ShowBodies/EnterShow';
 import CounsShows from '../componets/ShowBodies/LifeShow';
-import ReligShows from '../componets/ShowBodies/SpShow';
+import SpShows from '../componets/ShowBodies/SpShow';
 
 function Shows (){
 
     return(
         <BigBlock>
-
             <DivWBorder>
                 <br/>
                 <div>
@@ -18,9 +17,8 @@ function Shows (){
                     <CounsShows />
                 </div>
                 <div>
-                    <ReligShows /> 
+                    <SpShows /> 
                 </div>
-                
             </DivWBorder>
         </BigBlock>
     )
