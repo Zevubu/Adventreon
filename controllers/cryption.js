@@ -44,7 +44,7 @@ const stringDecryption = async (req) =>{
     }
     });
     decipher.on('end', () => {
-    console.log(`Data Decrypted`);
+    // console.log(`Data Decrypted`);
     });
     await decipher.write(req, 'hex');
     await decipher.end();

@@ -105,7 +105,7 @@ function NavBar (){
                 {/* {matches ? <div></div>:<div></div> }  */}
                 <OptionBox>
                     {isAuthenticated &&(
-                        <SimpleMenu></SimpleMenu>
+                        <SimpleMenu/>
                     )}
                     {/* <Link style={{ textDecoration: 'none' }} to="/schedule"><Button variant="outlined" color="secondary">Schedule</Button></Link> */}
                 </OptionBox>

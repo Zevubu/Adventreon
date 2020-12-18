@@ -32,11 +32,11 @@ export default function Footer() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading}>
+          <div className={classes.heading}>
             <Logo style={{fontSize: '15px'}}>Adventreon &copy; 2020</Logo>
             <Typography>Expand for Contact Details</Typography>
-          </Typography>
-          <Typography>Tip the makers of this site</Typography>
+          </div>
+          {/* <Typography>Tip the makers of this site</Typography> */}
           {/* <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_s-xclick"/>
             <input type="hidden" name="hosted_button_id" value="92TZKHPM5****"/>

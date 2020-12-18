@@ -18,9 +18,9 @@ router.route("/all")
 router.route("/catnumcnt")
   .post( async (req,res) => {
     const {category} = req.body;
-    console.log(`Show category:${JSON.stringify(category)}`);
+    // console.log(`Show category:${JSON.stringify(category)}`);
     const conn = await connection(dbConfig).catch(e => {
-      console.log(`Catagory count Error:${e}`);
+      // console.log(`Catagory count Error:${e}`);
       res.send({"total":0, "error":e});
     });
     const catCount = await query(
@@ -28,7 +28,7 @@ router.route("/catnumcnt")
       showQuery.findNumOfCat(),
       [category]
     )
-      console.log(`CatCount:${JSON.stringify(catCount[0].total)}`)
+      // console.log(`CatCount:${JSON.stringify(catCount[0].total)}`)
       res.send(catCount)
 
     
@@ -47,7 +47,7 @@ router.post("/subnumcnt", async (req,res) => {
     showQuery.findNumOfSubCat(),
     [category, sub_category]
   )
-    console.log(`SubcatCount:${JSON.stringify(catCount[0].total)}`)
+    // console.log(`SubcatCount:${JSON.stringify(catCount[0].total)}`)
     res.send(catCount)
 
 })
@@ -98,7 +98,7 @@ router.route('/find/:id')
   router.route('/epis/:id')
   .get(async (req, res) => {
       const { id } = req.params;
-      console.log(`Epi ID ping:${id}`)
+      // console.log(`Epi ID ping:${id}`)
       const conn = await connection(dbConfig).catch(e => {});
       const show = await query(conn, showQuery.findByEpis(), [id])
       res.send(show)

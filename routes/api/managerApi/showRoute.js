@@ -20,7 +20,7 @@ Router.route("/all")
 Router.route("/byuid/:id")
     .get(async (req,res)=>{
         const {id} = req.params;
-        console.log(`Show Id Check: ${id}`)
+        // console.log(`Show Id Check: ${id}`)
         const conn = await connection(dbConfig).catch(e=>{})
         const shows = await query(
             conn,
@@ -46,7 +46,7 @@ Router.route("/delete")
     .delete(async (req,res)=>{
         if (!req.body) return res.sendStatus(400); 
         const {id} = req.body;
-        console.log(`Delete show check! #${id}`)
+        // console.log(`Delete show check! #${id}`)
         const conn = await connection(dbConfig).catch(e=>console.log(e));
         const result = await deleter(
             conn,

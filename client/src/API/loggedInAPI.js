@@ -6,7 +6,6 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/hosts/numcnt"
@@ -18,7 +17,6 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/hosts/catnumcnt/"+ category
@@ -30,7 +28,6 @@ export default {
             method: 'POST',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/hosts/category",
@@ -43,7 +40,6 @@ export default {
             method: 'POST',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/hosts/subcat",
@@ -57,7 +53,6 @@ export default {
             method: 'POST',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/shows/catnumcnt/",
@@ -70,7 +65,6 @@ export default {
             method: 'POST',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/shows/subnumcnt",
@@ -84,7 +78,6 @@ export default {
             method: 'POST',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/shows/category",
@@ -97,7 +90,6 @@ export default {
             method: 'POST',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/shows/subcat",
@@ -111,7 +103,6 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/shows/find/" + id
@@ -123,7 +114,6 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/shows/all"
@@ -135,7 +125,6 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/shows/host/" + id
@@ -147,7 +136,6 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/hosts/all"
@@ -159,7 +147,6 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/hosts/all/" + id
@@ -171,7 +158,6 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/episodes/find/" + id
@@ -183,7 +169,6 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/episodes/show/" + id
@@ -195,7 +180,7 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
+
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:"/api/req/episodes/all"

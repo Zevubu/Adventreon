@@ -6,5 +6,4 @@ const ROLES = {
     TempH: 'tempH',
     TempM: 'tempm'
 }
-  
 module.exports = ROLES;

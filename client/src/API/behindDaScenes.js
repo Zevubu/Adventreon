@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
     createHostAccount: function(userData){
         // console.log(`CREAT CHECK!`);
-        console.log(`userData token: ${JSON.stringify(userData)}`);
+        // console.log(`userData token: ${JSON.stringify(userData)}`);
         const options = {
             method: 'POST',
             headers: { 
@@ -16,8 +16,8 @@ export default {
         return axios(options).catch(err => console.log(`Account creation error:${err}`));
     },
     createManagAccount: function(userData){
-        console.log(`CREAT CHECK!`);
-        console.log(`userData token: ${JSON.stringify(userData)}`);
+        // console.log(`CREAT CHECK!`);
+        // console.log(`userData token: ${JSON.stringify(userData)}`);
         const options = {
             method: 'POST',
             headers: { 
