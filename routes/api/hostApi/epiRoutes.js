@@ -8,7 +8,7 @@ const epiQuery = require("../../../query_builders/epi-query");
   router.route('/show/:id')
   .get(async (req, res) => {
       const { id } = req.params;
-      console.log(`get epi by show id ping:${id}`)
+      // console.log(`get epi by show id ping:${id}`)
       const conn = await connection(dbConfig).catch(e => {});
       const user = await query(conn, epiQuery.findFullByShow(), [id])
       res.send(user)

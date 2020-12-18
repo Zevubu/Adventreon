@@ -36,7 +36,7 @@ router.post("/subnumcnt", async (req,res) => {
     'SELECT count(*) AS total FROM shows WHERE category=? AND sub_category=? AND eighteen_plus=0 AND paid=0 AND canceled=0 AND verifide=1',
     [category, sub_category]
   )
-  console.log(`subCatCount:${JSON.stringify(catCount[0])}`)
+  // console.log(`subCatCount:${JSON.stringify(catCount[0])}`)
   res.send(catCount[0])
 })
 // Matches with "/api/opening/req/shows/category" 

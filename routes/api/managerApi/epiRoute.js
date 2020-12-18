@@ -19,7 +19,7 @@ Router.route("/all")
 Router.route("/bysid/:id")
     .get(async (req,res)=>{
         const {id} = req.params;
-        console.log(`Episode Id Check: ${id}`)
+        // console.log(`Episode Id Check: ${id}`)
         const conn = await connection(dbConfig).catch(e=>{})
         const shows = await query(
             conn,
@@ -33,7 +33,7 @@ Router.route("/bysid/:id")
 Router.route("/byuid/:id")
     .get(async (req,res)=>{
         const {id} = req.params;
-        console.log(`Episode Id Check: ${id}`)
+        // console.log(`Episode Id Check: ${id}`)
         const conn = await connection(dbConfig).catch(e=>{})
         const shows = await query(
             conn,
@@ -47,7 +47,7 @@ Router.route("/delete")
     .delete(async (req,res)=>{
         if (!req.body) return res.sendStatus(400); 
         const {id} = req.body;
-        console.log(`Delete episode check! #${id}`)
+        // console.log(`Delete episode check! #${id}`)
         const conn = await connection(dbConfig).catch(e=>console.log(e));
         const result = await deleter(
             conn,

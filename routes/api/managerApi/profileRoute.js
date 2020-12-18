@@ -32,7 +32,7 @@ Router.route("/delete")
     .delete(async (req,res)=>{
         if (!req.body) return res.sendStatus(400); 
         const {id} = req.body;
-        console.log(`Delete User check! #${JSON.stringify(req)}`)
+        // console.log(`Delete User check! #${JSON.stringify(req)}`)
         const conn = await connection(dbConfig).catch(e=>console.log(e));
         const result = await deleter(
             conn,

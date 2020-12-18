@@ -17,7 +17,6 @@ export default {
             method: 'GET',
             headers: { 
                 'content-Type': 'application/json',
-                'connection': 'keep-alive',
                 'authorization': `bearer ${token.replace(/\"/g, '')}` 
             },
             url:'/validate'

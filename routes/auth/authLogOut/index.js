@@ -31,7 +31,7 @@ router.post('/register', async (req, res) => {
             [first_name, last_name, user_name, 'user', false, dob, email, cryptPass, '', '','', '', '', '', '','', '', '', '', '', verified]  
         );
         const user = result;
-        console.log(`register user:${JSON.stringify(user)}`)
+        // console.log(`register user:${JSON.stringify(user)}`)
         if(user.insertId){
             res.send({
                 id: user.insertId || null,
@@ -66,7 +66,7 @@ router.post('/login', async (req, res) => {
 
     const theUser = user[0];
     if(theUser === undefined){
-        console.log("No Id Error check")
+        // console.log("No Id Error check")
         res.send({valid:false, error: user})
     }
     const token = jwt.sign({id: theUser.id, userName:theUser.user_name}, opts.secretOrKey, {expiresIn: '2d'})

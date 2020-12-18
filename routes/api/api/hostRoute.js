@@ -29,7 +29,7 @@ router.route("/numcnt")
       'SELECT COUNT(*) AS total FROM users WHERE user_type="host" OR user_type="manager" AND mhswitch=1'
     )
     const theCNT = catCount[0]
-    console.log(theCNT)
+    // console.log(theCNT)
     res.send(theCNT)
   })
 
