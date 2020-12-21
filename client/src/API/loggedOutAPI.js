@@ -12,7 +12,7 @@ export default {
     getUserNameCheck: function(name){
         // stays in log out
         // console.log(`EmailData: ${email}`);
-        return axios.post("/auth/opening/nametest", name).catch(err => console.log(`find email error:${err}`))
+        return axios.post("/auth/opening/nametest", name).catch(err => console.log(`find UserName error:${err}`))
     },
     getEmailCheck: function(email){
         // stays in log out
