@@ -57,12 +57,16 @@ router.post('/login', async (req, res) => {
     const expTime = parseInt(CONFIG.jwt_expiration);
     const cPass = await cryption.stringEncryption(password);
     // console.log(`log in request data: ${userName} ${password}`)
-    const conn = await connection(dbConfig).catch(e => res.send(e));
+    const errLog=(err)=>{
+        console.log(`Login Error:${err}`);
+        res.send({valid:false,err:err})   
+    }
+    const conn = await connection(dbConfig).catch(e => errLog(e));
     const user = await query(
         conn,
         `SELECT id, user_name, user_type, dob, time_stamp FROM users WHERE user_name=? AND password=? OR email=? AND password=?`,
         [userName,cPass,userName,cPass]
-    ).catch(e => res.status(400));
+    ).catch(e => errLog(e));
 
     const theUser = user[0];
     if(theUser === undefined){
@@ -87,38 +91,60 @@ router.post('/login', async (req, res) => {
     }
 });
 // /auth/opening/deleteuser/:id 
-router.delete('/deleteuser/:id', async (req, res) => {
-    const { id } = req.params;
-    const conn = await connection(dbConfig).catch(e => {});
-    const status = await query(
-        conn, 
-        userQuery.deleteById(), [id])
-    res.send(status)
-  });
+// router.delete('/deleteuser/:id', async (req, res) => {
+//     const { id } = req.params;
+//     const conn = await connection(dbConfig).catch(e => {});
+//     const status = await query(
+//         conn, 
+//         userQuery.deleteById(), [id])
+//     res.send(status)
+//   });
 
 //   /auth/opening/emailtest
 router.post('/emailtest', async (req, res) => {
     const { email } = req.body;
     // console.log(`email:${email}`)
-    const conn = await connection(dbConfig).catch(e => {});
+    const errLog=(err)=>{
+        console.log(`Emailtest Error:${err}`);
+        res.send({valid:false,err:err})   
+    }
+    const conn = await connection(dbConfig).catch(e => errLog(e));
     const emailCheck = await query(
         conn,
         'SELECT COUNT(*) AS total FROM users WHERE email = ?', [email]
     )
+    // console.log(`Email Check length:${emailCheck.length}`)
     // console.log(`Email check results:${JSON.stringify(emailCheck)}`)
-    res.send(emailCheck);
+    if(emailCheck.length > 0){
+        res.send({valid:true, checker:emailCheck});
+    }else{
+        res.send({valid:false,})
+    } 
+
 });
 
 //   /auth/opening/nametest
 router.post('/nametest', async (req, res) => {
     const { user_name } = req.body;
-    const conn = await connection(dbConfig).catch(e => {});
+    let error;
+    const errLog=(err)=>{
+        error = err;
+        console.log(`Nametest Error:${err}`);
+        res.send({valid:false,err:err})
+        
+    }
+    const conn = await connection(dbConfig).catch(e => errLog(e));
     const nameCheck = await query(
         conn,
         'SELECT COUNT(*) AS total FROM users WHERE user_name = ?', [user_name]
     )
+    // console.log(`Name check length:${nameCheck.length}`)
     // console.log(`Name check results:${JSON.stringify(nameCheck)}`)
-    res.send(nameCheck);
+    if(nameCheck.length > 0){
+        res.send({valid:true, checker:nameCheck,err:error});
+    }else{
+        res.send({valid:false,err:error})
+    } 
 });
 
 module.exports = router;

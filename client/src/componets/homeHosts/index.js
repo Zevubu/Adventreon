@@ -6,11 +6,9 @@ import SliderFiller from "../HostFiller/slide_filler";
 import Carousel from '@brainhubeu/react-carousel';
 import '../../styles/Carousel.css';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
- 
 
 function Hosts (){ 
     const [Hosts, setHosts] = useState([]);
-    const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -19,30 +17,18 @@ function Hosts (){
     const token = window.localStorage.getItem('tokens');
     
     useEffect(() => {
-        const fetchHostCNT = async () =>{
-            const count = await API.getHostNumCheck(token)
-            // console.log(`Host count:${JSON.stringify(count)}`)
-            if(count.data.total !== 0){
-                setPullSwitch(true)
-                // console.log(`All Host confirm check`)
-            }
-            else{
-                // console.log(`All host fail check`)
-                return
-            }
-        }
-        fetchHostCNT() 
-    }, []);
-
-    if(pullSwith){
         const fetchHosts = async () =>{
             const result = await API.getHosts(token)
-            // console.log(`Life pull switch check`)
-            setHosts(result.data)
+            // console.log(`All host pull switch check:${JSON.stringify(result)}`)
+            if(result.status === 200){
+                if(result.data.valid === true){
+                    setHosts(result.data.hosts) 
+                } 
+            }
         };
-        setPullSwitch(false)
         fetchHosts();
-    };
+    
+    }, []);
 
     if(Click){
         return <Redirect to="/hosts" />

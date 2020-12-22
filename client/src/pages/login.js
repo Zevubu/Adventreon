@@ -33,9 +33,9 @@ function Login (){
             // console.log(`login result: ${result.data.valid}`)
             if(result.data.valid === false){
               setIsError(true);
-              console.log(`loggin error:${result.data.error}`)
+              console.log(`loggin error:${JSON.stringify(result.data.error)}`)
             }
-            else if (result.status === 200){
+            else if (result.data.valid === true){
               // console.log(`result test: ${JSON.stringify(result.data)}`)
               // console.log(`User type test:${JSON.stringify(result.data.user_info.user_type) === "\"temp\""} `)
               // localStorage.setItem("tokens", JSON.stringify(result.data.token));

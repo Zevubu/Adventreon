@@ -40,7 +40,7 @@ function Shows (){
             const result = await API.getShowCateg(token,{
                 'category':'life',
             })
-                // console.log(`life show data ${result.data}`)
+                console.log(`life show data ${result.data}`)
                 setShows(result.data)
             };
         setPullSwitch(false)

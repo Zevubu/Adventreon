@@ -54,25 +54,43 @@ router.post("/subnumcnt", async (req,res) => {
 // Matches with "/api/req/shows/category" 
 router.post("/category", async (req,res) => {
   const {category} = req.body;
-  const conn = await connection(dbConfig).catch(e => {});
+  const errLog=(err)=>{
+    console.log(`Show Category Error:${err}`);
+    res.send({valid:false,err:err})   
+  } 
+  const conn = await connection(dbConfig).catch(e => errLog(e));
   const shows = await query(
     conn,
     'SELECT id,show_name,host_name,img,img_b,eighteen_plus,paid,price,time_stamp FROM shows WHERE category=?',
     [category]
   )
+  if(shows.length > 0){
+    res.send({valid:true,shows:shows})
+  }
+  else{
+    res.send({valid:false,shows:shows})
+  }
   
-  res.send(shows)
 })
 // Matches with "/api/shows/subcat" 
 router.post("/subcat", async (req, res) =>{
   const {category, sub_category} = req.body;
-  const conn = await connection(dbConfig).catch(e => {});
+  const errLog=(err)=>{
+    console.log(`Show Sub-Category Error:${err}`);
+    res.send({valid:false,err:err})   
+  } 
+  const conn = await connection(dbConfig).catch(e => errLog(e));
   const shows = await query(
     conn,
     'SELECT id,show_name,host_name,img,img_b,eighteen_plus,paid,price,time_stamp FROM shows WHERE category=? and sub_category=?',
     [category, sub_category]
   )
-  res.send(shows)
+  if(shows.length > 0){
+    res.send({valid:true,shows:shows})
+  }
+  else{
+    res.send({valid:false,shows:shows})
+  }
 })
 
 
