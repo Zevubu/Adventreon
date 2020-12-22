@@ -9,14 +9,17 @@ const hostQuery = require("../../../query_builders/host-query");
 // Matches with "/api/req/hosts/all"
 router.route("/all")
     .get(async (req, res) => {
-      const conn = await connection(dbConfig).catch(e => console.log(e));
-      const user = await query(conn, hostQuery.findAll())
-      if(user.length <= 0){
-        // console.log(`Perf count: ${user.length}`)
-        res.status(204)
+      const errLog=(err)=>{
+        console.log(`All Host Error:${err}`);
+        res.send({valid:false,err:err})   
+      } 
+      const conn = await connection(dbConfig).catch(e => errLog(e));
+      const hosts = await query(conn, hostQuery.findAll()).catch(e => errLog(e))
+      if(hosts.length > 0){
+        res.send({valid:true,hosts:hosts})
       }else{
         // console.log(`Perf count: ${user.length}`)
-        res.send(user)
+        res.send({valid:false,hosts:hosts})
       }
     });
 
@@ -51,13 +54,22 @@ router.route("/catnumcnt/:cat")
   // Matches with "/api/req/hosts/category" 
 router.post("/category", async (req,res) => {
   const {category} = req.body;
-  const conn = await connection(dbConfig).catch(e => {});
-  const shows = await query(
+  const errLog=(err)=>{
+    console.log(`Host Category Error:${err}`);
+    res.send({valid:false,err:err})   
+  } 
+  const conn = await connection(dbConfig).catch(e => errLog(e));
+  const hosts = await query(
     conn,
     hostQuery.findAllByCat(),
     [category, category]
   )
-  res.send(shows)
+  if(hosts.length > 0){
+    res.send({valid:true,hosts:hosts})
+  }
+  else{
+    res.send({valid:false,hosts:hosts})
+  }
 });
 
 // Matches with "/api/req/hosts/all/:id"

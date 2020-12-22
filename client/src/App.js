@@ -150,13 +150,43 @@ function App() {
       const userType =  window.localStorage.getItem('user_type');
       // console.log(`local storage check: User type:${userType}, User token: ${token}, User data:${user} `)
       if(!user || !token || !userType){
-        console.log(`User === null`)
+        // console.log(`User === null`)
       }else{
         const validateUser = async () =>{
           const result = await API.tokenValidate(token)
-          // console.log(`Validation Result: ${JSON.stringify(result.data)}`)
-          if(result.data.valid === false){
+          // console.log(`Validation Result status: ${JSON.stringify(result.status)}`)
+          if(result.status === 200){
+            if(result.data.valid === true){
+              setAuthTokens(token);
+              setIsAuthenticated(true);
+              setUserData(JSON.parse(user))
+              setIsData(true)
+              // console.log(`IS USER CHECK`)
+              if(result.data.admin === true){
+                // console.log(`IS USER CHECK: ${result.data.admin}`)
+                setIsManager(true);
+              }else if(result.data.host === true){
+                // console.log(`IS HOST CHECK: ${result.data.host}`)
+                setIsHost(true);
+              }else if(result.data.user === true){
+                setIsUser(true);
+              }
+            }else{
             // console.log(`result.data.valid= ${result.data.valid}`)
+              localStorage.clear();
+              setAuthTokens();
+              setUserData()
+              setIsAuthenticated();
+              setIsUser();
+              setIsManager()
+              setIsAuthenticated();
+              setIsHost();
+              setIsTempP();
+              setIsTempM();
+          
+            }
+          }else{
+          // console.log(`result.data.valid= ${result.data.valid}`)
             localStorage.clear();
             setAuthTokens();
             setUserData()
@@ -167,32 +197,6 @@ function App() {
             setIsHost();
             setIsTempP();
             setIsTempM();
-          }else{
-           
-            // Validation Result: {
-            // "valid":true,
-            //   "admin":true,
-            //   "host":true,
-            //   "user":{"id":1,
-            //   "user_name":"ZevUbu",
-            //   "user_type":"manager",
-            //   "dob":"1988-08-23T07:00:00.000Z",
-            //   "time_stamp":"2020-06-08T07:06:51.000Z"
-            // }}
-            setAuthTokens(token);
-            setIsAuthenticated(true);
-            setUserData(JSON.parse(user))
-            setIsData(true)
-            // console.log(`IS USER CHECK`)
-            if(result.data.admin === true){
-              // console.log(`IS USER CHECK: ${result.data.admin}`)
-              setIsManager(true);
-            }else if(result.data.host === true){
-              // console.log(`IS HOST CHECK: ${result.data.host}`)
-              setIsHost(true);
-            }else if(result.data.user === true){
-              setIsUser(true);
-            }
           }
         }
         validateUser()

@@ -9,7 +9,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function Hosts (props){ 
     const [Hosts, setHosts] = useState([]);
-    const [pullSwith, setPullSwitch] = useState(false);
+  
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -18,33 +18,19 @@ function Hosts (props){
     const token = window.localStorage.getItem('tokens');
     
     useEffect(() => {
-        const fetchHostCNT = async () =>{
-            console.log(`Props host category test:${props.Cat}`)
-            const count = await API.getHostCatNumCheck(token,props.Cat)
-             // console.log(`Spirit Host count #${JSON.stringify(count.data.total)} true false check:${count.data.total !== 0}`)
-            if(count.data.total !== 0){
-                setPullSwitch(true)
-                // console.log(`Spirit host confirm check`)
-            }
-            else{
-                // console.log(`Spirit host fail check`)
-                return
-            }
-        }
-        fetchHostCNT()  
-    }, []);
-
-    if(pullSwith){
         const fetchHosts = async () =>{
             const result = await API.getHostByCat(token,{
                 'category':props.Cat
-            })
-            // console.log(`Spirit pull switch check`)
-            setHosts(result.data)
+            }).catch(e=>console.log(e))
+            // console.log(`host check pull switch check:${result.status}`)
+            if(result.status === 200){
+                if(result.data.valid === true){
+                    setHosts(result.data.hosts) 
+                } 
+            }
         };
-        setPullSwitch(false)
         fetchHosts();
-    }
+    }, []);
 
     if(Click){
         return <Redirect to="/hosts" />

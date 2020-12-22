@@ -9,7 +9,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function Shows (props){
     const [shows, setShows] = useState([]);
-    const [pullSwith, setPullSwitch] = useState(false);
     const [bgC, setbgC] = useState();
     const [Click, setClick] = useState(false);
     const matches = useMediaQuery('(min-width:600px)');
@@ -18,36 +17,20 @@ function Shows (props){
     const token = window.localStorage.getItem('tokens');
 
     useEffect(() => {
-        const fetchShowsCNT = async () =>{
-            console.log(`Props Cat:${props.Cat},SubCat:${props.SubCat}, Name:${props.Name}`)
-            const count = await API.getShowSubcatNumCheck(token,{
-                'category':props.Cat,
-                'sub_category': props.SubCat
-            })
-            //  console.log(`Show subcat count #${count.data[0].total} true false check:${count.data[0].total !== 0}`)
-             if(count.data[0].total !== 0){
-                setPullSwitch(true)
-                // console.log(`Show subcat confirm check`)
-            }
-            else{
-                // console.log(`Show subcat fail check`)
-                return
-            }
-        }
-        fetchShowsCNT()  
-    }, []);
-    if(pullSwith){
         const fetchShows = async () =>{
             const result = await API.getShowSubcat(token,{
                 'category':props.Cat,
                 'sub_category': props.SubCat
-            })
-                // console.log(`Show subcat show data ${result.data}`)
-                setShows(result.data)
-            };
-        setPullSwitch(false)
-        fetchShows();
-    }
+            }).catch(e=>console.log(e))
+            // console.log(`${props.Cat}:${props.SubCat} show Status ${result.status}`)
+            if(result.status === 200){
+                if(result.data.valid === true){
+                    setShows(result.data.shows) 
+                } 
+            }
+        };
+        fetchShows(); 
+    }, []);
     if(Click){
         return <Redirect to="/" />
     }
