@@ -5,12 +5,12 @@ const mysql = require('mysql');
 module.exports = async (params) => new Promise(
     
     (resolve, reject) => {
-        if (process.env.JAWSDB_URL) {
-            // Database is JawsDB on Heroku
-           const connection = mysql.createConnection(process.env.JAWSDB_URL);
-        } else {
+        // if (process.env.JAWSDB_URL) {
+        //     // Database is JawsDB on Heroku
+        //    const connection = mysql.createConnection(process.env.JAWSDB_URL);
+        // } else {
         const connection = mysql.createConnection(params);
-        }
+        // }
         connection.connect(error => {
             if (error) {
                 console.log(error)
