@@ -48,5 +48,5 @@ app.use(routes);
 
 
 app.listen(PORT, function(){
-    console.log(`API Server now listening on bleep PORT ${PORT}`)
+    console.log(`API Server now listening on PORT ${PORT}`)
 })
