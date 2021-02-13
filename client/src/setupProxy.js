@@ -11,7 +11,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // all new routes must be stated.
 
-const API = 'http://localhost:3223';
+const API = 'http://[::1]:3223';
 
 
 module.exports = app => {
