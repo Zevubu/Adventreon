@@ -14,7 +14,7 @@ function UpdateUser (){
     const[catType, setCatType] = useState();
     const[UserType, setUserType] = useState(); 
     const[UpD, setUpD] = useState()
-    const { register, handleSubmit, errors } = useForm();
+    const { register, errors } = useForm();
     const token = window.localStorage.getItem('tokens');
 
     const UserReset = () =>{
