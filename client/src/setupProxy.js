@@ -10,10 +10,10 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 // /validate
 
 // all new routes must be stated.
-// change http to https on push to master. 
-// const API = 'http://localhost:3223';
+// change http to https on push to master.
+// const API = 'https://[::1]:3223';
 
-const API = 'https://[::1]:3223';
+const API = 'http://localhost:3223';
 
 
 module.exports = app => {
