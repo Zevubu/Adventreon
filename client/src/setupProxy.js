@@ -1,4 +1,6 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
+
+
 // /api
 // /auth
 // /profexfiller
@@ -9,7 +11,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // all new routes must be stated.
 
-const API = 'http://localhost:3001';
+const API = 'http://localhost:3223';
 
 
 module.exports = app => {
