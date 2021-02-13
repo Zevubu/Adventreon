@@ -8,7 +8,7 @@ const fileUpload = require('express-fileupload');
 // const bodyParser = require("body-parser");
 // const {jwtOptions, strategy, passport} = require("./JWT/index");
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3223;
 const app = express();
 
 // const VcId = process.env.VIMEO_CLIENT_ID;
