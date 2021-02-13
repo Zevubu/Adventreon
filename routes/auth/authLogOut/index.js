@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
         // const decryptPass = await cryption.stringDecryption(cryptPass);
         // console.log(`decryptPass: ${decryptPass}`)
         
-        const conn = await connection(dbConfig).catch(e => {});
+        const conn = await connection(dbConfig).catch(e => console.log(e));
         const result = await create(
             conn,
             'users',
