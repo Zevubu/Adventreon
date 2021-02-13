@@ -2,6 +2,7 @@
   "name": "Shtiker_iso",
   "version": "1.22.0",
   "engines": {
+    "node":"12.18.3",
     "yarn": "^1.22.0 "
   },
   "description": "event replacment app",

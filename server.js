@@ -8,7 +8,7 @@ const fileUpload = require('express-fileupload');
 // const bodyParser = require("body-parser");
 // const {jwtOptions, strategy, passport} = require("./JWT/index");
 
-const PORT = 3223;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 // const VcId = process.env.VIMEO_CLIENT_ID;
@@ -48,5 +48,5 @@ app.use(routes);
 
 
 app.listen(PORT, function(){
-    console.log(`API Server now listening on PORT ${PORT}`)
+    console.log(`API Server now listening on bleep PORT ${PORT}`)
 })
