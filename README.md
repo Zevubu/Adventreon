@@ -1,6 +1,6 @@
 # Shtiker_iso
 
-
+NOTES
 Things to address when launching:
     *AWS s3 bucket cors permission. Must alow for my website, and headers.
         *https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html
@@ -76,9 +76,6 @@ facebook live and wowza
 
 I don't think we should handle any money in regards to distributions amongst artists.
 
- Conversation with Martin Caplin notes. https://www.linkedin.com/in/martinhuntercaplan/ 
- Ways to gamify 
-    make own currency. 
 
 like a video
 auto transition. 
