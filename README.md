@@ -1,6 +1,8 @@
 # Shtiker_iso
+This is the Documentation for the Adventrion application. The working name was Schticker ISO..
 
-NOTES
+
+Dev NOTES
 Things to address when launching:
     *AWS s3 bucket cors permission. Must alow for my website, and headers.
         *https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html
@@ -14,19 +16,17 @@ standard img math 1024 X 768 \ .252
 
 action plan:
     Get crud working.
-    get Home pages to correctly populate.
-    Get payment working. 
-        Put some though into payment types
-        invest in our economy. Make our own currency. Martin Caplin suggestion 
-    Make shows dynamic.
-    login, log out with google.
-    Launch site to google cloud.
+    get Home pages to correctly populate. X
+    Get payment working. X
+        Put some though into payment types X
+    Make shows dynamic. X
+    login, log out with google. X
+    Launch site to google cloud. X
     Switch to Vimeo from youtube.
     get photo upload working
     Fix profiles layout.
-    styling
-    18+ implemented.
-    filter of English.
+    styling X
+    filter of English. X
     Add Language to database tables.
     ReactNative
 
