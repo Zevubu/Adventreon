@@ -10,9 +10,9 @@ const host = process.env.DB_HOST || 'localhost';
 const user = process.env.DB_USER || 'root';
 
 // Get the Password for DB from Environment or use default
-const password = process.env.DB_Pass || 'hottytoty';
+const password = process.env.DB_Pass;
 
 // Get the Database from Environment or use default
-const database = process.env.DB_DATABASE || 'Shtiker_iso';
+const database = process.env.DB_DATABASE || 'adventreon';
 
 module.exports = {host, user, password, database};
